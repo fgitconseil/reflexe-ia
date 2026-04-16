@@ -19,7 +19,7 @@ export const BLOCS: BlocConfig[] = [
   {
     id: 'bloc-01', ordre: 1,
     titre: "Comprendre l'IA Gen",
-    phase: 'Comprendre', phaseColor: 'bg-blue-600', tagColor: 'bg-teal-100 text-teal-700',
+    phase: 'Comprendre', phaseColor: 'bg-blue-600', tagColor: 'bg-blue-100 text-blue-700',
     desc: "Ce qu'est vraiment un LLM : moteur de prédiction, pas de vérité. Mécanisme, cut-off, hallucinations.",
     category: 'intro', duree: '~20 min',
     scriptPath: 'Intro/01-comprendre-ia/script-v4.md',
@@ -27,7 +27,7 @@ export const BLOCS: BlocConfig[] = [
   {
     id: 'bloc-02', ordre: 2,
     titre: 'Risques, cadre et responsabilités',
-    phase: 'Comprendre', phaseColor: 'bg-blue-600', tagColor: 'bg-teal-100 text-teal-700',
+    phase: 'Comprendre', phaseColor: 'bg-blue-600', tagColor: 'bg-blue-100 text-blue-700',
     desc: "Les 3 risques professionnels réels — exfiltration, réputationnel, industrialisation prématurée. Les règles simples pour ne pas les subir.",
     category: 'intro', duree: '~20 min',
     scriptPath: 'Intro/02-risques-cadre/script-v4.md',

@@ -463,10 +463,14 @@ const base = import.meta.env.BASE_URL;
       ctaItem.style.display = 'none';
 
       const logoutLi = document.createElement('li');
-      logoutLi.innerHTML = `<button id="btn-signout" class="nav-link" style="background:none;border:none;cursor:pointer;color:#ef4444">Se déconnecter</button>`;
+      const logoutBtn = document.createElement('button');
+      logoutBtn.textContent = 'Se déconnecter';
+      logoutBtn.className = 'nav-link';
+      logoutBtn.style.cssText = 'background:none;border:none;cursor:pointer;color:#ef4444;font-family:inherit';
+      logoutLi.appendChild(logoutBtn);
       ctaItem.insertAdjacentElement('afterend', logoutLi);
 
-      document.getElementById('btn-signout')?.addEventListener('click', async () => {
+      logoutBtn.addEventListener('click', async () => {
         await supabase.auth.signOut();
         window.location.href = '/';
       });
