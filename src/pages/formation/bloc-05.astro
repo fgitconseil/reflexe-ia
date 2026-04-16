@@ -39,3 +39,8 @@ const takeawayUrl = TAKEAWAY_URLS['bloc-05'];
     />
   </section>
 </Layout>
+
+<script>
+  import { trackBlocCompletion, observeEndScreen } from '../../lib/trackCompletion';
+  observeEndScreen('bloc-05', () => trackBlocCompletion('bloc-05'));
+</script>

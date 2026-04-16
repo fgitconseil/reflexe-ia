@@ -2,13 +2,16 @@
   "name": "reflexe-ia",
   "type": "module",
   "version": "0.1.0",
-  "engines": { "node": ">=22.12.0" },
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.103.3",
     "astro": "^6.0.5"
   },
   "devDependencies": {

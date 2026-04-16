@@ -160,6 +160,75 @@ Footer (3 colonnes) :
 
 ---
 
+## Supabase — Authentification & Progression
+
+### Variables d'environnement
+
+```
+PUBLIC_SUPABASE_URL=https://xxx.supabase.co
+PUBLIC_SUPABASE_ANON_KEY=xxx
+```
+
+Créer un fichier `.env` local (non versionné). Pour GitHub Actions, ajouter ces deux variables en tant que **Repository secrets** (`Settings → Secrets → Actions`).
+
+### Client
+
+`src/lib/supabase.ts` — client Supabase partagé (importé dans les `<script>` côté client).
+`src/lib/trackCompletion.ts` — utilitaires `trackBlocCompletion(blocId)` et `observeEndScreen(blocId, cb)`.
+
+### Schéma (à créer manuellement dans Supabase Dashboard → SQL Editor)
+
+```sql
+-- Profils utilisateurs
+create table user_profiles (
+  id uuid references auth.users primary key,
+  prenom text not null,
+  nom text not null,
+  entreprise text,
+  consent_contact boolean default true,
+  created_at timestamptz default now()
+);
+
+-- Progression formation
+create table formation_progress (
+  user_id uuid references auth.users,
+  bloc_id text,
+  completed_at timestamptz default now(),
+  primary key (user_id, bloc_id)
+);
+
+-- RLS
+alter table user_profiles enable row level security;
+alter table formation_progress enable row level security;
+
+create policy "Users manage own profile"
+  on user_profiles for all using (auth.uid() = id);
+
+create policy "Users manage own progress"
+  on formation_progress for all using (auth.uid() = user_id);
+```
+
+### Configuration Supabase recommandée
+
+- **Désactiver la confirmation d'email** (Dashboard → Authentication → Settings → "Enable email confirmations" → off) pour une expérience fluide : l'utilisateur est connecté immédiatement après l'inscription.
+- Si la confirmation d'email est activée, l'inscription affiche un message "Vérifiez votre boîte mail" et l'insert dans `user_profiles` est effectué dès le retour de `signUp` (avant confirmation).
+
+### Pages auth
+
+- `/inscription` — Formulaire d'inscription (prénom, nom, email, entreprise, mot de passe, consent CGU)
+- `/connexion` — Formulaire de connexion
+
+### Flux
+
+1. Utilisateur visite `/formation/` → redirigé vers `/inscription/?source=formation` si pas de session
+2. Inscription → insert `user_profiles` → redirect `/formation/`
+3. Connexion → redirect `/formation/`
+4. Sur `/formation/` : charge `formation_progress`, affiche barre X/6, marque les blocs complétés
+5. Sur chaque `bloc-0X` : MutationObserver sur l'écran de fin → upsert `formation_progress`
+6. Sur `bloc-06` : en plus, injecte badge LinkedIn + CTA accompagnement dans l'écran de fin
+
+---
+
 ## Déploiement
 
 ```yaml

@@ -9,19 +9,31 @@ const base = import.meta.env.BASE_URL;
     <div class="mb-4">
       <a href={base} class="text-sm text-slate-400 hover:text-slate-600 no-underline">← Accueil</a>
     </div>
-    <div class="mb-10">
+    <div class="mb-6">
       <p class="text-sm font-semibold uppercase tracking-wide mb-2" style="color:var(--primary-600)">Formation AI Practice Steward</p>
       <h1 class="text-3xl font-bold text-slate-900 mb-3">6 modules gratuits</h1>
       <p class="text-slate-500 text-base max-w-2xl">
-        Pour maîtriser le rôle et la méthode S.F.O.I. Chaque module dure environ 20 minutes. Sans inscription.
+        Pour maîtriser le rôle et la méthode S.F.O.I. Chaque module dure environ 20 minutes.
       </p>
+    </div>
+
+    <!-- Barre de progression — affichée si connecté -->
+    <div id="progress-bar-section" class="mb-8 rounded-xl border border-slate-200 bg-slate-50 px-5 py-4" style="display:none">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-sm font-semibold text-slate-700">Votre progression</span>
+        <span id="progress-label" class="text-sm font-bold" style="color:var(--primary-600)">0 / 6</span>
+      </div>
+      <div class="h-2 rounded-full bg-slate-200 overflow-hidden">
+        <div id="progress-fill" class="h-2 rounded-full transition-all" style="width:0%;background:linear-gradient(90deg,var(--primary-600),var(--accent-500))"></div>
+      </div>
     </div>
 
     <div class="space-y-3">
       {BLOCS.map((bloc) => (
         <a
           href={`${base}formation/${bloc.id}/`}
-          class="flex items-start gap-4 p-5 rounded-xl border border-slate-100 hover:border-blue-300 hover:shadow-md transition-all bg-white group no-underline"
+          data-bloc-id={bloc.id}
+          class="bloc-link flex items-start gap-4 p-5 rounded-xl border border-slate-100 hover:border-blue-300 hover:shadow-md transition-all bg-white group no-underline"
         >
           <div class={`w-9 h-9 rounded-full ${bloc.phaseColor} text-white flex items-center justify-center font-bold text-sm flex-shrink-0 mt-0.5`}>
             {bloc.ordre}
@@ -33,6 +45,8 @@ const base = import.meta.env.BASE_URL;
               {bloc.takeawayPath && (
                 <span class="text-xs bg-blue-50 text-blue-600 border border-blue-100 px-2 py-0.5 rounded-full font-medium">Fiche mémo</span>
               )}
+              <!-- Badge complété — injecté par JS -->
+              <span class="completed-badge text-xs bg-green-50 text-green-700 border border-green-200 px-2 py-0.5 rounded-full font-medium" style="display:none">✓ Complété</span>
             </div>
             <div class="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1">
               <span class={`inline-block px-2 py-0.5 rounded-full text-xs font-semibold ${bloc.tagColor}`}>{bloc.phase}</span>
@@ -53,3 +67,44 @@ const base = import.meta.env.BASE_URL;
   </section>
 
 </Layout>
+
+<script>
+  import { supabase } from '../../lib/supabase';
+
+  (async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+
+    if (!session) {
+      window.location.href = '/inscription/?source=formation';
+      return;
+    }
+
+    // Charger la progression
+    const { data: progress } = await supabase
+      .from('formation_progress')
+      .select('bloc_id')
+      .eq('user_id', session.user.id);
+
+    const completed = new Set((progress ?? []).map((r: { bloc_id: string }) => r.bloc_id));
+    const count = completed.size;
+
+    // Afficher la barre de progression
+    const section = document.getElementById('progress-bar-section')!;
+    const label   = document.getElementById('progress-label')!;
+    const fill    = document.getElementById('progress-fill')!;
+
+    label.textContent = `${count} / 6`;
+    fill.style.width  = `${(count / 6) * 100}%`;
+    section.style.display = '';
+
+    // Marquer les blocs complétés
+    document.querySelectorAll<HTMLElement>('.bloc-link').forEach(link => {
+      const blocId = link.dataset.blocId;
+      if (blocId && completed.has(blocId)) {
+        const badge = link.querySelector<HTMLElement>('.completed-badge');
+        if (badge) badge.style.display = '';
+        link.style.borderColor = '#86efac'; // green-300
+      }
+    });
+  })();
+</script>

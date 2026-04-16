@@ -50,3 +50,44 @@ const slides = getSlidesForBloc('bloc-06');
     </div>
   </section>
 </Layout>
+
+<script>
+  import { trackBlocCompletion, observeEndScreen } from '../../lib/trackCompletion';
+
+  observeEndScreen('bloc-06', () => {
+    trackBlocCompletion('bloc-06');
+
+    // Inject LinkedIn badge + accompagnement CTA into the end screen
+    const endScreen = document.getElementById('end-bloc-06');
+    if (!endScreen) return;
+    const actions = endScreen.querySelector('.sp-end-actions');
+    if (!actions) return;
+
+    const extras = document.createElement('div');
+    extras.style.cssText = 'margin-top:1.75rem;display:flex;flex-direction:column;gap:1rem;align-items:center;width:100%';
+    extras.innerHTML = `
+      <a
+        href="https://www.linkedin.com/profile/add?startTask=FORMATION-SFOI&name=Formation%20S.F.O.I.%20%E2%80%94%20AI%20Practice%20Steward&organizationId=112952006&issueYear=2026&issueMonth=4&certUrl=https%3A%2F%2Freflexe-ia.org%2Fformation%2F"
+        target="_blank"
+        rel="noopener"
+        style="display:inline-flex;align-items:center;gap:0.5rem;background:#0a66c2;color:white;font-weight:600;font-size:0.875rem;padding:0.6rem 1.25rem;border-radius:0.5rem;text-decoration:none;transition:opacity 0.2s"
+        onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        Ajouter à mon profil LinkedIn
+      </a>
+      <div style="background:white;border-radius:0.75rem;padding:1.25rem 1.5rem;max-width:26rem;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.08)">
+        <p style="font-weight:600;color:#0f172a;margin:0 0 0.35rem;font-size:0.9rem">Vous voulez aller plus loin dans votre organisation ?</p>
+        <p style="color:#64748b;font-size:0.8rem;margin:0 0 0.875rem;line-height:1.6">Formation en présentiel pour votre équipe ou accompagnement AI Practice Steward sur mesure.</p>
+        <a
+          href="https://www.linkedin.com/company/reflexe-ia"
+          target="_blank"
+          rel="noopener"
+          style="display:inline-flex;align-items:center;gap:0.4rem;border:2px solid #2563eb;color:#2563eb;font-weight:600;font-size:0.8rem;padding:0.5rem 1rem;border-radius:0.5rem;text-decoration:none;transition:all 0.2s"
+          onmouseover="this.style.background='#2563eb';this.style.color='white'" onmouseout="this.style.background='';this.style.color='#2563eb'"
+        >Nous contacter →</a>
+      </div>
+    `;
+    actions.after(extras);
+  });
+</script>
