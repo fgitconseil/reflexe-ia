@@ -91,7 +91,7 @@ const base = import.meta.env.BASE_URL;
   <!-- ── Offres ── -->
   <section class="max-w-5xl mx-auto px-6 py-20">
     <div class="text-center mb-12">
-      <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3">Nos offres</h2>
+      <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3">Notre Framework</h2>
       <p class="text-slate-500 text-base max-w-2xl mx-auto">
         Trois niveaux d'engagement pour passer de la sensibilisation à la transformation.
       </p>
@@ -111,24 +111,24 @@ const base = import.meta.env.BASE_URL;
 
       <div class="card flex flex-col">
         <div class="flex items-center justify-between mb-4">
-          <h3 class="font-semibold text-slate-900">Skills</h3>
-          <span class="text-xs font-bold px-2 py-1 rounded-full" style="background:#eff6ff;color:#1d4ed8">Bientôt</span>
-        </div>
-        <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-6">
-          Ateliers pratiques pour développer les compétences clés : audit d'usage, design de prompt policy, animation de communauté IA.
-        </p>
-        <a href={`${base}framework/skills/`} class="btn-secondary text-sm">En savoir plus</a>
-      </div>
-
-      <div class="card flex flex-col">
-        <div class="flex items-center justify-between mb-4">
           <h3 class="font-semibold text-slate-900">Accompagnement APS</h3>
           <span class="text-xs font-bold px-2 py-1 rounded-full" style="background:#faf5ff;color:#7c3aed">Sur mesure</span>
         </div>
         <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-6">
           Déploiement du rôle AI Practice Steward dans votre organisation. Diagnostic, feuille de route, formation des référents.
         </p>
-        <a href={`${base}contact/`} class="btn-primary text-sm">Nous contacter</a>
+        <a href="https://www.linkedin.com/company/reflexe-ia" target="_blank" rel="noopener" class="btn-primary text-sm">Nous contacter</a>
+      </div>
+
+      <div class="card flex flex-col">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="font-semibold text-slate-900">Skills</h3>
+          <span class="text-xs font-bold px-2 py-1 rounded-full" style="background:#faf5ff;color:#7c3aed">Sur mesure</span>
+        </div>
+        <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-6">
+          Capitalisation des savoirs experts en actifs IA permanents. IP métier, transmission du raisonnement tacite.
+        </p>
+        <a href={`${base}framework/skills/`} class="btn-secondary text-sm">En savoir plus</a>
       </div>
 
     </div>
@@ -149,25 +149,5 @@ const base = import.meta.env.BASE_URL;
     </div>
   </section>
 
-  <!-- ── Mainteneurs ── -->
-  <section class="max-w-4xl mx-auto px-6 py-20 text-center">
-    <h2 class="text-2xl font-bold text-slate-900 mb-3">Mainteneurs</h2>
-    <p class="text-slate-500 text-base mb-10 max-w-xl mx-auto">
-      Reflexe IA est un projet ouvert, maintenu par des praticiens de l'IA en organisation.
-    </p>
-    <div class="flex flex-wrap justify-center gap-8">
-      {['À venir — AI Practice Steward', 'À venir — Contributeur méthode', 'À venir — Contributeur contenu'].map(label => (
-        <div class="flex flex-col items-center gap-3">
-          <div style="width:4rem;height:4rem;border-radius:50%;background:#f1f5f9;border:2px dashed #cbd5e1;display:flex;align-items:center;justify-content:center">
-            <span style="color:#94a3b8;font-size:1.5rem">?</span>
-          </div>
-          <span class="text-slate-400 text-xs">{label}</span>
-        </div>
-      ))}
-    </div>
-    <div class="mt-10">
-      <a href={`${base}mainteneurs/`} class="text-blue-600 text-sm font-medium hover:underline">En savoir plus sur les Mainteneurs →</a>
-    </div>
-  </section>
 
 </Layout>
