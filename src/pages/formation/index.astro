@@ -5,7 +5,7 @@ const base = import.meta.env.BASE_URL;
 ---
 <Layout title="Formation AI Practice Steward" description="6 modules gratuits pour maîtriser le rôle d'AI Practice Steward et la méthode S.F.O.I.">
 
-  <section class="max-w-3xl mx-auto px-4 py-16">
+  <section class="max-w-3xl mx-auto px-4 py-16" id="formation-content" style="visibility:hidden">
     <div class="mb-4">
       <a href={base} class="text-sm text-slate-400 hover:text-slate-600 no-underline">← Accueil</a>
     </div>
@@ -78,6 +78,10 @@ const base = import.meta.env.BASE_URL;
       window.location.href = '/inscription/?source=formation';
       return;
     }
+
+    // Révéler le contenu seulement si connecté
+    const content = document.getElementById('formation-content');
+    if (content) content.style.visibility = '';
 
     // Charger la progression
     const { data: progress } = await supabase

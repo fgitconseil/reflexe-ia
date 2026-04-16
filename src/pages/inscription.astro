@@ -2,122 +2,209 @@
 import Layout from '../layouts/Layout.astro';
 const base = import.meta.env.BASE_URL;
 ---
-<Layout title="Créer un compte" description="Créez un compte gratuit pour sauvegarder votre progression dans la formation AI Practice Steward.">
+<Layout title="Créer un compte" description="Créez un compte gratuit pour accéder à la formation AI Practice Steward et sauvegarder votre progression.">
 
-  <section class="min-h-screen flex items-center justify-center px-4 py-16 bg-slate-50">
-    <div class="w-full max-w-md">
+  <div class="min-h-screen bg-slate-50">
+    <div class="max-w-5xl mx-auto px-4 py-12 md:py-20">
 
-      <div class="mb-6 text-center">
-        <a href={base} class="inline-flex items-center gap-1 text-sm font-bold no-underline" aria-label="Retour à l'accueil">
+      <!-- Logo mobile -->
+      <div class="mb-8 text-center md:hidden">
+        <a href={base} class="inline-flex items-center gap-1 text-sm font-bold no-underline">
           <span style="color:var(--primary-600)">Reflexe</span><span style="color:var(--accent-500)">IA</span>
         </a>
       </div>
 
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
-        <h1 class="text-2xl font-bold text-slate-900 mb-1">Créer un compte</h1>
-        <p class="text-slate-500 text-sm mb-6">Gratuit — pour sauvegarder votre progression.</p>
+      <div class="grid md:grid-cols-2 gap-12 items-start">
 
-        <!-- Message contextuel (ex : redirection depuis /formation/) -->
-        <div id="ctx-message" class="mb-5 rounded-lg bg-blue-50 border border-blue-200 px-4 py-3 text-sm text-blue-700" style="display:none"></div>
+        <!-- Colonne gauche — teaser formation -->
+        <div class="space-y-8">
 
-        <!-- Erreur globale -->
-        <div id="form-error" class="mb-5 rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700" style="display:none"></div>
+          <!-- Logo desktop -->
+          <a href={base} class="hidden md:inline-flex items-center gap-1 text-sm font-bold no-underline">
+            <span style="color:var(--primary-600)">Reflexe</span><span style="color:var(--accent-500)">IA</span>
+          </a>
 
-        <!-- Message succès -->
-        <div id="form-success" class="mb-5 rounded-lg bg-green-50 border border-green-200 px-4 py-3 text-sm text-green-800" style="display:none"></div>
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Formation gratuite · Reflexe IA</p>
+            <h1 class="text-3xl font-bold text-slate-900 leading-tight mb-4">
+              Maîtrisez l'IA générative<br/>dans votre contexte professionnel
+            </h1>
+            <p class="text-slate-600 text-base leading-relaxed">
+              Une méthode en 4 niveaux pour passer d'un usage conversationnel à une pratique professionnelle — sans prendre ses réponses pour argent comptant.
+            </p>
+          </div>
 
-        <form id="signup-form" novalidate class="space-y-4">
+          <blockquote class="border-l-4 pl-5 py-1" style="border-color:var(--accent-500)">
+            <p class="text-slate-700 text-sm leading-relaxed italic">
+              "Vous n'êtes pas le produit. La connaissance est le seul bien de valeur qu'on ne perd pas en le partageant."
+            </p>
+          </blockquote>
 
-          <div class="grid grid-cols-2 gap-3">
-            <div>
-              <label for="prenom" class="block text-sm font-medium text-slate-700 mb-1">Prénom <span class="text-red-500">*</span></label>
-              <input type="text" id="prenom" name="prenom" required autocomplete="given-name"
-                class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition" />
-              <p class="field-error text-xs text-red-600 mt-1" style="display:none"></p>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <span class="text-xl flex-shrink-0 mt-0.5">🎯</span>
+              <div>
+                <p class="font-semibold text-slate-900 text-sm">Opérationnel dès le premier bloc</p>
+                <p class="text-slate-500 text-sm leading-relaxed">Chaque bloc de 20 minutes vous donne un réflexe concret à appliquer dans votre travail.</p>
+              </div>
             </div>
-            <div>
-              <label for="nom" class="block text-sm font-medium text-slate-700 mb-1">Nom <span class="text-red-500">*</span></label>
-              <input type="text" id="nom" name="nom" required autocomplete="family-name"
-                class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition" />
-              <p class="field-error text-xs text-red-600 mt-1" style="display:none"></p>
+            <div class="flex items-start gap-3">
+              <span class="text-xl flex-shrink-0 mt-0.5">🏗️</span>
+              <div>
+                <p class="font-semibold text-slate-900 text-sm">Une méthode, pas des astuces</p>
+                <p class="text-slate-500 text-sm leading-relaxed">S.F.O.I. structure votre pratique de l'IA pour qu'elle soit rigoureuse, fiable et reproductible.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-xl flex-shrink-0 mt-0.5">✓</span>
+              <div>
+                <p class="font-semibold text-slate-900 text-sm">Entièrement gratuit</p>
+                <p class="text-slate-500 text-sm leading-relaxed">Un compte pour sauvegarder votre progression. Aucune donnée vendue. Aucune contrepartie cachée.</p>
+              </div>
             </div>
           </div>
 
-          <div>
-            <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email professionnel <span class="text-red-500">*</span></label>
-            <input type="email" id="email" name="email" required autocomplete="email"
-              class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition" />
-            <p class="field-error text-xs text-red-600 mt-1" style="display:none"></p>
-          </div>
+        </div>
 
-          <div>
-            <label for="entreprise" class="block text-sm font-medium text-slate-700 mb-1">Entreprise <span class="text-slate-400 font-normal">(optionnel)</span></label>
-            <input type="text" id="entreprise" name="entreprise" autocomplete="organization"
-              class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition" />
-          </div>
+        <!-- Colonne droite — formulaire -->
+        <div>
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
+            <h2 class="text-xl font-bold text-slate-900 mb-1">Créer un compte gratuit</h2>
+            <p class="text-slate-500 text-sm mb-6">Pour sauvegarder votre progression.</p>
 
-          <div>
-            <label for="password" class="block text-sm font-medium text-slate-700 mb-1">Mot de passe <span class="text-red-500">*</span></label>
-            <input type="password" id="password" name="password" required autocomplete="new-password" minlength="8"
-              class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition" />
-            <p class="text-xs text-slate-400 mt-1">8 caractères minimum</p>
-            <p class="field-error text-xs text-red-600 mt-1" style="display:none"></p>
-          </div>
+            <!-- Erreur globale -->
+            <div id="form-error" class="mb-5 rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700" style="display:none"></div>
 
-          <div>
-            <label for="password-confirm" class="block text-sm font-medium text-slate-700 mb-1">Confirmer le mot de passe <span class="text-red-500">*</span></label>
-            <input type="password" id="password-confirm" name="password-confirm" required autocomplete="new-password"
-              class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition" />
-            <p class="field-error text-xs text-red-600 mt-1" style="display:none"></p>
-          </div>
+            <!-- Message succès -->
+            <div id="form-success" class="mb-5 rounded-lg bg-green-50 border border-green-200 px-4 py-3 text-sm text-green-800" style="display:none"></div>
 
-          <div class="pt-1">
-            <label class="flex items-start gap-3 cursor-pointer">
-              <input type="checkbox" id="consent" name="consent" required
-                class="mt-0.5 w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 flex-shrink-0" />
-              <span class="text-sm text-slate-600 leading-relaxed">
-                J'accepte les <a href="/cgu/" class="text-blue-600 hover:underline" target="_blank">CGU</a> et j'accepte d'être contacté par Reflexe IA pour des offres de formation ou d'accompagnement AI Practice Steward. <span class="text-red-500">*</span>
-              </span>
-            </label>
-            <p id="consent-error" class="text-xs text-red-600 mt-1 ml-7" style="display:none">Ce champ est obligatoire.</p>
-          </div>
+            <form id="signup-form" novalidate class="space-y-4">
 
-          <button type="submit" id="submit-btn" class="btn-primary w-full justify-center py-3 mt-2">
-            Créer mon compte
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label for="prenom" class="block text-sm font-medium text-slate-700 mb-1">Prénom <span class="text-red-500">*</span></label>
+                  <input type="text" id="prenom" name="prenom" required autocomplete="given-name"
+                    class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition" />
+                  <p class="field-error text-xs text-red-600 mt-1" style="display:none"></p>
+                </div>
+                <div>
+                  <label for="nom" class="block text-sm font-medium text-slate-700 mb-1">Nom <span class="text-red-500">*</span></label>
+                  <input type="text" id="nom" name="nom" required autocomplete="family-name"
+                    class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition" />
+                  <p class="field-error text-xs text-red-600 mt-1" style="display:none"></p>
+                </div>
+              </div>
+
+              <div>
+                <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email professionnel <span class="text-red-500">*</span></label>
+                <input type="email" id="email" name="email" required autocomplete="email"
+                  class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition" />
+                <p class="field-error text-xs text-red-600 mt-1" style="display:none"></p>
+              </div>
+
+              <div>
+                <label for="entreprise" class="block text-sm font-medium text-slate-700 mb-1">Entreprise <span class="text-slate-400 font-normal">(optionnel)</span></label>
+                <input type="text" id="entreprise" name="entreprise" autocomplete="organization"
+                  class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition" />
+              </div>
+
+              <div>
+                <label for="password" class="block text-sm font-medium text-slate-700 mb-1">Mot de passe <span class="text-red-500">*</span></label>
+                <input type="password" id="password" name="password" required autocomplete="new-password" minlength="8"
+                  class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition" />
+                <p class="text-xs text-slate-400 mt-1">8 caractères minimum</p>
+                <p class="field-error text-xs text-red-600 mt-1" style="display:none"></p>
+              </div>
+
+              <div>
+                <label for="password-confirm" class="block text-sm font-medium text-slate-700 mb-1">Confirmer le mot de passe <span class="text-red-500">*</span></label>
+                <input type="password" id="password-confirm" name="password-confirm" required autocomplete="new-password"
+                  class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition" />
+                <p class="field-error text-xs text-red-600 mt-1" style="display:none"></p>
+              </div>
+
+              <div class="pt-1">
+                <label class="flex items-start gap-3 cursor-pointer">
+                  <input type="checkbox" id="consent" name="consent" required
+                    class="mt-0.5 w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 flex-shrink-0" />
+                  <span class="text-sm text-slate-600 leading-relaxed">
+                    J'accepte les <a href="/cgu/" class="text-blue-600 hover:underline" target="_blank">CGU</a> et j'accepte d'être contacté par Reflexe IA pour des offres de formation ou d'accompagnement AI Practice Steward. <span class="text-red-500">*</span>
+                  </span>
+                </label>
+                <p id="consent-error" class="text-xs text-red-600 mt-1 ml-7" style="display:none">Ce champ est obligatoire.</p>
+              </div>
+
+              <button type="submit" id="submit-btn" class="btn-primary w-full justify-center py-3 mt-2">
+                Accéder à la formation →
+              </button>
+
+            </form>
+
+            <p class="text-center text-sm text-slate-500 mt-5">
+              Déjà un compte ? <a href="/connexion/" class="text-blue-600 font-medium hover:underline">Se connecter</a>
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Syllabus pleine largeur -->
+      <div class="mt-16">
+        <div class="mb-6">
+          <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">Programme</p>
+          <p class="text-slate-500 text-sm">6 blocs · Parcours distanciel · De la compréhension à la mise en pratique organisationnelle — à votre rythme.</p>
+        </div>
+        <div class="space-y-2">
+          {[
+            { num: 1, titre: "Comprendre l'IA Gen", duree: "~20 min", phase: "Comprendre", phaseColor: "bg-blue-500", tagColor: "bg-blue-50 text-blue-700", desc: "Ce qu'est vraiment un LLM : un moteur de prédiction statistique, pas un moteur de vérité. Mécanisme, cut-off, hallucinations, implications concrètes.", fiche: false },
+            { num: 2, titre: "Risques, cadre et responsabilités", duree: "~20 min", phase: "Comprendre", phaseColor: "bg-blue-500", tagColor: "bg-blue-50 text-blue-700", desc: "Les 3 risques professionnels réels — exfiltration, risque réputationnel, industrialisation prématurée. Les règles simples pour ne pas les subir.", fiche: true },
+            { num: 3, titre: "Choisir son prompt", duree: "~20 min", phase: "Choisir", phaseColor: "bg-green-500", tagColor: "bg-green-50 text-green-700", desc: "Les 4 intentions de prompt — Production, Exploration, Structuration, Vérification. Un mauvais type de prompt génère une mauvaise catégorie de réponse.", fiche: true },
+            { num: 4, titre: "La méthode S.F.O.I.", duree: "~20 min", phase: "Méthode", phaseColor: "bg-yellow-500", tagColor: "bg-yellow-50 text-yellow-700", desc: "🟢 Structurer sans perdre · 🟡 Fiabiliser chaque affirmation · 🔵 Optimiser pour l'usage direct · 🟣 Industrialiser avec gouvernance. Cas Marc (RH).", fiche: true },
+            { num: 5, titre: "Projets, instructions et documents", duree: "~20 min", phase: "Outiller", phaseColor: "bg-blue-400", tagColor: "bg-blue-50 text-blue-700", desc: "Ne plus repartir de zéro à chaque session. Projets persistants, Artifacts directement exploitables, Instructions de Projet pour capitaliser votre contexte métier.", fiche: true },
+            { num: 6, titre: "Ce qu'un assistant augmenté change", duree: "~15 min", phase: "Conclusion", phaseColor: "bg-purple-500", tagColor: "bg-purple-50 text-purple-700", desc: "Skills, responsabilité déplacée, boucle amplificatrice et reddition cognitive. Ce que la formation individuelle ne résout pas — et ce que l'AI Practice Steward adresse.", fiche: false },
+          ].map(bloc => (
+            <div class="flex items-start gap-4 p-4 rounded-xl bg-white border border-slate-100">
+              <div class={`w-8 h-8 rounded-full ${bloc.phaseColor} text-white flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5`}>{bloc.num}</div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 flex-wrap mb-0.5">
+                  <span class="font-semibold text-slate-900 text-sm">{bloc.titre}</span>
+                  <span class="text-xs text-slate-400">{bloc.duree}</span>
+                  {bloc.fiche && <span class="text-xs bg-blue-50 text-blue-600 border border-blue-100 px-2 py-0.5 rounded-full font-medium">Fiche mémo</span>}
+                  <span class={`text-xs font-semibold px-2 py-0.5 rounded-full ${bloc.tagColor}`}>{bloc.phase}</span>
+                </div>
+                <p class="text-slate-500 text-sm leading-relaxed">{bloc.desc}</p>
+              </div>
+              <span class="text-slate-300 self-center flex-shrink-0">→</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-8 text-center">
+          <button
+            type="button"
+            onclick="document.getElementById('email').scrollIntoView({behavior:'smooth'}); document.getElementById('email').focus();"
+            class="btn-primary px-8 py-3 text-base"
+          >
+            Commencer maintenant →
           </button>
-
-        </form>
-
-        <p class="text-center text-sm text-slate-500 mt-6">
-          Déjà un compte ? <a href="/connexion/" class="text-blue-600 font-medium hover:underline">Se connecter</a>
-        </p>
+        </div>
       </div>
 
     </div>
-  </section>
+  </div>
 
 </Layout>
 
 <script>
   import { supabase } from '../lib/supabase';
 
-  // Show contextual message if redirected from formation
-  const params = new URLSearchParams(window.location.search);
-  if (params.get('source') === 'formation') {
-    const msg = document.getElementById('ctx-message');
-    if (msg) {
-      msg.textContent = 'Créez un compte gratuit pour sauvegarder votre progression.';
-      msg.style.display = '';
-    }
-  }
-
-  const form     = document.getElementById('signup-form') as HTMLFormElement;
+  const form      = document.getElementById('signup-form') as HTMLFormElement;
   const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
   const globalError   = document.getElementById('form-error')!;
   const globalSuccess = document.getElementById('form-success')!;
 
   function showGlobalError(msg: string) {
-    globalError.textContent = msg;
+    globalError.innerHTML = msg;
     globalError.style.display = '';
     globalSuccess.style.display = 'none';
   }
@@ -151,19 +238,19 @@ const base = import.meta.env.BASE_URL;
     clearFieldErrors();
     clearGlobalMessages();
 
-    const prenom    = (document.getElementById('prenom') as HTMLInputElement).value.trim();
-    const nom       = (document.getElementById('nom') as HTMLInputElement).value.trim();
-    const email     = (document.getElementById('email') as HTMLInputElement).value.trim();
+    const prenom     = (document.getElementById('prenom') as HTMLInputElement).value.trim();
+    const nom        = (document.getElementById('nom') as HTMLInputElement).value.trim();
+    const email      = (document.getElementById('email') as HTMLInputElement).value.trim();
     const entreprise = (document.getElementById('entreprise') as HTMLInputElement).value.trim();
-    const password  = (document.getElementById('password') as HTMLInputElement).value;
-    const confirm   = (document.getElementById('password-confirm') as HTMLInputElement).value;
-    const consent   = (document.getElementById('consent') as HTMLInputElement).checked;
+    const password   = (document.getElementById('password') as HTMLInputElement).value;
+    const confirm    = (document.getElementById('password-confirm') as HTMLInputElement).value;
+    const consent    = (document.getElementById('consent') as HTMLInputElement).checked;
 
     let hasError = false;
 
     if (!prenom) { fieldError(document.getElementById('prenom') as HTMLInputElement, 'Le prénom est obligatoire.'); hasError = true; }
     if (!nom)    { fieldError(document.getElementById('nom') as HTMLInputElement, 'Le nom est obligatoire.'); hasError = true; }
-    if (!email)  { fieldError(document.getElementById('email') as HTMLInputElement, 'L\'email est obligatoire.'); hasError = true; }
+    if (!email)  { fieldError(document.getElementById('email') as HTMLInputElement, "L'email est obligatoire."); hasError = true; }
     if (password.length < 8) { fieldError(document.getElementById('password') as HTMLInputElement, 'Le mot de passe doit contenir au moins 8 caractères.'); hasError = true; }
     if (password !== confirm) { fieldError(document.getElementById('password-confirm') as HTMLInputElement, 'Les mots de passe ne correspondent pas.'); hasError = true; }
     if (!consent) { document.getElementById('consent-error')!.style.display = ''; hasError = true; }
@@ -178,14 +265,11 @@ const base = import.meta.env.BASE_URL;
     if (error) {
       let msg = error.message;
       if (msg.includes('already registered') || msg.includes('User already registered')) {
-        msg = 'Cet email est déjà utilisé. <a href="/connexion/" class="underline">Se connecter</a> ?';
-        globalError.innerHTML = msg;
-        globalError.style.display = '';
-      } else {
-        showGlobalError(msg);
+        msg = 'Cet email est déjà utilisé. <a href="/connexion/" class="underline font-medium">Se connecter →</a>';
       }
+      showGlobalError(msg);
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Créer mon compte';
+      submitBtn.textContent = 'Accéder à la formation →';
       return;
     }
 
