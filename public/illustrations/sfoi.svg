@@ -1,0 +1,30 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <!-- S.F.O.I. — 4 progression circles with connecting arrows -->
+  <!-- Connecting lines -->
+  <line x1="66" y1="76" x2="92" y2="76" stroke="#E2E8F0" stroke-width="2.5"/>
+  <line x1="108" y1="76" x2="134" y2="76" stroke="#E2E8F0" stroke-width="2.5"/>
+  <line x1="76" y1="92" x2="76" y2="118" stroke="#E2E8F0" stroke-width="2.5"/>
+  <line x1="124" y1="92" x2="124" y2="118" stroke="#E2E8F0" stroke-width="2.5"/>
+  <line x1="66" y1="124" x2="92" y2="124" stroke="#E2E8F0" stroke-width="2.5"/>
+  <line x1="108" y1="124" x2="134" y2="124" stroke="#E2E8F0" stroke-width="2.5"/>
+
+  <!-- S — Structurer — vert #22c55e -->
+  <circle cx="76" cy="76" r="26" fill="#22c55e"/>
+  <circle cx="76" cy="76" r="16" fill="white"/>
+  <circle cx="76" cy="76" r="7"  fill="#22c55e"/>
+
+  <!-- F — Fiabiliser — jaune #eab308 -->
+  <circle cx="124" cy="76" r="26" fill="#eab308"/>
+  <circle cx="124" cy="76" r="16" fill="white"/>
+  <circle cx="124" cy="76" r="7"  fill="#eab308"/>
+
+  <!-- O — Optimiser — bleu #3b82f6 -->
+  <circle cx="76" cy="124" r="26" fill="#3b82f6"/>
+  <circle cx="76" cy="124" r="16" fill="white"/>
+  <circle cx="76" cy="124" r="7"  fill="#3b82f6"/>
+
+  <!-- I — Industrialiser — violet #a855f7 -->
+  <circle cx="124" cy="124" r="26" fill="#a855f7"/>
+  <circle cx="124" cy="124" r="16" fill="white"/>
+  <circle cx="124" cy="124" r="7"  fill="#a855f7"/>
+</svg>

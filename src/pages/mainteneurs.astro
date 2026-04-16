@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
+---
+<Layout title="Les Mainteneurs" description="Les Mainteneurs sont les créateurs du framework Reflexe IA et ses premiers praticiens.">
+
+  <section class="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="mb-4">
+        <a href={base} class="text-slate-400 text-sm hover:text-slate-200 no-underline">← Accueil</a>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Les Mainteneurs</h1>
+    </div>
+  </section>
+
+  <div class="max-w-3xl mx-auto px-6 py-16 space-y-12">
+
+    <section class="space-y-4 text-slate-700 text-base leading-relaxed">
+      <p>
+        Les Mainteneurs sont les créateurs du framework Reflexe IA et ses premiers praticiens. Ce sont eux qui font exister le rôle d'AI Practice Steward par leur pratique terrain, et le font évoluer par retour d'expérience.
+      </p>
+      <p>Ce ne sont pas des théoriciens du rôle. Ce sont ceux qui le font exister.</p>
+    </section>
+
+    <!-- Distinction -->
+    <section class="rounded-xl border border-slate-200 bg-slate-50 p-6">
+      <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-4">À ne pas confondre</p>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div>
+          <p class="font-semibold text-slate-900 text-sm mb-1">AI Practice Steward</p>
+          <p class="text-slate-500 text-sm">Rôle de marché que les organisations vont chercher à développer en interne ou à recruter.</p>
+        </div>
+        <div>
+          <p class="font-semibold text-slate-900 text-sm mb-1">Mainteneurs</p>
+          <p class="text-slate-500 text-sm">Collectif qui construit et fait évoluer le framework — méthode S.F.O.I., définition du rôle, ressources ouvertes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mainteneurs actuels -->
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 mb-8">Mainteneurs</h2>
+      <div class="flex flex-wrap gap-8">
+        <div class="flex flex-col items-center gap-3">
+          <div style="width:5rem;height:5rem;border-radius:50%;background:#f1f5f9;border:2px solid #e2e8f0;display:flex;align-items:center;justify-content:center">
+            <span style="font-size:1.75rem">👤</span>
+          </div>
+          <div class="text-center">
+            <p class="font-semibold text-slate-900 text-sm">Fayaz</p>
+            <p class="text-slate-400 text-xs">FGIT Conseil · Fondateur</p>
+          </div>
+        </div>
+        {['À venir — Contributeur méthode', 'À venir — Contributeur contenu'].map(label => (
+          <div class="flex flex-col items-center gap-3">
+            <div style="width:5rem;height:5rem;border-radius:50%;background:#f8fafc;border:2px dashed #cbd5e1;display:flex;align-items:center;justify-content:center">
+              <span style="color:#94a3b8;font-size:1.5rem">?</span>
+            </div>
+            <span class="text-slate-400 text-xs text-center max-w-24">{label}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Rejoindre -->
+    <section class="rounded-2xl bg-slate-50 border border-slate-200 p-8">
+      <h2 class="text-xl font-bold text-slate-900 mb-3">Rejoindre les Mainteneurs</h2>
+      <p class="text-slate-600 text-base leading-relaxed mb-6">
+        Le framework est ouvert. Si vous pratiquez le rôle d'AI Practice Steward en organisation et souhaitez contribuer, prenez contact.
+      </p>
+      <a href={`${base}contact/`} class="btn-primary">Prendre contact</a>
+    </section>
+
+  </div>
+
+</Layout>

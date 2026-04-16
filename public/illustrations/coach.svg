@@ -1,0 +1,21 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <!-- Humain (gauche) + IA (droite) reliés -->
+  <!-- Connection arc -->
+  <path d="M74 100 C74 70 126 70 126 100" stroke="#DDD6FE" stroke-width="3" stroke-dasharray="6 4"/>
+  <path d="M74 100 C74 130 126 130 126 100" stroke="#DDD6FE" stroke-width="3" stroke-dasharray="6 4"/>
+  <!-- Human circle (left) — solid, organic -->
+  <circle cx="60" cy="100" r="32" fill="#EDE9FE" stroke="#7C3AED" stroke-width="3"/>
+  <!-- Human icon inside -->
+  <circle cx="60" cy="90"  r="9"  fill="#7C3AED"/>
+  <path d="M44 114 C44 105 76 105 76 114" fill="#7C3AED" stroke="none"/>
+  <!-- AI circle (right) — geometric -->
+  <circle cx="140" cy="100" r="32" fill="#EDE9FE" stroke="#7C3AED" stroke-width="3"/>
+  <!-- AI icon inside: grid/hexagon pattern -->
+  <rect x="130" y="88" width="8" height="8" rx="2" fill="#7C3AED"/>
+  <rect x="142" y="88" width="8" height="8" rx="2" fill="#A78BFA"/>
+  <rect x="130" y="100" width="8" height="8" rx="2" fill="#A78BFA"/>
+  <rect x="142" y="100" width="8" height="8" rx="2" fill="#7C3AED"/>
+  <!-- Central connector dot -->
+  <circle cx="100" cy="100" r="8" fill="#7C3AED"/>
+  <circle cx="100" cy="100" r="4" fill="white"/>
+</svg>

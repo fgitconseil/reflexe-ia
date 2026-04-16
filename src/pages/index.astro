@@ -1,0 +1,173 @@
+---
+import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
+---
+<Layout title="Structurez les pratiques IA de votre organisation" description="Le rôle d'AI Practice Steward pour structurer, fiabiliser et gouverner les pratiques IA dans votre organisation. Méthode S.F.O.I. Formation gratuite.">
+
+  <!-- ── Hero ── -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div style="position:absolute;top:-10%;right:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(37,99,235,0.18) 0%,transparent 70%);border-radius:50%"></div>
+      <div style="position:absolute;bottom:-10%;left:-5%;width:400px;height:400px;background:radial-gradient(circle,rgba(139,92,246,0.15) 0%,transparent 70%);border-radius:50%"></div>
+    </div>
+    <div class="relative max-w-4xl mx-auto px-6 py-24 md:py-32 text-center">
+      <div class="animate-fade-up">
+        <span class="inline-block text-xs font-bold tracking-widest uppercase mb-6 px-3 py-1 rounded-full border border-slate-600 text-slate-300">AI Practice Steward</span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          Structurez les pratiques IA<br/>de votre organisation
+        </h1>
+        <p class="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+          Le Data Steward garantissait la qualité des données. L'AI Practice Steward garantit la qualité des usages IA — méthode, gouvernance, montée en compétences.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href={`${base}formation/`} class="btn-primary text-base px-6 py-3">
+            Accéder à la formation gratuite →
+          </a>
+          <a href={`${base}ai-practice-steward/`}
+            style="background:transparent;color:white;border:2px solid rgba(255,255,255,0.3);padding:0.75rem 1.5rem;border-radius:0.5rem;font-weight:600;font-size:0.875rem;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:all 0.3s"
+            onmouseover="this.style.borderColor='white'"
+            onmouseout="this.style.borderColor='rgba(255,255,255,0.3)'"
+          >
+            Découvrir le rôle
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Problème ── -->
+  <section class="max-w-3xl mx-auto px-6 py-20">
+    <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-8">Former individuellement ne suffit pas</h2>
+    <div class="space-y-5 text-slate-600 text-base leading-relaxed">
+      <p>
+        Les organisations investissent massivement dans la formation IA individuelle. Chaque collaborateur apprend à prompter, à utiliser ChatGPT, à automatiser ses tâches. Mais sans cadre commun, ces compétences restent fragmentées.
+      </p>
+      <p>
+        Les mêmes erreurs se répètent d'une équipe à l'autre. Les bonnes pratiques ne circulent pas. Les risques — hallucinations, données sensibles, biais — ne sont ni identifiés ni gérés de manière cohérente.
+      </p>
+      <p>
+        Il manque un rôle dédié — quelqu'un qui structure, fiabilise et fait progresser les pratiques IA à l'échelle de l'organisation. C'est le rôle de l'<strong class="text-slate-900">AI Practice Steward</strong>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Méthode S.F.O.I. ── -->
+  <section class="bg-slate-50 py-20">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3">La méthode S.F.O.I.</h2>
+        <p class="text-slate-500 text-base max-w-2xl mx-auto">
+          Quatre niveaux de maturité pour structurer la montée en puissance de vos pratiques IA.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="card animate-fade-up animate-fade-up-1">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center mb-4 text-sm font-bold text-white" style="background:var(--sfoi-s)">S</div>
+          <h3 class="font-semibold text-slate-900 mb-2">Structurer</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Cartographier les usages, définir les règles de base, créer un référentiel commun.</p>
+        </div>
+        <div class="card animate-fade-up animate-fade-up-2">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center mb-4 text-sm font-bold text-white" style="background:var(--sfoi-f)">F</div>
+          <h3 class="font-semibold text-slate-900 mb-2">Fiabiliser</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Mettre en place les contrôles qualité, gérer les risques, standardiser les pratiques.</p>
+        </div>
+        <div class="card animate-fade-up animate-fade-up-3">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center mb-4 text-sm font-bold text-white" style="background:var(--sfoi-o)">O</div>
+          <h3 class="font-semibold text-slate-900 mb-2">Optimiser</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Mesurer la valeur, industrialiser les cas d'usage, former les référents métier.</p>
+        </div>
+        <div class="card animate-fade-up animate-fade-up-4">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center mb-4 text-sm font-bold text-white" style="background:var(--sfoi-i)">I</div>
+          <h3 class="font-semibold text-slate-900 mb-2">Industrialiser</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Gouvernance IA intégrée, amélioration continue, culture IA à l'échelle.</p>
+        </div>
+      </div>
+      <div class="text-center mt-8">
+        <a href={`${base}framework/methode-sfoi/`} class="text-blue-600 text-sm font-medium hover:underline">Comprendre la méthode en détail →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Offres ── -->
+  <section class="max-w-5xl mx-auto px-6 py-20">
+    <div class="text-center mb-12">
+      <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3">Nos offres</h2>
+      <p class="text-slate-500 text-base max-w-2xl mx-auto">
+        Trois niveaux d'engagement pour passer de la sensibilisation à la transformation.
+      </p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <div class="card flex flex-col">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="font-semibold text-slate-900">Formation</h3>
+          <span class="text-xs font-bold px-2 py-1 rounded-full" style="background:#f0fdf4;color:#15803d">Gratuite</span>
+        </div>
+        <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-6">
+          6 modules pour comprendre le rôle d'AI Practice Steward, la méthode S.F.O.I. et les outils essentiels. Accès libre, sans inscription.
+        </p>
+        <a href={`${base}formation/`} class="btn-primary text-sm">Commencer la formation</a>
+      </div>
+
+      <div class="card flex flex-col">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="font-semibold text-slate-900">Skills</h3>
+          <span class="text-xs font-bold px-2 py-1 rounded-full" style="background:#eff6ff;color:#1d4ed8">Bientôt</span>
+        </div>
+        <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-6">
+          Ateliers pratiques pour développer les compétences clés : audit d'usage, design de prompt policy, animation de communauté IA.
+        </p>
+        <a href={`${base}framework/skills/`} class="btn-secondary text-sm">En savoir plus</a>
+      </div>
+
+      <div class="card flex flex-col">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="font-semibold text-slate-900">Accompagnement APS</h3>
+          <span class="text-xs font-bold px-2 py-1 rounded-full" style="background:#faf5ff;color:#7c3aed">Sur mesure</span>
+        </div>
+        <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-6">
+          Déploiement du rôle AI Practice Steward dans votre organisation. Diagnostic, feuille de route, formation des référents.
+        </p>
+        <a href={`${base}contact/`} class="btn-primary text-sm">Nous contacter</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Citation manifeste ── -->
+  <section class="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <blockquote class="text-xl md:text-2xl font-medium leading-relaxed mb-6 text-slate-100">
+        « L'IA ne transforme pas les organisations. Ce sont les pratiques collectives autour de l'IA qui les transforment. »
+      </blockquote>
+      <p class="text-slate-400 text-sm mb-8">
+        Extrait du manifeste Reflexe IA — pour une approche structurée, responsable et collective de l'IA en entreprise.
+      </p>
+      <a href={`${base}framework/manifeste/`} style="color:#60a5fa;font-size:0.875rem;font-weight:600;text-decoration:none">
+        Lire le manifeste complet →
+      </a>
+    </div>
+  </section>
+
+  <!-- ── Mainteneurs ── -->
+  <section class="max-w-4xl mx-auto px-6 py-20 text-center">
+    <h2 class="text-2xl font-bold text-slate-900 mb-3">Mainteneurs</h2>
+    <p class="text-slate-500 text-base mb-10 max-w-xl mx-auto">
+      Reflexe IA est un projet ouvert, maintenu par des praticiens de l'IA en organisation.
+    </p>
+    <div class="flex flex-wrap justify-center gap-8">
+      {['À venir — AI Practice Steward', 'À venir — Contributeur méthode', 'À venir — Contributeur contenu'].map(label => (
+        <div class="flex flex-col items-center gap-3">
+          <div style="width:4rem;height:4rem;border-radius:50%;background:#f1f5f9;border:2px dashed #cbd5e1;display:flex;align-items:center;justify-content:center">
+            <span style="color:#94a3b8;font-size:1.5rem">?</span>
+          </div>
+          <span class="text-slate-400 text-xs">{label}</span>
+        </div>
+      ))}
+    </div>
+    <div class="mt-10">
+      <a href={`${base}mainteneurs/`} class="text-blue-600 text-sm font-medium hover:underline">En savoir plus sur les Mainteneurs →</a>
+    </div>
+  </section>
+
+</Layout>

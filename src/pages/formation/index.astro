@@ -1,0 +1,55 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { BLOCS } from '../../lib/slideData';
+const base = import.meta.env.BASE_URL;
+---
+<Layout title="Formation AI Practice Steward" description="6 modules gratuits pour maîtriser le rôle d'AI Practice Steward et la méthode S.F.O.I.">
+
+  <section class="max-w-3xl mx-auto px-4 py-16">
+    <div class="mb-4">
+      <a href={base} class="text-sm text-slate-400 hover:text-slate-600 no-underline">← Accueil</a>
+    </div>
+    <div class="mb-10">
+      <p class="text-sm font-semibold uppercase tracking-wide mb-2" style="color:var(--primary-600)">Formation AI Practice Steward</p>
+      <h1 class="text-3xl font-bold text-slate-900 mb-3">6 modules gratuits</h1>
+      <p class="text-slate-500 text-base max-w-2xl">
+        Pour maîtriser le rôle et la méthode S.F.O.I. Chaque module dure environ 20 minutes. Sans inscription.
+      </p>
+    </div>
+
+    <div class="space-y-3">
+      {BLOCS.map((bloc) => (
+        <a
+          href={`${base}formation/${bloc.id}/`}
+          class="flex items-start gap-4 p-5 rounded-xl border border-slate-100 hover:border-blue-300 hover:shadow-md transition-all bg-white group no-underline"
+        >
+          <div class={`w-9 h-9 rounded-full ${bloc.phaseColor} text-white flex items-center justify-center font-bold text-sm flex-shrink-0 mt-0.5`}>
+            {bloc.ordre}
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 flex-wrap mb-1">
+              <span class="font-semibold text-slate-900 text-sm group-hover:text-blue-700 transition-colors">{bloc.titre}</span>
+              <span class="text-xs text-slate-400">{bloc.duree}</span>
+              {bloc.takeawayPath && (
+                <span class="text-xs bg-blue-50 text-blue-600 border border-blue-100 px-2 py-0.5 rounded-full font-medium">Fiche mémo</span>
+              )}
+            </div>
+            <div class="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1">
+              <span class={`inline-block px-2 py-0.5 rounded-full text-xs font-semibold ${bloc.tagColor}`}>{bloc.phase}</span>
+            </div>
+            <div class="text-slate-500 text-sm leading-relaxed">{bloc.desc}</div>
+          </div>
+          <span class="text-slate-300 group-hover:text-blue-500 transition-colors self-center flex-shrink-0 text-lg">→</span>
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-10 p-5 rounded-xl bg-slate-50 border border-slate-200 text-center">
+      <p class="text-sm text-slate-500">
+        Formation gratuite · Reflexe IA ·
+        <a href="https://reflexe-ia.org" class="text-blue-600 hover:underline">reflexe-ia.org</a>
+      </p>
+    </div>
+  </section>
+
+</Layout>

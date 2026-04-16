@@ -1,0 +1,16 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <!-- Shield outer -->
+  <path d="M100 28 L168 58 L168 112 C168 150 136 172 100 182 C64 172 32 150 32 112 L32 58 Z"
+        fill="#DBEAFE" stroke="#2563EB" stroke-width="3.5" stroke-linejoin="round"/>
+  <!-- Shield inner fill -->
+  <path d="M100 46 L152 70 L152 112 C152 138 128 154 100 162 C72 154 48 138 48 112 L48 70 Z"
+        fill="#EFF6FF"/>
+  <!-- Padlock body -->
+  <rect x="83" y="108" width="34" height="26" rx="4" fill="#2563EB"/>
+  <!-- Padlock shackle -->
+  <path d="M88 108 L88 98 A12 12 0 0 1 112 98 L112 108"
+        stroke="#2563EB" stroke-width="4" stroke-linecap="round"/>
+  <!-- Keyhole -->
+  <circle cx="100" cy="119" r="5" fill="white"/>
+  <rect x="97.5" y="120" width="5" height="7" rx="1" fill="white"/>
+</svg>

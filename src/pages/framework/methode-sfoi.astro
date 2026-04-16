@@ -1,0 +1,173 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
+---
+<Layout title="Méthode S.F.O.I." description="Structurer · Fiabiliser · Optimiser · Industrialiser. Une carte de maturité des pratiques IA — individuelle et organisationnelle.">
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="mb-4">
+        <a href={`${base}framework/`} class="text-slate-400 text-sm hover:text-slate-200 no-underline">← Framework</a>
+      </div>
+      <p class="text-sm font-bold tracking-widest uppercase text-blue-400 mb-4">Méthode</p>
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">La méthode S.F.O.I.</h1>
+      <p class="text-slate-300 text-lg leading-relaxed max-w-2xl">
+        S.F.O.I. n'est pas une méthode de prompting. C'est une carte de maturité. Chaque niveau a une dimension individuelle — mais aussi une dimension collective qui ne peut pas être activée par un individu seul.
+      </p>
+    </div>
+  </section>
+
+  <div class="max-w-3xl mx-auto px-6 py-16 space-y-16">
+
+    <!-- Les 4 niveaux -->
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 mb-10">Les 4 niveaux</h2>
+
+      <div class="space-y-8">
+
+        <!-- Structurer -->
+        <div class="rounded-2xl border border-slate-200 overflow-hidden">
+          <div class="flex items-center gap-3 px-6 py-4 border-b border-slate-100" style="background:#f0fdf4">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white" style="background:var(--sfoi-s)">S</div>
+            <h3 class="font-bold text-slate-900">Structurer</h3>
+            <span class="text-xs text-slate-500 ml-auto">Ancrage : individu</span>
+          </div>
+          <div class="px-6 py-5 space-y-4">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1">Ce que l'individu acquiert</p>
+              <p class="text-slate-700 text-sm leading-relaxed">Organiser sa pensée avant d'agir, formuler sans perte d'information, poser le bon contexte dès le départ.</p>
+            </div>
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1">Dimension collective</p>
+              <p class="text-slate-600 text-sm leading-relaxed">Quand plusieurs personnes structurent leurs échanges avec l'IA de la même façon, la qualité des sorties partagées s'homogénéise. La norme n'est pas imposée — elle émerge par l'exemple.</p>
+            </div>
+            <div class="rounded-lg bg-slate-50 px-4 py-3">
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1">Point de bascule vers l'équipe</p>
+              <p class="text-slate-600 text-sm">Dès que les sorties IA circulent entre collaborateurs.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fiabiliser -->
+        <div class="rounded-2xl border border-slate-200 overflow-hidden">
+          <div class="flex items-center gap-3 px-6 py-4 border-b border-slate-100" style="background:#fefce8">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white" style="background:var(--sfoi-f)">F</div>
+            <h3 class="font-bold text-slate-900">Fiabiliser</h3>
+            <span class="text-xs text-slate-500 ml-auto">Ancrage : équipe</span>
+          </div>
+          <div class="px-6 py-5 space-y-4">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1">Ce que l'individu acquiert</p>
+              <p class="text-slate-700 text-sm leading-relaxed">Rendre chaque affirmation vérifiable, sortir de la confiance implicite, distinguer ce qui est certain de ce qui est probable.</p>
+            </div>
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1">La dimension collective est constitutive</p>
+              <p class="text-slate-600 text-sm leading-relaxed">La vérification implique une référence (contre quoi vérifie-t-on ?), un acteur (qui vérifie ?) et une traçabilité (visible par qui ?). Sans ces trois dimensions, 🟡 reste une intention individuelle.</p>
+            </div>
+            <div class="rounded-lg bg-slate-50 px-4 py-3">
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1">Point de bascule vers l'équipe</p>
+              <p class="text-slate-600 text-sm">La vérification doit devenir une norme partagée, pas une pratique personnelle. Ce basculement ne se produit pas spontanément — il se travaille.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Optimiser -->
+        <div class="rounded-2xl border border-slate-200 overflow-hidden">
+          <div class="flex items-center gap-3 px-6 py-4 border-b border-slate-100" style="background:#eff6ff">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white" style="background:var(--sfoi-o)">O</div>
+            <h3 class="font-bold text-slate-900">Optimiser</h3>
+            <span class="text-xs text-slate-500 ml-auto">Ancrage : équipe + organisation</span>
+          </div>
+          <div class="px-6 py-5 space-y-4">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1">Ce que l'individu acquiert</p>
+              <p class="text-slate-700 text-sm leading-relaxed">Transformer les sorties IA en outils directement exploitables — pas des ébauches à reformater, des livrables utilisables tels quels.</p>
+            </div>
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1">Dimension collective</p>
+              <p class="text-slate-600 text-sm leading-relaxed">Les outils optimisés ont une logique de capitalisation. Un template réutilisable, une trame validée, un format d'analyse stabilisé — ces éléments deviennent des ressources d'équipe. Leur valeur est proportionnelle à leur diffusion.</p>
+            </div>
+            <div class="rounded-lg bg-slate-50 px-4 py-3">
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1">Point de bascule vers l'organisation</p>
+              <p class="text-slate-600 text-sm">Quand un outil optimisé est assez stable pour être systématisé — intégré dans un process, confié à un agent, documenté comme pratique de référence.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Industrialiser -->
+        <div class="rounded-2xl border border-slate-200 overflow-hidden">
+          <div class="flex items-center gap-3 px-6 py-4 border-b border-slate-100" style="background:#faf5ff">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white" style="background:var(--sfoi-i)">I</div>
+            <h3 class="font-bold text-slate-900">Industrialiser</h3>
+            <span class="text-xs text-slate-500 ml-auto">Ancrage : organisation</span>
+          </div>
+          <div class="px-6 py-5 space-y-4">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1">Ce que l'individu acquiert</p>
+              <p class="text-slate-700 text-sm leading-relaxed">Comprendre la logique d'un système gouverné — rôles définis, traçabilité, mécanismes d'arrêt, audit possible.</p>
+            </div>
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1">La dimension organisationnelle est constitutive</p>
+              <p class="text-slate-600 text-sm leading-relaxed">Industrialiser suppose une décision collective, un mécanisme d'audit et un responsable de la pratique. Un individu peut comprendre la logique de 🟣. Il ne peut pas l'activer seul.</p>
+            </div>
+            <div class="rounded-lg" style="background:#faf5ff;padding:0.75rem 1rem;border-radius:0.5rem">
+              <p class="text-xs font-semibold uppercase tracking-wide mb-1" style="color:#7c3aed">Le seuil critique</p>
+              <p class="text-slate-600 text-sm">Sans 🟣, les pratiques restent fragiles. Elles dépendent de la présence et de la motivation des individus qui les portent. Quand ces individus partent, les pratiques disparaissent avec eux.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Les 3 niveaux d'intervention -->
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 mb-8">Les 3 niveaux d'intervention</h2>
+      <div class="overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-slate-50 border-b border-slate-200">
+              <th class="text-left p-4 font-semibold text-slate-500 w-1/4">Niveau</th>
+              <th class="text-left p-4 font-semibold text-slate-500">Ce qui change</th>
+              <th class="text-left p-4 font-semibold text-slate-500 hidden md:table-cell">Ce qui ne change pas</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            <tr>
+              <td class="p-4 font-semibold text-slate-700">Individu</td>
+              <td class="p-4 text-slate-600">La méthode personnelle. L'individu acquiert des repères, une logique d'usage.</td>
+              <td class="p-4 text-slate-500 hidden md:table-cell">Les normes de l'équipe, les boucles systémiques.</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-semibold text-slate-700">Équipe</td>
+              <td class="p-4 text-slate-600">Les normes collectives. L'équipe décide explicitement de ses règles d'usage IA.</td>
+              <td class="p-4 text-slate-500 hidden md:table-cell">Les mécanismes organisationnels qui donnent aux pratiques leur légitimité dans la durée.</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-semibold text-slate-700">Organisation</td>
+              <td class="p-4 text-slate-600">Les mécanismes qui rendent les pratiques durables et évolutives.</td>
+              <td class="p-4 text-slate-500 hidden md:table-cell">—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Principe directeur -->
+    <section class="rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 text-white p-8">
+      <p class="text-sm font-bold tracking-widest uppercase text-blue-400 mb-4">Principe directeur</p>
+      <p class="text-slate-100 text-base leading-relaxed mb-4">
+        Chaque niveau est utile seul. Chaque niveau est plus puissant avec les autres. L'offre est modulaire en entrée — elle est systémique dans ses effets.
+      </p>
+      <div class="flex flex-wrap gap-4 mt-6">
+        <a href={`${base}formation/`} class="btn-primary text-sm">Accéder à la formation</a>
+        <a href={`${base}framework/accompagnement/`}
+          style="color:white;border:2px solid rgba(255,255,255,0.3);padding:0.5rem 1.25rem;border-radius:0.5rem;font-weight:600;font-size:0.8rem;text-decoration:none"
+        >Accompagnement APS</a>
+      </div>
+    </section>
+
+  </div>
+
+</Layout>

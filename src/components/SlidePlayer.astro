@@ -1,0 +1,494 @@
+---
+import type { Slide } from '../lib/slides';
+
+interface Props {
+  slides:        Slide[];
+  blocId:        string;
+  nextBlocUrl?:  string;
+  nextBlocTitle?: string;
+  takeawayUrl?:  string;
+}
+
+const { slides, blocId, nextBlocUrl, nextBlocTitle, takeawayUrl } = Astro.props;
+const total = slides.length;
+
+// Category → illustration background color
+const catBg: Record<string, string> = {
+  intro:    '#EFF6FF',
+  partie1:  '#F0FDF4',
+  partie2:  '#FEFCE8',
+  partie3:  '#FAF5FF',
+};
+const catAccent: Record<string, string> = {
+  intro:    '#2563EB',
+  partie1:  '#16A34A',
+  partie2:  '#CA8A04',
+  partie3:  '#7C3AED',
+};
+---
+
+<div class="sp-player" id={`player-${blocId}`} data-bloc={blocId} data-total={total}>
+
+  <!-- Progress track -->
+  <div class="sp-track">
+    <div class="sp-bar" id={`pb-${blocId}`} style="width:0%"></div>
+  </div>
+
+  <!-- Header meta -->
+  <div class="sp-meta">
+    <span class="sp-counter" id={`counter-${blocId}`}>1 / {total}</span>
+    <span class="sp-cat-label" id={`cat-label-${blocId}`}></span>
+  </div>
+
+  <!-- Slides -->
+  <div class="sp-viewport">
+    {slides.map((slide, i) => (
+      <div
+        class={`sp-slide${i === 0 ? ' active' : ''}`}
+        id={`slide-${blocId}-${i}`}
+        data-slide-index={i}
+      >
+        <!-- Two-column layout -->
+        <div class="sp-content">
+
+          <!-- Illustration column -->
+          <div
+            class="sp-illu-wrap"
+            style={`background:${catBg[slide.category] ?? '#F1F5F9'}`}
+          >
+            <img
+              src={slide.illustration}
+              alt=""
+              aria-hidden="true"
+              class="sp-illu-img"
+              width="160"
+              height="160"
+            />
+          </div>
+
+          <!-- Text column -->
+          <div class="sp-text-col">
+            <div
+              class="sp-slide-label"
+              style={`color:${catAccent[slide.category] ?? '#2563EB'}`}
+            >
+              {slide.title}
+            </div>
+            <p class="sp-key-message">{slide.keyMessage}</p>
+          </div>
+        </div>
+
+        <!-- Narration (caché — toggle) -->
+        {slide.narration && (
+          <div class="sp-narration-wrap">
+            <button
+              class="sp-narration-toggle"
+              type="button"
+              aria-expanded="false"
+              data-narration-btn
+            >
+              Voir le script complet ▾
+            </button>
+            <div
+              class="sp-narration-body"
+              aria-hidden="true"
+              style="display:none"
+              data-narration={slide.narration}
+            >
+              <pre class="sp-narration-pre">{slide.narration}</pre>
+            </div>
+          </div>
+        )}
+
+        <!-- Quiz inline -->
+        {slide.quiz && (
+          <div
+            class="sp-quiz"
+            data-quiz-id={slide.quiz.id}
+            data-correct={slide.quiz.correct}
+          >
+            <div class="sp-quiz-question">{slide.quiz.question}</div>
+            <div class="sp-quiz-options">
+              {slide.quiz.options.map(opt => (
+                <button class="quiz-option" data-letter={opt.letter} type="button">
+                  <span class="quiz-letter">{opt.letter}</span>
+                  <span>{opt.text}</span>
+                </button>
+              ))}
+            </div>
+            <div class="sp-quiz-feedback" style="display:none">
+              <p class="sp-quiz-expl">{slide.quiz.explanation}</p>
+            </div>
+          </div>
+        )}
+      </div>
+    ))}
+
+    <!-- End screen -->
+    <div class="sp-end" id={`end-${blocId}`} style="display:none">
+      <div class="sp-end-icon">✓</div>
+      <h2 class="sp-end-title">Bloc terminé</h2>
+      <p class="sp-end-sub">Vous avez parcouru les {total} slides de ce bloc.</p>
+      <div class="sp-end-actions">
+        {takeawayUrl && (
+          <a href={takeawayUrl} class="btn-primary" target="_blank" rel="noopener">
+            Télécharger la fiche mémo →
+          </a>
+        )}
+        {nextBlocUrl && (
+          <a href={nextBlocUrl} class="btn-primary">
+            {nextBlocTitle ? `Bloc suivant : ${nextBlocTitle}` : 'Bloc suivant'} →
+          </a>
+        )}
+        <a href="/formation/" class="btn-secondary">← Retour au parcours</a>
+      </div>
+    </div>
+  </div><!-- /.sp-viewport -->
+
+  <!-- Navigation -->
+  <div class="sp-nav">
+    <button class="sp-btn" id={`btn-prev-${blocId}`} type="button" disabled>← Précédent</button>
+    <button class="sp-btn sp-btn-next" id={`btn-next-${blocId}`} type="button">Suivant →</button>
+  </div>
+
+</div><!-- /.sp-player -->
+
+<style>
+  /* ── Container ── */
+  .sp-player {
+    background: white;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    box-shadow: 0 20px 48px rgba(0,0,0,0.10);
+    max-width: 880px;
+    margin: 0 auto;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* ── Progress bar ── */
+  .sp-track { height: 3px; background: #e2e8f0; }
+  .sp-bar   {
+    height: 3px;
+    background: linear-gradient(90deg, #2563eb, #7c3aed);
+    transition: width 0.45s ease;
+  }
+
+  /* ── Meta row ── */
+  .sp-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.65rem 1.5rem;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 0.78rem;
+    color: #94a3b8;
+  }
+  .sp-counter      { font-weight: 700; letter-spacing: 0.04em; }
+  .sp-cat-label    { font-style: italic; font-size: 0.72rem; }
+
+  /* ── Viewport ── */
+  .sp-viewport { min-height: 300px; }
+
+  /* ── Slide frame ── */
+  .sp-slide        { display: none; padding: 2rem 2.5rem 1.5rem; }
+  .sp-slide.active { display: block; }
+
+  /* ── Two-column content ── */
+  .sp-content {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Illustration */
+  .sp-illu-wrap {
+    flex-shrink: 0;
+    width: 160px;
+    height: 160px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .sp-illu-img {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+  }
+
+  /* Text column */
+  .sp-text-col {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 0.5rem;
+  }
+  .sp-slide-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+  .sp-key-message {
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: #334155;
+    line-height: 1.75;
+    max-width: 420px;
+    margin: 0;
+  }
+
+  /* Mobile: stack vertically */
+  @media (max-width: 600px) {
+    .sp-content {
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
+    .sp-illu-wrap { width: 120px; height: 120px; }
+    .sp-illu-img  { width: 96px; height: 96px; }
+    .sp-text-col  { padding-top: 0; text-align: center; }
+    .sp-key-message { max-width: 100%; }
+    .sp-slide { padding: 1.5rem 1.25rem 1rem; }
+  }
+
+  /* ── Narration toggle ── */
+  .sp-narration-wrap {
+    border-top: 1px solid #f1f5f9;
+    padding-top: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .sp-narration-toggle {
+    background: none;
+    border: none;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.2s;
+  }
+  .sp-narration-toggle:hover { color: #64748b; }
+  .sp-narration-body { margin-top: 0.75rem; }
+  .sp-narration-pre {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 1rem 1.25rem;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.8rem;
+    color: #64748b;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+  /* ── Quiz ── */
+  .sp-quiz {
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    padding: 1.25rem 1.5rem 1.5rem;
+    margin: 0 -2.5rem -1.5rem;
+  }
+  @media (max-width: 600px) {
+    .sp-quiz { margin: 0 -1.25rem -1rem; padding: 1rem 1.25rem; }
+  }
+  .sp-quiz-question {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #0f172a;
+    margin-bottom: 0.875rem;
+  }
+  .sp-quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .sp-quiz-feedback {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+  }
+  .sp-quiz-expl {
+    font-size: 0.82rem;
+    color: #166534;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ── Nav ── */
+  .sp-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.875rem 1.5rem;
+    border-top: 1px solid #f1f5f9;
+    background: #fafafa;
+  }
+  .sp-btn {
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e2e8f0;
+    background: white;
+    color: #334155;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .sp-btn:hover:not(:disabled) { background: #f1f5f9; border-color: #cbd5e1; }
+  .sp-btn:disabled { opacity: 0.3; cursor: default; }
+  .sp-btn-next { background: #2563eb; color: white; border-color: #2563eb; }
+  .sp-btn-next:hover:not(:disabled) { background: #1d4ed8; }
+
+  /* ── End screen ── */
+  .sp-end {
+    text-align: center;
+    padding: 3.5rem 2rem;
+    background: linear-gradient(135deg, #f0f9ff, #f5f3ff);
+  }
+  .sp-end-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+  }
+  .sp-end-title { font-size: 1.4rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem; }
+  .sp-end-sub   { color: #64748b; margin: 0 0 2rem; font-size: 0.9rem; }
+  .sp-end-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+</style>
+
+<script is:inline define:vars={{ blocId, total }}>
+(function () {
+  var current = 0;
+
+  var container = document.getElementById('player-' + blocId);
+  var pb        = document.getElementById('pb-' + blocId);
+  var counter   = document.getElementById('counter-' + blocId);
+  var catLabel  = document.getElementById('cat-label-' + blocId);
+  var btnPrev   = document.getElementById('btn-prev-' + blocId);
+  var btnNext   = document.getElementById('btn-next-' + blocId);
+  var endScreen = document.getElementById('end-' + blocId);
+
+  function getSlide(i) { return document.getElementById('slide-' + blocId + '-' + i); }
+
+  function hasUnansweredQuiz(slideEl) {
+    if (!slideEl) return false;
+    var q = slideEl.querySelector('.sp-quiz');
+    return q && !q.dataset.answered;
+  }
+
+  function updateUI() {
+    var pct = total > 1 ? (current / (total - 1)) * 100 : 100;
+    if (pb) pb.style.width = pct + '%';
+    if (counter) counter.textContent = (current + 1) + ' / ' + total;
+
+    var slideEl = getSlide(current);
+
+    // Category label — read from illustration wrapper data
+    if (catLabel && slideEl) {
+      var illu = slideEl.querySelector('.sp-illu-wrap');
+      // show slide title label instead
+      var labelEl = slideEl.querySelector('.sp-slide-label');
+      catLabel.textContent = labelEl ? labelEl.textContent : '';
+    }
+
+    if (btnPrev) btnPrev.disabled = current === 0;
+    if (btnNext) {
+      btnNext.disabled    = hasUnansweredQuiz(slideEl);
+      btnNext.textContent = current === total - 1 ? 'Terminer →' : 'Suivant →';
+    }
+  }
+
+  function showSlide(i) {
+    for (var j = 0; j < total; j++) {
+      var s = getSlide(j);
+      if (s) s.classList.remove('active');
+    }
+    if (endScreen) endScreen.style.display = 'none';
+
+    if (i >= total) {
+      if (endScreen) endScreen.style.display = 'block';
+      if (pb) pb.style.width = '100%';
+      if (counter) counter.textContent = 'Terminé';
+      if (catLabel) catLabel.textContent = '';
+      if (btnPrev) btnPrev.disabled = false;
+      if (btnNext) { btnNext.disabled = true; btnNext.textContent = 'Suivant →'; }
+      current = total;
+      return;
+    }
+
+    var slideEl = getSlide(i);
+    if (slideEl) slideEl.classList.add('active');
+    current = i;
+    updateUI();
+  }
+
+  // Quiz click
+  container && container.addEventListener('click', function (e) {
+    var btn = e.target.closest('.quiz-option');
+    if (!btn) return;
+    var quizBlock = btn.closest('.sp-quiz');
+    if (!quizBlock || quizBlock.dataset.answered) return;
+
+    var correct = quizBlock.dataset.correct;
+    var chosen  = btn.dataset.letter;
+
+    quizBlock.querySelectorAll('.quiz-option').forEach(function (b) {
+      b.disabled = true;
+      var letter = b.querySelector('.quiz-letter');
+      if (b.dataset.letter === correct) {
+        b.classList.add('correct');
+        if (letter) { letter.style.background = '#22c55e'; letter.style.color = 'white'; }
+      } else if (b.dataset.letter === chosen && chosen !== correct) {
+        b.classList.add('wrong');
+        if (letter) { letter.style.background = '#ef4444'; letter.style.color = 'white'; }
+      }
+    });
+
+    var feedback = quizBlock.querySelector('.sp-quiz-feedback');
+    if (feedback) feedback.style.display = 'block';
+
+    quizBlock.dataset.answered = '1';
+    updateUI();
+  });
+
+  // Narration toggle
+  container && container.addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-narration-btn]');
+    if (!btn) return;
+    var body = btn.nextElementSibling;
+    if (!body) return;
+    var open = body.style.display !== 'none';
+    body.style.display = open ? 'none' : 'block';
+    body.setAttribute('aria-hidden', open ? 'true' : 'false');
+    btn.textContent = open ? 'Voir le script complet ▾' : 'Masquer le script ▴';
+    btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+  });
+
+  btnPrev && btnPrev.addEventListener('click', function () {
+    if (current === total) showSlide(total - 1);
+    else if (current > 0) showSlide(current - 1);
+  });
+
+  btnNext && btnNext.addEventListener('click', function () {
+    showSlide(current + 1);
+  });
+
+  showSlide(0);
+})();
+</script>

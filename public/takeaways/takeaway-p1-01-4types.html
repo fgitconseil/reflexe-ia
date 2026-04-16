@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Les 4 types de prompts — FGIT Conseil</title>
+  <style>
+    @page { size: A5; margin: 12mm 14mm; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, 'Inter', system-ui, sans-serif;
+      font-size: 10pt;
+      line-height: 1.55;
+      color: #1e293b;
+      background: white;
+    }
+    .header {
+      border-top: 4px solid #22c55e;
+      padding: 10px 0 8px;
+      margin-bottom: 14px;
+    }
+    .header h1 {
+      font-size: 14pt;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 2px;
+    }
+    .header .sub {
+      font-size: 8pt;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    h1 { font-size: 13pt; font-weight: 700; margin: 10px 0 6px; color: #0f172a; }
+    h2 { font-size: 11pt; font-weight: 700; margin: 10px 0 5px; color: #1e293b; border-bottom: 1px solid #e2e8f0; padding-bottom: 3px; }
+    h3 { font-size: 10pt; font-weight: 600; margin: 8px 0 3px; color: #334155; }
+    p { margin-bottom: 6px; }
+    blockquote {
+      border-left: 3px solid #22c55e;
+      padding: 5px 10px;
+      color: #475569;
+      font-style: italic;
+      margin: 8px 0;
+      background: #f8fafc;
+      border-radius: 0 4px 4px 0;
+    }
+    table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 9pt; }
+    th { background: #f1f5f9; font-weight: 700; padding: 4px 7px; border: 1px solid #e2e8f0; text-align: left; }
+    td { padding: 4px 7px; border: 1px solid #e2e8f0; vertical-align: top; }
+    ul, ol { margin: 5px 0 8px 18px; }
+    li { margin-bottom: 3px; }
+    strong { color: #0f172a; }
+    code { background: #f1f5f9; padding: 1px 4px; border-radius: 3px; font-size: 8.5pt; font-family: monospace; }
+    hr { border: none; border-top: 1px solid #e2e8f0; margin: 10px 0; }
+    .footer {
+      margin-top: 14px;
+      padding-top: 6px;
+      border-top: 1px solid #e2e8f0;
+      font-size: 8pt;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+    }
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Les 4 types de prompts</h1>
+    <div class="sub">Fiche de référence · Partie 1 — Choisir son prompt · FGIT Conseil</div>
+  </div>
+
+  <h1>Les 4 types de prompts — fiche de référence rapide</h1>
+<blockquote>Format : A5 imprimable / affichage 30 secondes · Ne pas résumer — utiliser comme détecteur avant envoi</blockquote>
+<hr>
+</p>
+<h2>Le principe</h2>
+<blockquote>"Il n'y a pas de mauvais IA, il n'y a que de mauvais prompts."</blockquote>
+<p>Un mauvais <strong>TYPE</strong> de prompt génère une mauvaise <strong>CATÉGORIE</strong> de réponse.
+Choisir le bon type avant d'écrire, c'est 80% du travail.
+</p>
+<hr>
+</p>
+<h2>Les 4 types</h2>
+<table><thead><tr><th>Type</th><th>Quand l'utiliser</th><th>Question clé avant d'envoyer</th></tr></thead><tbody><tr><td>🏗️ <strong>Structuration</strong></td><td>J'ai du contenu brut à organiser</td><td>Zéro perte d'information ?</td></tr>
+<tr><td>🔍 <strong>Exploration</strong></td><td>Je ne sais pas encore ce que je cherche</td><td>Ai-je demandé une recommandation finale ?</td></tr>
+<tr><td>✍️ <strong>Production</strong></td><td>Je sais exactement ce que je veux produire</td><td>Le format est-il précisé ?</td></tr>
+<tr><td>✅ <strong>Vérification</strong></td><td>J'ai un document à contrôler</td><td>Les critères sont-ils explicites ?</td></tr></tbody></table>
+<hr>
+</p>
+<h2>Les 3 erreurs les plus fréquentes</h2>
+<ul><li>Demander une <strong>production</strong> quand on a besoin d'<strong>exploration</strong></li>
+</ul>   → <em>l'IA produit quelque chose, mais ce n'est pas la bonne chose</em>
+</p>
+<ul><li><strong>Vérifier</strong> sans donner les critères de vérification</li>
+</ul>   → <em>l'IA valide en surface, sans savoir contre quoi comparer</em>
+</p>
+<ul><li><strong>Structurer</strong> en demandant à l'IA de "résumer"</li>
+</ul>   → <em>perte d'information garantie — résumer ≠ structurer</em>
+</p>
+<hr>
+</p>
+<h2>Le détecteur qualité</h2>
+<p>Avant d'envoyer, 4 secondes de vérification :
+</p>
+<table><thead><tr><th>Question</th><th>Si non →</th></tr></thead><tbody><tr><td>Le rôle de l'IA est-il défini ?</td><td>Ajouter le contexte</td></tr>
+<tr><td>La cible (destinataire, usage) est-elle claire ?</td><td>Préciser</td></tr>
+<tr><td>Le format attendu est-il précisé ?</td><td>Indiquer la forme</td></tr>
+<tr><td>L'IA peut-elle dire "je ne sais pas" ?</td><td>Autoriser explicitement</td></tr></tbody></table>
+
+  <div class="footer">
+    <span>formation-ia-pme.fgitconseil.com</span>
+    <span>FGIT Conseil · Formation IA Générative</span>
+  </div>
+</body>
+</html>

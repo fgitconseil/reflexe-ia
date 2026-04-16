@@ -1,0 +1,117 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
+---
+<Layout title="Manifeste Reflexe IA" description="Pour des pratiques IA fiables, diffusées et gouvernées. Le manifeste Reflexe IA.">
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="mb-4">
+        <a href={`${base}framework/`} class="text-slate-400 text-sm hover:text-slate-200 no-underline">← Framework</a>
+      </div>
+      <p class="text-sm font-bold tracking-widest uppercase text-blue-400 mb-4">Manifeste</p>
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Manifeste Reflexe IA</h1>
+      <p class="text-slate-300 text-xl">Pour des pratiques IA fiables, diffusées et gouvernées.</p>
+    </div>
+  </section>
+
+  <div class="max-w-3xl mx-auto px-6 py-16 space-y-16">
+
+    <!-- Intro -->
+    <section class="space-y-4 text-slate-700 text-base leading-relaxed">
+      <p>Nous avons observé ce qui se passe dans les organisations quand l'IA générative se déploie sans méthode et sans cadre commun.</p>
+      <p>Nous avons vu les gains de productivité rester individuels. Les boucles de dérive s'installer silencieusement. Le jugement collectif s'atrophier. La vérification disparaître sous la charge.</p>
+      <p>Nous avons vu des formations bien conçues produire des individus compétents dans des équipes qui n'avaient pas changé.</p>
+      <p>Ce n'est pas un problème d'outils. Ce n'est pas un problème de compétences. C'est un problème de pratiques — de leur qualité, de leur fiabilité, de leur diffusion dans le temps.</p>
+      <p class="font-medium text-slate-900">C'est pourquoi nous posons ce manifeste.</p>
+    </section>
+
+    <!-- Ce que nous privilégions -->
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 mb-8">Ce que nous privilégions</h2>
+      <div class="space-y-6">
+        {[
+          {
+            strong: 'Les pratiques organisationnelles',
+            rest: ' plutôt que les usages individuels.',
+            note: 'Les deux ont de la valeur. Mais les pratiques individuelles qui ne diffusent pas ne changent pas l\'organisation.',
+          },
+          {
+            strong: 'Ce qui est vérifié',
+            rest: ' plutôt que ce qui convainc.',
+            note: 'L\'IA produit du contenu convaincant. La forme convaincante n\'est pas la vérité vérifiée.',
+          },
+          {
+            strong: 'La gouvernance distribuée',
+            rest: ' plutôt que le contrôle centralisé.',
+            note: 'La qualité des pratiques ne se décrète pas d\'en haut. Elle s\'installe au plus près du travail réel.',
+          },
+          {
+            strong: 'L\'actif durable',
+            rest: ' plutôt que la prestation ponctuelle.',
+            note: 'Un skill encapsule un savoir expert qui reste dans l\'organisation. Une formation initie des pratiques qui doivent s\'entretenir. La valeur est dans la durée — pour l\'un comme pour l\'autre.',
+          },
+          {
+            strong: 'La diffusion',
+            rest: ' plutôt que la rétention.',
+            note: 'Le rôle ne garde pas les pratiques. Il les fait émerger, les structure et les transmet.',
+          },
+        ].map(item => (
+          <div class="border-l-4 border-slate-200 pl-6 py-1">
+            <p class="text-slate-800 font-medium mb-1">
+              <strong>{item.strong}</strong>{item.rest}
+            </p>
+            <p class="text-slate-500 text-sm italic leading-relaxed">{item.note}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Ce en quoi nous croyons -->
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 mb-8">Ce en quoi nous croyons</h2>
+      <ol class="space-y-4">
+        {[
+          'L\'IA sans méthode déplace la charge cognitive — elle ne la réduit pas.',
+          'Une pratique fiable est une pratique vérifiable par tous, pas seulement par celui qui la maîtrise.',
+          'La qualité des usages IA ne s\'agrège pas par la somme des formations. Elle se gouverne.',
+          'Un skill est un actif. Une formation est un événement. Les deux sont nécessaires — et les deux s\'entretiennent dans la durée.',
+          'La résistance organisationnelle n\'est pas un obstacle à contourner. C\'est une donnée systémique à travailler.',
+          'Une gouvernance proportionnée est plus durable qu\'une gouvernance parfaite. L\'objectif n\'est pas de créer une structure — c\'est de rendre les pratiques fiables sans alourdir l\'organisation.',
+          'Les boucles de dérive ne se détectent pas dans les audits. Elles se détectent dans les réunions, dans les processus en train de se stabiliser — en temps réel.',
+          'L\'expertise s\'atteste par la pratique, pas par un examen.',
+          'Ce framework est ouvert. La méthode n\'appartient à personne. Les pratiques appartiennent à tous.',
+          'Ce qui compte n\'est pas l\'adoption de l\'IA — c\'est la capacité des organisations à en gouverner les usages dans la durée, à mesure qu\'ils se complexifient. C\'est à cette question que ce rôle répond.',
+        ].map((belief, i) => (
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white" style="background:var(--primary-600)">{i + 1}</span>
+            <p class="text-slate-700 text-base leading-relaxed pt-0.5">{belief}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- Ce que nous construisons -->
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 mb-6">Ce que nous construisons</h2>
+      <div class="space-y-4 text-slate-700 text-base leading-relaxed">
+        <p>Une méthode ouverte — S.F.O.I. — accessible à tous, sans certification préalable.</p>
+        <p>Un rôle reconnaissable — l'AI Practice Steward — pour ceux qui veulent agir sur les pratiques IA de leur organisation, pas seulement les utiliser.</p>
+        <p>Une communauté de praticiens — les Mainteneurs — qui font vivre ce framework par leur pratique terrain, co-construisent les standards et font évoluer la méthode par retour d'expérience.</p>
+        <p>Pas un cabinet. Pas une école. Pas un framework de 200 pages.</p>
+        <p class="font-medium text-slate-900">Un système ouvert, ancré dans la pratique, conçu pour durer.</p>
+      </div>
+    </section>
+
+    <!-- Signature -->
+    <section class="pt-4 border-t border-slate-200">
+      <p class="text-slate-500 text-sm italic">Fayaz — FGIT Conseil</p>
+      <p class="text-slate-500 text-sm italic">Reflexe IA — reflexe-ia.org</p>
+      <p class="text-slate-500 text-sm italic">Avril 2026</p>
+      <p class="text-slate-400 text-xs mt-3">Ce manifeste est un document vivant. Il évolue avec la pratique.</p>
+    </section>
+
+  </div>
+
+</Layout>

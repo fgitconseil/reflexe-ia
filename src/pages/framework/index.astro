@@ -1,0 +1,75 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
+---
+<Layout title="Framework Reflexe IA" description="Une méthode ouverte, un rôle, une communauté. Manifeste, méthode S.F.O.I., accompagnement et skills.">
+
+  <section class="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="mb-4">
+        <a href={base} class="text-slate-400 text-sm hover:text-slate-200 no-underline">← Accueil</a>
+      </div>
+      <p class="text-sm font-bold tracking-widest uppercase text-blue-400 mb-4">Framework</p>
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Framework Reflexe IA</h1>
+      <p class="text-slate-300 text-lg leading-relaxed">
+        Une méthode ouverte, un rôle, une communauté.
+      </p>
+    </div>
+  </section>
+
+  <div class="max-w-5xl mx-auto px-6 py-20">
+    <div class="grid md:grid-cols-2 gap-6">
+
+      <a href={`${base}framework/manifeste/`} class="card group no-underline flex flex-col">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold" style="background:var(--primary-600)">M</div>
+          <h2 class="font-bold text-slate-900 text-lg">Manifeste</h2>
+        </div>
+        <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-6">
+          Pour des pratiques IA fiables, diffusées et gouvernées. Les valeurs et principes qui fondent Reflexe IA.
+        </p>
+        <span class="text-blue-600 text-sm font-semibold group-hover:underline">Lire le manifeste →</span>
+      </a>
+
+      <a href={`${base}framework/methode-sfoi/`} class="card group no-underline flex flex-col">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="flex gap-1">
+            <span class="w-5 h-5 rounded-full text-xs font-bold text-white flex items-center justify-center" style="background:var(--sfoi-s)">S</span>
+            <span class="w-5 h-5 rounded-full text-xs font-bold text-white flex items-center justify-center" style="background:var(--sfoi-f)">F</span>
+            <span class="w-5 h-5 rounded-full text-xs font-bold text-white flex items-center justify-center" style="background:var(--sfoi-o)">O</span>
+            <span class="w-5 h-5 rounded-full text-xs font-bold text-white flex items-center justify-center" style="background:var(--sfoi-i)">I</span>
+          </div>
+          <h2 class="font-bold text-slate-900 text-lg">Méthode S.F.O.I.</h2>
+        </div>
+        <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-6">
+          Structurer · Fiabiliser · Optimiser · Industrialiser. Une carte de maturité des pratiques IA — individuelle et organisationnelle.
+        </p>
+        <span class="text-blue-600 text-sm font-semibold group-hover:underline">Découvrir la méthode →</span>
+      </a>
+
+      <a href={`${base}framework/accompagnement/`} class="card group no-underline flex flex-col">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold" style="background:var(--accent-600)">A</div>
+          <h2 class="font-bold text-slate-900 text-lg">Accompagnement APS</h2>
+        </div>
+        <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-6">
+          Déploiement du rôle AI Practice Steward dans votre organisation. Diagnostic des boucles systémiques, structuration des normes collectives.
+        </p>
+        <span class="text-blue-600 text-sm font-semibold group-hover:underline">En savoir plus →</span>
+      </a>
+
+      <a href={`${base}framework/skills/`} class="card group no-underline flex flex-col">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold" style="background:var(--sfoi-i)">S</div>
+          <h2 class="font-bold text-slate-900 text-lg">Skills</h2>
+        </div>
+        <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-6">
+          Capitaliser les savoirs experts en actifs IA permanents. Transformer la connaissance tacite en IP métier transmissible.
+        </p>
+        <span class="text-blue-600 text-sm font-semibold group-hover:underline">En savoir plus →</span>
+      </a>
+
+    </div>
+  </div>
+
+</Layout>

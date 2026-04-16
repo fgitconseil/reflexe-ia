@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Créer un langage commun — 10 réflexes — FGIT Conseil</title>
+  <style>
+    @page { size: A5; margin: 12mm 14mm; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, 'Inter', system-ui, sans-serif;
+      font-size: 10pt;
+      line-height: 1.55;
+      color: #1e293b;
+      background: white;
+    }
+    .header {
+      border-top: 4px solid #3b82f6;
+      padding: 10px 0 8px;
+      margin-bottom: 14px;
+    }
+    .header h1 {
+      font-size: 14pt;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 2px;
+    }
+    .header .sub {
+      font-size: 8pt;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    h1 { font-size: 13pt; font-weight: 700; margin: 10px 0 6px; color: #0f172a; }
+    h2 { font-size: 11pt; font-weight: 700; margin: 10px 0 5px; color: #1e293b; border-bottom: 1px solid #e2e8f0; padding-bottom: 3px; }
+    h3 { font-size: 10pt; font-weight: 600; margin: 8px 0 3px; color: #334155; }
+    p { margin-bottom: 6px; }
+    blockquote {
+      border-left: 3px solid #3b82f6;
+      padding: 5px 10px;
+      color: #475569;
+      font-style: italic;
+      margin: 8px 0;
+      background: #f8fafc;
+      border-radius: 0 4px 4px 0;
+    }
+    table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 9pt; }
+    th { background: #f1f5f9; font-weight: 700; padding: 4px 7px; border: 1px solid #e2e8f0; text-align: left; }
+    td { padding: 4px 7px; border: 1px solid #e2e8f0; vertical-align: top; }
+    ul, ol { margin: 5px 0 8px 18px; }
+    li { margin-bottom: 3px; }
+    strong { color: #0f172a; }
+    code { background: #f1f5f9; padding: 1px 4px; border-radius: 3px; font-size: 8.5pt; font-family: monospace; }
+    hr { border: none; border-top: 1px solid #e2e8f0; margin: 10px 0; }
+    .footer {
+      margin-top: 14px;
+      padding-top: 6px;
+      border-top: 1px solid #e2e8f0;
+      font-size: 8pt;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+    }
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Créer un langage commun — 10 réflexes</h1>
+    <div class="sub">Checklist premiers réflexes · Intro · FGIT Conseil</div>
+  </div>
+
+  <h1>Créer un langage commun — Checklist premiers réflexes</h1>
+<blockquote>Format : Référence · À imprimer ou garder à portée</blockquote>
+<blockquote>Validation : Cocher les 10 points avant tout usage professionnel régulier de l'IA</blockquote>
+<hr>
+</p>
+<h2>Avant de prompter</h2>
+<hr>
+</p>
+<h3>✅ 1. Clarifier son intention</h3>
+<p><strong>Action</strong> : Avant de taper quoi que ce soit, nommer le livrable attendu en une phrase.
+<em>"Je veux obtenir [un email / une synthèse / une liste / une analyse] pour [qui] dans [quel but]."</em>
+</p>
+<p><strong>Pourquoi</strong> : Un LLM répond à la question posée. Une intention floue produit une réponse floue — même si elle semble structurée.
+</p>
+<p><strong>Signal d'alerte</strong> : Vous commencez à taper sans savoir exactement ce que vous voulez obtenir à la fin.
+→ Arrêtez. Écrivez d'abord votre objectif sur une ligne, puis promptez.
+</p>
+<hr>
+</p>
+<h3>✅ 2. Vérifier les données avant de les coller</h3>
+<p><strong>Action</strong> : Appliquez le filtre de sécurité (3 questions) avant tout usage. Si oui à l'une des deux dernières ou non à la première → anonymiser ou ne pas coller.
+</p>
+<p><strong>Pourquoi</strong> : L'exfiltration est toujours involontaire. Le réflexe de copier-coller est automatique — la vérification doit l'être aussi.
+</p>
+<p><strong>Signal d'alerte</strong> : Vous vous apprêtez à coller un document qui contient des noms, des chiffres contractuels ou des données RH.
+→ Anonymisez d'abord ou vérifiez que vous êtes sur une instance sécurisée (vérification DSI).
+</p>
+<hr>
+</p>
+<h3>✅ 3. Choisir le bon outil pour le niveau de risque</h3>
+<p><strong>Action</strong> : Évaluer le niveau de sensibilité de la tâche et choisir l'outil en conséquence.
+</p>
+<table><thead><tr><th>Sensibilité</th><th>Outil adapté</th></tr></thead><tbody><tr><td>Faible (texte générique, brouillon personnel)</td><td>LLM public acceptable</td></tr>
+<tr><td>Moyenne (données métier non nominatives)</td><td>Vérifier la politique de l'instance</td></tr>
+<tr><td>Élevée (données clients, RH, stratégiques)</td><td>Instance entreprise avec non-rétention</td></tr></tbody></table>
+<strong>Pourquoi</strong> : Tous les outils IA ne sont pas équivalents sur la sécurité des données. L'outil "pratique" n'est pas forcément l'outil sûr.
+</p>
+<p><strong>Signal d'alerte</strong> : Vous utilisez ChatGPT public pour une tâche avec des données internes sans avoir vérifié la politique de données.
+→ Posez la question à votre DSI avant, pas après.
+</p>
+<hr>
+</p>
+<h2>Pendant l'interaction</h2>
+<hr>
+</p>
+<h3>✅ 4. Itérer, ne pas répéter</h3>
+<p><strong>Action</strong> : Si la réponse ne correspond pas, reformuler la demande — pas la répéter.
+Ajouter une précision, changer le format demandé, clarifier le public cible.
+</p>
+<p><strong>Pourquoi</strong> : Re-demander la même chose produit la même réponse. L'amélioration vient du recadrage, pas de l'insistance.
+</p>
+<p><strong>Signal d'alerte</strong> : Vous avez envoyé la même demande (ou presque) deux fois consécutives et êtes frustré du résultat.
+→ Reformulez en ajoutant : ce que vous vouliez, ce que vous avez obtenu, ce qui manque.
+</p>
+<hr>
+</p>
+<h3>✅ 5. Exiger les sources sur les faits critiques</h3>
+<p><strong>Action</strong> : Pour toute information factuelle (date, chiffre, référence légale, statistique), ajouter dans le prompt :
+<em>"Cite les passages ou sources sur lesquels tu t'appuies."</em>
+</p>
+<p><strong>Pourquoi</strong> : L'IA peut inventer des références avec conviction. Exiger la citation force l'IA à signaler l'absence de source plutôt que d'en inventer une.
+</p>
+<p><strong>Signal d'alerte</strong> : Votre prompt contient une question factuelle précise et vous n'avez pas demandé de justification.
+→ Ajoutez la ligne de demande de citation avant d'envoyer.
+</p>
+<hr>
+</p>
+<h3>✅ 6. Autoriser explicitement "je ne sais pas"</h3>
+<p><strong>Action</strong> : Ajouter dans les prompts où la précision est critique :
+<em>"Si tu n'as pas d'information certaine sur ce point, dis-le explicitement plutôt que d'estimer."</em>
+</p>
+<p><strong>Pourquoi</strong> : Par défaut, un LLM produit toujours une réponse. Il ne signale pas spontanément son incertitude. Cette autorisation doit être explicite.
+</p>
+<p><strong>Signal d'alerte</strong> : Vous posez une question précise sur un sujet récent ou spécialisé sans avoir donné cette instruction.
+→ L'IA va estimer avec confiance. Ajoutez l'autorisation.
+</p>
+<hr>
+</p>
+<h3>✅ 7. Ne pas ajouter de nouvelles données sensibles en cours d'échange</h3>
+<p><strong>Action</strong> : Si vous avez commencé une session avec des données génériques, ne rajoutez pas de données sensibles au fil de la conversation sous prétexte que "ça allait bien".
+</p>
+<p><strong>Pourquoi</strong> : La session reste ouverte et les données restent dans le contexte. Chaque nouvelle donnée sensible ajoutée élargit le risque d'exfiltration.
+</p>
+<p><strong>Signal d'alerte</strong> : Vous êtes en train d'affiner un texte et vous êtes sur le point de coller un contrat ou une fiche client "juste pour un détail".
+→ Ouvrez une nouvelle session sécurisée dédiée, ou anonymisez.
+</p>
+<hr>
+</p>
+<h2>Après la réponse</h2>
+<hr>
+</p>
+<h3>✅ 8. Vérifier les faits critiques dans une source officielle</h3>
+<p><strong>Action</strong> : Identifier les zones à risque dans l'output (dates, chiffres, citations, références légales, engagements) et les vérifier dans une source officielle — pas en re-demandant à l'IA.
+</p>
+<p><strong>Pourquoi</strong> : L'IA peut confirmer une erreur avec la même assurance qu'une vérité. La vérification ne se fait que dans une source externe.
+</p>
+<p><strong>Signal d'alerte</strong> : Votre output contient des références réglementaires ou des chiffres de marché et vous n'avez pas encore consulté la source officielle.
+→ Vérifiez avant tout envoi ou publication externe.
+</p>
+<hr>
+</p>
+<h3>✅ 9. Garder la main avant tout envoi</h3>
+<p><strong>Action</strong> : Relire l'output en se posant la question : <em>"Est-ce que je valide chaque phrase de ce texte ?"</em>
+Un output IA ne part jamais chez un client, partenaire ou supérieur sans relecture humaine.
+</p>
+<p><strong>Pourquoi</strong> : L'IA propose. L'humain décide. La responsabilité reste toujours du côté de l'émetteur — pas de l'outil.
+</p>
+<p><strong>Signal d'alerte</strong> : Vous copiez-collez directement l'output dans un email sans le relire.
+→ Ce n'est pas un gain de temps, c'est un risque réputationnel non maîtrisé.
+</p>
+<hr>
+</p>
+<h3>✅ 10. Capitaliser les prompts qui ont bien fonctionné</h3>
+<p><strong>Action</strong> : Quand un prompt produit un résultat excellent, le noter dans votre bibliothèque personnelle (un fichier texte, un répertoire dédié, un outil de notes).
+Indiquer : la tâche, le prompt, le contexte, le résultat obtenu.
+</p>
+<p><strong>Pourquoi</strong> : Un bon prompt est un actif. Ne pas le noter, c'est recommencer de zéro à chaque fois — et perdre la moitié de la valeur produite.
+</p>
+<p><strong>Signal d'alerte</strong> : Vous vous souvenez d'avoir obtenu un résultat excellent il y a 3 semaines mais vous ne retrouvez plus le prompt.
+→ Commencez votre bibliothèque maintenant, même avec 3 entrées.
+</p>
+<hr>
+</p>
+<h2>Mémo synthétique (à afficher)</h2>
+<p>``<code>
+AVANT   → Clarifier · Vérifier les données · Bon outil
+PENDANT → Itérer · Citer les sources · "Je ne sais pas" · Ne pas ajouter
+APRÈS   → Vérifier les faits · Garder la main · Capitaliser
+</code>``
+</p>
+<p><!-- QUIZ_INLINE id="intro-03-q1" -->
+<strong>Pause réflexion :</strong> Vous êtes sur le point de coller une fiche client dans l'IA pour rédiger un email de relance. Quel réflexe de la checklist s'applique en priorité ?
+</p>
+<p>A) Réflexe 1 — Clarifier votre intention avant de prompter
+B) Réflexe 2 — Vérifier les données avant de les coller : la fiche contient des données nominatives
+C) Réflexe 9 — Garder la main avant tout envoi
+D) Réflexe 10 — Capitaliser le prompt si le résultat est bon
+</p>
+<blockquote><strong>Réponse : B</strong> — <em>Une fiche client contient des données nominatives. Avant de la coller, appliquer le filtre : ces données sont-elles sensibles ? Oui → anonymiser ou utiliser une instance sécurisée. L'exfiltration est toujours involontaire — le réflexe doit devenir automatique.</em></blockquote>
+<!-- /QUIZ_INLINE -->
+
+
+  <div class="footer">
+    <span>formation-ia-pme.fgitconseil.com</span>
+    <span>FGIT Conseil · Formation IA Générative</span>
+  </div>
+</body>
+</html>
