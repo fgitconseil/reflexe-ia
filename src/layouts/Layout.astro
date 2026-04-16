@@ -471,7 +471,9 @@ const base = import.meta.env.BASE_URL;
       ctaItem.insertAdjacentElement('afterend', logoutLi);
 
       logoutBtn.addEventListener('click', async () => {
-        await supabase.auth.signOut();
+        try {
+          await supabase.auth.signOut({ scope: 'local' });
+        } catch (_) {}
         window.location.href = '/';
       });
     } else {
