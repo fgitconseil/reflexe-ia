@@ -123,26 +123,15 @@ const base = import.meta.env.BASE_URL;
                 <p class="field-error text-xs text-red-600 mt-1" style="display:none"></p>
               </div>
 
-              <div class="pt-1 space-y-3">
-                <div>
-                  <label class="flex items-start gap-3 cursor-pointer">
-                    <input type="checkbox" id="consent-cgu" name="consent-cgu" required
-                      class="mt-0.5 w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 flex-shrink-0" />
-                    <span class="text-sm text-slate-600 leading-relaxed">
-                      J'ai lu et j'accepte les <a href="/cgu/" class="text-blue-600 hover:underline" target="_blank">CGU</a> et la <a href="/politique-confidentialite/" class="text-blue-600 hover:underline" target="_blank">Politique de confidentialité</a>. <span class="text-red-500">*</span>
-                    </span>
-                  </label>
-                  <p id="consent-error" class="text-xs text-red-600 mt-1 ml-7" style="display:none">Vous devez accepter les CGU pour créer un compte.</p>
-                </div>
-                <div>
-                  <label class="flex items-start gap-3 cursor-pointer">
-                    <input type="checkbox" id="consent-marketing" name="consent-marketing"
-                      class="mt-0.5 w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 flex-shrink-0" />
-                    <span class="text-sm text-slate-500 leading-relaxed">
-                      J'accepte d'être recontacté par Reflexe IA pour recevoir des informations sur les offres d'accompagnement et de formation en entreprise. <span class="text-slate-400">(facultatif)</span>
-                    </span>
-                  </label>
-                </div>
+              <div class="pt-1">
+                <label class="flex items-start gap-3 cursor-pointer">
+                  <input type="checkbox" id="consent-cgu" name="consent-cgu" required
+                    class="mt-0.5 w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 flex-shrink-0" />
+                  <span class="text-sm text-slate-600 leading-relaxed">
+                    J'ai lu et j'accepte les <a href="/cgu/" class="text-blue-600 hover:underline" target="_blank">Conditions Générales d'Utilisation</a> et la <a href="/politique-confidentialite/" class="text-blue-600 hover:underline" target="_blank">Politique de confidentialité</a>. <span class="text-red-500">*</span>
+                  </span>
+                </label>
+                <p id="consent-error" class="text-xs text-red-600 mt-1 ml-7" style="display:none">Vous devez accepter les CGU pour créer un compte.</p>
               </div>
 
               <button type="submit" id="submit-btn" class="btn-primary w-full justify-center py-3 mt-2">
@@ -151,7 +140,11 @@ const base = import.meta.env.BASE_URL;
 
             </form>
 
-            <p class="text-center text-sm text-slate-500 mt-5">
+            <p class="text-xs text-slate-400 leading-relaxed mt-5 border-t border-slate-100 pt-4">
+              Les données collectées permettent la gestion de votre compte et la sauvegarde de votre progression. Les inscrits ayant fourni un email professionnel peuvent recevoir des informations sur les offres d'accompagnement et de formation d'équipe de Reflexe IA, conformément à notre <a href="/politique-confidentialite/" class="hover:underline" target="_blank">Politique de confidentialité</a> — un lien de désinscription figure dans chaque message.
+            </p>
+
+            <p class="text-center text-sm text-slate-500 mt-4">
               Déjà un compte ? <a href="/connexion/" class="text-blue-600 font-medium hover:underline">Se connecter</a>
             </p>
           </div>
@@ -255,8 +248,7 @@ const base = import.meta.env.BASE_URL;
     const entreprise = (document.getElementById('entreprise') as HTMLInputElement).value.trim();
     const password   = (document.getElementById('password') as HTMLInputElement).value;
     const confirm    = (document.getElementById('password-confirm') as HTMLInputElement).value;
-    const consentCgu       = (document.getElementById('consent-cgu') as HTMLInputElement).checked;
-    const consentMarketing = (document.getElementById('consent-marketing') as HTMLInputElement).checked;
+    const consentCgu = (document.getElementById('consent-cgu') as HTMLInputElement).checked;
 
     let hasError = false;
 
@@ -300,11 +292,11 @@ const base = import.meta.env.BASE_URL;
 
     if (data.user) {
       await supabase.from('user_profiles').insert({
-        id:              data.user.id,
+        id:         data.user.id,
         prenom,
         nom,
-        entreprise:      entreprise || null,
-        consent_contact: consentMarketing,
+        entreprise: entreprise || null,
+        consent_cgu: true,
       });
     }
 
