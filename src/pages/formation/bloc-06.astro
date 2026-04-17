@@ -14,6 +14,8 @@ const slides = [
     title: 'Récap du chemin parcouru',
     img: `${base}assets/images/m6/06-1-recap-chemin-parcouru.png`,
     imgAlt: "Récap — tout le chemin parcouru",
+    mp3:   `${base}assets/audio/m6/06-1-recap-du-chemin-parcouru.mp3`,
+    m4a:   `${base}assets/audio/m6/06-1-recap-du-chemin-parcouru.m4a`,
     script: [
       "Vous y êtes. Ce bloc est le dernier. Et il est un peu différent des autres.",
       "Jusqu'ici, chaque bloc vous a donné quelque chose à appliquer. Une méthode, un outil, une pratique. Ce bloc-ci va élargir la question.",
@@ -31,6 +33,8 @@ const slides = [
     title: 'Ce que sont les skills',
     img: `${base}assets/images/m6/06-2-ce-que-sont-les-skills.png`,
     imgAlt: "Skills — spécialisation d'un assistant",
+    mp3:   `${base}assets/audio/m6/06-2-ce-que-sont-les-skills.mp3`,
+    m4a:   `${base}assets/audio/m6/06-2-ce-que-sont-les-skills.m4a`,
     script: [
       "Un skill, c'est une spécialisation donnée à un assistant.",
       "C'est le fait de lui donner un domaine de compétence précis, une logique de travail, une façon de répondre adaptée à un contexte particulier.",
@@ -61,6 +65,8 @@ const slides = [
     title: 'Les deux boucles côté humain',
     img: `${base}assets/images/m6/06-3-les-deux-boucles.png`,
     imgAlt: "Les deux boucles — amplificatrice et reddition cognitive",
+    mp3:   `${base}assets/audio/m6/06-3-les-deux-boucles-cote-humain.mp3`,
+    m4a:   `${base}assets/audio/m6/06-3-les-deux-boucles-cote-humain.m4a`,
     script: [
       "Une capacité nouvelle crée une responsabilité nouvelle. Quand un assistant est augmenté, la question n'est plus seulement « est-ce que l'outil fonctionne ? ». Elle devient : qui supervise ? Qui valide ? Qui intervient si l'outil propose quelque chose d'inadapté ?",
       "La responsabilité ne disparaît pas dans la délégation. Elle se déplace vers le haut. Prenez un chirurgien qui intègre un assistant robotisé. Il n'est pas moins responsable de l'opération — il l'est davantage, parce qu'il a choisi d'intégrer cet outil.",
@@ -91,6 +97,8 @@ const slides = [
     title: "Le rôle qui émerge — l'AI Practice Steward",
     img: `${base}assets/images/m6/06-4-role-ai-practice-steward.png`,
     imgAlt: "L'AI Practice Steward — trois capacités distinctives",
+    mp3:   `${base}assets/audio/m6/06-4-le-role-que-ca-cree-ai-practice-steward.mp3`,
+    m4a:   `${base}assets/audio/m6/06-4-le-role-que-ca-cree-ai-practice-steward.m4a`,
     script: [
       "Il y a trois rôles qui circulent autour de l'IA en organisation. Souvent confondus. Pas interchangeables.",
       "Un formateur enseigne ce qui est. Il transmet une méthode, des repères, des pratiques. C'est ce que vous venez de vivre. Un consultant prescrit une solution. Il arrive avec une analyse, repart avec un livrable.",
@@ -121,6 +129,8 @@ const slides = [
     title: 'Clôture',
     img: `${base}assets/images/m6/06-5-cloture.png`,
     imgAlt: "Clôture — fin de la formation",
+    mp3:   `${base}assets/audio/m6/06-5-cloture.mp3`,
+    m4a:   `${base}assets/audio/m6/06-5-cloture.m4a`,
     script: [
       "Cette formation vous a donné la méthode individuelle.",
       "Comment fonctionne l'IA, comment la piloter, comment en faire un outil de votre compétence plutôt qu'une dépendance.",
@@ -170,14 +180,41 @@ const TOTAL = slides.length; // 9
           {slide.kind === 'content' && (
             <div>
               <h2 class="text-base font-semibold text-purple-700 mb-4">{slide.title}</h2>
-              <div class="mb-4 rounded-xl overflow-hidden border border-slate-100 bg-slate-50">
+
+              {/* Image avec overlay play */}
+              <div class="img-player-wrap mb-4 rounded-xl overflow-hidden border border-slate-100 bg-slate-50"
+                   onclick="imgPlayToggle(this)"
+                   role="button" tabindex="0"
+                   onkeydown="if(event.key==='Enter'||event.key===' ')imgPlayToggle(this)"
+                   style="position:relative; cursor:pointer;">
                 <img
                   src={slide.img}
                   alt={slide.imgAlt}
-                  style="width:100%; max-height:400px; object-fit:contain; display:block;"
+                  style="width:100%; max-height:380px; object-fit:contain; display:block;"
                   loading={i === 0 ? 'eager' : 'lazy'}
                 />
+                <div class="play-overlay" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+                  <div class="play-circle">
+                    <svg class="play-icon" width="30" height="30" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+                      <polygon points="7,3 21,12 7,21"/>
+                    </svg>
+                    <svg class="pause-icon" width="30" height="30" viewBox="0 0 24 24" fill="white" aria-hidden="true" style="display:none">
+                      <rect x="4"  y="3" width="5" height="18" rx="1"/>
+                      <rect x="15" y="3" width="5" height="18" rx="1"/>
+                    </svg>
+                  </div>
+                </div>
               </div>
+
+              {/* Audio */}
+              <div class="mb-4">
+                <audio controls preload="metadata" style="width:100%">
+                  <source src={slide.mp3} type="audio/mpeg" />
+                  <source src={slide.m4a} type="audio/mp4" />
+                  Votre navigateur ne supporte pas la lecture audio.
+                </audio>
+              </div>
+
               <details class="border border-slate-200 rounded-xl overflow-hidden">
                 <summary class="s-summary px-4 py-3 text-sm font-medium text-slate-600 hover:bg-slate-50 cursor-pointer transition-colors">
                   Voir le script complet ▾
@@ -235,7 +272,7 @@ const TOTAL = slides.length; // 9
                 <p class="text-sm font-semibold text-slate-700 mb-3">Partagez votre progression</p>
                 <p class="text-sm text-slate-500 mb-4">Vous avez acquis une méthode concrète pour utiliser l'IA de façon rigoureuse et responsable. Si ce parcours vous a été utile, n'hésitez pas à le partager.</p>
                 <a
-                  href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Freflexe-ia.fgitconseil.com%2Fformation%2F"
+                  href="https://www.linkedin.com/profile/add?startTask=FORMATION-SFOI&name=Formation%20S.F.O.I.%20%E2%80%94%20AI%20Practice%20Steward&organizationId=112952006&issueYear=2026&issueMonth=4&certUrl=https%3A%2F%2Freflexe-ia.org%2Fformation%2F"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#0A66C2] text-white text-sm font-semibold hover:bg-[#004182] transition-colors"
@@ -251,7 +288,6 @@ const TOTAL = slides.length; // 9
                 <p class="text-slate-300 text-sm mb-4 leading-relaxed">Ce n'est pas un problème de compétence — c'est un problème de système.<br />C'est exactement ce qu'on adresse en accompagnement.</p>
                 <div class="flex flex-col sm:flex-row gap-3">
                   <a href="/ai-practice-steward/" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white text-slate-900 text-sm font-semibold hover:bg-slate-100 transition-colors">En savoir plus →</a>
-                  <a href={`${base}formation/`} class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-slate-600 text-slate-300 text-sm font-semibold hover:bg-slate-700 transition-colors">Revoir la formation</a>
                 </div>
               </div>
             </div>
@@ -282,6 +318,17 @@ const TOTAL = slides.length; // 9
   .quiz-opt.q-correct { border-color: #22c55e !important; background-color: #f0fdf4 !important; color: #15803d !important; }
   .quiz-opt.q-wrong { border-color: #f87171 !important; background-color: #fef2f2 !important; color: #dc2626 !important; }
   .quiz-opt.q-inactive { opacity: 0.4; cursor: default; }
+  .play-circle {
+    width: 68px; height: 68px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.52);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s, transform 0.15s;
+  }
+  .img-player-wrap:hover .play-circle {
+    background: rgba(0,0,0,0.72);
+    transform: scale(1.07);
+  }
 </style>
 
 <script is:inline>
@@ -289,10 +336,25 @@ const TOTAL = slides.length; // 9
   var TOTAL = 9;
 
   function showSlide(n) {
+    // Pause audio of current slide
+    var curPanel = document.getElementById('panel-' + current);
+    if (curPanel) {
+      var curAudio = curPanel.querySelector('audio');
+      if (curAudio) { curAudio.pause(); curAudio.currentTime = 0; }
+    }
+
     document.querySelectorAll('.slide-panel').forEach(function(p, i) {
       p.style.display = i === n ? 'block' : 'none';
     });
     current = n;
+
+    // Autoplay audio on content slides
+    var newPanel = document.getElementById('panel-' + n);
+    if (newPanel) {
+      var newAudio = newPanel.querySelector('audio');
+      if (newAudio) newAudio.play().catch(function() {});
+    }
+    setPlayOverlay(current);
 
     // Trigger completion on end screen (last slide)
     if (n === TOTAL - 1) {
@@ -319,6 +381,36 @@ const TOTAL = slides.length; // 9
   function slideNext() {
     if (current < TOTAL - 1) showSlide(current + 1);
   }
+
+  function setPlayOverlay(n) {
+    var panel = document.getElementById('panel-' + n);
+    if (!panel) return;
+    var audio = panel.querySelector('audio');
+    var playing = audio && !audio.paused;
+    var playIco  = panel.querySelector('.play-icon');
+    var pauseIco = panel.querySelector('.pause-icon');
+    if (playIco)  playIco.style.display  = playing ? 'none'  : 'block';
+    if (pauseIco) pauseIco.style.display = playing ? 'block' : 'none';
+  }
+
+  function imgPlayToggle(wrapper) {
+    var panel = wrapper.closest('.slide-panel');
+    var audio = panel.querySelector('audio');
+    if (!audio) return;
+    if (audio.paused) {
+      audio.play().catch(function() {});
+    } else {
+      audio.pause();
+    }
+  }
+
+  // Sync overlay icon with native player events
+  document.querySelectorAll('.slide-panel audio').forEach(function(audio) {
+    var idx = parseInt(audio.closest('.slide-panel').id.replace('panel-', ''), 10);
+    audio.addEventListener('play',  function() { setPlayOverlay(idx); });
+    audio.addEventListener('pause', function() { setPlayOverlay(idx); });
+    audio.addEventListener('ended', function() { setPlayOverlay(idx); });
+  });
 
   function handleQuizAnswer(btn) {
     var block = btn.closest('.quiz-block');

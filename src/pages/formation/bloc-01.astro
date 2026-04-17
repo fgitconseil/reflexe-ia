@@ -236,7 +236,7 @@ const slides = [
     expl: "L'IA propose, l'humain analyse, valide et décide. La responsabilité décisionnelle reste toujours humaine.",
   },
   {
-    kind: 'quiz-interactive', qNum: 8, isLast: true,
+    kind: 'quiz-interactive', qNum: 8,
     question: "Pour obtenir une réponse de qualité d'un LLM, le facteur le plus important est :",
     opts: [
       "Le nombre de fois qu'on reformule",
@@ -248,9 +248,13 @@ const slides = [
     expl: "La qualité de la demande détermine directement la qualité de la réponse. C'est le principe de base de tout le module de prompting.",
   },
 
+
+  // ── 17 ── Score
+  { kind: 'score' },
+
 ];
 
-const TOTAL = slides.length; // 16
+const TOTAL = slides.length; // 17
 ---
 
 <Layout title={bloc.titre}>
@@ -373,7 +377,7 @@ const TOTAL = slides.length; // 16
 
               <p class="text-base font-semibold text-slate-900 mb-5 leading-snug">{slide.question}</p>
 
-              <div class="quiz-block space-y-2" data-answer={slide.answer}>
+              <div class="quiz-block space-y-2" data-answer={slide.answer} data-quiz-type="interactive">
                 {slide.opts.map((opt: string, j: number) => (
                   <button
                     type="button"
@@ -388,14 +392,26 @@ const TOTAL = slides.length; // 16
                 <div class="quiz-expl px-4 py-4 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-600 leading-relaxed mt-3" style="display:none">
                   {slide.expl}
                 </div>
-
-                {slide.isLast && (
-                  <div id="end-bloc-01" class="mt-5 px-5 py-5 rounded-xl bg-blue-50 border border-blue-200 text-center" style="display:none">
-                    <p class="text-blue-800 font-semibold mb-1">Vous avez terminé le Module 1</p>
-                    <p class="text-blue-600 text-sm">Comprendre l'IA générative — les corrigés restent accessibles en revenant sur les slides précédentes.</p>
-                  </div>
-                )}
               </div>
+            </div>
+          )}
+
+          {/* ── SCORE ────────────────────────────────────────────── */}
+          {slide.kind === 'score' && (
+            <div class="text-center py-8">
+              <div id="end-bloc-01" style="display:none"></div>
+              <div class="w-16 h-16 rounded-2xl bg-blue-600 flex items-center justify-center mx-auto mb-6">
+                <span class="text-white text-2xl font-bold">✓</span>
+              </div>
+              <h2 class="text-2xl font-bold text-slate-900 mb-3">Bloc 1 terminé</h2>
+              <div id="score-display-01" class="text-3xl font-bold text-blue-700 mb-1">—</div>
+              <p class="text-slate-500 text-sm mb-8">/ 8 questions du quiz final</p>
+              <a
+                href={nextUrl}
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition-colors"
+              >
+                Bloc suivant →
+              </a>
             </div>
           )}
 
@@ -462,7 +478,8 @@ const TOTAL = slides.length; // 16
 
 <script is:inline>
   var current = 0;
-  var TOTAL = 16;
+  var TOTAL = 17;
+  var quizScore = 0;
   var nextUrl = document.getElementById('slides-root').dataset.nextUrl;
 
   function showSlide(n) {
@@ -494,11 +511,19 @@ const TOTAL = slides.length; // 16
     // Prev button
     document.getElementById('prev-btn').disabled = n === 0;
 
-    // Next button label
+    // Score slide (last)
+    var prevBtn = document.getElementById('prev-btn');
     var nextBtn = document.getElementById('next-btn');
     if (n === TOTAL - 1) {
-      nextBtn.textContent = 'Bloc suivant →';
+      var endEl = document.getElementById('end-bloc-01');
+      if (endEl) endEl.style.display = 'block';
+      var scoreEl = document.getElementById('score-display-01');
+      if (scoreEl) scoreEl.textContent = quizScore + ' / 8';
+      prevBtn.style.display = 'none';
+      nextBtn.style.display = 'none';
     } else {
+      prevBtn.style.display = '';
+      nextBtn.style.display = '';
       nextBtn.textContent = 'Suivant →';
     }
   }
@@ -508,11 +533,7 @@ const TOTAL = slides.length; // 16
   }
 
   function slideNext() {
-    if (current < TOTAL - 1) {
-      showSlide(current + 1);
-    } else {
-      window.location.href = nextUrl;
-    }
+    if (current < TOTAL - 1) showSlide(current + 1);
   }
 
   function setPlayOverlay(n) {
@@ -564,13 +585,14 @@ const TOTAL = slides.length; // 16
       }
     });
 
+    // Track score for quiz-final
+    if (block.dataset.quizType === 'interactive' && chosen === correct) {
+      quizScore++;
+    }
+
     // Show explanation
     var expl = block.querySelector('.quiz-expl');
     if (expl) expl.style.display = 'block';
-
-    // Show completion message on last question
-    var completion = document.getElementById('end-bloc-01');
-    if (completion) completion.style.display = 'block';
   }
 
   // Init

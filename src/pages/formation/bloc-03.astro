@@ -16,6 +16,8 @@ const slides = [
     title: 'Accroche',
     img: `${base}assets/images/m3/03-1-accroche-terrain.png`,
     imgAlt: "Accroche — les 4 types de prompts",
+    mp3:   `${base}assets/audio/m3/03-1-accroche-terrain.mp3`,
+    m4a:   `${base}assets/audio/m3/03-1-accroche-terrain.m4a`,
     script: [
       "Je vais vous raconter une erreur que je vois chaque semaine.",
       "Un manager a une tâche à faire — analyser trois offres concurrentes avant une réunion stratégique. Il ouvre l'IA et écrit : « Analyse ces trois offres et dis-moi laquelle choisir. »",
@@ -34,6 +36,8 @@ const slides = [
     title: 'Type 1 — prompt de production',
     img: `${base}assets/images/m3/03-2-type-1-prompt-production.png`,
     imgAlt: "Type 1 — prompt de production : gabarit et exemples",
+    mp3:   `${base}assets/audio/m3/03-2-type-1-prompt-de-production.mp3`,
+    m4a:   `${base}assets/audio/m3/03-2-type-1-prompt-de-production.m4a`,
     script: [
       "Le premier type, c'est le prompt de production. Vous l'utilisez quand vous savez exactement ce que vous voulez obtenir et que vous avez besoin que l'IA le produise pour vous.",
       "Un email. Une synthèse. Un plan. Un compte rendu. Une proposition commerciale. Un script. Une fiche produit. La condition : le livrable est défini.",
@@ -65,6 +69,8 @@ const slides = [
     title: "Type 2 — prompt d'exploration",
     img: `${base}assets/images/m3/03-3-type-2-prompt-exploration.png`,
     imgAlt: "Type 2 — prompt d'exploration : gabarit et Chain of Thought",
+    mp3:   `${base}assets/audio/m3/03-3-type-2-prompt-dexploration.mp3`,
+    m4a:   `${base}assets/audio/m3/03-3-type-2-prompt-dexploration.m4a`,
     script: [
       "Le deuxième type, c'est le prompt d'exploration. Vous l'utilisez quand vous ne savez pas encore ce que vous voulez produire, mais que vous avez besoin de comprendre un sujet, de cartographier des options, d'identifier des risques ou de préparer une décision.",
       "La distinction avec la production : dans l'exploration, le livrable attendu est une cartographie d'options ou une analyse structurée, pas une décision finale.",
@@ -96,6 +102,8 @@ const slides = [
     title: 'Type 3 — prompt de structuration',
     img: `${base}assets/images/m3/03-4-type-3-prompt-structuration.png`,
     imgAlt: "Type 3 — prompt de structuration : gabarit et règle d'or",
+    mp3:   `${base}assets/audio/m3/03-4-type-3-prompt-de-structuration.mp3`,
+    m4a:   `${base}assets/audio/m3/03-4-type-3-prompt-de-structuration.m4a`,
     script: [
       "Le troisième type, c'est le prompt de structuration. Vous l'utilisez quand vous avez du contenu brut — notes de réunion, transcription, email long — et que vous voulez l'organiser sans rien perdre.",
       "La différence avec la production : vous ne demandez pas à l'IA de créer. Vous lui donnez une matière brute et vous lui demandez de la mettre en ordre. C'est l'un des usages les plus puissants et les moins risqués.",
@@ -127,6 +135,8 @@ const slides = [
     title: 'Type 4 — prompt de vérification',
     img: `${base}assets/images/m3/03-5-type-4-prompt-verification.png`,
     imgAlt: "Type 4 — prompt de vérification : gabarit et limites",
+    mp3:   `${base}assets/audio/m3/03-5-type-4-prompt-de-verification.mp3`,
+    m4a:   `${base}assets/audio/m3/03-5-type-4-prompt-de-verification.m4a`,
     script: [
       "Le quatrième type, c'est le prompt de vérification. Vous l'utilisez quand vous avez un document existant et que vous voulez le soumettre à un contrôle — vérifier sa conformité, identifier ses lacunes, détecter des incohérences.",
       "La différence fondamentale avec les trois autres types : vous ne demandez pas à l'IA de produire ni d'organiser. Vous lui demandez de contrôler.",
@@ -158,6 +168,8 @@ const slides = [
     title: 'Synthèse',
     img: `${base}assets/images/m3/03-6-synthese.png`,
     imgAlt: "Synthèse des 4 types de prompts",
+    mp3:   `${base}assets/audio/m3/03-6-synthese.mp3`,
+    m4a:   `${base}assets/audio/m3/03-6-synthese.m4a`,
     script: [
       "Voilà la carte mentale des 4 types. Production : créer un livrable défini. Exploration : comprendre un sujet ouvert. Structuration : organiser du contenu brut. Vérification : contrôler un document existant.",
       "La question clé avant de prompter : « Qu'est-ce que je veux que l'IA fasse : créer, comprendre, organiser ou contrôler ? » La réponse détermine le gabarit à utiliser. Et le gabarit détermine la qualité du résultat.",
@@ -305,14 +317,41 @@ const TOTAL = slides.length; // 19
           {slide.kind === 'content' && (
             <div>
               <h2 class="text-base font-semibold text-blue-700 mb-4">{slide.title}</h2>
-              <div class="mb-4 rounded-xl overflow-hidden border border-slate-100 bg-slate-50">
+
+              {/* Image avec overlay play */}
+              <div class="img-player-wrap mb-4 rounded-xl overflow-hidden border border-slate-100 bg-slate-50"
+                   onclick="imgPlayToggle(this)"
+                   role="button" tabindex="0"
+                   onkeydown="if(event.key==='Enter'||event.key===' ')imgPlayToggle(this)"
+                   style="position:relative; cursor:pointer;">
                 <img
                   src={slide.img}
                   alt={slide.imgAlt}
-                  style="width:100%; max-height:400px; object-fit:contain; display:block;"
+                  style="width:100%; max-height:380px; object-fit:contain; display:block;"
                   loading={i === 0 ? 'eager' : 'lazy'}
                 />
+                <div class="play-overlay" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+                  <div class="play-circle">
+                    <svg class="play-icon" width="30" height="30" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+                      <polygon points="7,3 21,12 7,21"/>
+                    </svg>
+                    <svg class="pause-icon" width="30" height="30" viewBox="0 0 24 24" fill="white" aria-hidden="true" style="display:none">
+                      <rect x="4"  y="3" width="5" height="18" rx="1"/>
+                      <rect x="15" y="3" width="5" height="18" rx="1"/>
+                    </svg>
+                  </div>
+                </div>
               </div>
+
+              {/* Audio */}
+              <div class="mb-4">
+                <audio controls preload="metadata" style="width:100%">
+                  <source src={slide.mp3} type="audio/mpeg" />
+                  <source src={slide.m4a} type="audio/mp4" />
+                  Votre navigateur ne supporte pas la lecture audio.
+                </audio>
+              </div>
+
               <details class="border border-slate-200 rounded-xl overflow-hidden">
                 <summary class="s-summary px-4 py-3 text-sm font-medium text-slate-600 hover:bg-slate-50 cursor-pointer transition-colors">
                   Voir le script complet ▾
@@ -364,7 +403,7 @@ const TOTAL = slides.length; // 19
 
               <p class="text-base font-semibold text-slate-900 mb-5 leading-snug">{slide.question}</p>
 
-              <div class="quiz-block space-y-2" data-answer={slide.answer}>
+              <div class="quiz-block space-y-2" data-answer={slide.answer} data-quiz-type="interactive">
                 {slide.opts.map((opt: string, j: number) => (
                   <button
                     type="button"
@@ -391,7 +430,9 @@ const TOTAL = slides.length; // 19
                 <span class="text-white text-2xl font-bold">✓</span>
               </div>
               <h2 class="text-2xl font-bold text-slate-900 mb-3">Bloc 3 terminé</h2>
-              <p class="text-slate-500 mb-8 max-w-sm mx-auto">Téléchargez la fiche mémo pour garder les points clés sous la main.</p>
+              <div id="score-display-03" class="text-3xl font-bold text-blue-700 mb-1">—</div>
+              <p class="text-slate-500 text-sm mb-6">/ 8 questions du quiz final</p>
+              <p class="text-slate-500 mb-6 max-w-sm mx-auto">Téléchargez la fiche mémo pour garder les points clés sous la main.</p>
               <div class="flex flex-col sm:flex-row gap-3 justify-center">
                 <a href={takeawayPdf} download class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition-colors">↓ Télécharger la fiche mémo (PDF)</a>
                 <a href={nextUrl} class="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-slate-200 text-slate-700 text-sm font-semibold hover:border-slate-300 hover:bg-slate-50 transition-colors">Bloc suivant →</a>
@@ -447,39 +488,64 @@ const TOTAL = slides.length; // 19
     opacity: 0.4;
     cursor: default;
   }
+  .play-circle {
+    width: 68px; height: 68px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.52);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s, transform 0.15s;
+  }
+  .img-player-wrap:hover .play-circle {
+    background: rgba(0,0,0,0.72);
+    transform: scale(1.07);
+  }
 </style>
 
 <script is:inline>
   var current = 0;
   var TOTAL = 19;
+  var quizScore = 0;
   var nextUrl = document.getElementById('slides-root').dataset.nextUrl;
 
   function showSlide(n) {
+    // Pause audio of current slide
+    var curPanel = document.getElementById('panel-' + current);
+    if (curPanel) {
+      var curAudio = curPanel.querySelector('audio');
+      if (curAudio) { curAudio.pause(); curAudio.currentTime = 0; }
+    }
+
     document.querySelectorAll('.slide-panel').forEach(function(p, i) {
       p.style.display = i === n ? 'block' : 'none';
     });
     current = n;
 
-    // Reveal end-bloc-03 sentinel on takeaway slide
-    var endEl = document.getElementById('end-bloc-03');
-    if (endEl) endEl.style.display = (n === TOTAL - 1) ? 'block' : 'none';
+    // Autoplay audio on content slides
+    var newPanel = document.getElementById('panel-' + n);
+    if (newPanel) {
+      var newAudio = newPanel.querySelector('audio');
+      if (newAudio) newAudio.play().catch(function() {});
+    }
+    setPlayOverlay(current);
 
-    // Progress bar
+    // Takeaway (last slide)
+    if (n === TOTAL - 1) {
+      var endEl = document.getElementById('end-bloc-03');
+      if (endEl) endEl.style.display = 'block';
+      var scoreEl = document.getElementById('score-display-03');
+      if (scoreEl) scoreEl.textContent = quizScore + ' / 8';
+    }
+
     var pct = ((n + 1) / TOTAL * 100).toFixed(2) + '%';
     document.getElementById('progress-fill').style.width = pct;
     document.getElementById('slide-counter').textContent = 'Slide ' + (n + 1) + ' / ' + TOTAL;
-
-    // Prev button
     document.getElementById('prev-btn').disabled = n === 0;
 
-    // Next button label
+    // Hide nav on takeaway (has its own buttons)
+    var prevBtn = document.getElementById('prev-btn');
     var nextBtn = document.getElementById('next-btn');
-    if (n === TOTAL - 1) {
-      nextBtn.textContent = 'Bloc suivant →';
-    } else {
-      nextBtn.textContent = 'Suivant →';
-    }
-
+    prevBtn.style.display = n === TOTAL - 1 ? 'none' : '';
+    nextBtn.style.display = n === TOTAL - 1 ? 'none' : '';
   }
 
   function slidePrev() {
@@ -487,21 +553,48 @@ const TOTAL = slides.length; // 19
   }
 
   function slideNext() {
-    if (current < TOTAL - 1) {
-      showSlide(current + 1);
+    if (current < TOTAL - 1) showSlide(current + 1);
+  }
+
+  function setPlayOverlay(n) {
+    var panel = document.getElementById('panel-' + n);
+    if (!panel) return;
+    var audio = panel.querySelector('audio');
+    var playing = audio && !audio.paused;
+    var playIco  = panel.querySelector('.play-icon');
+    var pauseIco = panel.querySelector('.pause-icon');
+    if (playIco)  playIco.style.display  = playing ? 'none'  : 'block';
+    if (pauseIco) pauseIco.style.display = playing ? 'block' : 'none';
+  }
+
+  function imgPlayToggle(wrapper) {
+    var panel = wrapper.closest('.slide-panel');
+    var audio = panel.querySelector('audio');
+    if (!audio) return;
+    if (audio.paused) {
+      audio.play().catch(function() {});
     } else {
-      window.location.href = nextUrl;
+      audio.pause();
     }
   }
+
+  // Sync overlay icon with native player events
+  document.querySelectorAll('.slide-panel audio').forEach(function(audio) {
+    var idx = parseInt(audio.closest('.slide-panel').id.replace('panel-', ''), 10);
+    audio.addEventListener('play',  function() { setPlayOverlay(idx); });
+    audio.addEventListener('pause', function() { setPlayOverlay(idx); });
+    audio.addEventListener('ended', function() { setPlayOverlay(idx); });
+  });
 
   function handleQuizAnswer(btn) {
     var block = btn.closest('.quiz-block');
     if (block.dataset.answered) return;
     block.dataset.answered = '1';
-
     var correct = parseInt(block.dataset.answer, 10);
     var chosen  = parseInt(btn.dataset.index, 10);
-
+    if (block.dataset.quizType === 'interactive' && chosen === correct) {
+      quizScore++;
+    }
     block.querySelectorAll('.quiz-opt').forEach(function(opt, i) {
       opt.disabled = true;
       if (i === correct) {
@@ -512,11 +605,8 @@ const TOTAL = slides.length; // 19
         opt.classList.add('q-inactive');
       }
     });
-
-    // Show explanation
     var expl = block.querySelector('.quiz-expl');
     if (expl) expl.style.display = 'block';
-
   }
 
   // Init

@@ -16,6 +16,8 @@ const slides = [
     title: 'Accroche',
     img: `${base}assets/images/m4/04-1-accroche.png`,
     imgAlt: "Accroche — La méthode S.F.O.I.",
+    mp3:   `${base}assets/audio/m4/04-1-accroche.mp3`,
+    m4a:   `${base}assets/audio/m4/04-1-accroche.m4a`,
     script: [
       "Arriver ici, c'est déjà un choix.",
       "Si vous êtes dans cette Partie 2, c'est que vous n'avez pas décidé de vous arrêter à un usage conversationnel.",
@@ -33,6 +35,8 @@ const slides = [
     title: 'La progression S.F.O.I.',
     img: `${base}assets/images/m4/04-2-la-progression-sfoi.png`,
     imgAlt: "La progression S.F.O.I. — 4 niveaux avec critères de passage",
+    mp3:   `${base}assets/audio/m4/04-2-la-progression-sfoi.mp3`,
+    m4a:   `${base}assets/audio/m4/04-2-la-progression-sfoi.m4a`,
     script: [
       "Avant de voir Marc en action, posons le cadre.",
       "🟢 Structurer. Objectif : organiser 100% de la matière brute sans en perdre un seul élément. Ce n'est pas résumer — résumer, c'est supprimer. Structurer, c'est réorganiser. Critère de passage : aucune information n'a été supprimée.",
@@ -64,6 +68,8 @@ const slides = [
     title: 'Cas pratique — Marc applique Structurer puis Fiabiliser en direct',
     img: `${base}assets/images/m4/04-3-marc-applique-sfoi.png`,
     imgAlt: "Cas pratique Marc — 🟢 Structurer puis 🟡 Fiabiliser",
+    mp3:   `${base}assets/audio/m4/04-3-marc-applique-structurer-puis-fiabiliser-en-direct.mp3`,
+    m4a:   `${base}assets/audio/m4/04-3-marc-applique-structurer-puis-fiabiliser-en-direct.m4a`,
     script: [
       "Revenons à Marc.",
       "Marc commence par 🟢 Structurer. Il colle ses notes et envoie ce prompt : « Transforme ces notes en plan hiérarchique Markdown. Ne supprime aucune information. Ajoute une section 'Points à clarifier'. »",
@@ -95,6 +101,8 @@ const slides = [
     title: 'Les 3 erreurs les plus fréquentes',
     img: `${base}assets/images/m4/04-4-les-3-erreurs.png`,
     imgAlt: "Les 3 erreurs les plus fréquentes dans la méthode S.F.O.I.",
+    mp3:   `${base}assets/audio/m4/04-4-les-3-erreurs-les-plus-frequentes.mp3`,
+    m4a:   `${base}assets/audio/m4/04-4-les-3-erreurs-les-plus-frequentes.m4a`,
     script: [
       "Maintenant que vous avez vu la méthode en action, voici les 3 erreurs que je vois le plus souvent.",
       "Erreur 1 : confondre structurer et résumer. Structurer, c'est réorganiser 100% du contenu. Résumer, c'est en supprimer une partie. Quand vous utilisez le niveau 🟢, votre seul objectif est zéro perte d'information.",
@@ -124,6 +132,8 @@ const slides = [
     title: 'Clôture',
     img: `${base}assets/images/m4/04-5-cloture.png`,
     imgAlt: "Clôture — récap S.F.O.I. et suite",
+    mp3:   `${base}assets/audio/m4/04-5-cloture.mp3`,
+    m4a:   `${base}assets/audio/m4/04-5-cloture.m4a`,
     script: [
       "Marc a livré sa charte vendredi matin. Elle était solide parce qu'il avait suivi les étapes dans l'ordre.",
       "Ce que vous venez d'apprendre ne s'applique pas qu'aux chartes RH. Cela s'applique à n'importe quel document de travail : un rapport d'analyse, une proposition commerciale, un plan de projet, une note stratégique.",
@@ -280,14 +290,38 @@ const TOTAL = slides.length; // 17
             <div>
               <h2 class="text-base font-semibold text-amber-600 mb-4">{slide.title}</h2>
 
-              {/* Image */}
-              <div class="mb-5 rounded-xl overflow-hidden border border-slate-100 bg-amber-50">
+              {/* Image avec overlay play */}
+              <div class="img-player-wrap mb-4 rounded-xl overflow-hidden border border-slate-100 bg-slate-50"
+                   onclick="imgPlayToggle(this)"
+                   role="button" tabindex="0"
+                   onkeydown="if(event.key==='Enter'||event.key===' ')imgPlayToggle(this)"
+                   style="position:relative; cursor:pointer;">
                 <img
                   src={slide.img}
                   alt={slide.imgAlt}
                   style="width:100%; max-height:380px; object-fit:contain; display:block;"
                   loading={i === 0 ? 'eager' : 'lazy'}
                 />
+                <div class="play-overlay" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+                  <div class="play-circle">
+                    <svg class="play-icon" width="30" height="30" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+                      <polygon points="7,3 21,12 7,21"/>
+                    </svg>
+                    <svg class="pause-icon" width="30" height="30" viewBox="0 0 24 24" fill="white" aria-hidden="true" style="display:none">
+                      <rect x="4"  y="3" width="5" height="18" rx="1"/>
+                      <rect x="15" y="3" width="5" height="18" rx="1"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              {/* Audio */}
+              <div class="mb-4">
+                <audio controls preload="metadata" style="width:100%">
+                  <source src={slide.mp3} type="audio/mpeg" />
+                  <source src={slide.m4a} type="audio/mp4" />
+                  Votre navigateur ne supporte pas la lecture audio.
+                </audio>
               </div>
 
               {/* Accordéon script */}
@@ -342,7 +376,7 @@ const TOTAL = slides.length; // 17
 
               <p class="text-base font-semibold text-slate-900 mb-5 leading-snug">{slide.question}</p>
 
-              <div class="quiz-block space-y-2" data-answer={slide.answer}>
+              <div class="quiz-block space-y-2" data-answer={slide.answer} data-quiz-type="interactive">
                 {slide.opts.map((opt: string, j: number) => (
                   <button
                     type="button"
@@ -363,32 +397,28 @@ const TOTAL = slides.length; // 17
 
           {/* ── TAKEAWAY ─────────────────────────────────────────── */}
           {slide.kind === 'takeaway' && (
-            <div id="end-bloc-04" class="text-center py-8">
-              <div class="w-14 h-14 rounded-full bg-gradient-to-br from-green-400 to-green-600 text-white text-2xl flex items-center justify-center mx-auto mb-5">✓</div>
-              <h2 class="text-xl font-bold text-slate-900 mb-2">Bloc 4 terminé</h2>
-              <p class="text-slate-500 text-sm mb-8">Vous avez parcouru les {TOTAL} slides de ce bloc.</p>
-              <div class="flex flex-col sm:flex-row gap-3 justify-center items-center flex-wrap">
+            <div class="text-center py-8">
+              <div id="end-bloc-04" style="display:none"></div>
+              <div class="w-16 h-16 rounded-2xl bg-amber-500 flex items-center justify-center mx-auto mb-6">
+                <span class="text-white text-2xl font-bold">✓</span>
+              </div>
+              <h2 class="text-2xl font-bold text-slate-900 mb-3">Bloc 4 terminé</h2>
+              <div id="score-display-04" class="text-3xl font-bold text-amber-600 mb-1">—</div>
+              <p class="text-slate-500 text-sm mb-6">/ 8 questions du quiz final</p>
+              <p class="text-slate-500 mb-6 max-w-sm mx-auto">Téléchargez la fiche mémo pour garder les points clés sous la main.</p>
+              <div class="flex flex-col sm:flex-row gap-3 justify-center">
                 <a
                   href={takeawayPdf}
-                  target="_blank"
-                  rel="noopener"
-                  class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-amber-500 text-white text-sm font-medium hover:bg-amber-600 transition-all no-underline"
+                  download
+                  class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-amber-500 text-white text-sm font-semibold hover:bg-amber-600 transition-colors"
                 >
-                  Télécharger la fiche mémo →
+                  ↓ Télécharger la fiche mémo (PDF)
                 </a>
-                {next && (
-                  <a
-                    href={nextUrl}
-                    class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-all no-underline"
-                  >
-                    Bloc suivant : {next.titre} →
-                  </a>
-                )}
                 <a
-                  href={`${base}formation/`}
-                  class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-slate-200 text-slate-600 text-sm font-medium hover:border-slate-300 hover:bg-slate-50 transition-all no-underline"
+                  href={nextUrl}
+                  class="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-slate-200 text-slate-700 text-sm font-semibold hover:border-slate-300 hover:bg-slate-50 transition-colors"
                 >
-                  ← Retour au parcours
+                  Bloc suivant →
                 </a>
               </div>
             </div>
@@ -442,40 +472,70 @@ const TOTAL = slides.length; // 17
     opacity: 0.4;
     cursor: default;
   }
+  .play-circle {
+    width: 68px; height: 68px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.52);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s, transform 0.15s;
+  }
+  .img-player-wrap:hover .play-circle {
+    background: rgba(0,0,0,0.72);
+    transform: scale(1.07);
+  }
 </style>
 
 <script is:inline>
   var current = 0;
   var TOTAL = 17;
-
-  function getSlideTitle(i) {
-    var panel = document.getElementById('panel-' + i);
-    if (!panel) return '';
-    var h2 = panel.querySelector('h2');
-    return h2 ? h2.textContent : '';
-  }
+  var quizScore = 0;
 
   function showSlide(n) {
+    // Pause audio of current slide
+    var curPanel = document.getElementById('panel-' + current);
+    if (curPanel) {
+      var curAudio = curPanel.querySelector('audio');
+      if (curAudio) { curAudio.pause(); curAudio.currentTime = 0; }
+    }
+
     document.querySelectorAll('.slide-panel').forEach(function(p, i) {
       p.style.display = i === n ? 'block' : 'none';
     });
     current = n;
 
-    // Progress bar
+    // Autoplay audio on content slides
+    var newPanel = document.getElementById('panel-' + n);
+    if (newPanel) {
+      var newAudio = newPanel.querySelector('audio');
+      if (newAudio) newAudio.play().catch(function() {});
+    }
+    setPlayOverlay(current);
+
+    // Takeaway (last slide)
+    if (n === TOTAL - 1) {
+      var endEl = document.getElementById('end-bloc-04');
+      if (endEl) endEl.style.display = 'block';
+      var scoreEl = document.getElementById('score-display-04');
+      if (scoreEl) scoreEl.textContent = quizScore + ' / 8';
+    }
+
     var pct = ((n + 1) / TOTAL * 100).toFixed(2) + '%';
     document.getElementById('progress-fill').style.width = pct;
     document.getElementById('slide-counter').textContent = 'Slide ' + (n + 1) + ' / ' + TOTAL;
 
-    // Title badge
     var badge = document.getElementById('slide-title-badge');
-    if (badge) badge.textContent = getSlideTitle(n);
+    if (badge) {
+      var h2 = document.getElementById('panel-' + n)?.querySelector('h2');
+      badge.textContent = h2 ? h2.textContent : '';
+    }
 
-    // Prev button
     document.getElementById('prev-btn').disabled = n === 0;
 
-    // Next button label + state
+    // Hide nav on takeaway (has its own buttons)
+    var prevBtn = document.getElementById('prev-btn');
     var nextBtn = document.getElementById('next-btn');
-    nextBtn.textContent = n === TOTAL - 1 ? 'Bloc suivant →' : 'Suivant →';
+    prevBtn.style.display = n === TOTAL - 1 ? 'none' : '';
+    nextBtn.style.display = n === TOTAL - 1 ? 'none' : '';
   }
 
   function slidePrev() {
@@ -483,19 +543,48 @@ const TOTAL = slides.length; // 17
   }
 
   function slideNext() {
-    if (current < TOTAL - 1) {
-      showSlide(current + 1);
+    if (current < TOTAL - 1) showSlide(current + 1);
+  }
+
+  function setPlayOverlay(n) {
+    var panel = document.getElementById('panel-' + n);
+    if (!panel) return;
+    var audio = panel.querySelector('audio');
+    var playing = audio && !audio.paused;
+    var playIco  = panel.querySelector('.play-icon');
+    var pauseIco = panel.querySelector('.pause-icon');
+    if (playIco)  playIco.style.display  = playing ? 'none'  : 'block';
+    if (pauseIco) pauseIco.style.display = playing ? 'block' : 'none';
+  }
+
+  function imgPlayToggle(wrapper) {
+    var panel = wrapper.closest('.slide-panel');
+    var audio = panel.querySelector('audio');
+    if (!audio) return;
+    if (audio.paused) {
+      audio.play().catch(function() {});
+    } else {
+      audio.pause();
     }
   }
+
+  // Sync overlay icon with native player events
+  document.querySelectorAll('.slide-panel audio').forEach(function(audio) {
+    var idx = parseInt(audio.closest('.slide-panel').id.replace('panel-', ''), 10);
+    audio.addEventListener('play',  function() { setPlayOverlay(idx); });
+    audio.addEventListener('pause', function() { setPlayOverlay(idx); });
+    audio.addEventListener('ended', function() { setPlayOverlay(idx); });
+  });
 
   function handleQuizAnswer(btn) {
     var block = btn.closest('.quiz-block');
     if (block.dataset.answered) return;
     block.dataset.answered = '1';
-
     var correct = parseInt(block.dataset.answer, 10);
     var chosen  = parseInt(btn.dataset.index, 10);
-
+    if (block.dataset.quizType === 'interactive' && chosen === correct) {
+      quizScore++;
+    }
     block.querySelectorAll('.quiz-opt').forEach(function(opt, i) {
       opt.disabled = true;
       if (i === correct) {
@@ -506,8 +595,6 @@ const TOTAL = slides.length; // 17
         opt.classList.add('q-inactive');
       }
     });
-
-    // Show explanation
     var expl = block.querySelector('.quiz-expl');
     if (expl) expl.style.display = 'block';
   }

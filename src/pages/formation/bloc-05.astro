@@ -16,6 +16,8 @@ const slides = [
     title: 'Accroche',
     img: `${base}assets/images/m5/05-1-accroche.png`,
     imgAlt: "Accroche — Projets, Instructions et Documents",
+    mp3:   `${base}assets/audio/m5/05-1-accroche.mp3`,
+    m4a:   `${base}assets/audio/m5/05-1-accroche.m4a`,
     script: [
       "Je vais vous décrire quelque chose que vous avez probablement déjà vécu.",
       "Vous avez eu une excellente session de travail avec l'IA. Vous avez construit un contexte solide. L'IA connaissait votre secteur, votre ton, vos contraintes internes, le nom de vos produits. Les réponses étaient précises, pertinentes, directement utilisables.",
@@ -32,6 +34,8 @@ const slides = [
     title: 'Projets — créer un espace de travail contextuel',
     img: `${base}assets/images/m5/05-2-projets-espace-contextuel.png`,
     imgAlt: "Projets — espace de travail persistant",
+    mp3:   `${base}assets/audio/m5/05-2-projets-creer-espace-de-travail-contextuel.mp3`,
+    m4a:   `${base}assets/audio/m5/05-2-projets-creer-espace-de-travail-contextuel.m4a`,
     script: [
       "Le premier outil, c'est les Projets. Un Projet dans Claude, c'est un espace de travail dédié à un sujet ou une mission précise. Tout ce que vous y mettez — documents, instructions, historique — reste accessible d'une session à l'autre.",
       "Dans un Projet, vous pouvez stocker trois types d'éléments : des instructions permanentes (ton, formulations à éviter, contraintes internes), des documents de référence (charte interne, catalogue produit, procédures), et un historique de conversation.",
@@ -61,6 +65,8 @@ const slides = [
     title: 'Artifacts — demander un livrable, pas une réponse',
     img: `${base}assets/images/m5/05-3-artifacts-livrable.png`,
     imgAlt: "Artifacts — livrables structurés directement exploitables",
+    mp3:   `${base}assets/audio/m5/05-3-artifacts-demander-un-livrable-pas-une-reponse.mp3`,
+    m4a:   `${base}assets/audio/m5/05-3-artifacts-demander-un-livrable-pas-une-reponse.m4a`,
     script: [
       "Le deuxième outil change la façon dont vous recevez les réponses. Par défaut, une IA répond en prose. Vous posez une question, elle développe une réponse en paragraphes.",
       "Souvent, ce dont vous avez besoin, c'est d'un livrable : quelque chose que vous pouvez directement copier, coller, partager ou télécharger. C'est à ça que servent les Artifacts.",
@@ -76,6 +82,8 @@ const slides = [
     title: 'Documents et Instructions de Projet',
     img: `${base}assets/images/m5/05-4-documents-instructions.png`,
     imgAlt: "Documents et Instructions de Projet — connaissance métier intégrée",
+    mp3:   `${base}assets/audio/m5/05-4-documents-et-instructions-de-projet.mp3`,
+    m4a:   `${base}assets/audio/m5/05-4-documents-et-instructions-de-projet.m4a`,
     script: [
       "Il y a un troisième axe : donner à l'IA une connaissance métier qu'elle n'a pas par défaut.",
       "Un LLM entraîné sur des données génériques ne connaît pas : votre secteur spécifique, vos documents internes, vos clients, votre vocabulaire maison. Résultat : vous devez re-fournir les données depuis le début.",
@@ -91,6 +99,8 @@ const slides = [
     title: 'Exemple',
     img: `${base}assets/images/m5/05-4b-exemple.png`,
     imgAlt: "Exemple — articulation des 3 outils ensemble",
+    mp3:   `${base}assets/audio/m5/05-4b-exemple.mp3`,
+    m4a:   `${base}assets/audio/m5/05-4b-exemple.m4a`,
     script: [
       "Voici un exemple qui articule les trois outils ensemble.",
       "Contexte : vous gérez une organisation de services. Un prestataire vous envoie un nouveau contrat. Vous devez vérifier rapidement s'il respecte votre charte de sécurité interne.",
@@ -121,6 +131,8 @@ const slides = [
     title: 'Clôture',
     img: `${base}assets/images/m5/05-5-cloture.png`,
     imgAlt: "Clôture — récap Partie 1",
+    mp3:   `${base}assets/audio/m5/05-5-cloture.mp3`,
+    m4a:   `${base}assets/audio/m5/05-5-cloture.m4a`,
     script: [
       "Si je résume ce que vous avez dans la Partie 1 :",
       "Dans le bloc Choisir son prompt, vous avez appris à choisir l'intention de votre demande — production, exploration, structuration, vérification. Vous ne subissez plus vos prompts.",
@@ -263,18 +275,45 @@ const TOTAL = slides.length; // 17
       {slides.map((slide: any, i: number) => (
         <div class="slide-panel" id={`panel-${i}`} style={i > 0 ? 'display:none' : ''}>
 
-          {/* ── CONTENU (no audio) ── */}
+          {/* ── CONTENU ── */}
           {slide.kind === 'content' && (
             <div>
               <h2 class="text-base font-semibold text-blue-700 mb-4">{slide.title}</h2>
-              <div class="mb-4 rounded-xl overflow-hidden border border-slate-100 bg-slate-50">
+
+              {/* Image avec overlay play */}
+              <div class="img-player-wrap mb-4 rounded-xl overflow-hidden border border-slate-100 bg-slate-50"
+                   onclick="imgPlayToggle(this)"
+                   role="button" tabindex="0"
+                   onkeydown="if(event.key==='Enter'||event.key===' ')imgPlayToggle(this)"
+                   style="position:relative; cursor:pointer;">
                 <img
                   src={slide.img}
                   alt={slide.imgAlt}
-                  style="width:100%; max-height:400px; object-fit:contain; display:block;"
+                  style="width:100%; max-height:380px; object-fit:contain; display:block;"
                   loading={i === 0 ? 'eager' : 'lazy'}
                 />
+                <div class="play-overlay" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+                  <div class="play-circle">
+                    <svg class="play-icon" width="30" height="30" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+                      <polygon points="7,3 21,12 7,21"/>
+                    </svg>
+                    <svg class="pause-icon" width="30" height="30" viewBox="0 0 24 24" fill="white" aria-hidden="true" style="display:none">
+                      <rect x="4"  y="3" width="5" height="18" rx="1"/>
+                      <rect x="15" y="3" width="5" height="18" rx="1"/>
+                    </svg>
+                  </div>
+                </div>
               </div>
+
+              {/* Audio */}
+              <div class="mb-4">
+                <audio controls preload="metadata" style="width:100%">
+                  <source src={slide.mp3} type="audio/mpeg" />
+                  <source src={slide.m4a} type="audio/mp4" />
+                  Votre navigateur ne supporte pas la lecture audio.
+                </audio>
+              </div>
+
               <details class="border border-slate-200 rounded-xl overflow-hidden">
                 <summary class="s-summary px-4 py-3 text-sm font-medium text-slate-600 hover:bg-slate-50 cursor-pointer transition-colors">
                   Voir le script complet ▾
@@ -321,7 +360,7 @@ const TOTAL = slides.length; // 17
                 <span class="text-xs text-slate-400">Question {slide.qNum} / 8</span>
               </div>
               <p class="text-base font-semibold text-slate-900 mb-5 leading-snug">{slide.question}</p>
-              <div class="quiz-block space-y-2" data-answer={slide.answer}>
+              <div class="quiz-block space-y-2" data-answer={slide.answer} data-quiz-type="interactive">
                 {slide.opts.map((opt: string, j: number) => (
                   <button
                     type="button"
@@ -347,7 +386,9 @@ const TOTAL = slides.length; // 17
                 <span class="text-white text-2xl font-bold">✓</span>
               </div>
               <h2 class="text-2xl font-bold text-slate-900 mb-3">Bloc 5 terminé</h2>
-              <p class="text-slate-500 mb-8 max-w-sm mx-auto">Téléchargez la fiche mémo pour garder les points clés sous la main.</p>
+              <div id="score-display-05" class="text-3xl font-bold text-blue-700 mb-1">—</div>
+              <p class="text-slate-500 text-sm mb-6">/ 8 questions du quiz final</p>
+              <p class="text-slate-500 mb-6 max-w-sm mx-auto">Téléchargez la fiche mémo pour garder les points clés sous la main.</p>
               <div class="flex flex-col sm:flex-row gap-3 justify-center">
                 <a
                   href={takeawayPdf}
@@ -391,23 +432,52 @@ const TOTAL = slides.length; // 17
   .quiz-opt.q-correct { border-color: #22c55e !important; background-color: #f0fdf4 !important; color: #15803d !important; }
   .quiz-opt.q-wrong { border-color: #f87171 !important; background-color: #fef2f2 !important; color: #dc2626 !important; }
   .quiz-opt.q-inactive { opacity: 0.4; cursor: default; }
+  .play-circle {
+    width: 68px; height: 68px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.52);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s, transform 0.15s;
+  }
+  .img-player-wrap:hover .play-circle {
+    background: rgba(0,0,0,0.72);
+    transform: scale(1.07);
+  }
 </style>
 
 <script is:inline>
   var current = 0;
   var TOTAL = 17;
+  var quizScore = 0;
   var nextUrl = document.getElementById('slides-root').dataset.nextUrl;
 
   function showSlide(n) {
+    // Pause audio of current slide
+    var curPanel = document.getElementById('panel-' + current);
+    if (curPanel) {
+      var curAudio = curPanel.querySelector('audio');
+      if (curAudio) { curAudio.pause(); curAudio.currentTime = 0; }
+    }
+
     document.querySelectorAll('.slide-panel').forEach(function(p, i) {
       p.style.display = i === n ? 'block' : 'none';
     });
     current = n;
 
-    // Trigger completion on takeaway slide (last slide)
+    // Autoplay audio on content slides
+    var newPanel = document.getElementById('panel-' + n);
+    if (newPanel) {
+      var newAudio = newPanel.querySelector('audio');
+      if (newAudio) newAudio.play().catch(function() {});
+    }
+    setPlayOverlay(current);
+
+    // Takeaway (last slide)
     if (n === TOTAL - 1) {
       var endEl = document.getElementById('end-bloc-05');
       if (endEl) endEl.style.display = 'block';
+      var scoreEl = document.getElementById('score-display-05');
+      if (scoreEl) scoreEl.textContent = quizScore + ' / 8';
     }
 
     var pct = ((n + 1) / TOTAL * 100).toFixed(2) + '%';
@@ -415,7 +485,7 @@ const TOTAL = slides.length; // 17
     document.getElementById('slide-counter').textContent = 'Slide ' + (n + 1) + ' / ' + TOTAL;
     document.getElementById('prev-btn').disabled = n === 0;
 
-    // Hide nav buttons on takeaway (last) slide — it has its own CTA buttons
+    // Hide nav on takeaway (has its own buttons)
     var prevBtn = document.getElementById('prev-btn');
     var nextBtn = document.getElementById('next-btn');
     prevBtn.style.display = n === TOTAL - 1 ? 'none' : '';
@@ -428,8 +498,37 @@ const TOTAL = slides.length; // 17
 
   function slideNext() {
     if (current < TOTAL - 1) showSlide(current + 1);
-    else window.location.href = nextUrl;
   }
+
+  function setPlayOverlay(n) {
+    var panel = document.getElementById('panel-' + n);
+    if (!panel) return;
+    var audio = panel.querySelector('audio');
+    var playing = audio && !audio.paused;
+    var playIco  = panel.querySelector('.play-icon');
+    var pauseIco = panel.querySelector('.pause-icon');
+    if (playIco)  playIco.style.display  = playing ? 'none'  : 'block';
+    if (pauseIco) pauseIco.style.display = playing ? 'block' : 'none';
+  }
+
+  function imgPlayToggle(wrapper) {
+    var panel = wrapper.closest('.slide-panel');
+    var audio = panel.querySelector('audio');
+    if (!audio) return;
+    if (audio.paused) {
+      audio.play().catch(function() {});
+    } else {
+      audio.pause();
+    }
+  }
+
+  // Sync overlay icon with native player events
+  document.querySelectorAll('.slide-panel audio').forEach(function(audio) {
+    var idx = parseInt(audio.closest('.slide-panel').id.replace('panel-', ''), 10);
+    audio.addEventListener('play',  function() { setPlayOverlay(idx); });
+    audio.addEventListener('pause', function() { setPlayOverlay(idx); });
+    audio.addEventListener('ended', function() { setPlayOverlay(idx); });
+  });
 
   function handleQuizAnswer(btn) {
     var block = btn.closest('.quiz-block');
@@ -437,6 +536,9 @@ const TOTAL = slides.length; // 17
     block.dataset.answered = '1';
     var correct = parseInt(block.dataset.answer, 10);
     var chosen = parseInt(btn.dataset.index, 10);
+    if (block.dataset.quizType === 'interactive' && chosen === correct) {
+      quizScore++;
+    }
     block.querySelectorAll('.quiz-opt').forEach(function(opt, i) {
       opt.disabled = true;
       if (i === correct) opt.classList.add('q-correct');
