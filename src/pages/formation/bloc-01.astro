@@ -1,44 +1,581 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import SlidePlayer from '../../components/SlidePlayer.astro';
-import { BLOCS, getSlidesForBloc, TAKEAWAY_URLS } from '../../lib/slideData';
+import { BLOCS } from '../../lib/slideData';
 const base = import.meta.env.BASE_URL;
 
 const bloc = BLOCS.find(b => b.id === 'bloc-01')!;
 const next = BLOCS.find(b => b.ordre === bloc.ordre + 1);
 const nextUrl = next ? `${base}formation/${next.id}/` : `${base}formation/`;
-const slides = getSlidesForBloc('bloc-01');
-const takeawayUrl = TAKEAWAY_URLS['bloc-01'];
+
+// ─── Données des slides ─────────────────────────────────────────────────
+
+const slides = [
+
+  // ── 1 ── Contenu : Accroche terrain
+  {
+    kind: 'content',
+    title: 'Accroche terrain',
+    img:   `${base}assets/images/m1/01-1-accroche-terrain.png`,
+    imgAlt: "L'IA dans les entreprises — contexte terrain 2023",
+    mp3:   `${base}assets/audio/m1/01-1-accroche-terrain.mp3`,
+    m4a:   `${base}assets/audio/m1/01-1-accroche-terrain.m4a`,
+    script: [
+      "Vous utilisez déjà l'IA. Ou vos collègues l'utilisent pendant que vous regardez ce module.",
+      "Claude, ChatGPT, Copilot, Gemini — ces outils sont dans les entreprises depuis 2023. Pas dans les laboratoires de recherche. Dans les emails, les comptes rendus, les présentations, les analyses commerciales.",
+      "Dans une organisation comme la vôtre, il y a probablement des dizaines de salariés qui ouvrent ces outils chaque semaine. Certains obtiennent des résultats remarquables. D'autres accumulent des erreurs sans savoir pourquoi.",
+      "La différence ne vient pas du talent. Elle vient de la compréhension.",
+      "La plupart des gens utilisent l'IA comme un moteur de recherche très puissant — on pose une question, on attend une réponse fiable. Et c'est là que les erreurs commencent.",
+      "Ce module va vous expliquer ce que ces outils font réellement — et surtout ce qu'ils ne font pas. Pas pour vous décourager de les utiliser. Pour vous donner les bases qui permettent de les utiliser correctement.",
+      "Parce que comprendre la différence entre ce qu'est l'IA et ce qu'on croit qu'elle est — c'est la fondation de tout ce qui suit dans cette formation.",
+    ],
+  },
+
+  // ── 2 ── Contenu : Ce qu'est un LLM
+  {
+    kind: 'content',
+    title: "Ce qu'est un LLM",
+    img:   `${base}assets/images/m1/01-2-ce-quest-un-llm.png`,
+    imgAlt: "LLM — moteur de prédiction statistique, pas de raisonnement",
+    mp3:   `${base}assets/audio/m1/01-2-ce-quest-un-llm.mp3`,
+    m4a:   `${base}assets/audio/m1/01-2-ce-quest-un-llm.m4a`,
+    script: [
+      "Commençons par décortiquer le terme que vous allez entendre partout.",
+      "LLM, c'est l'acronyme anglais de Large Language Model — Grand Modèle de Langage. Claude, ChatGPT, Gemini, tous ces outils sont des LLM.",
+      "C'est un modèle statistique entraîné sur des milliards de textes : des livres, des articles, du code, des conversations, des sites web. Et à travers cet entraînement, il a appris une seule chose fondamentale : quelle suite de mots est la plus probable après ce que vous venez d'écrire.",
+      "Il ne comprend pas. Il prédit. C'est une distinction énorme, et elle va conditionner tout ce que vous allez apprendre dans cette formation.",
+      "Imaginez un stagiaire extrêmement cultivé. Il a lu des milliers de livres, de rapports, de manuels, d'articles. Il s'exprime parfaitement, en français comme en anglais. Mais il arrive chez vous le premier jour sans aucun contexte sur votre entreprise.",
+      "Si vous lui donnez des instructions précises et un contexte clair, il va produire un travail remarquable. Si vous lui posez une question vague sans contexte, il va improviser — plausible, mais peut-être pas adapté à votre réalité. L'IA générative fonctionne exactement comme ça.",
+      "Et parce que l'IA prédit plutôt qu'elle ne comprend, il lui arrive de produire des réponses qui semblent correctes mais ne le sont pas. On appelle ça une hallucination — pas un mensonge, mais le résultat normal de son mécanisme de prédiction.",
+      "Exemple : demandez à une IA une référence juridique précise. Elle peut vous citer un article de loi avec numéro, intitulé, date d'entrée en vigueur. Formulé dans un style juridique parfait. Sauf que cet article n'existe pas. L'IA a fait ce qu'elle fait toujours : produire la réponse la plus plausible. Forme correcte, fond potentiellement faux.",
+    ],
+  },
+
+  // ── 3 ── Quiz intermédiaire 01-2 (statique)
+  {
+    kind: 'quiz-static',
+    label: 'Pause réflexion — après le bloc 2',
+    question: 'Un LLM génère ses réponses en...',
+    opts: [
+      'Cherchant la réponse correcte dans une base de données',
+      'Prédisant la suite de mots la plus probable après votre message',
+      'Raisonnant comme un expert humain dans chaque domaine',
+      'Accédant à des informations en temps réel sur le web',
+    ],
+    answer: 1,
+    expl: "Un LLM est un moteur de prédiction statistique. Il ne comprend pas — il prédit. C'est pourquoi ses réponses peuvent sembler correctes sans l'être : elles sont plausibles, pas nécessairement vraies.",
+  },
+
+  // ── 4 ── Contenu : Ce que l'IA ne fait pas
+  {
+    kind: 'content',
+    title: "Ce que l'IA ne fait pas",
+    img:   `${base}assets/images/m1/01-3-ce-que-ia-ne-fait-pas.png`,
+    imgAlt: "3 limites fondamentales : cut-off, fichiers, incertitude non signalée",
+    mp3:   `${base}assets/audio/m1/01-3-ce-que-ia-ne-fait-pas.mp3`,
+    m4a:   `${base}assets/audio/m1/01-3-ce-que-ia-ne-fait-pas.m4a`,
+    script: [
+      "Maintenant qu'on sait ce que l'IA est — un moteur de prédiction textuelle — voyons ce qu'elle n'est pas. Trois limites fondamentales à garder en tête.",
+      "Limite 1 : elle n'a pas accès au temps réel. L'IA a été entraînée jusqu'à une certaine date, ce qu'on appelle sa date de coupure, ou cut-off. Tout ce qui s'est passé après, elle ne le sait pas. Une loi votée il y a six mois, une modification du code du travail : l'IA peut ignorer tout ça. Pire, elle peut vous donner la règle d'avant avec la même assurance.",
+      "Certains outils ont un accès web pour compenser. Mais ça demande plus de vigilance sur la fiabilité des sources consultées.",
+      "Limite 2 : elle ne voit pas vos documents si vous ne les lui donnez pas. Un fichier Excel sur votre bureau, un rapport sur votre réseau : invisible pour l'IA. Pour qu'elle travaille avec vos données, vous devez les lui fournir explicitement — avec toutes les précautions que ça implique sur les données sensibles.",
+      "Limite 3 : elle ne sait pas signaler ce qu'elle ne sait pas. C'est la limite la plus insidieuse. Quand un collègue n'est pas sûr, il hésite, il dit « je pense que ». L'IA produit toujours une réponse, avec le même ton d'assurance qu'elle soit certaine ou en train d'inventer.",
+      "Elle ne va pas vous dire spontanément « attention, je ne suis pas sûr de ça ». Ce comportement existe, mais il faut l'activer explicitement dans votre demande — on verra comment dans les modules suivants.",
+    ],
+  },
+
+  // ── 5 ── Quiz intermédiaire 01-3 (statique)
+  {
+    kind: 'quiz-static',
+    label: 'Pause réflexion — après le bloc 4',
+    question: "Vous demandez à l'IA le taux de TVA applicable à votre activité depuis le 1er janvier 2026. Quelle précaution s'impose ?",
+    opts: [
+      "Aucune — la TVA est une donnée stable que l'IA connaît parfaitement",
+      'Reformuler la question pour obtenir une réponse plus précise',
+      "Vérifier dans une source officielle récente — la date de coupure de l'IA peut l'empêcher de connaître un changement récent",
+      "Utiliser un autre outil IA spécialisé en fiscalité",
+    ],
+    answer: 2,
+    expl: "La date de coupure signifie que l'IA n'a pas accès aux informations postérieures à son entraînement. Toute réglementation, taux ou loi peut avoir évolué depuis. Vérifier dans une source officielle est obligatoire pour les données normatives récentes.",
+  },
+
+  // ── 6 ── Contenu : Les 4 implications clés
+  {
+    kind: 'content',
+    title: 'Les 4 implications clés',
+    img:   `${base}assets/images/m1/01-4-les-4-implications-cles.png`,
+    imgAlt: "4 implications pratiques — rôle, vérification, responsabilité, outils",
+    mp3:   `${base}assets/audio/m1/01-4-les-4-implications-cles.mp3`,
+    m4a:   `${base}assets/audio/m1/01-4-les-4-implications-cles.m4a`,
+    script: [
+      "Maintenant qu'on comprend le mécanisme, voici ce que ça implique concrètement. Quatre implications pratiques.",
+      "Implication 1 : la qualité de votre demande détermine la qualité de la réponse. L'IA répond à la question posée. Si la question est floue, la réponse sera floue, même si elle semble bien structurée.",
+      "Premier levier : donnez-lui un rôle. « Agis en tant que directeur financier d'une organisation de 80 personnes. » « Tu es un expert en droit du travail qui conseille des managers non juristes. » Attribuer un rôle donne à l'IA un cadre de référence et réduit significativement les réponses génériques.",
+      "Implication 2 : certains types d'informations doivent toujours être vérifiés dans une source officielle. Dates. Chiffres. Citations. Références réglementaires. La règle : tout chiffre, toute date, toute référence légale dans un livrable IA doit être vérifié avant utilisation.",
+      "Implication 3 : vous restez responsable de tout ce que vous envoyez ou publiez. L'IA propose. Vous analysez. Vous validez. Vous décidez. Ce n'est pas une délégation de responsabilité, c'est un outil d'assistance.",
+      "Implication 4 : pour vos tâches récurrentes, utilisez les bons outils. Les Projets permettent de charger vos documents dans un espace de travail persistant. Vous les configurez une fois, l'IA les utilise à chaque session. Le bloc « Projets, instructions et documents » vous montrera exactement comment faire.",
+    ],
+  },
+
+  // ── 7 ── Quiz intermédiaire 01-4 (statique)
+  {
+    kind: 'quiz-static',
+    label: 'Pause réflexion — après le bloc 6',
+    question: "Une hallucination de l'IA, c'est quand...",
+    opts: [
+      "L'IA invente une réponse parce qu'elle n'a pas compris la question",
+      "L'IA produit quelque chose de faux avec une forme correcte — résultat de son mécanisme de prédiction",
+      "L'IA refuse de répondre à une question jugée trop risquée",
+      "L'IA répète la même réponse plusieurs fois sans progresser",
+    ],
+    answer: 1,
+    expl: "Une hallucination n'est pas un mensonge intentionnel. L'IA a produit la réponse statistiquement la plus plausible — et cette réponse était factuellement fausse. La forme est parfaite (style juridique, chiffres bien formatés, source citée), le fond est inventé. C'est ce qui la rend dangereuse.",
+  },
+
+  // ── 8 ── Contenu : Message de clôture
+  {
+    kind: 'content',
+    title: 'Message de clôture',
+    img:   `${base}assets/images/m1/01-5-message-de-cloture.png`,
+    imgAlt: "Récapitulatif — mécanisme LLM, 3 limites, 4 implications",
+    mp3:   `${base}assets/audio/m1/01-5-message-de-cloture.mp3`,
+    m4a:   `${base}assets/audio/m1/01-5-message-de-cloture.m4a`,
+    script: [
+      "Faisons le point.",
+      "Un LLM est un moteur de prédiction statistique. Il ne comprend pas. Il prédit la suite la plus probable de votre demande.",
+      "Trois limites fondamentales : il n'a pas accès au temps réel, il ne voit pas vos fichiers si vous ne les lui donnez pas, et il ne signale pas spontanément son incertitude.",
+      "Quatre implications pour votre pratique : clarifiez vos demandes et donnez un rôle, vérifiez les faits critiques dans des sources officielles, gardez la main sur toutes vos décisions, et utilisez les outils adaptés à votre contexte.",
+      "Ce que vous venez de comprendre — mécanisme de prédiction, hallucinations, limites — c'est ce qui fait la différence entre les utilisateurs qui en tirent une valeur réelle et ceux qui accumulent les erreurs sans comprendre pourquoi.",
+      "Dans le module suivant, on va parler des risques concrets dans un contexte professionnel, et des règles simples pour les éviter. Le quiz qui suit va tester exactement ces notions.",
+    ],
+  },
+
+  // ── 9-16 ── Quiz final (interactif, 1 question / slide)
+
+  {
+    kind: 'quiz-interactive', qNum: 1,
+    question: 'Un LLM produit ses réponses en :',
+    opts: [
+      'Cherchant la vérité dans une base de données',
+      'Prédisant la suite de texte la plus probable',
+      'Raisonnant comme un expert humain',
+      'Accédant à Internet en temps réel',
+    ],
+    answer: 1,
+    expl: "Un LLM est un modèle statistique de prédiction. Il ne cherche pas la vérité — il génère ce qui est le plus plausible.",
+  },
+  {
+    kind: 'quiz-interactive', qNum: 2,
+    question: "Une « hallucination » d'IA, c'est :",
+    opts: [
+      'Une réponse incohérente et illisible',
+      'Une réponse refusée pour raisons éthiques',
+      'Une information inventée présentée avec confiance',
+      'Une erreur de calcul mathématique',
+    ],
+    answer: 2,
+    expl: "L'IA peut produire des citations, des chiffres ou des faits qui semblent parfaitement corrects mais sont faux.",
+  },
+  {
+    kind: 'quiz-interactive', qNum: 3,
+    question: "Qu'est-ce que le « cut-off » d'un modèle ?",
+    opts: [
+      "La limite de longueur d'une réponse",
+      "La date après laquelle l'IA n'a plus de connaissances",
+      'Le nombre maximum de questions autorisées',
+      'Le coût maximum par requête',
+    ],
+    answer: 1,
+    expl: "Le cut-off est la date d'arrêt de l'entraînement. L'IA ne connaît pas les événements postérieurs.",
+  },
+  {
+    kind: 'quiz-interactive', qNum: 4,
+    question: "Vous ouvrez un contrat PDF sur votre bureau et demandez à l'IA de le résumer. Elle peut le voir ?",
+    opts: [
+      'Oui, automatiquement si elle est connectée',
+      'Oui, si vous êtes abonné premium',
+      'Non, il faut lui fournir le contenu explicitement',
+      "Oui, via l'historique du navigateur",
+    ],
+    answer: 2,
+    expl: "Un fichier ouvert localement n'est pas visible par l'IA. Vous devez copier/coller le contenu ou le joindre.",
+  },
+  {
+    kind: 'quiz-interactive', qNum: 5,
+    question: "L'IA vous donne une référence juridique précise avec numéro d'article. Que faites-vous ?",
+    opts: [
+      "Vous la citez directement — l'IA est fiable sur les faits",
+      'Vous la vérifiez dans une source officielle avant utilisation',
+      "Vous demandez à l'IA de confirmer une deuxième fois",
+      "Vous l'utilisez uniquement si c'est une IA premium",
+    ],
+    answer: 1,
+    expl: "Les dates, chiffres, citations et références réglementaires doivent toujours être vérifiés dans des sources officielles.",
+  },
+  {
+    kind: 'quiz-interactive', qNum: 6,
+    question: "L'IA vous donne une réponse très structurée et convaincante. Cela signifie :",
+    opts: [
+      'Que la réponse est correcte',
+      "Que l'IA a vérifié ses sources",
+      'Que la forme est bonne, mais le fond doit être vérifié',
+      'Que vous pouvez la publier sans relecture',
+    ],
+    answer: 2,
+    expl: "La qualité de la mise en forme est indépendante de la fiabilité du contenu. L'IA structure très bien — même des erreurs.",
+  },
+  {
+    kind: 'quiz-interactive', qNum: 7,
+    question: "Dans une relation avec l'IA, qui prend la décision finale ?",
+    opts: [
+      "L'IA, car elle a accès à plus d'informations",
+      "L'humain, toujours",
+      "L'IA si la tâche est technique, l'humain sinon",
+      'Cela dépend du modèle utilisé',
+    ],
+    answer: 1,
+    expl: "L'IA propose, l'humain analyse, valide et décide. La responsabilité décisionnelle reste toujours humaine.",
+  },
+  {
+    kind: 'quiz-interactive', qNum: 8, isLast: true,
+    question: "Pour obtenir une réponse de qualité d'un LLM, le facteur le plus important est :",
+    opts: [
+      "Le nombre de fois qu'on reformule",
+      'La clarté et la précision de la demande initiale',
+      'La longueur de la réponse attendue',
+      "L'heure de la journée",
+    ],
+    answer: 1,
+    expl: "La qualité de la demande détermine directement la qualité de la réponse. C'est le principe de base de tout le module de prompting.",
+  },
+
+];
+
+const TOTAL = slides.length; // 16
 ---
-<Layout
-  title={bloc.titre}
-  description={bloc.desc}
->
-  <section class="max-w-4xl mx-auto px-4 py-10">
-    <div class="mb-6 flex items-center gap-2 text-sm text-slate-400">
-      <a href={`${base}formation/`} class="hover:text-slate-600 no-underline">Formation</a>
-      <span>›</span>
-      <span class="text-slate-600">Bloc {bloc.ordre} — {bloc.titre}</span>
-    </div>
-    <div class="mb-8">
-      <div class="flex items-center gap-3 mb-2">
-        <span class={`w-7 h-7 rounded-full ${bloc.phaseColor} text-white flex items-center justify-center font-bold text-xs`}>{bloc.ordre}</span>
-        <span class={`text-xs font-semibold px-2 py-0.5 rounded-full ${bloc.tagColor}`}>{bloc.phase}</span>
-        <span class="text-xs text-slate-400">{bloc.duree}</span>
+
+<Layout title={bloc.titre}>
+  <section class="max-w-2xl mx-auto px-4 py-8" id="slides-root" data-next-url={nextUrl}>
+
+    <!-- Breadcrumb -->
+    <nav class="mb-5 text-sm text-slate-400">
+      <a href={`${base}formation/`} class="hover:text-slate-700 no-underline transition-colors">← Parcours</a>
+      <span class="mx-2">·</span>
+      <span>{bloc.phase}</span>
+    </nav>
+
+    <h1 class="text-xl font-bold text-slate-900 mb-5">{bloc.titre}</h1>
+
+    <!-- Barre de progression -->
+    <div class="mb-6">
+      <div class="flex items-center justify-between mb-2">
+        <span id="slide-counter" class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Slide 1 / {TOTAL}</span>
+        <span id="slide-title-badge" class="text-xs text-slate-400"></span>
       </div>
-      <h1 class="text-2xl md:text-3xl font-bold text-slate-900">{bloc.titre}</h1>
-      <p class="text-slate-500 text-sm mt-2">{bloc.desc}</p>
+      <div class="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+        <div id="progress-fill" class="h-full bg-blue-600 rounded-full transition-all duration-300" style="width: 6.25%"></div>
+      </div>
     </div>
 
-    <SlidePlayer
-      slides={slides}
-      blocId="bloc-01"
-      nextBlocUrl={nextUrl}
-      nextBlocTitle={next?.titre}
-      takeawayUrl={takeawayUrl}
-    />
+    <!-- Container des slides -->
+    <div id="slides-container">
+
+      {slides.map((slide: any, i: number) => (
+        <div class="slide-panel" id={`panel-${i}`} style={i > 0 ? 'display:none' : ''}>
+
+          {/* ── CONTENU ─────────────────────────────────────────── */}
+          {slide.kind === 'content' && (
+            <div>
+              <h2 class="text-base font-semibold text-blue-700 mb-4">{slide.title}</h2>
+
+              {/* Image avec overlay play */}
+              <div class="img-player-wrap mb-4 rounded-xl overflow-hidden border border-slate-100 bg-slate-50"
+                   onclick="imgPlayToggle(this)"
+                   role="button" tabindex="0"
+                   onkeydown="if(event.key==='Enter'||event.key===' ')imgPlayToggle(this)"
+                   style="position:relative; cursor:pointer;">
+                <img
+                  src={slide.img}
+                  alt={slide.imgAlt}
+                  style="width:100%; max-height:380px; object-fit:contain; display:block;"
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                />
+                <div class="play-overlay" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+                  <div class="play-circle">
+                    <svg class="play-icon" width="30" height="30" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+                      <polygon points="7,3 21,12 7,21"/>
+                    </svg>
+                    <svg class="pause-icon" width="30" height="30" viewBox="0 0 24 24" fill="white" aria-hidden="true" style="display:none">
+                      <rect x="4"  y="3" width="5" height="18" rx="1"/>
+                      <rect x="15" y="3" width="5" height="18" rx="1"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              {/* Audio */}
+              <div class="mb-4">
+                <audio controls preload="metadata" style="width:100%">
+                  <source src={slide.mp3} type="audio/mpeg" />
+                  <source src={slide.m4a} type="audio/mp4" />
+                  Votre navigateur ne supporte pas la lecture audio.
+                </audio>
+              </div>
+
+              {/* Accordéon script */}
+              <details class="border border-slate-200 rounded-xl overflow-hidden">
+                <summary class="s-summary px-4 py-3 text-sm font-medium text-slate-600 hover:bg-slate-50 cursor-pointer transition-colors">
+                  Voir le script complet ▾
+                </summary>
+                <div class="px-4 py-4 border-t border-slate-100 bg-slate-50/60 space-y-3">
+                  {slide.script.map((para: string) => (
+                    <p class="text-sm text-slate-600 leading-relaxed">{para}</p>
+                  ))}
+                </div>
+              </details>
+            </div>
+          )}
+
+          {/* ── QUIZ STATIQUE (interactif) ───────────────────────── */}
+          {slide.kind === 'quiz-static' && (
+            <div>
+              <div class="flex items-center gap-2 mb-5">
+                <span class="text-xs font-semibold bg-amber-100 text-amber-700 px-2.5 py-1 rounded-full uppercase tracking-wide">Pause réflexion</span>
+              </div>
+
+              <p class="text-base font-semibold text-slate-900 mb-5 leading-snug">{slide.question}</p>
+
+              <div class="quiz-block space-y-2" data-answer={slide.answer}>
+                {slide.opts.map((opt: string, j: number) => (
+                  <button
+                    type="button"
+                    class="quiz-opt w-full text-left px-4 py-3 rounded-lg border border-slate-200 bg-white text-sm text-slate-700 hover:border-amber-400 hover:bg-amber-50 transition-all"
+                    data-index={String(j)}
+                    onclick="handleQuizAnswer(this)"
+                  >
+                    <span class="font-semibold text-amber-600 mr-2">{String.fromCharCode(65 + j)})</span>{opt}
+                  </button>
+                ))}
+
+                <div class="quiz-expl px-4 py-4 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-600 leading-relaxed mt-3" style="display:none">
+                  {slide.expl}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ── QUIZ INTERACTIF ──────────────────────────────────── */}
+          {slide.kind === 'quiz-interactive' && (
+            <div>
+              <div class="flex items-center gap-3 mb-5">
+                <span class="text-xs font-semibold bg-blue-100 text-blue-700 px-2.5 py-1 rounded-full uppercase tracking-wide">Quiz final</span>
+                <span class="text-xs text-slate-400">Question {slide.qNum} / 8</span>
+              </div>
+
+              <p class="text-base font-semibold text-slate-900 mb-5 leading-snug">{slide.question}</p>
+
+              <div class="quiz-block space-y-2" data-answer={slide.answer}>
+                {slide.opts.map((opt: string, j: number) => (
+                  <button
+                    type="button"
+                    class="quiz-opt w-full text-left px-4 py-3 rounded-lg border border-slate-200 bg-white text-sm text-slate-700 hover:border-blue-400 hover:bg-blue-50 transition-all"
+                    data-index={String(j)}
+                    onclick="handleQuizAnswer(this)"
+                  >
+                    <span class="font-semibold text-blue-600 mr-2">{String.fromCharCode(65 + j)})</span>{opt}
+                  </button>
+                ))}
+
+                <div class="quiz-expl px-4 py-4 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-600 leading-relaxed mt-3" style="display:none">
+                  {slide.expl}
+                </div>
+
+                {slide.isLast && (
+                  <div id="end-bloc-01" class="mt-5 px-5 py-5 rounded-xl bg-blue-50 border border-blue-200 text-center" style="display:none">
+                    <p class="text-blue-800 font-semibold mb-1">Vous avez terminé le Module 1</p>
+                    <p class="text-blue-600 text-sm">Comprendre l'IA générative — les corrigés restent accessibles en revenant sur les slides précédentes.</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+        </div>
+      ))}
+
+    </div>
+
+    <!-- Navigation -->
+    <div class="flex items-center justify-between mt-8 pt-6 border-t border-slate-100">
+      <button
+        id="prev-btn"
+        onclick="slidePrev()"
+        disabled
+        class="px-5 py-2.5 rounded-lg border border-slate-200 text-slate-600 text-sm font-medium hover:border-slate-300 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+      >
+        ← Précédent
+      </button>
+      <button
+        id="next-btn"
+        onclick="slideNext()"
+        class="px-5 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-all"
+      >
+        Suivant →
+      </button>
+    </div>
+
   </section>
 </Layout>
+
+<style>
+  details summary.s-summary {
+    list-style: none;
+  }
+  details summary.s-summary::-webkit-details-marker {
+    display: none;
+  }
+  .quiz-opt.q-correct {
+    border-color: #22c55e !important;
+    background-color: #f0fdf4 !important;
+    color: #15803d !important;
+  }
+  .quiz-opt.q-wrong {
+    border-color: #f87171 !important;
+    background-color: #fef2f2 !important;
+    color: #dc2626 !important;
+  }
+  .quiz-opt.q-inactive {
+    opacity: 0.4;
+    cursor: default;
+  }
+  .play-circle {
+    width: 68px; height: 68px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.52);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s, transform 0.15s;
+  }
+  .img-player-wrap:hover .play-circle {
+    background: rgba(0,0,0,0.72);
+    transform: scale(1.07);
+  }
+</style>
+
+<script is:inline>
+  var current = 0;
+  var TOTAL = 16;
+  var nextUrl = document.getElementById('slides-root').dataset.nextUrl;
+
+  function showSlide(n) {
+    // Pause l'audio de la slide courante avant de changer
+    var curPanel = document.getElementById('panel-' + current);
+    if (curPanel) {
+      var curAudio = curPanel.querySelector('audio');
+      if (curAudio) { curAudio.pause(); curAudio.currentTime = 0; }
+    }
+
+    document.querySelectorAll('.slide-panel').forEach(function(p, i) {
+      p.style.display = i === n ? 'block' : 'none';
+    });
+    current = n;
+
+    // Lance l'audio de la nouvelle slide (si présent)
+    var newPanel = document.getElementById('panel-' + n);
+    if (newPanel) {
+      var newAudio = newPanel.querySelector('audio');
+      if (newAudio) newAudio.play().catch(function() {});
+    }
+    setPlayOverlay(current);
+
+    // Progress bar
+    var pct = ((n + 1) / TOTAL * 100).toFixed(2) + '%';
+    document.getElementById('progress-fill').style.width = pct;
+    document.getElementById('slide-counter').textContent = 'Slide ' + (n + 1) + ' / ' + TOTAL;
+
+    // Prev button
+    document.getElementById('prev-btn').disabled = n === 0;
+
+    // Next button label
+    var nextBtn = document.getElementById('next-btn');
+    if (n === TOTAL - 1) {
+      nextBtn.textContent = 'Bloc suivant →';
+    } else {
+      nextBtn.textContent = 'Suivant →';
+    }
+  }
+
+  function slidePrev() {
+    if (current > 0) showSlide(current - 1);
+  }
+
+  function slideNext() {
+    if (current < TOTAL - 1) {
+      showSlide(current + 1);
+    } else {
+      window.location.href = nextUrl;
+    }
+  }
+
+  function setPlayOverlay(n) {
+    var panel = document.getElementById('panel-' + n);
+    if (!panel) return;
+    var audio = panel.querySelector('audio');
+    var playing = audio && !audio.paused;
+    var playIco  = panel.querySelector('.play-icon');
+    var pauseIco = panel.querySelector('.pause-icon');
+    if (playIco)  playIco.style.display  = playing ? 'none'  : 'block';
+    if (pauseIco) pauseIco.style.display = playing ? 'block' : 'none';
+  }
+
+  function imgPlayToggle(wrapper) {
+    var panel = wrapper.closest('.slide-panel');
+    var audio = panel.querySelector('audio');
+    if (!audio) return;
+    if (audio.paused) {
+      audio.play().catch(function() {});
+    } else {
+      audio.pause();
+    }
+  }
+
+  // Sync overlay icon with native player events (pour les contrôles natifs aussi)
+  document.querySelectorAll('.slide-panel audio').forEach(function(audio) {
+    var idx = parseInt(audio.closest('.slide-panel').id.replace('panel-', ''), 10);
+    audio.addEventListener('play',  function() { setPlayOverlay(idx); });
+    audio.addEventListener('pause', function() { setPlayOverlay(idx); });
+    audio.addEventListener('ended', function() { setPlayOverlay(idx); });
+  });
+
+  function handleQuizAnswer(btn) {
+    var block = btn.closest('.quiz-block');
+    if (block.dataset.answered) return;
+    block.dataset.answered = '1';
+
+    var correct = parseInt(block.dataset.answer, 10);
+    var chosen  = parseInt(btn.dataset.index, 10);
+
+    block.querySelectorAll('.quiz-opt').forEach(function(opt, i) {
+      opt.disabled = true;
+      if (i === correct) {
+        opt.classList.add('q-correct');
+      } else if (i === chosen && chosen !== correct) {
+        opt.classList.add('q-wrong');
+      } else {
+        opt.classList.add('q-inactive');
+      }
+    });
+
+    // Show explanation
+    var expl = block.querySelector('.quiz-expl');
+    if (expl) expl.style.display = 'block';
+
+    // Show completion message on last question
+    var completion = document.getElementById('end-bloc-01');
+    if (completion) completion.style.display = 'block';
+  }
+
+  // Init
+  showSlide(0);
+</script>
 
 <script>
   import { trackBlocCompletion, observeEndScreen } from '../../lib/trackCompletion';

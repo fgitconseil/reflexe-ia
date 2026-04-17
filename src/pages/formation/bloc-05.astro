@@ -1,44 +1,455 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import SlidePlayer from '../../components/SlidePlayer.astro';
-import { BLOCS, getSlidesForBloc, TAKEAWAY_URLS } from '../../lib/slideData';
+import { BLOCS } from '../../lib/slideData';
 const base = import.meta.env.BASE_URL;
 
 const bloc = BLOCS.find(b => b.id === 'bloc-05')!;
 const next = BLOCS.find(b => b.ordre === bloc.ordre + 1);
 const nextUrl = next ? `${base}formation/${next.id}/` : `${base}formation/`;
-const slides = getSlidesForBloc('bloc-05');
-const takeawayUrl = TAKEAWAY_URLS['bloc-05'];
+const takeawayPdf = `${base}assets/takeaways/Takeaway-Bloc-05-Projets-instructions-documents.pdf`;
+
+const slides = [
+
+  // ── 1 ── Accroche
+  {
+    kind: 'content',
+    title: 'Accroche',
+    img: `${base}assets/images/m5/05-1-accroche.png`,
+    imgAlt: "Accroche — Projets, Instructions et Documents",
+    script: [
+      "Je vais vous décrire quelque chose que vous avez probablement déjà vécu.",
+      "Vous avez eu une excellente session de travail avec l'IA. Vous avez construit un contexte solide. L'IA connaissait votre secteur, votre ton, vos contraintes internes, le nom de vos produits. Les réponses étaient précises, pertinentes, directement utilisables.",
+      "Le lendemain, vous ouvrez une nouvelle conversation. Et vous re-expliquez tout depuis le début. Le secteur. Le ton. Les contraintes. Le nom des produits. Dix minutes de mise en contexte pour retrouver le niveau de la veille.",
+      "C'est le comportement par défaut de l'IA : elle n'a pas de mémoire persistante entre les sessions.",
+      "Mais il existe des outils pour changer ça. Des outils qui permettent de donner à l'IA un contexte stable, des documents de référence, et des instructions permanentes — pour que chaque conversation commence là où la précédente s'est arrêtée.",
+      "Ce module couvre trois de ces outils : les Projets, les Artifacts, et les Instructions de Projet.",
+    ],
+  },
+
+  // ── 2 ── Projets
+  {
+    kind: 'content',
+    title: 'Projets — créer un espace de travail contextuel',
+    img: `${base}assets/images/m5/05-2-projets-espace-contextuel.png`,
+    imgAlt: "Projets — espace de travail persistant",
+    script: [
+      "Le premier outil, c'est les Projets. Un Projet dans Claude, c'est un espace de travail dédié à un sujet ou une mission précise. Tout ce que vous y mettez — documents, instructions, historique — reste accessible d'une session à l'autre.",
+      "Dans un Projet, vous pouvez stocker trois types d'éléments : des instructions permanentes (ton, formulations à éviter, contraintes internes), des documents de référence (charte interne, catalogue produit, procédures), et un historique de conversation.",
+      "Exemple pratique : vous gérez la communication d'une organisation. Vous créez un Projet 'Communication externe' avec votre charte de marque, les 3 derniers communiqués comme exemples de style, et l'instruction 'Les communiqués font toujours moins de 400 mots et commencent par un fait'. Désormais, chaque fois que vous ouvrez ce Projet, l'IA sait exactement dans quel cadre elle travaille.",
+      "Quatre règles pour bien gérer vos Projets : ouvrez un Projet par périmètre de travail distinct — nommez clairement les documents (version, date, périmètre) — ouvrez un nouveau Projet quand le sujet change, pas quand la conversation s'allonge — nettoyez régulièrement : un Projet encombré produit des réponses moins précises.",
+    ],
+  },
+
+  // ── 3 ── Quiz inter après slide 2
+  {
+    kind: 'quiz-static',
+    label: 'Pause réflexion',
+    question: "Vous travaillez chaque semaine sur des rapports de performance pour votre direction. Pourquoi créer un Projet dédié plutôt que d'ouvrir une nouvelle conversation à chaque fois ?",
+    opts: [
+      "Pour accéder à un modèle IA plus puissant dédié à votre organisation",
+      "Pour conserver le contexte permanent — ton, documents de référence, instructions — d'une session à l'autre, sans tout re-expliquer à chaque ouverture",
+      "Pour partager automatiquement vos rapports avec votre équipe via l'IA",
+      "Pour que l'IA mémorise vos préférences personnelles sur tous les outils",
+    ],
+    answer: 1,
+    expl: "Un Projet est un espace de travail persistant. Tout ce que vous y configurez — instructions, documents, historique — reste disponible à chaque nouvelle conversation. Sans Projet, vous passez 10 minutes à reconstruire le contexte à chaque session.",
+  },
+
+  // ── 4 ── Artifacts
+  {
+    kind: 'content',
+    title: 'Artifacts — demander un livrable, pas une réponse',
+    img: `${base}assets/images/m5/05-3-artifacts-livrable.png`,
+    imgAlt: "Artifacts — livrables structurés directement exploitables",
+    script: [
+      "Le deuxième outil change la façon dont vous recevez les réponses. Par défaut, une IA répond en prose. Vous posez une question, elle développe une réponse en paragraphes.",
+      "Souvent, ce dont vous avez besoin, c'est d'un livrable : quelque chose que vous pouvez directement copier, coller, partager ou télécharger. C'est à ça que servent les Artifacts.",
+      "Un Artifact, c'est un livrable structuré dans un format directement exploitable : un tableau Markdown que vous copiez dans Excel, un bloc de code documenté, un document formaté, une checklist, ou un tableau de bord interactif en HTML.",
+      "Pour demander un Artifact, la formulation change. Au lieu de : « Explique-moi comment organiser une réunion hebdomadaire » — vous écrivez : « Produis une checklist de préparation de réunion hebdomadaire en 3 sections, format Markdown, que je peux partager directement avec mon équipe. »",
+      "La règle de l'Artifact : si vous allez retravailler manuellement la réponse avant de l'utiliser, demandez directement le livrable final. Demandez toujours : « Quel format sera directement exploitable sans retraitement ? »",
+    ],
+  },
+
+  // ── 5 ── Documents et Instructions de Projet
+  {
+    kind: 'content',
+    title: 'Documents et Instructions de Projet',
+    img: `${base}assets/images/m5/05-4-documents-instructions.png`,
+    imgAlt: "Documents et Instructions de Projet — connaissance métier intégrée",
+    script: [
+      "Il y a un troisième axe : donner à l'IA une connaissance métier qu'elle n'a pas par défaut.",
+      "Un LLM entraîné sur des données génériques ne connaît pas : votre secteur spécifique, vos documents internes, vos clients, votre vocabulaire maison. Résultat : vous devez re-fournir les données depuis le début.",
+      "Les Documents de Projet : imaginez une bibliothèque interne constituée avec vos propres documents. L'IA y puise avant de vous répondre, au lieu de s'appuyer sur sa connaissance générale. Attention : le Document garantit l'accessibilité contextuelle de vos documents. Il ne garantit pas l'exactitude. Si vos documents sont contradictoires ou obsolètes, l'IA peut mélanger les sources.",
+      "Les Instructions de Projet : dans les paramètres de chaque Projet, un champ 'Instructions du projet' vous permet d'écrire les règles permanentes qui s'appliquent à toutes les conversations. Exemples : 'Rédige toujours en français, ton professionnel sobre' — 'Notre convention collective est la métallurgie' — 'Format par défaut : sections numérotées + tableau récapitulatif'.",
+      "Vous créez les instructions une fois. Elles s'appliquent à chaque nouvelle conversation dans ce Projet.",
+    ],
+  },
+
+  // ── 6 ── Exemple (05-4b)
+  {
+    kind: 'content',
+    title: 'Exemple',
+    img: `${base}assets/images/m5/05-4b-exemple.png`,
+    imgAlt: "Exemple — articulation des 3 outils ensemble",
+    script: [
+      "Voici un exemple qui articule les trois outils ensemble.",
+      "Contexte : vous gérez une organisation de services. Un prestataire vous envoie un nouveau contrat. Vous devez vérifier rapidement s'il respecte votre charte de sécurité interne.",
+      "Configuration du Projet 'Contrats prestataires' : votre charte de sécurité interne, vos conditions générales d'achat, une fiche des 5 clauses à surveiller systématiquement (confidentialité, sous-traitance, responsabilité, résiliation, propriété intellectuelle).",
+      "Le gabarit enchaîne trois tâches : Étape 1 — identifier les clauses couvrant chaque critère. Étape 2 — comparer chaque clause avec les exigences de votre charte. Étape 3 — produire un Artifact, tableau de conformité (Clause / Présente / Conforme / Action recommandée). C'est du prompt chaining : l'IA traite les tâches dans l'ordre.",
+      "Résultat : un tableau de conformité en 5 minutes. Pas un avis juridique — un outil de première lecture pour savoir si ça vaut la peine d'appeler l'avocat.",
+    ],
+  },
+
+  // ── 7 ── Quiz inter après slide 6 (05-4b)
+  {
+    kind: 'quiz-static',
+    label: 'Pause réflexion',
+    question: "Vous écrivez une fois dans les Instructions de Projet : « Rédige toujours en français, ton sobre, pas de jargon. Cite les sources sur les faits. » Qu'est-ce que ça change pour les conversations suivantes dans ce Projet ?",
+    opts: [
+      "L'IA applique ces règles automatiquement à chaque conversation sans que vous ayez à les répéter",
+      "L'IA vous demande confirmation à l'ouverture de chaque conversation pour valider les règles",
+      "Ces instructions s'appliquent uniquement au premier message de chaque nouvelle session",
+      "L'IA les stocke mais n'applique les règles que si vous les citez explicitement dans votre prompt",
+    ],
+    answer: 0,
+    expl: "Les Instructions de Projet s'appliquent automatiquement à toutes les conversations du Projet. Vous configurez une fois — le comportement est permanent. C'est la différence entre répéter le contexte à chaque session et avoir un assistant qui commence déjà dans votre cadre de travail.",
+  },
+
+  // ── 8 ── Clôture
+  {
+    kind: 'content',
+    title: 'Clôture',
+    img: `${base}assets/images/m5/05-5-cloture.png`,
+    imgAlt: "Clôture — récap Partie 1",
+    script: [
+      "Si je résume ce que vous avez dans la Partie 1 :",
+      "Dans le bloc Choisir son prompt, vous avez appris à choisir l'intention de votre demande — production, exploration, structuration, vérification. Vous ne subissez plus vos prompts.",
+      "Dans ce bloc, vous avez appris à ne plus repartir de zéro à chaque session. Un Projet bien construit, des instructions de référence, des Artifacts structurés — le travail s'accumule au lieu de se répéter.",
+      "C'est la différence entre l'usage opportuniste — quand ça marche, tant mieux — et l'usage structuré : un résultat fiable, reproductible, capitalisé.",
+      "Dans la Partie 2, on va aller plus loin. Parce que savoir utiliser les outils, c'est bien. Garantir la qualité de ce que vous produisez avec eux, c'est ce qui fait la différence dans un contexte professionnel.",
+    ],
+  },
+
+  // ── 9-16 ── Quiz final (8 questions)
+  {
+    kind: 'quiz-interactive', qNum: 1,
+    question: "Vous ouvrez une nouvelle conversation IA après une session productive la veille. Vous devez reprendre exactement là où vous en étiez. Quel outil est conçu pour ça ?",
+    opts: [
+      "Un nouveau prompt détaillé en début de conversation",
+      "Un Project dédié au sujet, avec documents et instructions permanentes",
+      "Un Artifact récapitulatif de la session précédente",
+      "Un Skill de résumé automatique",
+    ],
+    answer: 1,
+    expl: "Les Projects conservent le contexte entre les sessions. Un nouveau prompt ou un Artifact ne suffit pas — ils ne persistent pas.",
+  },
+  {
+    kind: 'quiz-interactive', qNum: 2,
+    question: "Vous gérez la communication d'une PME et vous travaillez régulièrement sur les communiqués de presse. Quelle est la meilleure configuration d'un Project pour ce périmètre ?",
+    opts: [
+      "Un Project unique contenant tous vos travaux IA pour ne rien perdre",
+      "Un Project « Communication externe » avec charte de marque + exemples de style + instructions de format",
+      "Un Project par communiqué de presse pour ne pas mélanger les sujets",
+      "Aucun Project — les communiqués sont des productions ponctuelles",
+    ],
+    answer: 1,
+    expl: "Un Project par périmètre de travail stable, avec les documents et instructions pertinents. Un Project par communiqué serait du surchargement inutile.",
+  },
+  {
+    kind: 'quiz-interactive', qNum: 3,
+    question: "Qu'est-ce qu'un Artifact dans le contexte de ce module ?",
+    opts: [
+      "Un résumé structuré d'une longue conversation",
+      "Un livrable directement exploitable produit par l'IA (tableau, document, checklist, code)",
+      "Un modèle de prompt sauvegardé pour un usage répété",
+      "Une instruction permanente enregistrée dans un Project",
+    ],
+    answer: 1,
+    expl: "Un Artifact est un livrable structuré autonome — pas une réponse en prose, pas un prompt sauvegardé.",
+  },
+  {
+    kind: 'quiz-interactive', qNum: 4,
+    question: "Vous sortez d'une réunion de pilotage. Vous voulez un document que vous pouvez partager directement avec votre équipe sans retraitement. Quelle formulation est la plus adaptée ?",
+    opts: [
+      '"Fais-moi un résumé de cette réunion"',
+      '"Explique-moi les décisions principales prises aujourd\'hui"',
+      '"Produis un tableau des décisions — 3 colonnes : décision / responsable / échéance — format Markdown"',
+      '"Analyse les points forts et les points faibles de cette réunion"',
+    ],
+    answer: 2,
+    expl: "La formulation 'Produis un tableau... format Markdown' demande un livrable directement exploitable. Les options A, B, D demandent des explications, pas un livrable.",
+  },
+  {
+    kind: 'quiz-interactive', qNum: 5,
+    question: "Quelle est la principale limite d'un système RAG (base documentaire connectée à l'IA) ?",
+    opts: [
+      "Il ne fonctionne qu'avec des documents en anglais",
+      "Il garantit l'accessibilité des documents mais pas leur exactitude — si vos données sont obsolètes, l'IA peut citer une règle périmée",
+      "Il remplace le niveau 🟡 (Fiabiliser) — plus besoin de vérifier si l'IA cite vos propres documents",
+      "Il n'est accessible qu'aux grandes entreprises avec des ressources IT dédiées",
+    ],
+    answer: 1,
+    expl: "Le RAG garantit l'accessibilité contextuelle, pas l'exactitude. La discipline 🟡 reste indispensable même avec une base documentaire connectée.",
+  },
+  {
+    kind: 'quiz-interactive', qNum: 6,
+    question: "Les Instructions de Projet dans claude.ai, c'est :",
+    opts: [
+      "Une fonctionnalité technique réservée aux développeurs",
+      "Un ensemble d'instructions sauvegardées et réutilisables dans n'importe quelle conversation du Project",
+      "Un outil de vérification automatique de la qualité d'un prompt",
+      "Un mode de conversation spécialisé qui remplace les types de prompts",
+    ],
+    answer: 1,
+    expl: "Les Instructions de Projet sont un ensemble d'instructions réutilisables, accessibles depuis n'importe quelle conversation du Project. Ce n'est pas une fonctionnalité technique avancée.",
+  },
+  {
+    kind: 'quiz-interactive', qNum: 7,
+    question: "Vous avez un Project « Contrats fournisseurs » bien configuré. Un nouveau sujet émerge : la refonte de votre politique de congés. Que faites-vous ?",
+    opts: [
+      "Vous ajoutez les documents RH dans le Project « Contrats fournisseurs » pour centraliser",
+      "Vous créez un nouveau Project « Politique RH » — un Project par périmètre distinct",
+      "Vous utilisez un Artifact pour séparer les deux sujets dans le même Project",
+      "Vous ouvrez une nouvelle conversation sans Project",
+    ],
+    answer: 1,
+    expl: "Un Project par périmètre distinct. Mélanger contrats fournisseurs et politique RH dans le même Project réduit la précision des réponses.",
+  },
+  {
+    kind: 'quiz-interactive', qNum: 8,
+    question: "Votre responsable vous demande pourquoi vous avez du mal à obtenir des réponses précises de l'IA sur vos procédures internes. La cause la plus probable est :",
+    opts: [
+      "L'IA n'est pas capable de traiter des documents internes d'entreprise",
+      "Vous utilisez un modèle généraliste qui ne connaît pas votre métier — vous n'avez pas fourni vos documents en contexte",
+      "Vous posez des questions trop longues qui dépassent la capacité du modèle",
+      "Les modèles IA ne peuvent traiter que des données structurées (tableaux), pas des documents texte",
+    ],
+    answer: 1,
+    expl: "L'IA généraliste ne connaît pas vos documents internes. Il faut les fournir — dans un Project, via RAG, ou directement dans le prompt.",
+  },
+
+  // ── 17 ── Takeaway
+  { kind: 'takeaway' },
+];
+
+const TOTAL = slides.length; // 17
 ---
-<Layout
-  title={bloc.titre}
-  description={bloc.desc}
->
-  <section class="max-w-4xl mx-auto px-4 py-10">
-    <div class="mb-6 flex items-center gap-2 text-sm text-slate-400">
-      <a href={`${base}formation/`} class="hover:text-slate-600 no-underline">Formation</a>
-      <span>›</span>
-      <span class="text-slate-600">Bloc {bloc.ordre} — {bloc.titre}</span>
-    </div>
-    <div class="mb-8">
-      <div class="flex items-center gap-3 mb-2">
-        <span class={`w-7 h-7 rounded-full ${bloc.phaseColor} text-white flex items-center justify-center font-bold text-xs`}>{bloc.ordre}</span>
-        <span class={`text-xs font-semibold px-2 py-0.5 rounded-full ${bloc.tagColor}`}>{bloc.phase}</span>
-        <span class="text-xs text-slate-400">{bloc.duree}</span>
+
+<Layout title={bloc.titre}>
+  <section class="max-w-2xl mx-auto px-4 py-8" id="slides-root" data-next-url={nextUrl}>
+
+    <!-- Breadcrumb -->
+    <nav class="mb-5 text-sm text-slate-400">
+      <a href={`${base}formation/`} class="hover:text-slate-700 no-underline transition-colors">← Parcours</a>
+      <span class="mx-2">·</span>
+      <span>{bloc.phase}</span>
+    </nav>
+
+    <h1 class="text-xl font-bold text-slate-900 mb-5">{bloc.titre}</h1>
+
+    <!-- Barre de progression -->
+    <div class="mb-6">
+      <div class="flex items-center justify-between mb-2">
+        <span id="slide-counter" class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Slide 1 / {TOTAL}</span>
+        <span id="slide-title-badge" class="text-xs text-slate-400"></span>
       </div>
-      <h1 class="text-2xl md:text-3xl font-bold text-slate-900">{bloc.titre}</h1>
-      <p class="text-slate-500 text-sm mt-2">{bloc.desc}</p>
+      <div class="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+        <div id="progress-fill" class="h-full bg-blue-600 rounded-full transition-all duration-300" style="width: 5.88%"></div>
+      </div>
     </div>
 
-    <SlidePlayer
-      slides={slides}
-      blocId="bloc-05"
-      nextBlocUrl={nextUrl}
-      nextBlocTitle={next?.titre}
-      takeawayUrl={takeawayUrl}
-    />
+    <!-- Container des slides -->
+    <div id="slides-container">
+      {slides.map((slide: any, i: number) => (
+        <div class="slide-panel" id={`panel-${i}`} style={i > 0 ? 'display:none' : ''}>
+
+          {/* ── CONTENU (no audio) ── */}
+          {slide.kind === 'content' && (
+            <div>
+              <h2 class="text-base font-semibold text-blue-700 mb-4">{slide.title}</h2>
+              <div class="mb-4 rounded-xl overflow-hidden border border-slate-100 bg-slate-50">
+                <img
+                  src={slide.img}
+                  alt={slide.imgAlt}
+                  style="width:100%; max-height:400px; object-fit:contain; display:block;"
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                />
+              </div>
+              <details class="border border-slate-200 rounded-xl overflow-hidden">
+                <summary class="s-summary px-4 py-3 text-sm font-medium text-slate-600 hover:bg-slate-50 cursor-pointer transition-colors">
+                  Voir le script complet ▾
+                </summary>
+                <div class="px-4 py-4 border-t border-slate-100 bg-slate-50/60 space-y-3">
+                  {slide.script.map((para: string) => (
+                    <p class="text-sm text-slate-600 leading-relaxed">{para}</p>
+                  ))}
+                </div>
+              </details>
+            </div>
+          )}
+
+          {/* ── QUIZ STATIQUE ── */}
+          {slide.kind === 'quiz-static' && (
+            <div>
+              <div class="flex items-center gap-2 mb-5">
+                <span class="text-xs font-semibold bg-amber-100 text-amber-700 px-2.5 py-1 rounded-full uppercase tracking-wide">Pause réflexion</span>
+              </div>
+              <p class="text-base font-semibold text-slate-900 mb-5 leading-snug">{slide.question}</p>
+              <div class="quiz-block space-y-2" data-answer={slide.answer}>
+                {slide.opts.map((opt: string, j: number) => (
+                  <button
+                    type="button"
+                    class="quiz-opt w-full text-left px-4 py-3 rounded-lg border border-slate-200 bg-white text-sm text-slate-700 hover:border-amber-400 hover:bg-amber-50 transition-all"
+                    data-index={String(j)}
+                    onclick="handleQuizAnswer(this)"
+                  >
+                    <span class="font-semibold text-amber-600 mr-2">{String.fromCharCode(65 + j)})</span>{opt}
+                  </button>
+                ))}
+                <div class="quiz-expl px-4 py-4 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-600 leading-relaxed mt-3" style="display:none">
+                  {slide.expl}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ── QUIZ INTERACTIF ── */}
+          {slide.kind === 'quiz-interactive' && (
+            <div>
+              <div class="flex items-center gap-3 mb-5">
+                <span class="text-xs font-semibold bg-blue-100 text-blue-700 px-2.5 py-1 rounded-full uppercase tracking-wide">Quiz final</span>
+                <span class="text-xs text-slate-400">Question {slide.qNum} / 8</span>
+              </div>
+              <p class="text-base font-semibold text-slate-900 mb-5 leading-snug">{slide.question}</p>
+              <div class="quiz-block space-y-2" data-answer={slide.answer}>
+                {slide.opts.map((opt: string, j: number) => (
+                  <button
+                    type="button"
+                    class="quiz-opt w-full text-left px-4 py-3 rounded-lg border border-slate-200 bg-white text-sm text-slate-700 hover:border-blue-400 hover:bg-blue-50 transition-all"
+                    data-index={String(j)}
+                    onclick="handleQuizAnswer(this)"
+                  >
+                    <span class="font-semibold text-blue-600 mr-2">{String.fromCharCode(65 + j)})</span>{opt}
+                  </button>
+                ))}
+                <div class="quiz-expl px-4 py-4 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-600 leading-relaxed mt-3" style="display:none">
+                  {slide.expl}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ── TAKEAWAY ── */}
+          {slide.kind === 'takeaway' && (
+            <div class="text-center py-8">
+              <div id="end-bloc-05" style="display:none"></div>
+              <div class="w-16 h-16 rounded-2xl bg-blue-600 flex items-center justify-center mx-auto mb-6">
+                <span class="text-white text-2xl font-bold">✓</span>
+              </div>
+              <h2 class="text-2xl font-bold text-slate-900 mb-3">Bloc 5 terminé</h2>
+              <p class="text-slate-500 mb-8 max-w-sm mx-auto">Téléchargez la fiche mémo pour garder les points clés sous la main.</p>
+              <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <a
+                  href={takeawayPdf}
+                  download
+                  class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition-colors"
+                >
+                  ↓ Télécharger la fiche mémo (PDF)
+                </a>
+                <a
+                  href={nextUrl}
+                  class="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-slate-200 text-slate-700 text-sm font-semibold hover:border-slate-300 hover:bg-slate-50 transition-colors"
+                >
+                  Bloc suivant →
+                </a>
+              </div>
+            </div>
+          )}
+
+        </div>
+      ))}
+    </div>
+
+    <!-- Navigation -->
+    <div class="flex items-center justify-between mt-8 pt-6 border-t border-slate-100">
+      <button id="prev-btn" onclick="slidePrev()" disabled
+        class="px-5 py-2.5 rounded-lg border border-slate-200 text-slate-600 text-sm font-medium hover:border-slate-300 disabled:opacity-30 disabled:cursor-not-allowed transition-all">
+        ← Précédent
+      </button>
+      <button id="next-btn" onclick="slideNext()"
+        class="px-5 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-all">
+        Suivant →
+      </button>
+    </div>
+
   </section>
 </Layout>
+
+<style>
+  details summary.s-summary { list-style: none; }
+  details summary.s-summary::-webkit-details-marker { display: none; }
+  .quiz-opt.q-correct { border-color: #22c55e !important; background-color: #f0fdf4 !important; color: #15803d !important; }
+  .quiz-opt.q-wrong { border-color: #f87171 !important; background-color: #fef2f2 !important; color: #dc2626 !important; }
+  .quiz-opt.q-inactive { opacity: 0.4; cursor: default; }
+</style>
+
+<script is:inline>
+  var current = 0;
+  var TOTAL = 17;
+  var nextUrl = document.getElementById('slides-root').dataset.nextUrl;
+
+  function showSlide(n) {
+    document.querySelectorAll('.slide-panel').forEach(function(p, i) {
+      p.style.display = i === n ? 'block' : 'none';
+    });
+    current = n;
+
+    // Trigger completion on takeaway slide (last slide)
+    if (n === TOTAL - 1) {
+      var endEl = document.getElementById('end-bloc-05');
+      if (endEl) endEl.style.display = 'block';
+    }
+
+    var pct = ((n + 1) / TOTAL * 100).toFixed(2) + '%';
+    document.getElementById('progress-fill').style.width = pct;
+    document.getElementById('slide-counter').textContent = 'Slide ' + (n + 1) + ' / ' + TOTAL;
+    document.getElementById('prev-btn').disabled = n === 0;
+
+    // Hide nav buttons on takeaway (last) slide — it has its own CTA buttons
+    var prevBtn = document.getElementById('prev-btn');
+    var nextBtn = document.getElementById('next-btn');
+    prevBtn.style.display = n === TOTAL - 1 ? 'none' : '';
+    nextBtn.style.display = n === TOTAL - 1 ? 'none' : '';
+  }
+
+  function slidePrev() {
+    if (current > 0) showSlide(current - 1);
+  }
+
+  function slideNext() {
+    if (current < TOTAL - 1) showSlide(current + 1);
+    else window.location.href = nextUrl;
+  }
+
+  function handleQuizAnswer(btn) {
+    var block = btn.closest('.quiz-block');
+    if (block.dataset.answered) return;
+    block.dataset.answered = '1';
+    var correct = parseInt(block.dataset.answer, 10);
+    var chosen = parseInt(btn.dataset.index, 10);
+    block.querySelectorAll('.quiz-opt').forEach(function(opt, i) {
+      opt.disabled = true;
+      if (i === correct) opt.classList.add('q-correct');
+      else if (i === chosen && chosen !== correct) opt.classList.add('q-wrong');
+      else opt.classList.add('q-inactive');
+    });
+    var expl = block.querySelector('.quiz-expl');
+    if (expl) expl.style.display = 'block';
+  }
+
+  // Init
+  showSlide(0);
+</script>
 
 <script>
   import { trackBlocCompletion, observeEndScreen } from '../../lib/trackCompletion';

@@ -1,44 +1,527 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import SlidePlayer from '../../components/SlidePlayer.astro';
-import { BLOCS, getSlidesForBloc, TAKEAWAY_URLS } from '../../lib/slideData';
+import { BLOCS } from '../../lib/slideData';
 const base = import.meta.env.BASE_URL;
 
 const bloc = BLOCS.find(b => b.id === 'bloc-03')!;
 const next = BLOCS.find(b => b.ordre === bloc.ordre + 1);
 const nextUrl = next ? `${base}formation/${next.id}/` : `${base}formation/`;
-const slides = getSlidesForBloc('bloc-03');
-const takeawayUrl = TAKEAWAY_URLS['bloc-03'];
+const takeawayPdf = `${base}assets/takeaways/Takeaway-Bloc-03-Choisir-son-prompt.pdf`;
+
+const slides = [
+
+  // ── 1 ── Accroche
+  {
+    kind: 'content',
+    title: 'Accroche',
+    img: `${base}assets/images/m3/03-1-accroche-terrain.png`,
+    imgAlt: "Accroche — les 4 types de prompts",
+    script: [
+      "Je vais vous raconter une erreur que je vois chaque semaine.",
+      "Un manager a une tâche à faire — analyser trois offres concurrentes avant une réunion stratégique. Il ouvre l'IA et écrit : « Analyse ces trois offres et dis-moi laquelle choisir. »",
+      "L'IA produit une réponse longue, bien structurée, avec des comparaisons. Mais quelque chose cloche. Les critères d'analyse ne sont pas les siens. Le format n'est pas ce dont il avait besoin. Et la recommandation finale est trop catégorique.",
+      "Il recommence. Même résultat. Il se dit que l'IA n'est pas vraiment utile pour ce genre de tâche.",
+      "Ce qu'il ne savait pas, c'est qu'il utilisait le mauvais type de prompt.",
+      "Il avait besoin d'un prompt d'exploration — « cartographie-moi les options avec leurs critères ». Il a utilisé un prompt de production — « fais le choix à ma place ».",
+      "Ce module va vous apprendre à distinguer les 4 types de prompts. Parce qu'un mauvais type de prompt génère une mauvaise catégorie de réponse, même si le prompt est parfaitement rédigé.",
+      "Les 4 types ne sont pas des niveaux de complexité. Ce sont des intentions différentes : Production, Exploration, Structuration, Vérification.",
+    ],
+  },
+
+  // ── 2 ── Type 1
+  {
+    kind: 'content',
+    title: 'Type 1 — prompt de production',
+    img: `${base}assets/images/m3/03-2-type-1-prompt-production.png`,
+    imgAlt: "Type 1 — prompt de production : gabarit et exemples",
+    script: [
+      "Le premier type, c'est le prompt de production. Vous l'utilisez quand vous savez exactement ce que vous voulez obtenir et que vous avez besoin que l'IA le produise pour vous.",
+      "Un email. Une synthèse. Un plan. Un compte rendu. Une proposition commerciale. Un script. Une fiche produit. La condition : le livrable est défini.",
+      "Le gabarit de production a 7 champs : Rôle / Objectif / Contexte / Données / Format / Contraintes / Exemples.",
+      "Le champ Exemples est celui que la plupart des gens oublient. Et c'est souvent le plus efficace. L'IA produit par imitation autant que par instruction. Lui montrer un exemple — une réponse déjà validée, un format que vous aimez — est la méthode la plus fiable pour cadrer son livrable.",
+      "C'est ce que les experts appellent le « few-shot prompting » : quelques exemples suffisent pour aligner l'IA sur votre standard.",
+      "Le point clé : si vous ne précisez pas le format, l'IA choisit. Et son choix n'est pas toujours le vôtre.",
+    ],
+  },
+
+  // ── 3 ── Quiz inter après slide 2
+  {
+    kind: 'quiz-static',
+    label: 'Pause réflexion',
+    question: "Un manager demande à l'IA : « Dis-moi quelle stratégie adopter face à ce concurrent. » Il obtient une recommandation définitive, bien argumentée, mais inadaptée à son contexte réel. L'erreur la plus probable est :",
+    opts: [
+      "Le prompt était trop court — il fallait donner plus de contexte",
+      "Il a utilisé un prompt de production (« dis-moi quelle stratégie ») pour une situation qui nécessitait une exploration",
+      "L'IA n'est pas fiable pour les questions stratégiques",
+      "Il fallait utiliser un modèle IA plus puissant",
+    ],
+    answer: 1,
+    expl: "Un prompt de production demande à l'IA de produire un livrable défini. Mais ici, le manager n'avait pas encore défini ses critères — il avait besoin de comprendre ses options. Le bon type était l'exploration. Un mauvais type de prompt génère une mauvaise catégorie de réponse, même avec un prompt bien rédigé.",
+  },
+
+  // ── 4 ── Type 2
+  {
+    kind: 'content',
+    title: "Type 2 — prompt d'exploration",
+    img: `${base}assets/images/m3/03-3-type-2-prompt-exploration.png`,
+    imgAlt: "Type 2 — prompt d'exploration : gabarit et Chain of Thought",
+    script: [
+      "Le deuxième type, c'est le prompt d'exploration. Vous l'utilisez quand vous ne savez pas encore ce que vous voulez produire, mais que vous avez besoin de comprendre un sujet, de cartographier des options, d'identifier des risques ou de préparer une décision.",
+      "La distinction avec la production : dans l'exploration, le livrable attendu est une cartographie d'options ou une analyse structurée, pas une décision finale.",
+      "Le gabarit d'exploration : Rôle / Sujet / Périmètre / Cadre d'analyse / Critères / Format / Réflexion.",
+      "Le champ Réflexion change tout. Quand vous demandez à l'IA de « montrer son raisonnement », elle ralentit sa prédiction et décompose son analyse étape par étape. C'est le Chain of Thought — l'IA commence par identifier les éléments pertinents, les organise, teste ses hypothèses, puis conclut. Les sources d'Anthropic qualifient cette technique d'« arme secrète » pour les prompts d'exploration.",
+      "Le risque principal de l'exploration : la dispersion. L'IA peut générer trop de critères, trop de scénarios. Pour éviter ça, ajoutez toujours : « Conclue par 3 recommandations prioritaires » ou « Hiérarchise par impact décroissant ».",
+      "Sans cette instruction, vous obtenez un catalogue. Avec elle, vous obtenez un outil d'aide à la décision.",
+    ],
+  },
+
+  // ── 5 ── Quiz inter après slide 4
+  {
+    kind: 'quiz-static',
+    label: 'Pause réflexion',
+    question: "En prompt d'exploration, pourquoi est-il indispensable de terminer par « hiérarchise par impact » ou « conclue par 3 recommandations » ?",
+    opts: [
+      "Pour limiter la longueur de la réponse",
+      "Pour forcer l'IA à ne pas sortir du périmètre",
+      "Pour éviter la dispersion et transformer l'exploration en aide à la décision",
+      "Pour respecter le format Markdown",
+    ],
+    answer: 2,
+    expl: "Sans instruction de hiérarchisation, l'exploration produit un catalogue exhaustif sans priorisation. La valeur vient de la recommandation finale, pas de l'exhaustivité.",
+  },
+
+  // ── 6 ── Type 3
+  {
+    kind: 'content',
+    title: 'Type 3 — prompt de structuration',
+    img: `${base}assets/images/m3/03-4-type-3-prompt-structuration.png`,
+    imgAlt: "Type 3 — prompt de structuration : gabarit et règle d'or",
+    script: [
+      "Le troisième type, c'est le prompt de structuration. Vous l'utilisez quand vous avez du contenu brut — notes de réunion, transcription, email long — et que vous voulez l'organiser sans rien perdre.",
+      "La différence avec la production : vous ne demandez pas à l'IA de créer. Vous lui donnez une matière brute et vous lui demandez de la mettre en ordre. C'est l'un des usages les plus puissants et les moins risqués.",
+      "Le gabarit : Rôle / Contenu source / Objectif / Format cible / Contraintes / Suivi.",
+      "Le champ Suivi est utile pour les documents longs : demandez à l'IA de lister ce qui a été traité et ce qui reste, pour ne pas perdre le fil entre sessions.",
+      "La règle d'or : zéro perte d'information. L'IA a tendance à synthétiser quand elle structure — ce n'est pas ce que vous lui demandez. La formulation « Ne supprimer aucune information » doit être présente dans tous vos prompts de structuration.",
+      "Ajoutez systématiquement la demande d'une section « Points à clarifier » — c'est là que l'IA signale les ambiguïtés plutôt que de les résoudre arbitrairement.",
+    ],
+  },
+
+  // ── 7 ── Quiz inter après slide 6
+  {
+    kind: 'quiz-static',
+    label: 'Pause réflexion',
+    question: "Vous utilisez un prompt de structuration pour organiser les notes d'une réunion importante. Quelle instruction est indispensable ?",
+    opts: [
+      "« Synthétise les points les plus importants » — pour obtenir un document concis",
+      "« Ne supprime aucune information — ajoute une section Points à clarifier pour les éléments ambigus »",
+      "« Réfléchis étape par étape avant de structurer »",
+      "« Utilise le format SWOT pour organiser le contenu »",
+    ],
+    answer: 1,
+    expl: "La règle d'or du prompt de structuration est zéro perte d'information. L'IA a tendance à synthétiser quand elle structure — ce n'est pas ce qu'on lui demande. « Ne supprime aucune information » prévient ce biais. La section « Points à clarifier » évite que l'IA résolve arbitrairement les ambiguïtés.",
+  },
+
+  // ── 8 ── Type 4
+  {
+    kind: 'content',
+    title: 'Type 4 — prompt de vérification',
+    img: `${base}assets/images/m3/03-5-type-4-prompt-verification.png`,
+    imgAlt: "Type 4 — prompt de vérification : gabarit et limites",
+    script: [
+      "Le quatrième type, c'est le prompt de vérification. Vous l'utilisez quand vous avez un document existant et que vous voulez le soumettre à un contrôle — vérifier sa conformité, identifier ses lacunes, détecter des incohérences.",
+      "La différence fondamentale avec les trois autres types : vous ne demandez pas à l'IA de produire ni d'organiser. Vous lui demandez de contrôler.",
+      "Le gabarit : Rôle / Élément / Critères / Retour / Règle / Réflexion.",
+      "Sur un prompt de vérification, le champ Réflexion n'est pas optionnel. Sans lui, l'IA peut valider un passage ambigu parce qu'il ressemble à quelque chose de conforme. Avec le raisonnement explicité, vous voyez comment l'IA a interprété chaque critère.",
+      "La règle critique : « Cite les passages utilisés · Si absent, indique-le · Signale les zones d'incertitude ». Sans ça, la vérification est superficielle.",
+      "Avertissement important : la vérification par l'IA ne remplace pas la vérification par un expert humain. Sur des sujets à fort enjeu réglementaire, la relecture d'un expert reste indispensable. L'IA est un premier filtre, pas un certificat de conformité.",
+    ],
+  },
+
+  // ── 9 ── Quiz inter après slide 8
+  {
+    kind: 'quiz-static',
+    label: 'Pause réflexion',
+    question: "Vous avez besoin d'une analyse des forces et faiblesses de trois offres fournisseurs avant une réunion de décision. Quel type de prompt est adapté ?",
+    opts: [
+      "Production — vous demandez à l'IA de choisir la meilleure offre",
+      "Vérification — vous demandez à l'IA de contrôler la conformité des offres",
+      "Exploration — vous demandez à l'IA de cartographier les options et leurs critères",
+      "Structuration — vous donnez les offres brutes et demandez à l'IA de les réorganiser",
+    ],
+    answer: 2,
+    expl: "Vous n'avez pas encore de livrable défini ni de contenu à organiser. Vous avez besoin de comprendre le terrain avant de décider. C'est la définition du prompt d'exploration : cartographier les options, pas produire une décision.",
+  },
+
+  // ── 10 ── Synthèse
+  {
+    kind: 'content',
+    title: 'Synthèse',
+    img: `${base}assets/images/m3/03-6-synthese.png`,
+    imgAlt: "Synthèse des 4 types de prompts",
+    script: [
+      "Voilà la carte mentale des 4 types. Production : créer un livrable défini. Exploration : comprendre un sujet ouvert. Structuration : organiser du contenu brut. Vérification : contrôler un document existant.",
+      "La question clé avant de prompter : « Qu'est-ce que je veux que l'IA fasse : créer, comprendre, organiser ou contrôler ? » La réponse détermine le gabarit à utiliser. Et le gabarit détermine la qualité du résultat.",
+      "Un manager qui sait distinguer ces 4 intentions obtient en moyenne un résultat utilisable dès le premier prompt. Celui qui ne les distingue pas passe en moyenne 3 tentatives à reformuler.",
+      "Ces 4 types s'inscrivent dans la progression S.F.O.I. : 🟢 Structurer (le moins risqué), 🟡 Fiabiliser (vérification des sorties), 🔵 Optimiser (analyse rigoureuse), 🟣 Industrialiser (délégation de mission).",
+      "En 2026, un 5e type émerge dans les usages avancés : le prompt agentique, qui confie une mission entière à l'IA avec autonomie de recherche et d'exécution. Ce type exige une infrastructure technique différente — c'est le champ de la Partie 3.",
+    ],
+  },
+
+  // ── 11-18 ── Quiz final (8 questions)
+  {
+    kind: 'quiz-interactive', qNum: 1,
+    question: "Votre direction vous demande d'analyser 4 offres logicielles concurrentes avant de choisir. Vous n'avez pas encore de critères définis. Quel type de prompt utilisez-vous ?",
+    opts: [
+      "Production — vous savez ce que vous voulez obtenir",
+      "Exploration — vous avez besoin de cartographier les options avant de décider",
+      "Vérification — vous voulez contrôler des documents existants",
+      "Structuration — vous avez du contenu brut à organiser",
+    ],
+    answer: 1,
+    expl: "Quand le livrable n'est pas encore défini et que vous avez besoin de comprendre le terrain, c'est de l'exploration. La production s'utilise quand vous savez exactement ce que vous voulez produire.",
+  },
+  {
+    kind: 'quiz-interactive', qNum: 2,
+    question: "Vous avez 4 pages de notes prises pendant une réunion stratégique. Vous devez en faire un compte rendu structuré. Quel type de prompt ?",
+    opts: [
+      "Production — vous produisez un livrable",
+      "Exploration — vous cherchez à comprendre vos notes",
+      "Structuration — vous organisez du contenu brut sans le recréer",
+      "Vérification — vous contrôlez si les notes sont complètes",
+    ],
+    answer: 2,
+    expl: "La distinction clé : dans la structuration, vous fournissez toute la matière — l'IA organise sans inventer. Dans la production, l'IA crée à partir de vos consignes.",
+  },
+  {
+    kind: 'quiz-interactive', qNum: 3,
+    question: "Votre juriste vous a envoyé un projet de contrat fournisseur. Vous voulez vérifier s'il couvre bien vos exigences de confidentialité. Quel type de prompt ?",
+    opts: [
+      "Production — demandez à l'IA de réécrire le contrat",
+      "Exploration — cartographiez les clauses possibles",
+      "Structuration — réorganisez le contrat",
+      "Vérification — contrôlez le document existant sur des critères précis",
+    ],
+    answer: 3,
+    expl: "La vérification s'utilise quand vous avez un document existant à soumettre à des critères précis. L'IA ne produit pas — elle contrôle et identifie les écarts.",
+  },
+  {
+    kind: 'quiz-interactive', qNum: 4,
+    question: "Un manager utilise ce prompt : « Rédige un email de présentation de notre nouvelle offre pour nos clients PME ». Quel type est-ce — et quel champ critique manque ?",
+    opts: [
+      "Exploration — il manque le périmètre d'analyse",
+      "Production — il manque le format attendu et les contraintes",
+      "Structuration — il manque le contenu source à organiser",
+      "Vérification — il manque les critères de contrôle",
+    ],
+    answer: 1,
+    expl: "C'est un prompt de production (livrable défini : un email), mais sans format ni contraintes précisées. L'IA va choisir la longueur, le ton, la structure à sa place.",
+  },
+  {
+    kind: 'quiz-interactive', qNum: 5,
+    question: "Quelle est la règle d'or du prompt de structuration ?",
+    opts: [
+      "Toujours fournir un exemple de document similaire",
+      "Zéro perte d'information — ne rien supprimer, ajouter une section « Points à clarifier »",
+      "Demander à l'IA de reformuler pour améliorer la clarté",
+      "Limiter le contenu source à une page maximum",
+    ],
+    answer: 1,
+    expl: "La valeur de la structuration réside dans l'organisation sans perte. L'IA tend à synthétiser — l'instruction « ne supprimer aucune information » contre cette tendance.",
+  },
+  {
+    kind: 'quiz-interactive', qNum: 6,
+    question: "Un responsable RH demande à l'IA : « Vérifie si notre processus de recrutement respecte le RGPD » sans joindre ni le document du processus ni les articles RGPD pertinents. Quelle est la conséquence probable ?",
+    opts: [
+      "L'IA refusera de répondre faute de sources",
+      "L'IA produira une vérification superficielle basée sur des connaissances générales, sans garantie",
+      "L'IA demandera automatiquement les documents manquants",
+      "L'IA produira une réponse correcte si elle est bien entraînée sur le RGPD",
+    ],
+    answer: 1,
+    expl: "Sans documents fournis, l'IA vérifie à partir de sa connaissance générale — elle peut rater des obligations récentes (cut-off) et produire une validation sans garantie. La vérification sans source = vérification superficielle.",
+  },
+  {
+    kind: 'quiz-interactive', qNum: 7,
+    question: "Un manager a besoin d'un support de présentation pour le COMEX sur la stratégie IA. Il dispose de plusieurs analyses internes désorganisées. Quelle séquence de prompts est la plus efficace ?",
+    opts: [
+      "Production directement — demander la présentation finale",
+      "Vérification → Production — contrôler d'abord, puis créer",
+      "Structuration → Production — organiser la matière, puis créer le livrable",
+      "Exploration → Vérification → Production",
+    ],
+    answer: 2,
+    expl: "La séquence optimale pour transformer des analyses désorganisées en livrable : d'abord structurer le contenu brut (zéro perte), puis produire le support sur une base organisée.",
+  },
+  {
+    kind: 'quiz-interactive', qNum: 8,
+    question: "En prompt d'exploration, pourquoi est-il indispensable de terminer par « hiérarchise par impact » ou « conclue par 3 recommandations » ?",
+    opts: [
+      "Pour limiter la longueur de la réponse",
+      "Pour forcer l'IA à ne pas sortir du périmètre",
+      "Pour éviter la dispersion et transformer l'exploration en aide à la décision",
+      "Pour respecter le format Markdown",
+    ],
+    answer: 2,
+    expl: "Sans instruction de hiérarchisation, l'exploration produit un catalogue exhaustif sans priorisation. La valeur vient de la recommandation finale, pas de l'exhaustivité.",
+  },
+
+  // ── 19 ── Takeaway
+  { kind: 'takeaway' },
+];
+
+const TOTAL = slides.length; // 19
 ---
-<Layout
-  title={bloc.titre}
-  description={bloc.desc}
->
-  <section class="max-w-4xl mx-auto px-4 py-10">
-    <div class="mb-6 flex items-center gap-2 text-sm text-slate-400">
-      <a href={`${base}formation/`} class="hover:text-slate-600 no-underline">Formation</a>
-      <span>›</span>
-      <span class="text-slate-600">Bloc {bloc.ordre} — {bloc.titre}</span>
-    </div>
-    <div class="mb-8">
-      <div class="flex items-center gap-3 mb-2">
-        <span class={`w-7 h-7 rounded-full ${bloc.phaseColor} text-white flex items-center justify-center font-bold text-xs`}>{bloc.ordre}</span>
-        <span class={`text-xs font-semibold px-2 py-0.5 rounded-full ${bloc.tagColor}`}>{bloc.phase}</span>
-        <span class="text-xs text-slate-400">{bloc.duree}</span>
+
+<Layout title={bloc.titre} description={bloc.desc}>
+  <section class="max-w-2xl mx-auto px-4 py-8" id="slides-root" data-next-url={nextUrl}>
+
+    <!-- Breadcrumb -->
+    <nav class="mb-5 text-sm text-slate-400">
+      <a href={`${base}formation/`} class="hover:text-slate-700 no-underline transition-colors">← Parcours</a>
+      <span class="mx-2">·</span>
+      <span>{bloc.phase}</span>
+    </nav>
+
+    <h1 class="text-xl font-bold text-slate-900 mb-5">{bloc.titre}</h1>
+
+    <!-- Barre de progression -->
+    <div class="mb-6">
+      <div class="flex items-center justify-between mb-2">
+        <span id="slide-counter" class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Slide 1 / {TOTAL}</span>
+        <span id="slide-title-badge" class="text-xs text-slate-400"></span>
       </div>
-      <h1 class="text-2xl md:text-3xl font-bold text-slate-900">{bloc.titre}</h1>
-      <p class="text-slate-500 text-sm mt-2">{bloc.desc}</p>
+      <div class="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+        <div id="progress-fill" class="h-full bg-blue-600 rounded-full transition-all duration-300" style={`width: ${(1 / TOTAL * 100).toFixed(2)}%`}></div>
+      </div>
     </div>
 
-    <SlidePlayer
-      slides={slides}
-      blocId="bloc-03"
-      nextBlocUrl={nextUrl}
-      nextBlocTitle={next?.titre}
-      takeawayUrl={takeawayUrl}
-    />
+    <!-- Container des slides -->
+    <div id="slides-container">
+
+      {slides.map((slide: any, i: number) => (
+        <div class="slide-panel" id={`panel-${i}`} style={i > 0 ? 'display:none' : ''}>
+
+          {/* ── CONTENU ─────────────────────────────────────────── */}
+          {slide.kind === 'content' && (
+            <div>
+              <h2 class="text-base font-semibold text-blue-700 mb-4">{slide.title}</h2>
+              <div class="mb-4 rounded-xl overflow-hidden border border-slate-100 bg-slate-50">
+                <img
+                  src={slide.img}
+                  alt={slide.imgAlt}
+                  style="width:100%; max-height:400px; object-fit:contain; display:block;"
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                />
+              </div>
+              <details class="border border-slate-200 rounded-xl overflow-hidden">
+                <summary class="s-summary px-4 py-3 text-sm font-medium text-slate-600 hover:bg-slate-50 cursor-pointer transition-colors">
+                  Voir le script complet ▾
+                </summary>
+                <div class="px-4 py-4 border-t border-slate-100 bg-slate-50/60 space-y-3">
+                  {slide.script.map((para: string) => (
+                    <p class="text-sm text-slate-600 leading-relaxed">{para}</p>
+                  ))}
+                </div>
+              </details>
+            </div>
+          )}
+
+          {/* ── QUIZ STATIQUE ────────────────────────────────────── */}
+          {slide.kind === 'quiz-static' && (
+            <div>
+              <div class="flex items-center gap-2 mb-5">
+                <span class="text-xs font-semibold bg-amber-100 text-amber-700 px-2.5 py-1 rounded-full uppercase tracking-wide">Pause réflexion</span>
+              </div>
+
+              <p class="text-base font-semibold text-slate-900 mb-5 leading-snug">{slide.question}</p>
+
+              <div class="quiz-block space-y-2" data-answer={slide.answer}>
+                {slide.opts.map((opt: string, j: number) => (
+                  <button
+                    type="button"
+                    class="quiz-opt w-full text-left px-4 py-3 rounded-lg border border-slate-200 bg-white text-sm text-slate-700 hover:border-amber-400 hover:bg-amber-50 transition-all"
+                    data-index={String(j)}
+                    onclick="handleQuizAnswer(this)"
+                  >
+                    <span class="font-semibold text-amber-600 mr-2">{String.fromCharCode(65 + j)})</span>{opt}
+                  </button>
+                ))}
+
+                <div class="quiz-expl px-4 py-4 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-600 leading-relaxed mt-3" style="display:none">
+                  {slide.expl}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ── QUIZ INTERACTIF ──────────────────────────────────── */}
+          {slide.kind === 'quiz-interactive' && (
+            <div>
+              <div class="flex items-center gap-3 mb-5">
+                <span class="text-xs font-semibold bg-blue-100 text-blue-700 px-2.5 py-1 rounded-full uppercase tracking-wide">Quiz final</span>
+                <span class="text-xs text-slate-400">Question {slide.qNum} / 8</span>
+              </div>
+
+              <p class="text-base font-semibold text-slate-900 mb-5 leading-snug">{slide.question}</p>
+
+              <div class="quiz-block space-y-2" data-answer={slide.answer}>
+                {slide.opts.map((opt: string, j: number) => (
+                  <button
+                    type="button"
+                    class="quiz-opt w-full text-left px-4 py-3 rounded-lg border border-slate-200 bg-white text-sm text-slate-700 hover:border-blue-400 hover:bg-blue-50 transition-all"
+                    data-index={String(j)}
+                    onclick="handleQuizAnswer(this)"
+                  >
+                    <span class="font-semibold text-blue-600 mr-2">{String.fromCharCode(65 + j)})</span>{opt}
+                  </button>
+                ))}
+
+                <div class="quiz-expl px-4 py-4 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-600 leading-relaxed mt-3" style="display:none">
+                  {slide.expl}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ── TAKEAWAY ─────────────────────────────────────────── */}
+          {slide.kind === 'takeaway' && (
+            <div class="text-center py-8">
+              <div id="end-bloc-03" style="display:none"></div>
+              <div class="w-16 h-16 rounded-2xl bg-blue-600 flex items-center justify-center mx-auto mb-6">
+                <span class="text-white text-2xl font-bold">✓</span>
+              </div>
+              <h2 class="text-2xl font-bold text-slate-900 mb-3">Bloc 3 terminé</h2>
+              <p class="text-slate-500 mb-8 max-w-sm mx-auto">Téléchargez la fiche mémo pour garder les points clés sous la main.</p>
+              <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <a href={takeawayPdf} download class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition-colors">↓ Télécharger la fiche mémo (PDF)</a>
+                <a href={nextUrl} class="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-slate-200 text-slate-700 text-sm font-semibold hover:border-slate-300 hover:bg-slate-50 transition-colors">Bloc suivant →</a>
+              </div>
+            </div>
+          )}
+
+        </div>
+      ))}
+
+    </div>
+
+    <!-- Navigation -->
+    <div class="flex items-center justify-between mt-8 pt-6 border-t border-slate-100">
+      <button
+        id="prev-btn"
+        onclick="slidePrev()"
+        disabled
+        class="px-5 py-2.5 rounded-lg border border-slate-200 text-slate-600 text-sm font-medium hover:border-slate-300 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+      >
+        ← Précédent
+      </button>
+      <button
+        id="next-btn"
+        onclick="slideNext()"
+        class="px-5 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-all"
+      >
+        Suivant →
+      </button>
+    </div>
+
   </section>
 </Layout>
+
+<style>
+  details summary.s-summary {
+    list-style: none;
+  }
+  details summary.s-summary::-webkit-details-marker {
+    display: none;
+  }
+  .quiz-opt.q-correct {
+    border-color: #22c55e !important;
+    background-color: #f0fdf4 !important;
+    color: #15803d !important;
+  }
+  .quiz-opt.q-wrong {
+    border-color: #f87171 !important;
+    background-color: #fef2f2 !important;
+    color: #dc2626 !important;
+  }
+  .quiz-opt.q-inactive {
+    opacity: 0.4;
+    cursor: default;
+  }
+</style>
+
+<script is:inline>
+  var current = 0;
+  var TOTAL = 19;
+  var nextUrl = document.getElementById('slides-root').dataset.nextUrl;
+
+  function showSlide(n) {
+    document.querySelectorAll('.slide-panel').forEach(function(p, i) {
+      p.style.display = i === n ? 'block' : 'none';
+    });
+    current = n;
+
+    // Reveal end-bloc-03 sentinel on takeaway slide
+    var endEl = document.getElementById('end-bloc-03');
+    if (endEl) endEl.style.display = (n === TOTAL - 1) ? 'block' : 'none';
+
+    // Progress bar
+    var pct = ((n + 1) / TOTAL * 100).toFixed(2) + '%';
+    document.getElementById('progress-fill').style.width = pct;
+    document.getElementById('slide-counter').textContent = 'Slide ' + (n + 1) + ' / ' + TOTAL;
+
+    // Prev button
+    document.getElementById('prev-btn').disabled = n === 0;
+
+    // Next button label
+    var nextBtn = document.getElementById('next-btn');
+    if (n === TOTAL - 1) {
+      nextBtn.textContent = 'Bloc suivant →';
+    } else {
+      nextBtn.textContent = 'Suivant →';
+    }
+
+  }
+
+  function slidePrev() {
+    if (current > 0) showSlide(current - 1);
+  }
+
+  function slideNext() {
+    if (current < TOTAL - 1) {
+      showSlide(current + 1);
+    } else {
+      window.location.href = nextUrl;
+    }
+  }
+
+  function handleQuizAnswer(btn) {
+    var block = btn.closest('.quiz-block');
+    if (block.dataset.answered) return;
+    block.dataset.answered = '1';
+
+    var correct = parseInt(block.dataset.answer, 10);
+    var chosen  = parseInt(btn.dataset.index, 10);
+
+    block.querySelectorAll('.quiz-opt').forEach(function(opt, i) {
+      opt.disabled = true;
+      if (i === correct) {
+        opt.classList.add('q-correct');
+      } else if (i === chosen && chosen !== correct) {
+        opt.classList.add('q-wrong');
+      } else {
+        opt.classList.add('q-inactive');
+      }
+    });
+
+    // Show explanation
+    var expl = block.querySelector('.quiz-expl');
+    if (expl) expl.style.display = 'block';
+
+  }
+
+  // Init
+  showSlide(0);
+</script>
 
 <script>
   import { trackBlocCompletion, observeEndScreen } from '../../lib/trackCompletion';

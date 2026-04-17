@@ -70,12 +70,12 @@ export const BLOCS: BlocConfig[] = [
   },
 ];
 
-// Takeaway URL mapping (public HTML files)
+// Takeaway PDF mapping
 export const TAKEAWAY_URLS: Record<string, string> = {
-  'bloc-02': '/takeaways/takeaway-intro-checklist.html',
-  'bloc-03': '/takeaways/takeaway-p1-01-4types.html',
-  'bloc-04': '/takeaways/takeaway-p2-01-sfoi.html',
-  'bloc-05': '/takeaways/takeaway-p1-02-projets.html',
+  'bloc-02': '/assets/takeaways/Takeaway-Bloc-02-Risques-cadre-responsabilites.pdf',
+  'bloc-03': '/assets/takeaways/Takeaway-Bloc-03-Choisir-son-prompt.pdf',
+  'bloc-04': '/assets/takeaways/Takeaway-Bloc-04-Methode-SFOI.pdf',
+  'bloc-05': '/assets/takeaways/Takeaway-Bloc-05-Projets-instructions-documents.pdf',
 };
 
 export function getSlidesForBloc(blocId: string): Slide[] {
