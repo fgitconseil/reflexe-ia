@@ -8,63 +8,162 @@ const base = import.meta.env.BASE_URL;
     <div class="mb-6">
       <a href={base} class="text-slate-400 text-sm hover:text-slate-600 no-underline">← Accueil</a>
     </div>
-    <h1 class="text-3xl font-bold text-slate-900 mb-10">Politique de confidentialité</h1>
+    <h1 class="text-3xl font-bold text-slate-900 mb-2">Politique de confidentialité</h1>
+    <p class="text-slate-400 text-sm italic mb-10">Reflexe IA · reflexe-ia.org · Dernière mise à jour : Avril 2026</p>
 
-    <div class="space-y-8 text-slate-700 text-base leading-relaxed">
+    <div class="space-y-10 text-slate-700 text-base leading-relaxed">
 
       <section>
-        <h2 class="text-xl font-bold text-slate-900 mb-3">1. Responsable du traitement</h2>
-        <p>
-          FGIT Conseil SARL — RCS Nanterre 527 571 798 — APE 6202A<br/>
-          Contact : <a href="mailto:contact@reflexe-ia.org" class="text-blue-600 hover:underline">contact@reflexe-ia.org</a>
-        </p>
+        <h2 class="text-xl font-bold text-slate-900 mb-4">1. Responsable du traitement</h2>
+        <p>Le responsable du traitement des données personnelles collectées sur le site <strong>reflexe-ia.org</strong> est :</p>
+        <div class="mt-3 bg-slate-50 rounded-lg px-5 py-4 text-sm space-y-1">
+          <p><strong>FGIT Conseil</strong></p>
+          <p>SARL immatriculée au RCS de Nanterre sous le numéro 527 571 798</p>
+          <p>Siège social : 27 rue Auguste Buisson, 92250 La Garenne-Colombes, France</p>
+        </div>
+        <p class="mt-3">Les coordonnées complètes de l'Éditeur sont indiquées dans les <a href={`${base}mentions-legales/`} class="text-blue-600 hover:underline">Mentions légales</a>.</p>
       </section>
 
       <section>
-        <h2 class="text-xl font-bold text-slate-900 mb-3">2. Données collectées</h2>
-        <p>
-          Le site reflexe-ia.org ne collecte des données personnelles qu'au travers du formulaire de contact (nom, adresse email, message). Aucune donnée n'est collectée lors de la consultation du site ou de la formation.
-        </p>
+        <h2 class="text-xl font-bold text-slate-900 mb-4">2. Données collectées</h2>
+        <h3 class="text-base font-semibold text-slate-800 mb-3">2.1 Données collectées lors de l'inscription à la formation</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="bg-slate-100">
+                <th class="text-left px-4 py-2.5 font-semibold text-slate-700 border border-slate-200">Donnée</th>
+                <th class="text-left px-4 py-2.5 font-semibold text-slate-700 border border-slate-200">Caractère</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="px-4 py-2.5 border border-slate-200">Prénom</td><td class="px-4 py-2.5 border border-slate-200">Obligatoire</td></tr>
+              <tr class="bg-slate-50"><td class="px-4 py-2.5 border border-slate-200">Nom</td><td class="px-4 py-2.5 border border-slate-200">Obligatoire</td></tr>
+              <tr><td class="px-4 py-2.5 border border-slate-200">Adresse email</td><td class="px-4 py-2.5 border border-slate-200">Obligatoire</td></tr>
+              <tr class="bg-slate-50"><td class="px-4 py-2.5 border border-slate-200">Mot de passe (haché, non lisible en clair)</td><td class="px-4 py-2.5 border border-slate-200">Obligatoire</td></tr>
+              <tr><td class="px-4 py-2.5 border border-slate-200">Entreprise</td><td class="px-4 py-2.5 border border-slate-200">Facultatif</td></tr>
+              <tr class="bg-slate-50"><td class="px-4 py-2.5 border border-slate-200">Consentement au recontact commercial</td><td class="px-4 py-2.5 border border-slate-200">Recueilli à l'inscription</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3 class="text-base font-semibold text-slate-800 mt-5 mb-2">2.2 Données générées par l'usage de la formation</h3>
+        <ul class="space-y-1 list-disc list-inside text-slate-600">
+          <li>Progression pédagogique (blocs consultés, blocs complétés, dates)</li>
+          <li>Date de création du compte</li>
+          <li>Date de dernière connexion</li>
+        </ul>
+        <h3 class="text-base font-semibold text-slate-800 mt-5 mb-2">2.3 Données de navigation</h3>
+        <p>Le Site n'utilise aucun outil de mesure d'audience, aucun traceur publicitaire et aucun cookie tiers. Seuls des cookies techniques de session, strictement nécessaires au fonctionnement de l'authentification, sont déposés lors de la connexion au compte.</p>
       </section>
 
       <section>
-        <h2 class="text-xl font-bold text-slate-900 mb-3">3. Finalité du traitement</h2>
-        <p>
-          Les données collectées via le formulaire de contact sont utilisées exclusivement pour répondre aux demandes des utilisateurs. Elles ne sont pas utilisées à des fins commerciales ou transmises à des tiers.
-        </p>
+        <h2 class="text-xl font-bold text-slate-900 mb-4">3. Finalités et bases légales</h2>
+        <p class="mb-3">Les données sont traitées pour les finalités suivantes :</p>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="bg-slate-100">
+                <th class="text-left px-4 py-2.5 font-semibold text-slate-700 border border-slate-200">Finalité</th>
+                <th class="text-left px-4 py-2.5 font-semibold text-slate-700 border border-slate-200">Base légale (RGPD)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="px-4 py-2.5 border border-slate-200">Création et gestion du compte utilisateur</td><td class="px-4 py-2.5 border border-slate-200">Exécution du contrat (CGU)</td></tr>
+              <tr class="bg-slate-50"><td class="px-4 py-2.5 border border-slate-200">Sauvegarde et reprise de la progression dans la formation</td><td class="px-4 py-2.5 border border-slate-200">Exécution du contrat (CGU)</td></tr>
+              <tr><td class="px-4 py-2.5 border border-slate-200">Recontact commercial pour proposer une formation d'équipe ou un accompagnement AI Practice Steward</td><td class="px-4 py-2.5 border border-slate-200">Consentement (art. 6-1-a RGPD)</td></tr>
+              <tr class="bg-slate-50"><td class="px-4 py-2.5 border border-slate-200">Fonctionnement technique de l'authentification (cookie de session)</td><td class="px-4 py-2.5 border border-slate-200">Intérêt légitime — indispensable au service</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4">Le consentement au recontact commercial peut être retiré à tout moment, sans incidence sur l'accès à la formation.</p>
       </section>
 
       <section>
-        <h2 class="text-xl font-bold text-slate-900 mb-3">4. Durée de conservation</h2>
-        <p>
-          Les données de contact sont conservées le temps nécessaire au traitement de la demande, et au maximum 3 ans à compter du dernier contact.
-        </p>
+        <h2 class="text-xl font-bold text-slate-900 mb-4">4. Destinataires des données</h2>
+        <p>Les données collectées sont destinées exclusivement à l'Éditeur du Site. Elles ne sont ni vendues, ni cédées, ni communiquées à des tiers à des fins commerciales.</p>
+        <h3 class="text-base font-semibold text-slate-800 mt-4 mb-3">Sous-traitants techniques</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="bg-slate-100">
+                <th class="text-left px-4 py-2.5 font-semibold text-slate-700 border border-slate-200">Sous-traitant</th>
+                <th class="text-left px-4 py-2.5 font-semibold text-slate-700 border border-slate-200">Rôle</th>
+                <th class="text-left px-4 py-2.5 font-semibold text-slate-700 border border-slate-200">Localisation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="px-4 py-2.5 border border-slate-200">Supabase, Inc.</td><td class="px-4 py-2.5 border border-slate-200">Base de données utilisateurs et authentification</td><td class="px-4 py-2.5 border border-slate-200">Union européenne (Francfort, Allemagne)</td></tr>
+              <tr class="bg-slate-50"><td class="px-4 py-2.5 border border-slate-200">GitHub, Inc.</td><td class="px-4 py-2.5 border border-slate-200">Hébergement du site statique (aucune donnée utilisateur)</td><td class="px-4 py-2.5 border border-slate-200">États-Unis</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4">Les données personnelles des utilisateurs sont traitées et stockées <strong>exclusivement au sein de l'Union européenne</strong>. Aucun transfert de données personnelles hors Union européenne n'est effectué dans le cadre du fonctionnement normal du Site.</p>
       </section>
 
       <section>
-        <h2 class="text-xl font-bold text-slate-900 mb-3">5. Droits des utilisateurs</h2>
-        <p>
-          Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, d'effacement et de portabilité de vos données. Pour exercer ces droits, contactez-nous à <a href="mailto:contact@reflexe-ia.org" class="text-blue-600 hover:underline">contact@reflexe-ia.org</a>.
-        </p>
+        <h2 class="text-xl font-bold text-slate-900 mb-4">5. Durées de conservation</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="bg-slate-100">
+                <th class="text-left px-4 py-2.5 font-semibold text-slate-700 border border-slate-200">Type de donnée</th>
+                <th class="text-left px-4 py-2.5 font-semibold text-slate-700 border border-slate-200">Durée de conservation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="px-4 py-2.5 border border-slate-200">Compte utilisateur actif</td><td class="px-4 py-2.5 border border-slate-200">Tant que le compte est actif</td></tr>
+              <tr class="bg-slate-50"><td class="px-4 py-2.5 border border-slate-200">Compte inactif (aucune connexion)</td><td class="px-4 py-2.5 border border-slate-200">3 ans à compter de la dernière connexion, puis suppression ou anonymisation</td></tr>
+              <tr><td class="px-4 py-2.5 border border-slate-200">Données de prospection (consentement de recontact)</td><td class="px-4 py-2.5 border border-slate-200">3 ans à compter du dernier contact établi avec la personne concernée (norme CNIL)</td></tr>
+              <tr class="bg-slate-50"><td class="px-4 py-2.5 border border-slate-200">Compte supprimé à la demande de l'utilisateur</td><td class="px-4 py-2.5 border border-slate-200">Suppression effective sous 30 jours maximum</td></tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <section>
-        <h2 class="text-xl font-bold text-slate-900 mb-3">6. Cookies</h2>
-        <p>
-          Le site reflexe-ia.org n'utilise pas de cookies de tracking ou d'analyse. La progression dans la formation est mémorisée uniquement dans le localStorage de votre navigateur, sans transmission à un serveur.
-        </p>
+        <h2 class="text-xl font-bold text-slate-900 mb-4">6. Droits des personnes concernées</h2>
+        <p>Conformément au Règlement (UE) 2016/679 (RGPD) et à la loi Informatique et Libertés, l'utilisateur dispose des droits suivants sur ses données personnelles :</p>
+        <ul class="mt-3 space-y-2 list-disc list-inside text-slate-600">
+          <li><strong>Droit d'accès</strong> — obtenir une copie des données détenues par l'Éditeur</li>
+          <li><strong>Droit de rectification</strong> — faire corriger une donnée inexacte</li>
+          <li><strong>Droit à l'effacement</strong> — demander la suppression de ses données</li>
+          <li><strong>Droit à la limitation du traitement</strong> — demander la suspension temporaire du traitement</li>
+          <li><strong>Droit d'opposition</strong> — s'opposer au traitement, notamment au recontact commercial</li>
+          <li><strong>Droit à la portabilité</strong> — recevoir ses données dans un format structuré et lisible</li>
+          <li><strong>Droit de retirer son consentement</strong> — à tout moment, pour les traitements fondés sur le consentement</li>
+          <li><strong>Droit de définir des directives post-mortem</strong> — conformément à la loi française</li>
+        </ul>
+        <h3 class="text-base font-semibold text-slate-800 mt-5 mb-2">Comment exercer ces droits</h3>
+        <p>Ces droits peuvent être exercés via les canaux de contact indiqués dans les <a href={`${base}cgu/`} class="text-blue-600 hover:underline">Conditions Générales d'Utilisation</a> ou via la page <a href={`${base}mentions-legales/`} class="text-blue-600 hover:underline">Mentions légales</a>.</p>
+        <p class="mt-3">L'Éditeur s'engage à répondre dans un délai d'un mois à compter de la réception de la demande, conformément à l'article 12 du RGPD.</p>
+        <h3 class="text-base font-semibold text-slate-800 mt-5 mb-2">Droit d'introduire une réclamation</h3>
+        <p>Toute personne concernée dispose du droit d'introduire une réclamation auprès de l'autorité de contrôle française :</p>
+        <div class="mt-3 bg-slate-50 rounded-lg px-5 py-4 text-sm">
+          <p><strong>CNIL</strong> — 3 Place de Fontenoy, TSA 80715, 75334 Paris Cedex 07 — <a href="https://www.cnil.fr" target="_blank" rel="noopener" class="text-blue-600 hover:underline">cnil.fr</a></p>
+        </div>
       </section>
 
       <section>
-        <h2 class="text-xl font-bold text-slate-900 mb-3">7. Contact DPO</h2>
-        <p>
-          Pour toute question relative à la protection de vos données : <a href="mailto:contact@reflexe-ia.org" class="text-blue-600 hover:underline">contact@reflexe-ia.org</a>
-        </p>
+        <h2 class="text-xl font-bold text-slate-900 mb-4">7. Sécurité des données</h2>
+        <p>L'Éditeur met en œuvre les mesures techniques et organisationnelles appropriées pour protéger les données personnelles :</p>
+        <ul class="mt-3 space-y-1 list-disc list-inside text-slate-600">
+          <li>Mots de passe hachés (jamais stockés en clair)</li>
+          <li>Authentification par le service Supabase, conforme aux standards de sécurité du secteur</li>
+          <li>Hébergement des données dans l'Union européenne</li>
+          <li>Connexion au Site sécurisée par HTTPS</li>
+          <li>Accès restreint aux données administratives au seul gérant de FGIT Conseil</li>
+        </ul>
       </section>
 
-      <p class="text-slate-400 text-sm italic border-t border-slate-200 pt-6">
-        À compléter en conformité CNIL avant mise en ligne définitive.
-      </p>
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 mb-4">8. Cookies</h2>
+        <p>Le Site utilise uniquement des cookies techniques strictement nécessaires au fonctionnement de l'authentification utilisateur. Ces cookies sont dispensés de consentement en application de l'article 82 de la loi Informatique et Libertés.</p>
+        <p class="mt-3">Aucun cookie de mesure d'audience, de profilage ou de publicité n'est déposé.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 mb-4">9. Évolution de la présente politique</h2>
+        <p>La présente politique de confidentialité peut être mise à jour pour refléter les évolutions du Site, de la réglementation ou des pratiques de l'Éditeur. La date de dernière mise à jour figure en tête du document. Les utilisateurs inscrits sont informés de toute modification substantielle via les canaux de contact qu'ils ont renseignés.</p>
+      </section>
 
     </div>
   </div>

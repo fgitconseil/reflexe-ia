@@ -123,15 +123,26 @@ const base = import.meta.env.BASE_URL;
                 <p class="field-error text-xs text-red-600 mt-1" style="display:none"></p>
               </div>
 
-              <div class="pt-1">
-                <label class="flex items-start gap-3 cursor-pointer">
-                  <input type="checkbox" id="consent" name="consent" required
-                    class="mt-0.5 w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 flex-shrink-0" />
-                  <span class="text-sm text-slate-600 leading-relaxed">
-                    J'accepte les <a href="/cgu/" class="text-blue-600 hover:underline" target="_blank">CGU</a> et j'accepte d'être contacté par Reflexe IA pour des offres de formation ou d'accompagnement AI Practice Steward. <span class="text-red-500">*</span>
-                  </span>
-                </label>
-                <p id="consent-error" class="text-xs text-red-600 mt-1 ml-7" style="display:none">Ce champ est obligatoire.</p>
+              <div class="pt-1 space-y-3">
+                <div>
+                  <label class="flex items-start gap-3 cursor-pointer">
+                    <input type="checkbox" id="consent-cgu" name="consent-cgu" required
+                      class="mt-0.5 w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 flex-shrink-0" />
+                    <span class="text-sm text-slate-600 leading-relaxed">
+                      J'ai lu et j'accepte les <a href="/cgu/" class="text-blue-600 hover:underline" target="_blank">CGU</a> et la <a href="/politique-confidentialite/" class="text-blue-600 hover:underline" target="_blank">Politique de confidentialité</a>. <span class="text-red-500">*</span>
+                    </span>
+                  </label>
+                  <p id="consent-error" class="text-xs text-red-600 mt-1 ml-7" style="display:none">Vous devez accepter les CGU pour créer un compte.</p>
+                </div>
+                <div>
+                  <label class="flex items-start gap-3 cursor-pointer">
+                    <input type="checkbox" id="consent-marketing" name="consent-marketing"
+                      class="mt-0.5 w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 flex-shrink-0" />
+                    <span class="text-sm text-slate-500 leading-relaxed">
+                      J'accepte d'être recontacté par Reflexe IA pour recevoir des informations sur les offres d'accompagnement et de formation en entreprise. <span class="text-slate-400">(facultatif)</span>
+                    </span>
+                  </label>
+                </div>
               </div>
 
               <button type="submit" id="submit-btn" class="btn-primary w-full justify-center py-3 mt-2">
@@ -244,7 +255,8 @@ const base = import.meta.env.BASE_URL;
     const entreprise = (document.getElementById('entreprise') as HTMLInputElement).value.trim();
     const password   = (document.getElementById('password') as HTMLInputElement).value;
     const confirm    = (document.getElementById('password-confirm') as HTMLInputElement).value;
-    const consent    = (document.getElementById('consent') as HTMLInputElement).checked;
+    const consentCgu       = (document.getElementById('consent-cgu') as HTMLInputElement).checked;
+    const consentMarketing = (document.getElementById('consent-marketing') as HTMLInputElement).checked;
 
     let hasError = false;
 
@@ -266,7 +278,7 @@ const base = import.meta.env.BASE_URL;
     }
     if (password.length < 8) { fieldError(document.getElementById('password') as HTMLInputElement, 'Le mot de passe doit contenir au moins 8 caractères.'); hasError = true; }
     if (password !== confirm) { fieldError(document.getElementById('password-confirm') as HTMLInputElement, 'Les mots de passe ne correspondent pas.'); hasError = true; }
-    if (!consent) { document.getElementById('consent-error')!.style.display = ''; hasError = true; }
+    if (!consentCgu) { document.getElementById('consent-error')!.style.display = ''; hasError = true; }
 
     if (hasError) return;
 
@@ -292,7 +304,7 @@ const base = import.meta.env.BASE_URL;
         prenom,
         nom,
         entreprise:      entreprise || null,
-        consent_contact: true,
+        consent_contact: consentMarketing,
       });
     }
 
