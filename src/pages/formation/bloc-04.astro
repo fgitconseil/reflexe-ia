@@ -299,7 +299,7 @@ const TOTAL = slides.length; // 17
                 <img
                   src={slide.img}
                   alt={slide.imgAlt}
-                  style="width:100%; max-height:380px; object-fit:contain; display:block;"
+                  style="width:100%; max-height:480px; object-fit:contain; display:block;"
                   loading={i === 0 ? 'eager' : 'lazy'}
                 />
                 <div class="play-overlay" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
@@ -313,6 +313,12 @@ const TOTAL = slides.length; // 17
                     </svg>
                   </div>
                 </div>
+                <button class="zoom-btn" onclick="event.stopPropagation();openLightbox(this.parentElement.querySelector('img'))" aria-label="Agrandir l'image">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="15,3 21,3 21,9"/><polyline points="9,21 3,21 3,15"/>
+                    <line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>
+                  </svg>
+                </button>
               </div>
 
               {/* Audio */}
@@ -404,7 +410,7 @@ const TOTAL = slides.length; // 17
               </div>
               <h2 class="text-2xl font-bold text-slate-900 mb-3">Bloc 4 terminé</h2>
               <div id="score-display-04" class="text-3xl font-bold text-amber-600 mb-1">—</div>
-              <p class="text-slate-500 text-sm mb-6">/ 8 questions du quiz final</p>
+              <p class="text-slate-500 text-sm mb-6">questions du quiz final</p>
               <p class="text-slate-500 mb-6 max-w-sm mx-auto">Téléchargez la fiche mémo pour garder les points clés sous la main.</p>
               <div class="flex flex-col sm:flex-row gap-3 justify-center">
                 <a
@@ -449,6 +455,12 @@ const TOTAL = slides.length; // 17
     </div>
 
   </section>
+
+  <div id="lightbox" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.88); align-items:center; justify-content:center;" onclick="closeLightbox()" role="dialog" aria-modal="true">
+    <img id="lightbox-img" src="" alt="" style="max-width:92vw; max-height:90vh; object-fit:contain; border-radius:8px; box-shadow:0 8px 40px rgba(0,0,0,0.5);" />
+    <button onclick="event.stopPropagation();closeLightbox()" style="position:absolute;top:16px;right:20px;background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,255,255,0.3);border-radius:50%;width:40px;height:40px;cursor:pointer;color:white;font-size:20px;display:flex;align-items:center;justify-content:center;" aria-label="Fermer l'image agrandie">✕</button>
+  </div>
+
 </Layout>
 
 <style>
@@ -483,6 +495,19 @@ const TOTAL = slides.length; // 17
     background: rgba(0,0,0,0.72);
     transform: scale(1.07);
   }
+  .zoom-btn {
+    position: absolute;
+    bottom: 8px; right: 8px;
+    width: 32px; height: 32px;
+    border-radius: 6px;
+    background: rgba(0,0,0,0.5);
+    border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0.8;
+    transition: opacity 0.15s, transform 0.15s;
+    z-index: 2;
+  }
+  .zoom-btn:hover { opacity: 1; transform: scale(1.1); }
 </style>
 
 <script is:inline>
@@ -598,6 +623,21 @@ const TOTAL = slides.length; // 17
     var expl = block.querySelector('.quiz-expl');
     if (expl) expl.style.display = 'block';
   }
+
+  function openLightbox(imgEl) {
+    var lb = document.getElementById('lightbox');
+    document.getElementById('lightbox-img').src = imgEl.src;
+    document.getElementById('lightbox-img').alt = imgEl.alt || '';
+    lb.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
 
   // Init
   showSlide(0);
