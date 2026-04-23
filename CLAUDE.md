@@ -94,12 +94,10 @@ Copier depuis `Formation_prompting/site/src/` :
 /formation/bloc-01 à bloc-06        → blocs formation
 /interventions                      → 4 cas clients avec offres adaptées (nouveau)
 /contact                            → formulaire contact + Calendly (nouveau)
-/framework                          → hub Framework
+/framework                          → hub Framework (3 cards : Manifeste · Méthode · APS)
 /framework/manifeste                → manifeste complet
 /framework/methode-sfoi             → méthode S.F.O.I.
-/framework/ai-practice-steward      → rôle APS (déplacé depuis top-level)
-/framework/accompagnement           → offre accompagnement
-/framework/skills                   → offre skills
+/framework/ai-practice-steward      → rôle APS
 /mainteneurs                        → page mainteneurs
 /inscription, /connexion            → auth
 /cgu, /politique-confidentialite, /mentions-legales → légal
@@ -119,12 +117,11 @@ Header :
     Manifeste                → /framework/manifeste
     Méthode S.F.O.I.         → /framework/methode-sfoi
     AI Practice Steward      → /framework/ai-practice-steward
-    Accompagnement           → /framework/accompagnement
-    Skills                   → /framework/skills
 
 Footer (3 colonnes) :
   Col 1 — Brand : logo "Reflexe IA" + description proposition de valeur
   Col 2 — Navigation : Accueil · Formation · Interventions · Framework · Mainteneurs
+  (Pas de lien LinkedIn dans le header — uniquement dans le footer)
   Col 3 — Légal : Mentions légales · CGU · Politique de confidentialité
   Bottom : © 2026 Reflexe IA. Tous droits réservés.
 ```
