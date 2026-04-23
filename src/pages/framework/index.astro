@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 const base = import.meta.env.BASE_URL;
 ---
-<Layout title="Framework Reflexe IA" description="Une méthode ouverte, un rôle, une communauté. Manifeste, méthode S.F.O.I., accompagnement et skills.">
+<Layout title="Framework Reflexe IA" description="La vision, la méthode et le rôle derrière Reflexe IA. Manifeste, méthode S.F.O.I. et AI Practice Steward.">
 
   <section class="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
     <div class="max-w-3xl mx-auto px-6">
@@ -12,13 +12,13 @@ const base = import.meta.env.BASE_URL;
       <p class="text-sm font-bold tracking-widest uppercase text-blue-400 mb-4">Framework</p>
       <h1 class="text-4xl md:text-5xl font-bold mb-4">Framework Reflexe IA</h1>
       <p class="text-slate-300 text-lg leading-relaxed">
-        Une méthode ouverte, un rôle, une communauté.
+        La vision, la méthode et le rôle. Pas l'offre commerciale.
       </p>
     </div>
   </section>
 
   <div class="max-w-5xl mx-auto px-6 py-20">
-    <div class="grid md:grid-cols-2 gap-6">
+    <div class="grid md:grid-cols-3 gap-6">
 
       <a href={`${base}framework/manifeste/`} class="card group no-underline flex flex-col">
         <div class="flex items-center gap-3 mb-4">
@@ -42,7 +42,7 @@ const base = import.meta.env.BASE_URL;
           <h2 class="font-bold text-slate-900 text-lg">Méthode S.F.O.I.</h2>
         </div>
         <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-6">
-          Structurer · Fiabiliser · Optimiser · Industrialiser. Une carte de maturité des pratiques IA — individuelle et organisationnelle.
+          Structurer · Fiabiliser · Optimiser · Industrialiser. Une carte de maturité des pratiques IA, individuelle et organisationnelle.
         </p>
         <span class="text-blue-600 text-sm font-semibold group-hover:underline">Découvrir la méthode →</span>
       </a>
@@ -56,28 +56,6 @@ const base = import.meta.env.BASE_URL;
           Le garant des pratiques IA dans une organisation. Définition du rôle, capacités structurelles, positionnement.
         </p>
         <span class="text-blue-600 text-sm font-semibold group-hover:underline">Découvrir le rôle →</span>
-      </a>
-
-      <a href={`${base}framework/accompagnement/`} class="card group no-underline flex flex-col">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold" style="background:var(--accent-600)">A</div>
-          <h2 class="font-bold text-slate-900 text-lg">Accompagnement APS</h2>
-        </div>
-        <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-6">
-          Déploiement du rôle AI Practice Steward dans votre organisation. Diagnostic des boucles systémiques, structuration des normes collectives.
-        </p>
-        <span class="text-blue-600 text-sm font-semibold group-hover:underline">En savoir plus →</span>
-      </a>
-
-      <a href={`${base}framework/skills/`} class="card group no-underline flex flex-col">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold" style="background:var(--sfoi-i)">S</div>
-          <h2 class="font-bold text-slate-900 text-lg">Skills</h2>
-        </div>
-        <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-6">
-          Capitaliser les savoirs experts en actifs IA permanents. Transformer la connaissance tacite en IP métier transmissible.
-        </p>
-        <span class="text-blue-600 text-sm font-semibold group-hover:underline">En savoir plus →</span>
       </a>
 
     </div>
