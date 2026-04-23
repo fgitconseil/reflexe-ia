@@ -2,7 +2,10 @@
 
 ## Ce projet
 
-Site Astro pour **reflexe-ia.org** — positionnement autour du rôle AI Practice Steward.
+Site Astro pour **reflexe-ia.org** — vitrine commerciale Reflexe IA.
+
+Le frontstage commercial est : Home · Formation · Interventions · Contact.
+Le backstage (crédibilité / communauté) est : Framework · Mainteneurs.
 
 Ce repo est **séparé** de `Formation_prompting` (contenu formation) et de `knowledge_extraction` (skills).
 
@@ -86,24 +89,20 @@ Copier depuis `Formation_prompting/site/src/` :
 ## Architecture des pages
 
 ```
-/                           → homepage
-/formation                  → liste des 6 blocs (existant adapté)
-/formation/bloc-01          → bloc 1 (existant)
-/formation/bloc-02          → bloc 2
-/formation/bloc-03          → bloc 3
-/formation/bloc-04          → bloc 4
-/formation/bloc-05          → bloc 5
-/formation/bloc-06          → bloc 6 (terminologie APS mise à jour)
-/ai-practice-steward        → page rôle
-/framework                  → hub Framework (manifeste + méthode + accompagnement + skills)
-/framework/manifeste        → manifeste complet
-/framework/methode-sfoi     → méthode S.F.O.I.
-/framework/accompagnement   → offre accompagnement APS
-/framework/skills           → offre skills
-/mainteneurs                → page mainteneurs
-/contact                    → formulaire contact
-/cgu                        → CGU
-/politique-confidentialite  → RGPD
+/                                   → homepage (refonte)
+/formation                          → liste des 6 blocs
+/formation/bloc-01 à bloc-06        → blocs formation
+/interventions                      → 4 cas clients avec offres adaptées (nouveau)
+/contact                            → formulaire contact + Calendly (nouveau)
+/framework                          → hub Framework
+/framework/manifeste                → manifeste complet
+/framework/methode-sfoi             → méthode S.F.O.I.
+/framework/ai-practice-steward      → rôle APS (déplacé depuis top-level)
+/framework/accompagnement           → offre accompagnement
+/framework/skills                   → offre skills
+/mainteneurs                        → page mainteneurs
+/inscription, /connexion            → auth
+/cgu, /politique-confidentialite, /mentions-legales → légal
 ```
 
 ---
@@ -113,19 +112,20 @@ Copier depuis `Formation_prompting/site/src/` :
 ```
 Header :
   Logo : "Reflexe IA"
-  Nav  : Formation · AI Practice Steward · Framework ▾ · Mainteneurs · Contact
-  CTA  : "Formation →" → /formation
+  Nav  : Formation · Interventions · Framework ▾ · Mainteneurs · LinkedIn · [auth]
+  CTA  : "Discuter →" → /contact
 
   Dropdown Framework :
-    Manifeste          → /framework/manifeste
-    Méthode S.F.O.I.   → /framework/methode-sfoi
-    Accompagnement     → /framework/accompagnement
-    Skills             → /framework/skills
+    Manifeste                → /framework/manifeste
+    Méthode S.F.O.I.         → /framework/methode-sfoi
+    AI Practice Steward      → /framework/ai-practice-steward
+    Accompagnement           → /framework/accompagnement
+    Skills                   → /framework/skills
 
 Footer (3 colonnes) :
-  Col 1 — Brand : logo "Reflexe IA" + description courte + légal FGIT Conseil
-  Col 2 — Navigation : Accueil · Formation · AI Practice Steward · Framework · Mainteneurs
-  Col 3 — Contact : contact@reflexe-ia.org · reflexe-ia.org
+  Col 1 — Brand : logo "Reflexe IA" + description proposition de valeur
+  Col 2 — Navigation : Accueil · Formation · Interventions · Framework · Mainteneurs
+  Col 3 — Légal : Mentions légales · CGU · Politique de confidentialité
   Bottom : © 2026 Reflexe IA. Tous droits réservés.
 ```
 
@@ -151,9 +151,25 @@ Footer (3 colonnes) :
 
 ---
 
+## Positionnement commercial
+
+Le site fonctionne sur deux niveaux :
+- **Frontstage** (vente) : Home · Formation · Interventions · Contact
+- **Backstage** (crédibilité / communauté) : Framework · Mainteneurs
+
+Règles :
+- Le rôle AI Practice Steward n'apparaît pas en frontstage (home hero, interventions)
+- Les offres se présentent par **cas client** (4 cas), pas par palier produit
+- La formation distancielle gratuite est la porte d'entrée universelle
+- Le CTA commercial est **"Discuter"** (vers `/contact/`), pas "Acheter"
+
+Source autoritaire du positionnement : `07-go-to-market/01-ICP-mission-equipe.md` (ICP v1.2).
+
+---
+
 ## Conventions
 
-- **Jamais "Coach IA"** — toujours "AI Practice Steward"
+- **Jamais "Coach IA"** — toujours "AI Practice Steward" (et uniquement en backstage)
 - **Source formation** : `Formation_prompting/audios_et_illustrations/` (pas `content/`)
 - Pages courtes, texte dense, pas de remplissage marketing
 - Le site existant Formation_prompting est la base technique — le réutiliser
@@ -208,10 +224,25 @@ create policy "Users manage own progress"
   on formation_progress for all using (auth.uid() = user_id);
 ```
 
+### Trigger user_profiles (migration 001)
+
+La création du `user_profile` est gérée côté serveur par un trigger Postgres `handle_new_user()`.
+- **Ne pas faire d'insert manuel dans `user_profiles`** depuis le client.
+- Passer les métadonnées dans `signUp` via `options.data` : `{ prenom, nom, entreprise, consent_contact }`.
+- Le trigger lit `raw_user_meta_data` et insère avec `on conflict (id) do nothing`.
+- Fonctionne avec ou sans confirmation d'email (pas de race condition).
+- Migration versionnée : `supabase/migrations/001_user_profiles_trigger.sql`.
+
+### Table contact_messages (migration 002)
+
+Table `public.contact_messages` pour les formulaires de contact anonymes.
+- Insert anonyme autorisé via policy RLS.
+- Fayaz consulte manuellement dans le Dashboard Supabase.
+- Migration versionnée : `supabase/migrations/002_contact_messages.sql`.
+
 ### Configuration Supabase recommandée
 
-- **Désactiver la confirmation d'email** (Dashboard → Authentication → Settings → "Enable email confirmations" → off) pour une expérience fluide : l'utilisateur est connecté immédiatement après l'inscription.
-- Si la confirmation d'email est activée, l'inscription affiche un message "Vérifiez votre boîte mail" et l'insert dans `user_profiles` est effectué dès le retour de `signUp` (avant confirmation).
+- **Désactiver la confirmation d'email** (Dashboard → Authentication → Settings → "Enable email confirmations" → off) pour une expérience fluide.
 
 ### Pages auth
 
@@ -221,7 +252,7 @@ create policy "Users manage own progress"
 ### Flux
 
 1. Utilisateur visite `/formation/` → redirigé vers `/inscription/?source=formation` si pas de session
-2. Inscription → insert `user_profiles` → redirect `/formation/`
+2. Inscription → `signUp` avec métadonnées → trigger crée `user_profiles` → redirect `/formation/`
 3. Connexion → redirect `/formation/`
 4. Sur `/formation/` : charge `formation_progress`, affiche barre X/6, marque les blocs complétés
 5. Sur chaque `bloc-0X` : MutationObserver sur l'écran de fin → upsert `formation_progress`
