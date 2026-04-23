@@ -277,7 +277,18 @@ const base = import.meta.env.BASE_URL;
     submitBtn.disabled = true;
     submitBtn.textContent = 'Création en cours…';
 
-    const { data, error } = await supabase.auth.signUp({ email, password });
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          prenom,
+          nom,
+          entreprise: entreprise || null,
+          consent_contact: true,
+        }
+      }
+    });
 
     if (error) {
       let msg = error.message;
@@ -290,15 +301,7 @@ const base = import.meta.env.BASE_URL;
       return;
     }
 
-    if (data.user) {
-      await supabase.from('user_profiles').insert({
-        id:         data.user.id,
-        prenom,
-        nom,
-        entreprise: entreprise || null,
-        consent_cgu: true,
-      });
-    }
+    // user_profile créé automatiquement par le trigger on_auth_user_created
 
     if (data.session) {
       window.location.href = '/formation/';
