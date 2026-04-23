@@ -17,128 +17,25 @@ const base = import.meta.env.BASE_URL;
     </div>
   </section>
 
-  <!-- Deux chemins -->
-  <section class="max-w-4xl mx-auto px-6 py-16">
-    <div class="grid md:grid-cols-2 gap-6">
-
-      <!-- Carte Calendly -->
-      <div class="bg-white border border-slate-200 rounded-2xl p-8 flex flex-col">
-        <div class="mb-5">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:#eff6ff">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          </div>
-          <h2 class="text-xl font-bold text-slate-900 mb-2">Prendre un rendez-vous</h2>
-          <p class="text-slate-500 text-sm leading-relaxed">Créneau de 30 minutes. Agenda partagé. Pas de bla-bla commercial — juste une conversation pour voir si la situation correspond.</p>
-        </div>
-        <div class="flex-1 flex items-end">
-          <a
-            href="https://calendly.com/conversation-reflexe-ia/30min"
-            target="_blank"
-            rel="noopener"
-            class="btn-primary w-full justify-center py-3"
-          >
-            Choisir un créneau →
-          </a>
-        </div>
+  <!-- Calendly -->
+  <section class="max-w-xl mx-auto px-6 py-16">
+    <div class="bg-white border border-slate-200 rounded-2xl p-10 flex flex-col items-center text-center">
+      <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background:#eff6ff">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
       </div>
-
-      <!-- Carte formulaire -->
-      <div class="bg-white border border-slate-200 rounded-2xl p-8">
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:#faf5ff">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </div>
-        <h2 class="text-xl font-bold text-slate-900 mb-2">Écrire un message</h2>
-        <p class="text-slate-500 text-sm leading-relaxed mb-6">Décrivez votre situation en quelques lignes. Je réponds en général sous 48h.</p>
-
-        <div id="contact-success" class="mb-5 rounded-lg bg-green-50 border border-green-200 px-4 py-3 text-sm text-green-800" style="display:none">
-          Message envoyé. Je vous réponds sous 48h.
-        </div>
-        <div id="contact-error" class="mb-5 rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700" style="display:none"></div>
-
-        <form id="contact-form" novalidate class="space-y-4">
-          <div class="grid grid-cols-2 gap-3">
-            <div>
-              <label for="c-prenom" class="block text-sm font-medium text-slate-700 mb-1">Prénom <span class="text-red-500">*</span></label>
-              <input type="text" id="c-prenom" name="prenom" required autocomplete="given-name"
-                class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition" />
-            </div>
-            <div>
-              <label for="c-nom" class="block text-sm font-medium text-slate-700 mb-1">Nom <span class="text-red-500">*</span></label>
-              <input type="text" id="c-nom" name="nom" required autocomplete="family-name"
-                class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition" />
-            </div>
-          </div>
-          <div>
-            <label for="c-email" class="block text-sm font-medium text-slate-700 mb-1">Email <span class="text-red-500">*</span></label>
-            <input type="email" id="c-email" name="email" required autocomplete="email"
-              class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition" />
-          </div>
-          <div>
-            <label for="c-entreprise" class="block text-sm font-medium text-slate-700 mb-1">Entreprise <span class="text-slate-400 font-normal">(optionnel)</span></label>
-            <input type="text" id="c-entreprise" name="entreprise" autocomplete="organization"
-              class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition" />
-          </div>
-          <div>
-            <label for="c-message" class="block text-sm font-medium text-slate-700 mb-1">Votre situation <span class="text-red-500">*</span></label>
-            <textarea id="c-message" name="message" required rows="4"
-              placeholder="Décrivez en quelques lignes votre situation, votre équipe, ce que vous observez…"
-              class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition resize-none"></textarea>
-          </div>
-          <button type="submit" id="contact-submit" class="btn-primary w-full justify-center py-3">
-            Envoyer →
-          </button>
-        </form>
-      </div>
-
+      <h2 class="text-2xl font-bold text-slate-900 mb-3">Prendre un rendez-vous</h2>
+      <p class="text-slate-500 text-base leading-relaxed mb-8 max-w-sm">
+        Créneau de 30 minutes. Agenda partagé. Pas de bla-bla commercial, juste une conversation pour voir si la situation correspond.
+      </p>
+      <a
+        href="https://calendly.com/conversation-reflexe-ia/30min"
+        target="_blank"
+        rel="noopener"
+        class="btn-primary text-base px-8 py-3"
+      >
+        Choisir un créneau →
+      </a>
     </div>
   </section>
 
 </Layout>
-
-<script>
-  import { supabase } from '../lib/supabase';
-
-  const form    = document.getElementById('contact-form') as HTMLFormElement;
-  const submit  = document.getElementById('contact-submit') as HTMLButtonElement;
-  const success = document.getElementById('contact-success')!;
-  const errBox  = document.getElementById('contact-error')!;
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    errBox.style.display = 'none';
-
-    const prenom    = (document.getElementById('c-prenom') as HTMLInputElement).value.trim();
-    const nom       = (document.getElementById('c-nom') as HTMLInputElement).value.trim();
-    const email     = (document.getElementById('c-email') as HTMLInputElement).value.trim();
-    const entreprise = (document.getElementById('c-entreprise') as HTMLInputElement).value.trim();
-    const message   = (document.getElementById('c-message') as HTMLTextAreaElement).value.trim();
-
-    if (!prenom || !nom || !email || !message) {
-      errBox.textContent = 'Merci de remplir tous les champs obligatoires.';
-      errBox.style.display = '';
-      return;
-    }
-
-    submit.disabled = true;
-    submit.textContent = 'Envoi en cours…';
-
-    const { error } = await supabase.from('contact_messages').insert({
-      prenom,
-      nom,
-      email,
-      entreprise: entreprise || null,
-      message,
-    });
-
-    if (error) {
-      errBox.textContent = "Une erreur est survenue. Réessayez ou écrivez directement à contact@reflexe-ia.org.";
-      errBox.style.display = '';
-      submit.disabled = false;
-      submit.textContent = 'Envoyer →';
-      return;
-    }
-
-    form.style.display = 'none';
-    success.style.display = '';
-  });
-</script>
