@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 const base = import.meta.env.BASE_URL;
 ---
-<Layout title="Structurez les pratiques IA de votre organisation" description="Le rôle d'AI Practice Steward pour structurer, fiabiliser et gouverner les pratiques IA dans votre organisation. Méthode S.F.O.I. Formation gratuite.">
+<Layout title="Transformer l'usage de l'IA en pratique d'équipe" description="Reflexe IA aide les PME et ETI à transformer un usage individuel de l'IA générative en une pratique organisationnelle fiable, sécurisée et pilotable.">
 
   <!-- ── Hero ── -->
   <section class="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
@@ -12,52 +12,80 @@ const base = import.meta.env.BASE_URL;
     </div>
     <div class="relative max-w-4xl mx-auto px-6 py-24 md:py-32 text-center">
       <div class="animate-fade-up">
-        <span class="inline-block text-xs font-bold tracking-widest uppercase mb-6 px-3 py-1 rounded-full border border-slate-600 text-slate-300">AI Practice Steward</span>
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-          Structurez les pratiques IA<br/>de votre organisation
+          Transformer l'usage de l'IA<br/>en pratique d'équipe fiable,<br/>sécurisée et pilotable.
         </h1>
         <p class="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-          Le Data Steward garantissait la qualité des données. L'AI Practice Steward garantit la qualité des usages IA — méthode, gouvernance, montée en compétences.
+          Pour les PME et ETI qui ont déployé l'IA générative et rencontrent les limites d'une adoption non cadrée. Une méthode, un accompagnement, un premier Agent métier en quelques semaines.
         </p>
         <div class="flex flex-wrap gap-4 justify-center">
           <a href={`${base}formation/`} class="btn-primary text-base px-6 py-3">
-            Accéder à la formation gratuite →
+            Commencer par la formation gratuite →
           </a>
-          <a href={`${base}ai-practice-steward/`}
+          <a href={`${base}interventions/`}
             style="background:transparent;color:white;border:2px solid rgba(255,255,255,0.3);padding:0.75rem 1.5rem;border-radius:0.5rem;font-weight:600;font-size:0.875rem;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:all 0.3s"
             onmouseover="this.style.borderColor='white'"
             onmouseout="this.style.borderColor='rgba(255,255,255,0.3)'"
           >
-            Découvrir le rôle
+            Voir les interventions
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── Problème ── -->
+  <!-- ── Le problème ── -->
   <section class="max-w-3xl mx-auto px-6 py-20">
-    <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-8">Former individuellement ne suffit pas</h2>
     <div class="space-y-5 text-slate-600 text-base leading-relaxed">
       <p>
-        Les organisations investissent massivement dans la formation IA individuelle. Chaque collaborateur apprend à prompter, à utiliser ChatGPT, à automatiser ses tâches. Mais sans cadre commun, ces compétences restent fragmentées.
+        Les organisations déploient l'IA générative à marche forcée. Chaque équipe trouve ses usages, chaque collaborateur développe ses réflexes. La productivité monte — et avec elle, des dérives silencieuses que personne ne voit émerger.
       </p>
       <p>
-        Les mêmes erreurs se répètent d'une équipe à l'autre. Les bonnes pratiques ne circulent pas. Les risques — hallucinations, données sensibles, biais — ne sont ni identifiés ni gérés de manière cohérente.
+        Les sorties se multiplient sans être vérifiées. Les pratiques se fragmentent. Le ROI devient difficile à mesurer. Les risques — sécurité, conformité, réputation — s'accumulent hors du champ de vision des décideurs.
       </p>
       <p>
-        Il manque un rôle dédié — quelqu'un qui structure, fiabilise et fait progresser les pratiques IA à l'échelle de l'organisation. C'est le rôle de l'<strong class="text-slate-900">AI Practice Steward</strong>.
+        La réponse n'est pas plus de formation individuelle. C'est un cadre collectif, installé au bon niveau — collaborateur, équipe, organisation — qui tient dans la durée.
       </p>
     </div>
   </section>
 
-  <!-- ── Méthode S.F.O.I. ── -->
+  <!-- ── Les 3 niveaux ── -->
   <section class="bg-slate-50 py-20">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3">Trois niveaux de réponse</h2>
+        <p class="text-slate-500 text-base max-w-xl mx-auto">Une intervention peut agir à un seul niveau ou à plusieurs — selon ce que la situation demande.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card animate-fade-up animate-fade-up-1 flex flex-col">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center mb-4 text-sm font-bold text-white" style="background:var(--sfoi-o)">C</div>
+          <h3 class="font-semibold text-slate-900 mb-2">Collaborateurs</h3>
+          <p class="text-slate-500 text-sm leading-relaxed flex-1">Une méthode pour structurer, fiabiliser, optimiser. Chaque collaborateur acquiert des réflexes vérifiables — pas des astuces.</p>
+          <a href={`${base}interventions/#cas-1`} class="text-blue-600 text-xs font-medium mt-4 hover:underline">Formation équipe →</a>
+        </div>
+        <div class="card animate-fade-up animate-fade-up-2 flex flex-col">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center mb-4 text-sm font-bold text-white" style="background:var(--accent-600)">E</div>
+          <h3 class="font-semibold text-slate-900 mb-2">Équipes</h3>
+          <p class="text-slate-500 text-sm leading-relaxed flex-1">Des normes partagées, une vérification collective. Les dérives sont diagnostiquées et interrompues avant qu'elles ne deviennent des problèmes systémiques.</p>
+          <a href={`${base}interventions/#cas-2`} class="text-blue-600 text-xs font-medium mt-4 hover:underline">Revue des pratiques →</a>
+        </div>
+        <div class="card animate-fade-up animate-fade-up-3 flex flex-col">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center mb-4 text-sm font-bold text-white" style="background:var(--sfoi-i)">O</div>
+          <h3 class="font-semibold text-slate-900 mb-2">Organisation</h3>
+          <p class="text-slate-500 text-sm leading-relaxed flex-1">Des savoirs capitalisés en actifs réutilisables. La gouvernance est distribuée, légère, mesurable — pas un framework de 200 pages.</p>
+          <a href={`${base}interventions/#cas-3`} class="text-blue-600 text-xs font-medium mt-4 hover:underline">Capitalisation skill →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Méthode S.F.O.I. ── -->
+  <section class="py-20">
     <div class="max-w-5xl mx-auto px-6">
       <div class="text-center mb-12">
         <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3">La méthode S.F.O.I.</h2>
         <p class="text-slate-500 text-base max-w-2xl mx-auto">
-          Quatre niveaux de maturité pour structurer la montée en puissance de vos pratiques IA.
+          Une carte de maturité en quatre niveaux — individuelle et organisationnelle.
         </p>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -88,50 +116,66 @@ const base = import.meta.env.BASE_URL;
     </div>
   </section>
 
-  <!-- ── Offres ── -->
-  <section class="max-w-5xl mx-auto px-6 py-20">
-    <div class="text-center mb-12">
-      <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3">Notre Framework</h2>
-      <p class="text-slate-500 text-base max-w-2xl mx-auto">
-        Trois niveaux d'engagement pour passer de la sensibilisation à la transformation.
-      </p>
+  <!-- ── Les 4 cas ── -->
+  <section class="bg-slate-50 py-20">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3">Quatre situations, quatre offres</h2>
+        <p class="text-slate-500 text-base max-w-xl mx-auto">Reflexe IA intervient sur quatre situations type. À chaque situation, une offre adaptée — pas un catalogue à assembler.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-5">
+
+        <div class="card flex flex-col">
+          <h3 class="font-bold text-slate-900 mb-2">Votre équipe se lance dans l'IA</h3>
+          <p class="text-slate-500 text-sm italic mb-3 leading-relaxed">« Nos équipes utilisent l'IA de façon désordonnée, on veut un cadre commun sans alourdir. »</p>
+          <p class="text-slate-600 text-sm leading-relaxed flex-1">Formation présentiel équipe — 1 à 2 jours sur site.</p>
+          <div class="flex items-center justify-between mt-4">
+            <span class="text-sm font-semibold text-slate-700">5–20 k€ · 1–2 jours</span>
+            <a href={`${base}interventions/#cas-1`} class="text-blue-600 text-xs font-medium hover:underline">En savoir plus →</a>
+          </div>
+        </div>
+
+        <div class="card flex flex-col">
+          <h3 class="font-bold text-slate-900 mb-2">Des dérives s'installent</h3>
+          <p class="text-slate-500 text-sm italic mb-3 leading-relaxed">« On a déployé l'IA, on sent que des dérives s'installent — hétérogénéité, fiabilité, sécurité. »</p>
+          <p class="text-slate-600 text-sm leading-relaxed flex-1">Revue de Pratiques IA puis Mission Équipe avec premier Agent IA.</p>
+          <div class="flex items-center justify-between mt-4">
+            <span class="text-sm font-semibold text-slate-700">5–10 k€ puis 15–30 k€</span>
+            <a href={`${base}interventions/#cas-2`} class="text-blue-600 text-xs font-medium hover:underline">En savoir plus →</a>
+          </div>
+        </div>
+
+        <div class="card flex flex-col">
+          <h3 class="font-bold text-slate-900 mb-2">Un savoir critique est en risque</h3>
+          <p class="text-slate-500 text-sm italic mb-3 leading-relaxed">« Un expert va partir et son savoir critique repose sur lui. »</p>
+          <p class="text-slate-600 text-sm leading-relaxed flex-1">Mission Équipe focalisée sur la capitalisation d'un skill métier.</p>
+          <div class="flex items-center justify-between mt-4">
+            <span class="text-sm font-semibold text-slate-700">15–30 k€ · 4–8 semaines</span>
+            <a href={`${base}interventions/#cas-3`} class="text-blue-600 text-xs font-medium hover:underline">En savoir plus →</a>
+          </div>
+        </div>
+
+        <div class="card flex flex-col">
+          <h3 class="font-bold text-slate-900 mb-2">Gouvernance IA à installer</h3>
+          <p class="text-slate-500 text-sm italic mb-3 leading-relaxed">« On veut installer une gouvernance IA avant que ça ne devienne un problème. »</p>
+          <p class="text-slate-600 text-sm leading-relaxed flex-1">Revue organisationnelle puis Mission Organisation multi-équipes.</p>
+          <div class="flex items-center justify-between mt-4">
+            <span class="text-sm font-semibold text-slate-700">30–80 k€ · 2–4 mois</span>
+            <a href={`${base}interventions/#cas-4`} class="text-blue-600 text-xs font-medium hover:underline">En savoir plus →</a>
+          </div>
+        </div>
+
+      </div>
     </div>
-    <div class="grid md:grid-cols-3 gap-6">
+  </section>
 
-      <div class="card flex flex-col">
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="font-semibold text-slate-900">Formation</h3>
-          <span class="text-xs font-bold px-2 py-1 rounded-full" style="background:#f0fdf4;color:#15803d">Gratuite</span>
-        </div>
-        <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-6">
-          6 modules pour comprendre le rôle d'AI Practice Steward, la méthode S.F.O.I. et les outils essentiels. Accès libre, sans inscription.
-        </p>
-        <a href={`${base}formation/`} class="btn-primary text-sm">Commencer la formation</a>
-      </div>
-
-      <div class="card flex flex-col">
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="font-semibold text-slate-900">Accompagnement APS</h3>
-          <span class="text-xs font-bold px-2 py-1 rounded-full" style="background:#faf5ff;color:#7c3aed">Sur mesure</span>
-        </div>
-        <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-6">
-          Déploiement du rôle AI Practice Steward dans votre organisation. Diagnostic, feuille de route, formation des référents.
-        </p>
-        <a href="https://www.linkedin.com/company/reflexe-ia" target="_blank" rel="noopener" class="btn-primary text-sm">Nous contacter</a>
-      </div>
-
-      <div class="card flex flex-col">
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="font-semibold text-slate-900">Skills</h3>
-          <span class="text-xs font-bold px-2 py-1 rounded-full" style="background:#faf5ff;color:#7c3aed">Sur mesure</span>
-        </div>
-        <p class="text-slate-500 text-sm leading-relaxed flex-1 mb-6">
-          Capitalisation des savoirs experts en actifs IA permanents. IP métier, transmission du raisonnement tacite.
-        </p>
-        <a href={`${base}framework/skills/`} class="btn-secondary text-sm">En savoir plus</a>
-      </div>
-
-    </div>
+  <!-- ── Qui est derrière ── -->
+  <section class="max-w-3xl mx-auto px-6 py-20">
+    <h2 class="text-xl font-bold text-slate-900 mb-4">Qui est derrière Reflexe IA</h2>
+    <p class="text-slate-600 text-base leading-relaxed mb-6">
+      Reflexe IA est fondée par Fayaz Goulam, Head of Data &amp; AI ayant piloté la fonction Data de plusieurs organisations — Moët Hennessy, Kering, France Télévisions, Bpifrance, ARiSTiD. Le framework est construit et maintenu par le collectif des Mainteneurs.
+    </p>
+    <a href={`${base}mainteneurs/`} class="text-blue-600 text-sm font-medium hover:underline">Découvrir les Mainteneurs →</a>
   </section>
 
   <!-- ── Citation manifeste ── -->
@@ -149,5 +193,14 @@ const base = import.meta.env.BASE_URL;
     </div>
   </section>
 
+  <!-- ── CTA finale ── -->
+  <section class="max-w-3xl mx-auto px-6 py-20 text-center">
+    <h2 class="text-2xl font-bold text-slate-900 mb-4">Par où commencer ?</h2>
+    <p class="text-slate-500 text-base mb-8 leading-relaxed max-w-xl mx-auto">La formation distancielle est gratuite et accessible sans inscription. Les interventions démarrent par une conversation de 30 minutes.</p>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href={`${base}formation/`} class="btn-primary text-base px-6 py-3">Commencer la formation gratuite →</a>
+      <a href={`${base}contact/`} class="btn-secondary text-base px-6 py-3">Discuter de votre situation</a>
+    </div>
+  </section>
 
 </Layout>
