@@ -468,12 +468,13 @@ const base = import.meta.env.BASE_URL;
         <nav aria-label="Navigation principale">
           <ul class="nav-list nav-desktop">
             <li><a href={`${base}formation/`} class="nav-link">Formation</a></li>
-            <li><a href={`${base}ai-practice-steward/`} class="nav-link">AI Practice Steward</a></li>
+            <li><a href={`${base}interventions/`} class="nav-link">Interventions</a></li>
             <li class="nav-dropdown">
               <a href={`${base}framework/`} class="nav-link">Framework ▾</a>
               <ul class="nav-dropdown-menu">
                 <li><a href={`${base}framework/manifeste/`}>Manifeste</a></li>
                 <li><a href={`${base}framework/methode-sfoi/`}>Méthode S.F.O.I.</a></li>
+                <li><a href={`${base}framework/ai-practice-steward/`}>AI Practice Steward</a></li>
                 <li><a href={`${base}framework/accompagnement/`}>Accompagnement</a></li>
                 <li><a href={`${base}framework/skills/`}>Skills</a></li>
               </ul>
@@ -486,7 +487,7 @@ const base = import.meta.env.BASE_URL;
             </li>
             <!-- Auth slot desktop — populated by client JS -->
             <li id="auth-nav-slot"></li>
-            <li id="nav-cta-item"><a href={`${base}formation/`} class="nav-cta">Formation →</a></li>
+            <li id="nav-cta-item"><a href={`${base}contact/`} class="nav-cta">Discuter →</a></li>
           </ul>
         </nav>
 
@@ -503,11 +504,12 @@ const base = import.meta.env.BASE_URL;
     <!-- Menu mobile -->
     <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
       <a href={`${base}formation/`} class="mobile-nav-link">Formation</a>
-      <a href={`${base}ai-practice-steward/`} class="mobile-nav-link">AI Practice Steward</a>
+      <a href={`${base}interventions/`} class="mobile-nav-link">Interventions</a>
       <div class="mobile-nav-link" style="cursor:default;padding-bottom:0">Framework</div>
       <div class="mobile-sub">
         <a href={`${base}framework/manifeste/`}>Manifeste</a>
         <a href={`${base}framework/methode-sfoi/`}>Méthode S.F.O.I.</a>
+        <a href={`${base}framework/ai-practice-steward/`}>AI Practice Steward</a>
         <a href={`${base}framework/accompagnement/`}>Accompagnement</a>
         <a href={`${base}framework/skills/`}>Skills</a>
       </div>
@@ -534,7 +536,7 @@ const base = import.meta.env.BASE_URL;
               <span class="footer-logo-ia">IA</span>
             </div>
             <p class="footer-desc">
-              Le rôle d'AI Practice Steward pour structurer les pratiques IA dans votre organisation.
+              Transformer l'usage de l'IA générative en pratique d'équipe fiable, sécurisée et pilotable. Pour les PME et ETI.
             </p>
           </div>
 
@@ -543,7 +545,7 @@ const base = import.meta.env.BASE_URL;
             <ul class="footer-links">
               <li><a href={base}>Accueil</a></li>
               <li><a href={`${base}formation/`}>Formation</a></li>
-              <li><a href={`${base}ai-practice-steward/`}>AI Practice Steward</a></li>
+              <li><a href={`${base}interventions/`}>Interventions</a></li>
               <li><a href={`${base}framework/`}>Framework</a></li>
               <li><a href={`${base}mainteneurs/`}>Mainteneurs</a></li>
             </ul>
@@ -637,7 +639,7 @@ const base = import.meta.env.BASE_URL;
       // Desktop — Se connecter
       desktopSlot.innerHTML = `<a href="/connexion/" class="nav-link">Se connecter</a>`;
       // Mobile — Se connecter + Formation →
-      mobileSlot.innerHTML = `<a href="/connexion/" class="mobile-nav-link" style="color:var(--primary-600);font-weight:600">Se connecter</a><a href="/formation/" class="mobile-cta">Formation →</a>`;
+      mobileSlot.innerHTML = `<a href="/connexion/" class="mobile-nav-link" style="color:var(--primary-600);font-weight:600">Se connecter</a><a href="/contact/" class="mobile-cta">Discuter →</a>`;
     }
   });
 </script>
