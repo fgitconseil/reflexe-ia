@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 const base = import.meta.env.BASE_URL;
 ---
-<Layout title="Méthode S.F.O.I." description="Structurer · Fiabiliser · Optimiser · Industrialiser. Une carte de maturité des pratiques IA — individuelle et organisationnelle.">
+<Layout title="Méthode S.F.O.I." description="Structurer · Fiabiliser · Optimiser · Industrialiser. Quatre actes pour travailler avec un assistant IA au quotidien.">
 
   <!-- Hero -->
   <section class="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
@@ -13,7 +13,7 @@ const base = import.meta.env.BASE_URL;
       <p class="text-sm font-bold tracking-widest uppercase text-blue-400 mb-4">Méthode</p>
       <h1 class="text-4xl md:text-5xl font-bold mb-4">La méthode S.F.O.I.</h1>
       <p class="text-slate-300 text-lg leading-relaxed max-w-2xl">
-        S.F.O.I. n'est pas une méthode de prompting. C'est une carte de maturité. Chaque niveau a une dimension individuelle — mais aussi une dimension collective qui ne peut pas être activée par un individu seul.
+        S.F.O.I. est une méthode de travail au quotidien. Quatre actes — Structurer, Fiabiliser, Optimiser, Industrialiser — toujours dans le même ordre, jamais sautés. Chaque acte a une dimension individuelle. Et chacun a une dimension collective qu'un individu ne peut pas activer seul.
       </p>
     </div>
   </section>
@@ -152,6 +152,58 @@ const base = import.meta.env.BASE_URL;
           </tbody>
         </table>
       </div>
+    </section>
+
+    <!-- IMIA — la carte de maturité -->
+    <section id="imia">
+      <h2 class="text-2xl font-bold text-slate-900 mb-4">De la méthode à la maturité — l'IMIA</h2>
+      <p class="text-slate-600 text-base leading-relaxed mb-8">
+        S.F.O.I. répond à une question : <em>comment je travaille, moi, avec un assistant ?</em> L'IMIA répond à une autre : <em>où en est mon organisation, collectivement ?</em>
+      </p>
+      <p class="text-slate-600 text-base leading-relaxed mb-8">
+        L'IMIA — Indice de Maturité IA Organisationnelle — est un score composite sur 100 points, construit pour être observable, auditable et mesurable dans le temps. Il mesure ce que l'organisation <em>sait faire</em>, pas ce qu'elle fait. Mesuré à T0, à T+90 jours, puis chaque trimestre.
+      </p>
+      <div class="overflow-x-auto rounded-xl border border-slate-200 mb-6">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-slate-50 border-b border-slate-200">
+              <th class="text-left px-4 py-3 font-semibold text-slate-700">Dimension</th>
+              <th class="text-left px-4 py-3 font-semibold text-slate-700">Mesure</th>
+              <th class="text-right px-4 py-3 font-semibold text-slate-700">Poids</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-slate-100">
+              <td class="px-4 py-3 font-semibold" style="color:var(--sfoi-s)">Structurer</td>
+              <td class="px-4 py-3 text-slate-600">Briefs structurés, délai de cadrage avant prompt</td>
+              <td class="px-4 py-3 text-right font-semibold">15</td>
+            </tr>
+            <tr class="border-b border-slate-100">
+              <td class="px-4 py-3 font-semibold" style="color:var(--sfoi-f)">Fiabiliser</td>
+              <td class="px-4 py-3 text-slate-600">Vérifications documentées, dette de vérification</td>
+              <td class="px-4 py-3 text-right font-semibold">30</td>
+            </tr>
+            <tr class="border-b border-slate-100">
+              <td class="px-4 py-3 font-semibold" style="color:var(--sfoi-o)">Optimiser</td>
+              <td class="px-4 py-3 text-slate-600">Réutilisation des sorties, réduction du temps de cycle</td>
+              <td class="px-4 py-3 text-right font-semibold">20</td>
+            </tr>
+            <tr class="border-b border-slate-100">
+              <td class="px-4 py-3 font-semibold" style="color:var(--sfoi-i)">Industrialiser</td>
+              <td class="px-4 py-3 text-slate-600">Skills déployés, gouvernance, traçabilité, mécanismes d'arrêt</td>
+              <td class="px-4 py-3 text-right font-semibold">25</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-semibold" style="color:var(--primary-600)">Autonomie collective</td>
+              <td class="px-4 py-3 text-slate-600">Capacité à détecter et corriger une erreur sans intervention externe</td>
+              <td class="px-4 py-3 text-right font-semibold">10</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-slate-500 text-sm leading-relaxed">
+        Quatre dimensions reprennent S.F.O.I. avec des pondérations différenciées — Fiabiliser pèse le plus, parce que c'est là que les organisations bloquent. La cinquième — l'autonomie collective — mesure ce qui n'est mesuré nulle part ailleurs : la capacité à voir l'erreur quand elle survient.
+      </p>
     </section>
 
     <!-- Principe directeur -->

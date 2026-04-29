@@ -640,6 +640,18 @@ const TOTAL = slides.length; // 17
 </script>
 
 <script>
-  import { trackBlocCompletion, observeEndScreen } from '../../lib/trackCompletion';
-  observeEndScreen('bloc-01', () => trackBlocCompletion('bloc-01'));
+  import { trackBlocCompletion, observeEndScreen, saveSlideProgress, loadSlideProgress } from '../../lib/trackCompletion';
+
+  const BLOC_ID = 'bloc-01';
+  observeEndScreen(BLOC_ID, () => trackBlocCompletion(BLOC_ID));
+
+  loadSlideProgress(BLOC_ID).then((idx) => {
+    function setup() {
+      if (typeof (window as any).showSlide !== 'function') { setTimeout(setup, 50); return; }
+      const orig = (window as any).showSlide as (n: number) => void;
+      (window as any).showSlide = (n: number) => { orig(n); saveSlideProgress(BLOC_ID, n); };
+      if (idx > 0) (window as any).showSlide(idx);
+    }
+    setup();
+  });
 </script>

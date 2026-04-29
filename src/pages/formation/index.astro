@@ -3,17 +3,17 @@ import Layout from '../../layouts/Layout.astro';
 import { BLOCS } from '../../lib/slideData';
 const base = import.meta.env.BASE_URL;
 ---
-<Layout title="Formation AI Practice Steward" description="6 modules gratuits pour maîtriser le rôle d'AI Practice Steward et la méthode S.F.O.I.">
+<Layout title="Formation Reflexe IA" description="5 blocs gratuits pour maîtriser la méthode S.F.O.I. et comprendre le rôle d'AI Practice Steward.">
 
   <section class="max-w-3xl mx-auto px-4 py-16" id="formation-content" style="visibility:hidden">
     <div class="mb-4">
       <a href={base} class="text-sm text-slate-400 hover:text-slate-600 no-underline">← Accueil</a>
     </div>
     <div class="mb-6">
-      <p class="text-sm font-semibold uppercase tracking-wide mb-2" style="color:var(--primary-600)">Formation IA — Parcours distanciel</p>
-      <h1 class="text-3xl font-bold text-slate-900 mb-3">6 blocs · À votre rythme</h1>
+      <p class="text-sm font-semibold uppercase tracking-wide mb-2" style="color:var(--primary-600)">Formation Reflexe IA — Parcours distanciel</p>
+      <h1 class="text-3xl font-bold text-slate-900 mb-3">5 blocs · À votre rythme</h1>
       <p class="text-slate-500 text-base max-w-2xl">
-        De la compréhension à la mise en pratique organisationnelle. Chaque bloc dure environ 20 minutes.
+        De la compréhension à la maturité organisationnelle. Chaque bloc dure 15 à 20 minutes.
       </p>
     </div>
 
@@ -21,7 +21,7 @@ const base = import.meta.env.BASE_URL;
     <div id="progress-bar-section" class="mb-8 rounded-xl border border-slate-200 bg-slate-50 px-5 py-4" style="display:none">
       <div class="flex items-center justify-between mb-2">
         <span class="text-sm font-semibold text-slate-700">Votre progression</span>
-        <span id="progress-label" class="text-sm font-bold" style="color:var(--primary-600)">0 / 6</span>
+        <span id="progress-label" class="text-sm font-bold" style="color:var(--primary-600)">0 / 5</span>
       </div>
       <div class="h-2 rounded-full bg-slate-200 overflow-hidden">
         <div id="progress-fill" class="h-2 rounded-full transition-all" style="width:0%;background:linear-gradient(90deg,var(--primary-600),var(--accent-500))"></div>
@@ -91,8 +91,8 @@ const base = import.meta.env.BASE_URL;
     const label   = document.getElementById('progress-label')!;
     const fill    = document.getElementById('progress-fill')!;
 
-    label.textContent = `${count} / 6`;
-    fill.style.width  = `${(count / 6) * 100}%`;
+    label.textContent = `${count} / 5`;
+    fill.style.width  = `${(count / 5) * 100}%`;
     section.style.display = '';
 
     // Marquer les blocs complétés

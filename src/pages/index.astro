@@ -60,7 +60,7 @@ const base = import.meta.env.BASE_URL;
         <div class="card animate-fade-up animate-fade-up-1 flex flex-col">
           <div class="w-8 h-8 rounded-full flex items-center justify-center mb-4 text-sm font-bold text-white" style="background:var(--sfoi-o)">C</div>
           <h3 class="font-semibold text-slate-900 mb-2">Collaborateurs</h3>
-          <p class="text-slate-500 text-sm leading-relaxed flex-1">Une méthode pour structurer, fiabiliser, optimiser. Chaque collaborateur acquiert des réflexes vérifiables, pas des astuces.</p>
+          <p class="text-slate-500 text-sm leading-relaxed flex-1">La méthode S.F.O.I. — quatre actes pour travailler avec un assistant IA au quotidien. Chaque collaborateur acquiert des réflexes vérifiables, pas des astuces.</p>
           <a href={`${base}interventions/#cas-1`} class="text-blue-600 text-xs font-medium mt-4 hover:underline">Formation équipe →</a>
         </div>
         <div class="card animate-fade-up animate-fade-up-2 flex flex-col">
@@ -85,34 +85,72 @@ const base = import.meta.env.BASE_URL;
       <div class="text-center mb-12">
         <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3">La méthode S.F.O.I.</h2>
         <p class="text-slate-500 text-base max-w-2xl mx-auto">
-          Une carte de maturité en quatre niveaux, individuelle et organisationnelle.
+          Quatre actes pour travailler avec l'IA au quotidien. Structurer, Fiabiliser, Optimiser, Industrialiser — toujours dans cet ordre.
         </p>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
         <div class="card animate-fade-up animate-fade-up-1">
           <div class="w-8 h-8 rounded-full flex items-center justify-center mb-4 text-sm font-bold text-white" style="background:var(--sfoi-s)">S</div>
           <h3 class="font-semibold text-slate-900 mb-2">Structurer</h3>
-          <p class="text-slate-500 text-sm leading-relaxed">Cartographier les usages, définir les règles de base, créer un référentiel commun.</p>
+          <p class="text-slate-500 text-sm leading-relaxed">Organiser sa pensée avant d'agir. Zéro perte d'information.</p>
         </div>
         <div class="card animate-fade-up animate-fade-up-2">
           <div class="w-8 h-8 rounded-full flex items-center justify-center mb-4 text-sm font-bold text-white" style="background:var(--sfoi-f)">F</div>
           <h3 class="font-semibold text-slate-900 mb-2">Fiabiliser</h3>
-          <p class="text-slate-500 text-sm leading-relaxed">Mettre en place les contrôles qualité, gérer les risques, standardiser les pratiques.</p>
+          <p class="text-slate-500 text-sm leading-relaxed">Rendre chaque affirmation vérifiable. Sortir de la confiance implicite.</p>
         </div>
         <div class="card animate-fade-up animate-fade-up-3">
           <div class="w-8 h-8 rounded-full flex items-center justify-center mb-4 text-sm font-bold text-white" style="background:var(--sfoi-o)">O</div>
           <h3 class="font-semibold text-slate-900 mb-2">Optimiser</h3>
-          <p class="text-slate-500 text-sm leading-relaxed">Mesurer la valeur, industrialiser les cas d'usage, former les référents métier.</p>
+          <p class="text-slate-500 text-sm leading-relaxed">Transformer les sorties en outils directement exploitables. Zéro retraitement manuel.</p>
         </div>
         <div class="card animate-fade-up animate-fade-up-4">
           <div class="w-8 h-8 rounded-full flex items-center justify-center mb-4 text-sm font-bold text-white" style="background:var(--sfoi-i)">I</div>
           <h3 class="font-semibold text-slate-900 mb-2">Industrialiser</h3>
-          <p class="text-slate-500 text-sm leading-relaxed">Gouvernance IA intégrée, amélioration continue, culture IA à l'échelle.</p>
+          <p class="text-slate-500 text-sm leading-relaxed">Intégrer dans un système gouverné. Rôles définis, traçabilité, mécanismes d'arrêt.</p>
         </div>
       </div>
       <div class="text-center mt-8">
         <a href={`${base}framework/methode-sfoi/`} class="text-blue-600 text-sm font-medium hover:underline">Comprendre la méthode en détail →</a>
       </div>
+    </div>
+  </section>
+
+  <!-- ── IMIA ── -->
+  <section class="bg-slate-50 py-20">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <p class="text-sm font-bold tracking-widest uppercase text-blue-600 mb-3">Carte de maturité</p>
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3">L'IMIA — Indice de Maturité IA Organisationnelle</h2>
+        <p class="text-slate-500 text-base max-w-2xl mx-auto">
+          S.F.O.I. dit comment on travaille. L'IMIA dit où en est l'organisation. Cinq dimensions, un score sur 100, mesuré T0 / T+90 jours / trimestriel.
+        </p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-4xl mx-auto">
+        <div class="card text-center">
+          <div class="text-2xl font-bold mb-2" style="color:var(--sfoi-s)">15</div>
+          <h3 class="font-semibold text-slate-900 text-sm mb-1">Structurer</h3>
+        </div>
+        <div class="card text-center">
+          <div class="text-2xl font-bold mb-2" style="color:var(--sfoi-f)">30</div>
+          <h3 class="font-semibold text-slate-900 text-sm mb-1">Fiabiliser</h3>
+        </div>
+        <div class="card text-center">
+          <div class="text-2xl font-bold mb-2" style="color:var(--sfoi-o)">20</div>
+          <h3 class="font-semibold text-slate-900 text-sm mb-1">Optimiser</h3>
+        </div>
+        <div class="card text-center">
+          <div class="text-2xl font-bold mb-2" style="color:var(--sfoi-i)">25</div>
+          <h3 class="font-semibold text-slate-900 text-sm mb-1">Industrialiser</h3>
+        </div>
+        <div class="card text-center" style="border-color:var(--primary-600)">
+          <div class="text-2xl font-bold mb-2" style="color:var(--primary-600)">10</div>
+          <h3 class="font-semibold text-slate-900 text-sm mb-1">Autonomie collective</h3>
+        </div>
+      </div>
+      <p class="text-center text-slate-500 text-sm mt-8 max-w-2xl mx-auto">
+        L'IMIA mesure ce que l'organisation <em>sait faire</em>, pas ce qu'elle fait. La cinquième dimension — l'autonomie collective — est la capacité à détecter et corriger une erreur d'un assistant sans intervention externe.
+      </p>
     </div>
   </section>
 
