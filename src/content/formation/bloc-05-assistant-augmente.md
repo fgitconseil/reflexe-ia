@@ -212,17 +212,17 @@ explication: "La boucle amplificatrice produit des erreurs non vérifiées — c
 
 ### Script
 
-Au bloc 4, je vous ai annoncé que la méthode S.F.O.I. — Structurer, Fiabiliser, Optimiser, Industrialiser — pouvait être lue à une autre échelle. C'est le moment.
+Au bloc 4, vous avez vu la méthode S.F.O.I. — Structurer, Fiabiliser, Optimiser, Industrialiser. C'est ce que vous, ou votre équipe, faites au quotidien avec un assistant.
 
 S.F.O.I. répond à la question : **comment je travaille, moi, avec un assistant ?**
 
 <!-- TIMELINE: show imia-pentagone -->
 
-L'IMIA répond à une autre question : **où en est mon organisation, collectivement ?**
+L'IMIA répond à une autre question, à une autre échelle : **où en est mon organisation, collectivement ?**
 
 IMIA, c'est l'**Indice de Maturité IA Organisationnelle**. Un score sur 100, construit pour être observable, auditable, mesurable dans le temps. Pas un palmarès. Une carte.
 
-L'IMIA mesure ce que votre organisation **sait faire**, pas ce qu'elle fait. C'est la différence entre compter des actions — combien d'utilisateurs, combien de prompts, combien de licences déployées — et mesurer une **capacité**.
+L'IMIA mesure ce que votre organisation **sait faire**, pas ce qu'elle fait. C'est la différence entre compter des actions — combien d'utilisateurs, combien de prompts, combien de licences déployées — et mesurer une **capacité installée**.
 
 ---
 
@@ -230,19 +230,23 @@ L'IMIA mesure ce que votre organisation **sait faire**, pas ce qu'elle fait. C'e
 
 Cinq dimensions composent l'IMIA.
 
-**Structurer — 15 points.** Les briefs envoyés aux assistants sont-ils structurés, ou produits dans la précipitation ?
+**Gouvernance et cadre — 30 points.** C'est le pilier le plus lourd. Présence d'un AI Practice Steward, clarté des règles de sécurité — exfiltration, réputation, industrialisation —, conformité aux exigences réglementaires comme l'AI Act. Sans cadre, le reste ne tient pas.
 
-**Fiabiliser — 30 points.** Les sorties sensibles sont-elles vérifiées, et la vérification est-elle tracée ? C'est la dimension qui pèse le plus, parce que c'est celle où les organisations bloquent.
+**Pratique de la méthode S.F.O.I. — 20 points.** Les quatre actes — Structurer, Fiabiliser, Optimiser, Industrialiser — sont-ils appliqués réellement dans les livrables quotidiens des équipes, ou restent-ils théoriques ?
 
-**Optimiser — 20 points.** Les sorties sont-elles capitalisées comme outils réutilisables, ou produites une fois et perdues ?
+**Capital intellectuel — 20 points.** L'organisation transforme-t-elle ses savoirs critiques en **skills** durables — des actifs métiers réutilisables, qui survivent au départ d'un expert — ou continue-t-elle à produire des prompts jetables ?
 
-**Industrialiser — 25 points.** Les usages industrialisés sont-ils gouvernés ? Rôles, traçabilité, mécanismes d'arrêt — sont-ils en place et testés ?
+**Capacités humaines — 20 points.** Cette dimension a deux faces. **La face individuelle** : niveau de formation des collaborateurs sur les LLM, les types de prompts, la vigilance face aux hallucinations. **La face collective**, qu'on appelle l'autonomie collective : votre organisation sait-elle détecter et corriger une erreur d'un assistant **sans intervention externe** ? C'est ce qui répond à la question posée par la reddition cognitive : « sommes-nous encore capables de voir ? »
 
-**Autonomie collective — 10 points.** Et la cinquième, la plus distinctive : votre organisation sait-elle détecter et corriger une erreur d'un assistant **sans intervention externe** ? C'est ce qui répond à la question des boucles : « sommes-nous encore capables de voir ? ».
+**Infrastructure et outils — 10 points.** C'est le poids le plus faible — volontairement. Parce qu'un outil sans méthode est un risque d'industrialisation prématurée, pas une preuve de maturité. Avoir déployé une licence Copilot pour 2000 personnes ne dit rien sur la maturité réelle.
 
 ---
 
-Quatre dimensions reprennent S.F.O.I., avec des poids différents. La cinquième mesure ce qui n'est mesuré nulle part ailleurs.
+Vous remarquerez ce que l'IMIA pondère.
+
+Le poids le plus lourd va à la gouvernance — 30 points. Pas à la pratique, pas aux compétences. Parce qu'une équipe peut être brillante individuellement et l'organisation rester immature : sans cadre, les pratiques ne se diffusent pas et ne se stabilisent pas.
+
+Le poids le plus faible va aux outils — 10 points. Parce que c'est le piège classique : confondre déploiement et maîtrise.
 
 L'IMIA se mesure une première fois — c'est T0 — puis à T+90 jours, puis chaque trimestre. Cette cadence en fait un indicateur de pilotage, pas une photo.
 
@@ -250,11 +254,10 @@ S.F.O.I. est ce que vous faites. L'IMIA est ce que votre organisation devient.
 
 ### Notes de production
 
-- L'illustration centrale du bloc. Suggestion :
-  - 4 niveaux S.F.O.I. en colonne à gauche (déjà connus).
-  - 5 dimensions IMIA en barres horizontales à droite, avec leur pondération visible (15, 30, 20, 25, 10 = 100).
-  - Une flèche entre les deux, légendée : « lecture personnelle → lecture collective ».
-- L'apparition se fait en deux temps : d'abord les 4 dimensions S.F.O.I. (rappel), puis la 5ᵉ (Autonomie collective) qui s'ajoute, distincte, avec un effet visuel d'arrivée.
+- L'illustration centrale du bloc — un pentagone radar avec les 5 dimensions IMIA et leurs pondérations.
+- Les axes : Gouvernance (30) · Méthode S.F.O.I. (20) · Capital intellectuel (20) · Capacités humaines (20) · Outils (10) = 100.
+- Un polygone tracé en exemple sur le radar pour montrer une organisation type — souvent forte sur Outils, plus faible sur Capital intellectuel et Gouvernance.
+- L'apparition se fait en deux temps : d'abord les axes nus avec leurs poids, puis le polygone d'organisation type qui se trace progressivement.
 
 ### Quiz inline
 
@@ -270,7 +273,7 @@ options:
     correct: false
   - texte: "La conformité réglementaire des usages IA"
     correct: false
-explication: "L'IMIA mesure une capacité, pas un volume d'usage. Un score IMIA élevé ne dit pas « vous utilisez beaucoup l'IA » — il dit « vous savez gouverner vos usages dans la durée ». La cinquième dimension, l'Autonomie collective, est précisément celle qui distingue une capacité d'une activité."
+explication: "L'IMIA mesure une capacité installée, pas un volume d'usage. Un score IMIA élevé ne dit pas « vous utilisez beaucoup l'IA » — il dit « vous savez gouverner vos usages dans la durée ». Le poids le plus lourd est la gouvernance (30 points) ; le poids le plus faible, l'infrastructure et les outils (10 points). Cette pondération inversée est volontaire."
 ```
 
 ---
@@ -457,14 +460,14 @@ Si cette question vous parle, la porte est ouverte.
   explication: "S.F.O.I. dit comment on travaille — quatre actes au quotidien. L'IMIA dit où en est l'organisation — un score sur 100, cinq dimensions, mesuré dans le temps. La méthode est la même ; ce qui change, c'est l'échelle d'observation."
 
 - id: bloc-05-final-q5
-  question: "Quelle est la cinquième dimension de l'IMIA, distincte de S.F.O.I. ?"
+  question: "Quelle dimension pèse le plus dans l'IMIA, et pourquoi ?"
   options:
-    - "La conformité réglementaire"
-    - "Le retour sur investissement des outils IA"
-    - "L'autonomie collective — la capacité à détecter et corriger une erreur sans intervention externe"
-    - "La satisfaction des utilisateurs finaux"
+    - "L'infrastructure et les outils, parce qu'ils conditionnent tout"
+    - "Les compétences individuelles, parce qu'elles sont la base"
+    - "La gouvernance et le cadre — 30 points, parce que sans cadre, les pratiques ne se diffusent pas et ne se stabilisent pas"
+    - "La pratique de la méthode S.F.O.I., parce que c'est ce qui se voit dans les livrables"
   correct: 3
-  explication: "L'autonomie collective (10 points) est ce qui distingue la maturité d'une simple compétence cumulée. C'est la dimension qui répond directement aux deux boucles : « sommes-nous encore capables de voir ? »."
+  explication: "La gouvernance et le cadre pèsent 30 points sur 100 — c'est le pilier le plus lourd. Une équipe peut être brillante individuellement et l'organisation rester immature : sans rôle d'AI Practice Steward, sans règles de sécurité claires, sans conformité, les pratiques ne tiennent pas dans la durée. À l'inverse, l'infrastructure et les outils ne pèsent que 10 points, parce qu'un outil sans méthode est un risque, pas une preuve de maturité."
 
 - id: bloc-05-final-q6
   question: "Qu'est-ce qui distingue structurellement un AI Practice Steward d'un consultant IA ?"
@@ -525,11 +528,11 @@ Les deux sont **interruptibles**, mais c'est un travail d'organisation, pas indi
 
 | Dimension IMIA | Poids |
 |----------------|------:|
-| Structurer | 15 |
-| Fiabiliser | 30 |
-| Optimiser | 20 |
-| Industrialiser | 25 |
-| **Autonomie collective** | **10** |
+| Gouvernance et cadre | 30 |
+| Pratique de la méthode S.F.O.I. | 20 |
+| Capital intellectuel (skills) | 20 |
+| Capacités humaines (individuelles + autonomie collective) | 20 |
+| **Infrastructure et outils** | **10** |
 
 ### L'AI Practice Steward — trois capacités
 

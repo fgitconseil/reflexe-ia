@@ -54,7 +54,7 @@
 | 4 | 4.3 | Les 3 erreurs fréquentes | 3 | Haute |
 | 5 | 5.1 | La boucle amplificatrice | 6 | **Critique** |
 | 5 | 5.2 | La reddition cognitive | 5 | **Critique** |
-| 5 | 5.3 | Les 5 dimensions IMIA | 3 | Haute |
+| 5 | 5.3 | Les 5 dimensions IMIA | 3 | **À REFAIRE** ⚠ |
 | 5 | 5.4 | Les 3 capacités du Steward | 4 | **Critique** |
 | 5 | 5.5 | Les 3 niveaux d'intervention du Steward | 3 | Haute |
 | 5 | 5.6 | Les skills comme actifs métiers | 4 | Moyenne |
@@ -419,11 +419,21 @@ Ces marqueurs déclenchent l'apparition d'éléments **textuels** dans le compos
 - `id="imia-tableau-5-dimensions"` — tableau associé avec poids
 - `id="imia-trace-organisation"` — polygone tracé d'une organisation type sur le radar
 
-**Mécanique :** pentagone radar avec 5 axes pondérés. Polygone tracé d'une organisation type, montrant les déséquilibres typiques (souvent forte sur S, faible sur F).
+**Mécanique :** pentagone radar avec 5 axes pondérés. Polygone tracé d'une organisation type, montrant les déséquilibres typiques (souvent forte sur Outils déployés et Compétences individuelles, plus faible sur Gouvernance et Capital intellectuel).
 
 **Composants :**
-- Axes : Structurer (15) · Fiabiliser (30) · Optimiser (20) · Industrialiser (25) · Autonomie collective (10)
+- Axes : **Gouvernance et cadre (30)** · **Pratique S.F.O.I. (20)** · **Capital intellectuel (20)** · **Capacités humaines (20)** · **Infrastructure et outils (10)**
 - Tableau associé en bas ou à côté avec les pondérations explicites
+- L'axe **Gouvernance** est mis en valeur (poids le plus lourd) — pastille en couleur primaire site (`#2563eb`)
+- L'axe **Outils** est en gris plus discret (poids le plus faible — message volontaire)
+- Les 3 axes intermédiaires (S.F.O.I., Capital, Capacités) en couleur neutre uniforme
+
+**Note importante :** ne pas utiliser les couleurs S.F.O.I. (vert/jaune/bleu/violet) sur les axes IMIA — l'IMIA n'est pas une lecture organisationnelle de S.F.O.I., c'est une carte des **piliers du framework Reflexe IA**. La confusion entre les deux est précisément ce qu'on corrige avec cette refonte.
+
+**Encart pédagogique latéral** (à conserver) :
+- Titre : « Lecture du tracé »
+- 3 puces décrivant un exemple d'organisation type
+- Mention essentielle : *« Le score mesure une capacité installée, pas un volume d'activité »*
 
 ---
 
