@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: /
+Allow: /
 
-Sitemap: https://formation-ia-pme.fgitconseil.com/sitemap.xml
+Sitemap: https://the-b-context.com/sitemap-index.xml

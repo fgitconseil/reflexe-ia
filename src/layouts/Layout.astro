@@ -5,8 +5,15 @@ interface Props {
   title: string;
   description?: string;
 }
-const { title, description = "Structurez les pratiques IA de votre organisation. Méthode S.F.O.I. — AI Practice Steward." } = Astro.props;
+const {
+  title,
+  description = "Structurez les pratiques IA de votre organisation. Méthode S.F.O.I. — AI Practice Steward.",
+} = Astro.props;
 const base = import.meta.env.BASE_URL;
+
+/* URL canonique absolue, calculée depuis le domaine configuré dans astro.config.mjs */
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const titleFull  = `${title} · The B Context`;
 ---
 <!doctype html>
 <html lang="fr">
@@ -21,7 +28,16 @@ const base = import.meta.env.BASE_URL;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    <title>{title} · The B Context</title>
+    <title>{titleFull}</title>
+
+    <!-- Canonical : évite le contenu dupliqué entre variantes d'URL -->
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph : partages LinkedIn et réseaux sociaux -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content={canonical} />
+    <meta property="og:title"       content={titleFull} />
+    <meta property="og:description" content={description} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
