@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import ArbreDecisionDownload from '../components/ArbreDecisionDownload.astro';
 const base = import.meta.env.BASE_URL;
 ---
-<Layout title="Interventions" description="Quatre situations dans lesquelles The B Context intervient. Formation équipe, revue des pratiques, capitalisation d'un savoir critique, gouvernance IA, une offre par cas.">
+<Layout title="Interventions" description="Le parcours d'intervention The B Context : appel de cadrage gratuit, Diagnostic IMIA en une semaine, puis l'intervention adaptée à votre situation. Durées transparentes, une porte par situation.">
 
   <!-- Hero -->
   <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20">
@@ -14,7 +14,7 @@ const base = import.meta.env.BASE_URL;
       <p class="text-sm font-bold tracking-widest uppercase text-blue-400 mb-4">Interventions</p>
       <h1 class="text-4xl md:text-5xl font-bold mb-4">Selon votre situation</h1>
       <p class="text-slate-300 text-lg leading-relaxed max-w-2xl">
-        Quatre situations dans lesquelles The B Context intervient. À chaque situation, une offre adaptée, pas une gamme à composer.
+        Quatre situations dans lesquelles The B Context intervient. À chaque situation, une offre adaptée, pas une gamme à composer. Et une même porte d'entrée : mesurer où vous en êtes.
       </p>
     </div>
   </section>
@@ -27,19 +27,129 @@ const base = import.meta.env.BASE_URL;
   <!-- Par où commencer -->
   <section class="max-w-3xl mx-auto px-6 py-14 border-b border-slate-100">
     <h2 class="text-lg font-bold text-slate-900 mb-3">Par où commencer</h2>
-    <p class="text-slate-600 text-base leading-relaxed mb-6">
-      La formation distancielle gratuite est la porte d'entrée universelle. Six blocs de 20 minutes, à votre rythme, pour comprendre la méthode S.F.O.I. et les pratiques de base de l'IA générative en contexte professionnel. Elle est utile avant toute intervention, pour calibrer le niveau de départ et créer un langage commun.
+    <p class="text-slate-600 text-base leading-relaxed mb-4">
+      Tout démarre par un appel de cadrage gratuit de 30 minutes, puis un Diagnostic IMIA d'environ une semaine qui mesure l'écart entre votre intention stratégique et vos pratiques IA réelles. L'intervention qui suit dépend de votre situation, pas d'un catalogue.
     </p>
-    <a href={`${base}formation/`} class="btn-primary text-sm">Accéder à la formation gratuite →</a>
+    <p class="text-slate-600 text-base leading-relaxed mb-6">
+      En parallèle, la formation distancielle gratuite reste ouverte à vos équipes : cinq blocs de 20 minutes, à leur rythme, pour comprendre la méthode S.F.O.I. et créer un langage commun avant toute intervention.
+    </p>
+    <div class="flex flex-wrap gap-4">
+      <a href={`${base}contact/`} class="btn-primary text-sm">Réserver un appel de cadrage gratuit →</a>
+      <a href={`${base}formation/`} class="text-blue-600 text-sm font-medium hover:underline self-center">Accéder à la formation gratuite →</a>
+    </div>
+  </section>
+
+  <!-- La porte d'entrée : le Diagnostic IMIA -->
+  <section id="diagnostic-imia" class="max-w-3xl mx-auto px-6 py-14 scroll-mt-24">
+    <p class="text-xs font-bold uppercase tracking-widest text-blue-600 mb-2">La porte d'entrée</p>
+    <h2 class="text-2xl font-bold text-slate-900 mb-4">Le Diagnostic IMIA</h2>
+    <p class="text-slate-600 text-base leading-relaxed mb-6">
+      Environ une semaine pour mesurer l'écart entre ce que votre direction vise et ce que vos pratiques IA produisent réellement. Trois temps : entretiens avec la direction et deux à trois équipes, scoring IMIA sur cinq dimensions avec cartographie des boucles actives, puis restitution dirigeante.
+    </p>
+    <div class="bg-white border border-slate-200 rounded-xl p-6 space-y-4 mb-6">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Vous repartez avec</p>
+        <p class="text-slate-600 text-sm leading-relaxed">Un score IMIA sur 100, la cartographie des boucles qui vous coûtent (confiance aveugle, jugement délégué), un diagnostic S.F.O.I. de vos pratiques, et une recommandation d'intervention.</p>
+      </div>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Ce que ce n'est pas</p>
+        <p class="text-slate-600 text-sm leading-relaxed">Un audit. Pas de feuille de route de projets, pas de PoC à empiler. Une mesure de l'écart, et la décision pour le réduire. Le score est re-mesuré à 90 jours, puis chaque trimestre : l'engagement porte sur l'écart comblé, pas sur le temps passé.</p>
+      </div>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Durée</p>
+        <p class="text-slate-700 font-semibold">Environ 1 semaine</p>
+      </div>
+    </div>
+    <a href={`${base}contact/`} class="btn-primary text-sm">Réserver un appel de cadrage gratuit →</a>
   </section>
 
   <!-- Les 4 cas -->
-  <div class="max-w-3xl mx-auto px-6 py-16 space-y-20">
+  <div class="max-w-3xl mx-auto px-6 py-16 space-y-20 border-t border-slate-100">
 
-    <!-- Cas 1 -->
+    <!-- Cas 2 — Dérives -->
+    <section id="cas-2" class="scroll-mt-24">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style="background:var(--accent-600)">1</div>
+        <h2 class="text-2xl font-bold text-slate-900">Des dérives s'installent</h2>
+      </div>
+      <blockquote class="border border-slate-200 rounded-xl px-5 py-4 mb-6 bg-slate-50">
+        <p class="text-slate-600 text-sm italic leading-relaxed">« On a déployé l'IA, on sent que des dérives s'installent, hétérogénéité des sorties, questions de fiabilité, inquiétudes sécurité. »</p>
+      </blockquote>
+      <div class="space-y-2 mb-6 text-slate-600 text-sm leading-relaxed">
+        <p>L'usage est installé, plus de 20 % des collaborateurs utilisent des outils IA au quotidien. Des débats internes émergent sur la fiabilité des sorties. Un incident récent a suscité des questions. Les pratiques sont hétérogènes d'une équipe à l'autre. La tension autour de l'AI Act ou de la conformité commence à remonter.</p>
+        <p>Ce cas nécessite une mesure avant toute action. Intervenir sans cartographier les boucles actives, c'est traiter les symptômes sans adresser le système.</p>
+      </div>
+      <div class="bg-white border border-slate-200 rounded-xl p-6 space-y-4">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Offre</p>
+          <p class="text-slate-900 font-semibold">Diagnostic IMIA → Mission Équipe</p>
+          <p class="text-slate-500 text-xs mt-1">Deux étapes séquencées. La Mission Équipe est déclenchée si le diagnostic le justifie.</p>
+        </div>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Point de départ</p>
+          <p class="text-slate-600 text-sm leading-relaxed">Le <a href="#diagnostic-imia" class="text-blue-600 hover:underline">Diagnostic IMIA</a> fixe le score, la cartographie des boucles et la recommandation d'intervention.</p>
+        </div>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Livrables Mission Équipe (4 à 8 semaines)</p>
+          <p class="text-slate-600 text-sm leading-relaxed">Normes co-construites avec l'équipe, premier Agent IA déployé sur un cas métier prioritaire, référent interne formé à tenir le cadre.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cas 3 — Savoir critique -->
+    <section id="cas-3" class="scroll-mt-24">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style="background:var(--sfoi-i)">2</div>
+        <h2 class="text-2xl font-bold text-slate-900">Un savoir critique est en risque</h2>
+      </div>
+      <blockquote class="border border-slate-200 rounded-xl px-5 py-4 mb-6 bg-slate-50">
+        <p class="text-slate-600 text-sm italic leading-relaxed">« Un expert va partir et son savoir critique repose sur lui. »</p>
+      </blockquote>
+      <div class="space-y-2 mb-6 text-slate-600 text-sm leading-relaxed">
+        <p>Un départ est annoncé, ou seulement pressenti. Un processus métier clé dépend d'une personne que personne ne peut dupliquer. Les nouveaux collaborateurs mettent six mois à un an à devenir vraiment opérationnels. Le savoir accumulé n'est pas formalisé, il est dans les têtes, dans des emails, dans des habitudes de travail invisibles.</p>
+        <p>Ce cas a une urgence propre : le départ crée une fenêtre courte. Il faut agir avant, pas après.</p>
+      </div>
+      <div class="bg-white border border-slate-200 rounded-xl p-6 space-y-4">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Offre</p>
+          <p class="text-slate-900 font-semibold">Mission Équipe ciblée, capitalisation d'un skill</p>
+        </div>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Livrables (4 à 8 semaines)</p>
+          <p class="text-slate-600 text-sm leading-relaxed">Entretiens d'élicitation structurés, structuration du savoir en format MASK, fichier skill déployable, rapport d'évaluation avec taux de réussite mesuré, transfert à un référent interne.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cas 4 — Aligner à l'échelle -->
+    <section id="cas-4" class="scroll-mt-24">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style="background:var(--sfoi-s)">3</div>
+        <h2 class="text-2xl font-bold text-slate-900">Plusieurs équipes à aligner sur la stratégie</h2>
+      </div>
+      <blockquote class="border border-slate-200 rounded-xl px-5 py-4 mb-6 bg-slate-50">
+        <p class="text-slate-600 text-sm italic leading-relaxed">« Plusieurs équipes, plusieurs usages : on veut que ça serve vraiment la stratégie, pas partir dans tous les sens. »</p>
+      </blockquote>
+      <div class="space-y-2 mb-6 text-slate-600 text-sm leading-relaxed">
+        <p>Un programme IA est en cours ou planifié. Plusieurs équipes sont concernées, avec des usages qui divergent déjà. La direction affiche une ambition IA au niveau stratégique, mais le risque de fragmentation est visible. Le ROI est difficile à mesurer. La conformité AI Act commence à entrer dans les discussions.</p>
+        <p>Ce cas nécessite un sponsor direction ferme et un cycle plus long. Il ne s'adresse pas à un projet pilote, il adresse l'organisation dans son ensemble : l'exécution IA de chaque équipe, alignée sur la même intention.</p>
+      </div>
+      <div class="bg-white border border-slate-200 rounded-xl p-6 space-y-4">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Offre</p>
+          <p class="text-slate-900 font-semibold">Diagnostic IMIA organisationnel → Mission Organisation</p>
+        </div>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Livrables (2 à 4 mois)</p>
+          <p class="text-slate-600 text-sm leading-relaxed">Diagnostic systémique multi-équipes, architecture skills par domaine métier, référentiel d'alignement des pratiques et des rôles, équipe interne de référents formée au transfert.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cas 1 — Équipe qui se lance -->
     <section id="cas-1" class="scroll-mt-24">
       <div class="flex items-center gap-3 mb-6">
-        <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style="background:var(--primary-600)">1</div>
+        <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style="background:var(--primary-600)">4</div>
         <h2 class="text-2xl font-bold text-slate-900">Votre équipe se lance dans l'IA</h2>
       </div>
       <blockquote class="border border-slate-200 rounded-xl px-5 py-4 mb-6 bg-slate-50">
@@ -65,86 +175,6 @@ const base = import.meta.env.BASE_URL;
       </div>
     </section>
 
-    <!-- Cas 2 -->
-    <section id="cas-2" class="scroll-mt-24">
-      <div class="flex items-center gap-3 mb-6">
-        <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style="background:var(--accent-600)">2</div>
-        <h2 class="text-2xl font-bold text-slate-900">Des dérives s'installent</h2>
-      </div>
-      <blockquote class="border border-slate-200 rounded-xl px-5 py-4 mb-6 bg-slate-50">
-        <p class="text-slate-600 text-sm italic leading-relaxed">« On a déployé l'IA, on sent que des dérives s'installent, hétérogénéité des sorties, questions de fiabilité, inquiétudes sécurité. »</p>
-      </blockquote>
-      <div class="space-y-2 mb-6 text-slate-600 text-sm leading-relaxed">
-        <p>L'usage est installé, plus de 20 % des collaborateurs utilisent des outils IA au quotidien. Des débats internes émergent sur la fiabilité des sorties. Un incident récent a suscité des questions. Les pratiques sont hétérogènes d'une équipe à l'autre. La tension autour de l'AI Act ou de la conformité commence à remonter.</p>
-        <p>Ce cas nécessite un diagnostic avant toute action. Intervenir sans cartographier les boucles actives, c'est traiter les symptômes sans adresser le système.</p>
-      </div>
-      <div class="bg-white border border-slate-200 rounded-xl p-6 space-y-4">
-        <div>
-          <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Offre</p>
-          <p class="text-slate-900 font-semibold">Revue de Pratiques IA → Mission Équipe</p>
-          <p class="text-slate-500 text-xs mt-1">Deux étapes séquencées. La Mission Équipe est déclenchée si le diagnostic le justifie.</p>
-        </div>
-        <div>
-          <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Livrables Revue (2 à 3 semaines)</p>
-          <p class="text-slate-600 text-sm leading-relaxed">Cartographie des usages réels, identification des boucles actives (amplificatrice, reddition cognitive), évaluation S.F.O.I. par équipe, plan d'action priorisé restitué en CODIR.</p>
-        </div>
-        <div>
-          <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Livrables Mission Équipe (4 à 8 semaines)</p>
-          <p class="text-slate-600 text-sm leading-relaxed">Diagnostic approfondi, normes co-construites, premier Agent IA déployé sur un cas métier prioritaire.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Cas 3 -->
-    <section id="cas-3" class="scroll-mt-24">
-      <div class="flex items-center gap-3 mb-6">
-        <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style="background:var(--sfoi-i)">3</div>
-        <h2 class="text-2xl font-bold text-slate-900">Un savoir critique est en risque</h2>
-      </div>
-      <blockquote class="border border-slate-200 rounded-xl px-5 py-4 mb-6 bg-slate-50">
-        <p class="text-slate-600 text-sm italic leading-relaxed">« Un expert va partir et son savoir critique repose sur lui. »</p>
-      </blockquote>
-      <div class="space-y-2 mb-6 text-slate-600 text-sm leading-relaxed">
-        <p>Un départ est annoncé, ou seulement pressenti. Un processus métier clé dépend d'une personne que personne ne peut dupliquer. Les nouveaux collaborateurs mettent six mois à un an à devenir vraiment opérationnels. Le savoir accumulé n'est pas formalisé, il est dans les têtes, dans des emails, dans des habitudes de travail invisibles.</p>
-        <p>Ce cas a une urgence propre : le départ crée une fenêtre courte. Il faut agir avant, pas après.</p>
-      </div>
-      <div class="bg-white border border-slate-200 rounded-xl p-6 space-y-4">
-        <div>
-          <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Offre</p>
-          <p class="text-slate-900 font-semibold">Mission Équipe ciblée, capitalisation d'un skill</p>
-        </div>
-        <div>
-          <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Livrables (4 à 8 semaines)</p>
-          <p class="text-slate-600 text-sm leading-relaxed">Entretiens d'élicitation structurés, structuration du savoir en format MASK, fichier skill déployable, rapport d'évaluation avec taux de réussite mesuré, transfert à un référent interne.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Cas 4 -->
-    <section id="cas-4" class="scroll-mt-24">
-      <div class="flex items-center gap-3 mb-6">
-        <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style="background:var(--sfoi-s)">4</div>
-        <h2 class="text-2xl font-bold text-slate-900">Gouvernance IA à installer en amont</h2>
-      </div>
-      <blockquote class="border border-slate-200 rounded-xl px-5 py-4 mb-6 bg-slate-50">
-        <p class="text-slate-600 text-sm italic leading-relaxed">« On veut installer une gouvernance IA avant que ça ne devienne un problème, plusieurs équipes, plusieurs usages, pas de cadre commun. »</p>
-      </blockquote>
-      <div class="space-y-2 mb-6 text-slate-600 text-sm leading-relaxed">
-        <p>Un programme IA est en cours ou planifié. Plusieurs équipes sont concernées, avec des usages qui divergent déjà. La direction affiche une ambition IA au niveau stratégique, mais le risque de fragmentation est visible. Le ROI est difficile à mesurer. La conformité AI Act commence à entrer dans les discussions.</p>
-        <p>Ce cas nécessite un sponsor direction ferme et un cycle plus long. Il ne s'adresse pas à un projet pilote, il adresse l'organisation dans son ensemble.</p>
-      </div>
-      <div class="bg-white border border-slate-200 rounded-xl p-6 space-y-4">
-        <div>
-          <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Offre</p>
-          <p class="text-slate-900 font-semibold">Revue organisationnelle → Mission Organisation</p>
-        </div>
-        <div>
-          <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Livrables (2 à 4 mois)</p>
-          <p class="text-slate-600 text-sm leading-relaxed">Diagnostic systémique multi-équipes, architecture skills par domaine métier, référentiel de gouvernance distribuée, rôles et responsabilités autour des pratiques IA, équipe interne de référents formée au transfert.</p>
-        </div>
-      </div>
-    </section>
-
   </div>
 
   <!-- Tableau de synthèse -->
@@ -162,14 +192,9 @@ const base = import.meta.env.BASE_URL;
           </thead>
           <tbody class="divide-y divide-slate-100 bg-white">
             <tr>
-              <td class="px-4 py-3 text-slate-700">Cadre commun à installer</td>
-              <td class="px-4 py-3 text-slate-600">Formation présentiel équipe</td>
-              <td class="px-4 py-3 text-slate-500">1 à 2 jours</td>
-            </tr>
-            <tr>
               <td class="px-4 py-3 text-slate-700">Dérives à diagnostiquer</td>
-              <td class="px-4 py-3 text-slate-600">Revue + Mission Équipe</td>
-              <td class="px-4 py-3 text-slate-500">2 à 3 sem. + 4 à 8 sem.</td>
+              <td class="px-4 py-3 text-slate-600">Diagnostic IMIA + Mission Équipe</td>
+              <td class="px-4 py-3 text-slate-500">env. 1 sem. + 4 à 8 sem.</td>
             </tr>
             <tr>
               <td class="px-4 py-3 text-slate-700">Savoir critique à capitaliser</td>
@@ -177,13 +202,19 @@ const base = import.meta.env.BASE_URL;
               <td class="px-4 py-3 text-slate-500">4 à 8 semaines</td>
             </tr>
             <tr>
-              <td class="px-4 py-3 text-slate-700">Gouvernance IA en amont</td>
-              <td class="px-4 py-3 text-slate-600">Revue + Mission Organisation</td>
-              <td class="px-4 py-3 text-slate-500">2 à 4 mois</td>
+              <td class="px-4 py-3 text-slate-700">Exécution à aligner à l'échelle</td>
+              <td class="px-4 py-3 text-slate-600">Diagnostic IMIA org. + Mission Organisation</td>
+              <td class="px-4 py-3 text-slate-500">env. 1 sem. + 2 à 4 mois</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 text-slate-700">Cadre commun à installer</td>
+              <td class="px-4 py-3 text-slate-600">Formation présentiel équipe</td>
+              <td class="px-4 py-3 text-slate-500">1 à 2 jours</td>
             </tr>
           </tbody>
         </table>
       </div>
+      <p class="text-slate-500 text-sm mt-4">Chaque parcours démarre par un appel de cadrage gratuit de 30 minutes.</p>
     </div>
   </section>
 

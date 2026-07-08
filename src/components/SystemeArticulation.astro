@@ -4,7 +4,7 @@ const base = import.meta.env.BASE_URL;
 const cartes = [
   {
     situation: "Une équipe se lance",
-    reponse:   "Formation",
+    reponse:   "Formation + e-learning offert",
     niveau:    "Individuel",
     actives:   new Set(["S", "F"]),
     imia:      "IMIA · repère (T0)",
@@ -12,7 +12,7 @@ const cartes = [
   },
   {
     situation: "Des dérives s'installent",
-    reponse:   "Identification & accompagnement",
+    reponse:   "Diagnostic IMIA → Mission Équipe + Agent",
     niveau:    "Collectif",
     actives:   new Set(["S", "F", "O"]),
     imia:      "IMIA · évolution",
@@ -20,15 +20,15 @@ const cartes = [
   },
   {
     situation: "Un savoir critique en risque",
-    reponse:   "Capitalisation",
+    reponse:   "Mission Équipe · capitalisation skill",
     niveau:    "Collectif",
     actives:   new Set(["S", "F", "O", "I"]),
     imia:      "IMIA · évolution",
     lien:      `${base}interventions/#cas-3`,
   },
   {
-    situation: "Gouvernance à installer",
-    reponse:   "Gouvernance",
+    situation: "Exécution à aligner à l'échelle",
+    reponse:   "Diagnostic IMIA org. → Mission Organisation",
     niveau:    "Organisation",
     actives:   new Set(["S", "F", "O", "I"]),
     imia:      "IMIA · globale",
@@ -50,10 +50,10 @@ const sfoi = [
     <!-- En-tête centré -->
     <div class="text-center mb-10">
       <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
-        Un seul rôle, du premier réflexe à la gouvernance
+        Un seul rôle, de l'intention stratégique à l'exécution
       </h2>
       <p class="text-slate-500 text-base max-w-2xl mx-auto">
-        L'AI Practice Steward installe, fiabilise, diffuse, puis se retire. Selon votre situation, il intervient au bon niveau de maturité, sans créer de dépendance.
+        L'AI Practice Steward relie ce que votre direction vise à ce que vos équipes font sur le terrain. Selon votre situation, il intervient au bon niveau, sans créer de dépendance.
       </p>
     </div>
 
@@ -74,7 +74,7 @@ const sfoi = [
       style="background:var(--accent-600)"
     >
       <span class="font-bold text-sm">AI Practice Steward</span>
-      <span class="text-xs opacity-75">installe · fiabilise · diffuse · se retire</span>
+      <span class="text-xs opacity-75">installe · fiabilise · diffuse · fait évoluer</span>
     </a>
 
     <!-- Quatre cartes situationnelles -->
@@ -113,13 +113,13 @@ const sfoi = [
 
     <!-- Phrase de synthèse -->
     <p class="text-center text-slate-500 text-sm mt-8">
-      Une situation, une réponse. Le rôle reste constant sur tout l'axe, puis se retire.
+      Une situation, une réponse. The B Context installe le rôle, puis se retire. Le rôle reste.
     </p>
 
     <!-- Légende — rend le schéma auto-porteur, ne dépend pas de la seule couleur -->
     <div class="mt-5 space-y-1 text-center text-xs text-slate-400">
       <p>S Structurer · F Fiabiliser · O Optimiser · I Industrialiser — lettres colorées = profondeur de la méthode atteinte</p>
-      <p>IMIA : indice de maturité IA sur 100, mesuré à T0, T+90 jours puis chaque trimestre</p>
+      <p>IMIA : l'écart entre l'intention stratégique et les pratiques réelles, mesuré sur 100 à T0, T+90 jours puis chaque trimestre</p>
     </div>
 
   </div>

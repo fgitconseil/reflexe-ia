@@ -1,4 +1,19 @@
+# The B Context — robots.txt
+# Indexation ouverte à tous les moteurs, y compris Qwant/Bing (Qwant s'appuie en partie sur l'index Bing).
+
 User-agent: *
+Allow: /
+
+# Qwant
+User-agent: Qwantbot
+Allow: /
+
+# Bing (socle d'index de Qwant)
+User-agent: bingbot
+Allow: /
+
+# Google
+User-agent: Googlebot
 Allow: /
 
 Sitemap: https://the-b-context.com/sitemap-index.xml

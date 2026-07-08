@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 const base = import.meta.env.BASE_URL;
 ---
-<Layout title="IMIA — Indice de Maturité IA Organisationnelle" description="Un score composite sur 100 points pour mesurer la capacité installée d'une organisation à utiliser l'IA de façon fiable et durable.">
+<Layout title="IMIA — Indice de Maturité IA Organisationnelle" description="Un score sur 100 qui mesure l'écart entre l'intention stratégique de la direction et les pratiques IA réelles. Cinq dimensions, mesurées à T0, T+90 jours puis chaque trimestre.">
 
   <!-- Hero -->
   <section class="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
@@ -10,10 +10,10 @@ const base = import.meta.env.BASE_URL;
       <div class="mb-4">
         <a href={`${base}framework/`} class="text-slate-400 text-sm hover:text-slate-200 no-underline">← Framework</a>
       </div>
-      <p class="text-sm font-bold tracking-widest uppercase text-blue-400 mb-4">Carte de maturité</p>
+      <p class="text-sm font-bold tracking-widest uppercase text-blue-400 mb-4">L'instrument de mesure</p>
       <h1 class="text-4xl md:text-5xl font-bold mb-4">L'IMIA</h1>
       <p class="text-slate-300 text-lg leading-relaxed max-w-2xl">
-        Indice de Maturité IA Organisationnelle. Un score composite sur 100 points, observable, auditable, mesurable dans le temps.
+        Indice de Maturité IA Organisationnelle. Un score sur 100 qui mesure l'écart entre votre intention stratégique et vos pratiques IA réelles, dans le temps.
       </p>
     </div>
   </section>
@@ -25,13 +25,13 @@ const base = import.meta.env.BASE_URL;
       <h2 class="text-2xl font-bold text-slate-900 mb-6">Ce que l'IMIA mesure</h2>
       <div class="space-y-4 text-slate-700 text-base leading-relaxed">
         <p>
-          L'IMIA mesure la capacité installée de l'organisation à utiliser l'IA de façon fiable et durable. Pas le volume d'usage. Pas le nombre d'outils déployés. La capacité collective à faire, à maintenir, à faire évoluer.
+          L'IMIA mesure l'écart entre ce que votre direction vise et ce que vos pratiques IA produisent réellement. Pas le volume d'usage. Pas le nombre d'outils déployés. La capacité collective à exécuter ce que la stratégie vise, à le maintenir, à le faire évoluer.
         </p>
         <p>
           C'est un score composite sur 100 points, construit pour être <strong>observable</strong> (signaux visibles dans les pratiques), <strong>auditable</strong> (chaque dimension est traçable) et <strong>mesurable dans le temps</strong> (T0, T+90 jours, puis chaque trimestre).
         </p>
         <p>
-          Il sert deux usages : poser un diagnostic au démarrage d'une mission, et suivre la progression dans la durée.
+          Il sert deux usages : fixer le point de départ au démarrage d'une mission, et suivre la réduction de l'écart dans la durée. L'engagement porte sur l'écart comblé, pas sur le temps passé.
         </p>
       </div>
     </section>
@@ -40,7 +40,7 @@ const base = import.meta.env.BASE_URL;
     <section>
       <h2 class="text-2xl font-bold text-slate-900 mb-4">Cinq dimensions, des poids volontaires</h2>
       <p class="text-slate-600 text-base leading-relaxed mb-10">
-        Les cinq dimensions sont indépendantes de S.F.O.I. — elles mesurent la capacité organisationnelle, pas la méthode individuelle. La pondération est volontaire : la gouvernance pèse le plus (30) parce que sans cadre collectif, la méthode individuelle ne se diffuse pas et ne se maintient pas.
+        Les cinq dimensions sont indépendantes de S.F.O.I. — elles mesurent la capacité organisationnelle, pas la méthode individuelle. La pondération est volontaire : la dimension Gouvernance et cadre pèse le plus (30) parce que sans cadre collectif, la méthode individuelle ne se diffuse pas et ne se maintient pas.
       </p>
       <div class="space-y-5">
 
@@ -50,20 +50,8 @@ const base = import.meta.env.BASE_URL;
             <h3 class="font-bold text-slate-900">Gouvernance et cadre</h3>
             <span class="text-sm font-bold px-3 py-1 rounded-full text-white" style="background:var(--primary-600)">30 pts</span>
           </div>
-          <div class="px-6 py-5 space-y-4">
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1">Ce qu'elle mesure</p>
-              <p class="text-slate-700 text-sm leading-relaxed">Rôle APS défini, règles d'usage formalisées, conformité tracée.</p>
-            </div>
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Signaux observables</p>
-              <ul class="space-y-1.5 text-sm text-slate-600">
-                <li class="flex gap-2"><span style="color:var(--primary-600)">·</span>Charte IA publiée et connue</li>
-                <li class="flex gap-2"><span style="color:var(--primary-600)">·</span>Comité IA opérationnel</li>
-                <li class="flex gap-2"><span style="color:var(--primary-600)">·</span>AI Act mappé sur les usages internes</li>
-                <li class="flex gap-2"><span style="color:var(--primary-600)">·</span>Description du rôle APS dans l'organisation</li>
-              </ul>
-            </div>
+          <div class="px-6 py-5">
+            <p class="text-slate-700 text-sm leading-relaxed">Rôle APS défini, règles d'usage formalisées, conformité tracée.</p>
           </div>
         </div>
 
@@ -73,19 +61,8 @@ const base = import.meta.env.BASE_URL;
             <h3 class="font-bold text-slate-900">Pratique de la méthode S.F.O.I.</h3>
             <span class="text-sm font-bold px-3 py-1 rounded-full bg-slate-700 text-white">20 pts</span>
           </div>
-          <div class="px-6 py-5 space-y-4">
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1">Ce qu'elle mesure</p>
-              <p class="text-slate-700 text-sm leading-relaxed">Adoption mesurée des 4 actes S.F.O.I. à l'échelle de l'équipe.</p>
-            </div>
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Signaux observables</p>
-              <ul class="space-y-1.5 text-sm text-slate-600">
-                <li class="flex gap-2"><span class="text-slate-400">·</span>Présence des 4 actes dans les workflows critiques</li>
-                <li class="flex gap-2"><span class="text-slate-400">·</span>Audit aléatoire de livrables qui les utilisent</li>
-                <li class="flex gap-2"><span class="text-slate-400">·</span>Vocabulaire S.F.O.I. partagé en équipe</li>
-              </ul>
-            </div>
+          <div class="px-6 py-5">
+            <p class="text-slate-700 text-sm leading-relaxed">Adoption mesurée des 4 actes S.F.O.I. à l'échelle de l'équipe.</p>
           </div>
         </div>
 
@@ -95,19 +72,8 @@ const base = import.meta.env.BASE_URL;
             <h3 class="font-bold text-slate-900">Capital intellectuel</h3>
             <span class="text-sm font-bold px-3 py-1 rounded-full bg-slate-700 text-white">20 pts</span>
           </div>
-          <div class="px-6 py-5 space-y-4">
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1">Ce qu'elle mesure</p>
-              <p class="text-slate-700 text-sm leading-relaxed">Prompts réutilisables, templates, bibliothèque d'usages documentée.</p>
-            </div>
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Signaux observables</p>
-              <ul class="space-y-1.5 text-sm text-slate-600">
-                <li class="flex gap-2"><span class="text-slate-400">·</span>Nombre de skills capitalisés et accessibles</li>
-                <li class="flex gap-2"><span class="text-slate-400">·</span>Taux de réutilisation des prompts métier</li>
-                <li class="flex gap-2"><span class="text-slate-400">·</span>Documentation des usages tenue à jour</li>
-              </ul>
-            </div>
+          <div class="px-6 py-5">
+            <p class="text-slate-700 text-sm leading-relaxed">Prompts réutilisables, templates, skills capitalisés, bibliothèque d'usages documentée.</p>
           </div>
         </div>
 
@@ -117,19 +83,8 @@ const base = import.meta.env.BASE_URL;
             <h3 class="font-bold text-slate-900">Capacités humaines</h3>
             <span class="text-sm font-bold px-3 py-1 rounded-full bg-slate-700 text-white">20 pts</span>
           </div>
-          <div class="px-6 py-5 space-y-4">
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1">Ce qu'elle mesure</p>
-              <p class="text-slate-700 text-sm leading-relaxed">Compétences IA formées, maintenues, diffusées dans l'organisation.</p>
-            </div>
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Signaux observables</p>
-              <ul class="space-y-1.5 text-sm text-slate-600">
-                <li class="flex gap-2"><span class="text-slate-400">·</span>Pourcentage de collaborateurs formés</li>
-                <li class="flex gap-2"><span class="text-slate-400">·</span>Présence de référents internes par fonction</li>
-                <li class="flex gap-2"><span class="text-slate-400">·</span>Fréquence des sessions de partage de pratiques</li>
-              </ul>
-            </div>
+          <div class="px-6 py-5">
+            <p class="text-slate-700 text-sm leading-relaxed">Compétences IA formées, maintenues, diffusées dans l'organisation.</p>
           </div>
         </div>
 
@@ -139,23 +94,15 @@ const base = import.meta.env.BASE_URL;
             <h3 class="font-bold text-slate-800">Infrastructure et outils</h3>
             <span class="text-sm font-bold px-3 py-1 rounded-full bg-slate-400 text-white">10 pts</span>
           </div>
-          <div class="px-6 py-5 space-y-4">
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-1">Ce qu'elle mesure</p>
-              <p class="text-slate-700 text-sm leading-relaxed">Outils déployés, intégrés et accessibles aux équipes concernées.</p>
-            </div>
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-2">Signaux observables</p>
-              <ul class="space-y-1.5 text-sm text-slate-600">
-                <li class="flex gap-2"><span class="text-slate-400">·</span>Outils IA en production</li>
-                <li class="flex gap-2"><span class="text-slate-400">·</span>Couverture par fonction métier</li>
-                <li class="flex gap-2"><span class="text-slate-400">·</span>Niveau d'intégration aux SI existants</li>
-              </ul>
-            </div>
+          <div class="px-6 py-5">
+            <p class="text-slate-700 text-sm leading-relaxed">Outils déployés, intégrés et accessibles aux équipes concernées.</p>
           </div>
         </div>
 
       </div>
+      <p class="text-slate-500 text-sm leading-relaxed mt-6">
+        La grille d'évaluation détaillée (signaux observés, critères de scoring) est un actif de mission : elle est mobilisée par l'AI Practice Steward lors du Diagnostic IMIA, pas publiée.
+      </p>
     </section>
 
     <!-- Protocole de mesure -->
@@ -167,7 +114,7 @@ const base = import.meta.env.BASE_URL;
           <p class="text-xs font-bold uppercase tracking-widest mb-3" style="color:var(--primary-600)">T0</p>
           <h3 class="font-bold text-slate-900 mb-3">Diagnostic initial</h3>
           <p class="text-sm text-slate-600 leading-relaxed">
-            Évaluation des 5 dimensions au démarrage de la mission. Score de référence et identification des leviers prioritaires.
+            Évaluation des 5 dimensions au démarrage. Score de référence, cartographie des boucles actives, identification des leviers prioritaires.
           </p>
         </div>
 
@@ -183,7 +130,7 @@ const base = import.meta.env.BASE_URL;
           <p class="text-xs font-bold uppercase tracking-widest mb-3 text-slate-400">Trimestriel</p>
           <h3 class="font-bold text-slate-900 mb-3">Suivi récurrent</h3>
           <p class="text-sm text-slate-600 leading-relaxed">
-            Mesure régulière en régime de croisière. Permet de tracer la progression et de tenir un cap dans la durée.
+            Mesure régulière en régime de croisière. Permet de tracer la réduction de l'écart et de tenir un cap dans la durée.
           </p>
         </div>
 
@@ -211,7 +158,7 @@ const base = import.meta.env.BASE_URL;
             <tr>
               <td class="p-4 font-medium text-slate-500">Question</td>
               <td class="p-4 text-slate-700">Comment je travaille ?</td>
-              <td class="p-4 text-slate-700">Où en est mon organisation ?</td>
+              <td class="p-4 text-slate-700">Quel est l'écart entre notre intention et nos pratiques ?</td>
             </tr>
             <tr>
               <td class="p-4 font-medium text-slate-500">Format</td>
@@ -232,7 +179,7 @@ const base = import.meta.env.BASE_URL;
         </table>
       </div>
       <p class="text-slate-600 text-base leading-relaxed">
-        Les deux niveaux se travaillent en parallèle. La maîtrise S.F.O.I. contribue à la dimension "Pratique S.F.O.I." de l'IMIA, mais elle ne suffit pas à elle seule à faire progresser le score organisationnel.
+        Les deux niveaux se travaillent en parallèle. La maîtrise S.F.O.I. contribue à la dimension "Pratique S.F.O.I." de l'IMIA, mais elle ne suffit pas à elle seule à réduire l'écart organisationnel.
       </p>
     </section>
 
@@ -240,15 +187,15 @@ const base = import.meta.env.BASE_URL;
     <section>
       <h2 class="text-2xl font-bold text-slate-900 mb-6">L'IMIA en mission</h2>
       <p class="text-slate-700 text-base leading-relaxed">
-        L'IMIA est mesurée par un AI Practice Steward dans le cadre d'une Mission Équipe ou d'une Mission Organisation. Le diagnostic prend quelques jours, la restitution est livrée sous forme de rapport synthétique : score global, détail par dimension, recommandations priorisées.
+        L'IMIA est mesurée par un AI Practice Steward, en porte d'entrée via le <a href={`${base}interventions/#diagnostic-imia`} class="text-blue-600 hover:underline">Diagnostic IMIA</a> (environ une semaine), puis en suivi de Mission Équipe ou de Mission Organisation. La restitution tient en un rapport synthétique : score d'écart, détail par dimension, cartographie des boucles actives, recommandation d'intervention. Jamais une feuille de route de projets ni des PoC à empiler.
       </p>
     </section>
 
     <!-- CTA -->
     <section class="rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 text-white p-8 text-center">
-      <p class="text-slate-300 text-base leading-relaxed mb-6">Vous voulez évaluer la maturité IA de votre organisation ?</p>
+      <p class="text-slate-300 text-base leading-relaxed mb-6">Vous voulez mesurer l'écart entre votre intention stratégique et vos pratiques IA ?</p>
       <div class="flex flex-wrap gap-4 justify-center">
-        <a href="https://calendly.com/conversation-reflexe-ia/30min" class="btn-primary">Discuter d'un diagnostic IMIA →</a>
+        <a href="https://calendly.com/conversation-reflexe-ia/30min" class="btn-primary">Discuter d'un Diagnostic IMIA →</a>
         <a href={`${base}interventions/`}
           style="color:white;border:2px solid rgba(255,255,255,0.3);padding:0.5rem 1.25rem;border-radius:0.5rem;font-weight:600;font-size:0.8rem;text-decoration:none"
         >Voir les interventions</a>

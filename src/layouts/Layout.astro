@@ -7,7 +7,7 @@ interface Props {
 }
 const {
   title,
-  description = "Structurez les pratiques IA de votre organisation. Méthode S.F.O.I. — AI Practice Steward.",
+  description = "Aligner l'exécution des pratiques IA sur l'intention stratégique. Méthode S.F.O.I. — AI Practice Steward — IMIA.",
 } = Astro.props;
 const base = import.meta.env.BASE_URL;
 
@@ -481,7 +481,7 @@ const titleFull  = `${title} · The B Context`;
                 <li><a href={`${base}framework/ai-practice-steward/`}>AI Practice Steward</a></li>
               </ul>
             </li>
-            <li><a href={`${base}mainteneurs/`} class="nav-link">Mainteneurs</a></li>
+            <li><a href={`${base}a-propos/`} class="nav-link">À propos</a></li>
             <!-- Auth slot desktop — populated by client JS -->
             <li id="auth-nav-slot"></li>
             <li id="nav-cta-item"><a href={`${base}contact/`} class="nav-cta">Discuter →</a></li>
@@ -509,7 +509,7 @@ const titleFull  = `${title} · The B Context`;
         <a href={`${base}framework/imia/`}>IMIA</a>
         <a href={`${base}framework/ai-practice-steward/`}>AI Practice Steward</a>
       </div>
-      <a href={`${base}mainteneurs/`} class="mobile-nav-link">Mainteneurs</a>
+      <a href={`${base}a-propos/`} class="mobile-nav-link">À propos</a>
       <!-- Auth slot mobile — populated by client JS -->
       <div id="auth-mobile-slot"></div>
     </div>
@@ -532,7 +532,7 @@ const titleFull  = `${title} · The B Context`;
               </svg>
             </div>
             <p class="footer-desc">
-              Transformer l'usage de l'IA générative en pratique d'équipe fiable, sécurisée et pilotable. Pour les PME et ETI.
+              Aligner l'exécution des pratiques IA sur l'intention stratégique. Pour les PME et ETI.
             </p>
           </div>
 
@@ -543,7 +543,7 @@ const titleFull  = `${title} · The B Context`;
               <li><a href={`${base}formation/`}>Formation</a></li>
               <li><a href={`${base}interventions/`}>Interventions</a></li>
               <li><a href={`${base}framework/`}>Framework</a></li>
-              <li><a href={`${base}mainteneurs/`}>Mainteneurs</a></li>
+              <li><a href={`${base}a-propos/`}>À propos</a></li>
             </ul>
           </div>
 
