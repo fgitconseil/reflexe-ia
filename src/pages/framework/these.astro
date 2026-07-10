@@ -1,0 +1,384 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
+---
+<Layout
+  title="Aligner l'exécution IA sur l'intention stratégique"
+  description="Prise de position The B Context : le goulot de l'IA en organisation n'est pas le modèle, c'est l'écart entre l'intention stratégique et l'exécution des pratiques. Le rôle d'AI Practice Steward, l'instrument IMIA, la méthode S.F.O.I."
+>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="mb-4">
+        <a href={`${base}framework/`} class="text-slate-400 text-sm hover:text-slate-200 no-underline">← Framework</a>
+      </div>
+      <p class="text-sm font-bold tracking-widest uppercase text-blue-400 mb-4">Prise de position</p>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Aligner l'exécution IA sur l'intention stratégique</h1>
+      <p class="text-slate-300 text-base font-medium">Fayaz Goulam · The B Context · 10 juillet 2026</p>
+    </div>
+  </section>
+
+  <div class="max-w-3xl mx-auto px-6 py-16 space-y-16">
+
+    <!-- Encadré avertissement -->
+    <div class="border-l-4 pl-6" style="border-color:var(--accent-500)">
+      <p class="text-slate-700 text-base leading-relaxed">
+        Ce texte pose une thèse et le lexique qui la porte. Il ne sollicite pas de validation. Il est daté, public, et opposable.
+      </p>
+    </div>
+
+    <!-- I. La thèse -->
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 mb-6">I. La thèse</h2>
+      <div class="space-y-4 text-slate-700 text-base leading-relaxed">
+        <p>Les organisations n'ont plus de problème de modèle. Elles ont un problème d'exécution.</p>
+        <p>
+          En deux ans, l'accès aux modèles génératifs est devenu banal. Les outils sont là, les licences sont signées, les équipes s'en servent. Et pourtant, à l'échelle de l'organisation, rien ne se valorise : les gains restent individuels, la direction ne reconnaît pas sa stratégie dans ce que produisent les équipes, et personne ne sait dire où l'on en est.
+        </p>
+        <p>
+          Le goulot n'est pas technique. Il est situé exactement à l'endroit où l'intention stratégique de la direction rencontre les pratiques réelles du terrain. Cet endroit n'a ni rôle, ni instrument, ni méthode.
+        </p>
+        <p><strong>C'est cet écart que ce texte nomme, et c'est ce rôle qu'il définit.</strong></p>
+      </div>
+    </section>
+
+    <!-- II. Ce que l'on observe -->
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 mb-6">II. Ce que l'on observe</h2>
+      <div class="space-y-4 text-slate-700 text-base leading-relaxed mb-8">
+        <p>
+          Deux dynamiques s'installent silencieusement dans toute organisation qui adopte l'IA générative sans cadre. Aucune des deux ne se corrige par la formation individuelle. Ce sont des propriétés du système, pas des lacunes de compétence.
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        <div class="card">
+          <h3 class="font-semibold text-slate-900 mb-3" style="color:var(--sfoi-f)">La boucle amplificatrice</h3>
+          <div class="space-y-3 text-slate-600 text-sm leading-relaxed">
+            <p>
+              L'usage quotidien produit de la confiance dans les sorties. La confiance réduit la vigilance critique. La vigilance réduite augmente l'usage. À chaque itération, l'organisation croit progresser. Elle progresse effectivement, jusqu'au choc correcteur : l'erreur non détectée qui cause un tort réel.
+            </p>
+            <p>
+              L'IA produit du contenu convaincant. La forme convaincante n'est pas la vérité vérifiée. C'est la première chose que la formation transmet, et la première que l'organisation oublie au troisième mois d'usage.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="font-semibold text-slate-900 mb-3" style="color:var(--sfoi-i)">La reddition cognitive</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Plus lente, plus profonde. Le jugement s'atrophie par délégation progressive. On ne cesse pas de penser d'un coup : on cesse de reconstruire le raisonnement, puis de le vérifier, puis de savoir qu'il fallait le vérifier. Ce qui disparaît en dernier, c'est la capacité de savoir que quelque chose a disparu.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 class="font-semibold text-slate-900 mb-3">Ce qu'elles produisent ensemble</h3>
+          <div class="space-y-2 text-slate-600 text-sm leading-relaxed">
+            <p>
+              Une <strong>dette de pratique</strong> : l'accumulation silencieuse de vérifications non faites, de normes non posées, de savoirs non capitalisés. Et une <strong>qualité fantôme</strong> : des sorties qui ont l'apparence du travail fini, sans en avoir la traçabilité.
+            </p>
+            <p>La formation ne peut pas interrompre ces boucles. Elle s'adresse à l'individu. Les boucles vivent dans le collectif.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- III. Le rôle manquant -->
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 mb-8">III. Le rôle manquant : l'AI Practice Steward</h2>
+
+      <div class="space-y-8">
+        <div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-4">Le précédent</h3>
+          <div class="space-y-4 text-slate-700 text-base leading-relaxed">
+            <p>
+              Dans les années 2000, les organisations ont massivement investi dans des bases, des ERP, des entrepôts. Les outils étaient en place. La qualité des données ne s'améliorait pas. Tableaux de bord contradictoires, rapports non réconciliables, décisions prises sur des données dont personne ne garantissait la fiabilité.
+            </p>
+            <p>
+              La réponse n'a pas été plus d'outils. Elle a été un rôle : le <strong>Data Steward</strong>. Non pas un expert technique chargé de maintenir les bases, mais un garant des pratiques : standards d'usage, fiabilité, cohérence, diffusion.
+            </p>
+            <p>L'IA générative suit la même trajectoire. La prolifération des usages non coordonnés crée exactement les mêmes effets que la prolifération des données non gouvernées.</p>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-4">La définition</h3>
+          <div class="space-y-4 text-slate-700 text-base leading-relaxed">
+            <p>
+              L'<strong>AI Practice Steward</strong> est le rôle qui relie l'intention stratégique de la direction à l'exécution des pratiques IA, mesurée et pilotée sur le terrain.
+            </p>
+            <p>
+              Son point de départ n'est ni la maturité IA, ni l'outil. C'est la Vision, la Mission, les valeurs et la cible à trois ou cinq ans que la direction a posées. Tout le reste en découle.
+            </p>
+            <p>
+              Son terrain est la mise en oeuvre. Formé au raisonnement du conseil de direction, il opère dans la branche exécution. Il est le pont entre le consultant stratégie, qui produit l'intention, et l'implémenteur technique, qui produit le système.
+            </p>
+            <p>Son levier n'est pas technique. Il est systémique : l'interruption des boucles.</p>
+            <p>Il intervient à trois niveaux : l'individu, l'équipe, l'organisation. Chaque niveau est insuffisant seul.</p>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-4">La posture</h3>
+          <div class="space-y-4 text-slate-700 text-base leading-relaxed">
+            <p>L'AI Practice Steward ne centralise pas, ne certifie pas, ne contrôle pas. Il fait émerger, structure, diffuse, stabilise, fait évoluer.</p>
+            <p>Trois capacités le distinguent structurellement.</p>
+          </div>
+          <div class="mt-6 space-y-4">
+            <div class="border-l-4 pl-5" style="border-color:var(--primary-600)">
+              <p class="text-slate-700 text-sm leading-relaxed">
+                <strong>Voir les boucles en temps réel.</strong> Pas les identifier rétrospectivement dans un audit. Les reconnaître dans une réunion, dans un processus en train de se stabiliser.
+              </p>
+            </div>
+            <div class="border-l-4 pl-5" style="border-color:var(--accent-500)">
+              <p class="text-slate-700 text-sm leading-relaxed">
+                <strong>Travailler simultanément à plusieurs niveaux.</strong> La reddition cognitive d'une équipe ne se résout pas par une formation individuelle. Elle se résout quand l'équipe décide collectivement de ses normes, et quand l'organisation les rend visibles.
+              </p>
+            </div>
+            <div class="border-l-4 pl-5" style="border-color:var(--sfoi-i)">
+              <p class="text-slate-700 text-sm leading-relaxed">
+                <strong>Tenir la résistance.</strong> Les organisations résistent au changement même quand elles le demandent. La résistance n'est pas un obstacle à contourner. C'est une donnée systémique.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IV. Ce qu'il emprunte -->
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 mb-6">IV. Ce qu'il emprunte, ce qu'il n'est pas</h2>
+      <div class="space-y-4 text-slate-700 text-base leading-relaxed mb-8">
+        <p>
+          Le rôle se définit autant par ce qu'il n'est pas. Il emprunte aux postures déjà installées dans les organisations, sans se confondre avec aucune. Une seule lecture : pour chaque profil, ce que l'AI Practice Steward en retient, et ce qui l'en distingue.
+        </p>
+      </div>
+      <div class="overflow-x-auto rounded-xl border border-slate-200 mb-8">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-slate-50 border-b border-slate-200">
+              <th class="text-left p-4 font-semibold text-slate-500 w-1/5">Profil</th>
+              <th class="text-left p-4 font-semibold text-slate-500">Ce qu'il en emprunte</th>
+              <th class="text-left p-4 font-semibold text-slate-500">La différence</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            <tr>
+              <td class="p-4 font-medium text-slate-700">Formateur IA</td>
+              <td class="p-4 text-slate-600">Installer les compétences individuelles</td>
+              <td class="p-4 text-slate-600">Le formateur transmet puis part. L'APS aligne les pratiques sur l'intention stratégique, dans la durée.</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-medium text-slate-700">Consultant IA</td>
+              <td class="p-4 text-slate-600">La lecture structurée d'une situation</td>
+              <td class="p-4 text-slate-600">Le consultant prescrit une solution. L'APS travaille sur le système qui produit les problèmes.</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-medium text-slate-700">Prompt engineer</td>
+              <td class="p-4 text-slate-600">L'exigence de précision dans l'instruction</td>
+              <td class="p-4 text-slate-600">La compétence technique est nécessaire, insuffisante, et elle se commoditise. L'APS travaille au niveau de la norme, pas de l'instruction.</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-medium text-slate-700">Chief AI Officer</td>
+              <td class="p-4 text-slate-600">Traduire la stratégie en pratiques opérationnelles</td>
+              <td class="p-4 text-slate-600">Le CAIO pilote l'intention. L'APS la relie à l'exécution quotidienne des équipes.</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-medium text-slate-700">Change manager</td>
+              <td class="p-4 text-slate-600">Adapter les méthodes aux besoins stratégiques</td>
+              <td class="p-4 text-slate-600">Le change management adresse les processus. L'APS adresse les boucles cognitives dans lesquelles ils s'inscrivent.</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-medium text-slate-700">Ingénieur embarqué</td>
+              <td class="p-4 text-slate-600">L'ancrage dans le travail réel des équipes</td>
+              <td class="p-4 text-slate-600">L'ingénieur embarqué construit des agents en production chez les grands comptes. L'APS aligne l'exécution sur l'intention en PME et ETI, par un levier non technique.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="space-y-4 text-slate-700 text-base leading-relaxed">
+        <p>
+          Aucun de ces rôles seul ne tient l'ensemble dans la durée. L'AI Practice Steward fait le travail de circulation entre ces niveaux. Moins un poste hiérarchique qu'un rôle de continuité.
+        </p>
+        <p>
+          La dernière distinction mérite d'être lue à l'endroit. La montée d'acteurs qui embarquent des ingénieurs chez leurs clients pour faire fonctionner l'IA vaut validation de la thèse : le goulot est l'alignement de l'exécution sur l'intention, pas le <strong>modèle</strong>. Ces acteurs répondent au même constat, sur un autre marché, avec un autre levier.
+        </p>
+      </div>
+    </section>
+
+    <!-- V. L'instrument : l'IMIA -->
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 mb-6">V. L'instrument : l'IMIA</h2>
+      <div class="space-y-4 text-slate-700 text-base leading-relaxed mb-8">
+        <p>On ne pilote pas ce qu'on ne mesure pas. Et on ne mesure pas une maturité dans l'absolu.</p>
+        <p>
+          L'<strong>IMIA (Indice de Maturité IA)</strong> n'est pas un score de maturité générique. C'est un instrument de mesure de <strong>l'écart entre l'intention stratégique de la direction et les pratiques IA réelles</strong>.
+        </p>
+        <p>Deux organisations au même niveau d'usage peuvent avoir des scores opposés, parce que leurs intentions diffèrent. C'est le point.</p>
+        <p>Cinq dimensions composent l'indice :</p>
+      </div>
+      <div class="overflow-x-auto rounded-xl border border-slate-200 mb-8">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-slate-50 border-b border-slate-200">
+              <th class="text-left p-4 font-semibold text-slate-500 w-1/3">Dimension</th>
+              <th class="text-left p-4 font-semibold text-slate-500">Ce qu'elle mesure</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            <tr>
+              <td class="p-4 font-medium text-slate-700">Gouvernance et cadre</td>
+              <td class="p-4 text-slate-600">Les règles d'usage posées, connues, appliquées</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-medium text-slate-700">Pratique S.F.O.I.</td>
+              <td class="p-4 text-slate-600">La méthode de travail effective des équipes</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-medium text-slate-700">Capital intellectuel</td>
+              <td class="p-4 text-slate-600">Ce qui est capitalisé, transmissible, indépendant des personnes</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-medium text-slate-700">Capacités humaines</td>
+              <td class="p-4 text-slate-600">Le jugement, la vigilance critique, l'autonomie</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-medium text-slate-700">Infrastructure et outils</td>
+              <td class="p-4 text-slate-600">Le socle technique, dernière ligne et non première</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="space-y-4 text-slate-700 text-base leading-relaxed">
+        <p>L'ordre n'est pas décoratif. L'infrastructure vient en dernier.</p>
+        <p>
+          Une précision qui n'est pas une nuance. <strong>The B Context ne vend pas de gouvernance.</strong> L'IMIA nourrit la gouvernance en place, il ne la remplace pas, il ne l'installe pas, il ne la certifie pas. Il mesure un écart.
+        </p>
+        <p>La mesure est faite à T0, à T+90 jours, puis trimestriellement. <strong>L'engagement porte sur l'écart comblé, pas sur le temps passé.</strong></p>
+        <p>
+          Ce que produit un diagnostic IMIA : un score d'écart, une cartographie des boucles systémiques actives, un diagnostic des pratiques, une recommandation d'intervention. Ce qu'il ne produit jamais : une feuille de route de projets, un portefeuille de pilotes, une liste de POC. Le problème n'est pas le manque de projets IA. C'est l'absence de pratiques fiables pour les soutenir.
+        </p>
+      </div>
+    </section>
+
+    <!-- VI. La méthode S.F.O.I. -->
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 mb-6">VI. La méthode : S.F.O.I.</h2>
+      <div class="space-y-4 text-slate-700 text-base leading-relaxed mb-8">
+        <p>S.F.O.I. n'est pas une carte de maturité. C'est une <strong>méthode de chaînage des prompts dans une pratique de travail</strong>. Quatre actes séquentiels.</p>
+      </div>
+      <div class="space-y-3 mb-8">
+        <div class="rounded-xl border border-slate-200 p-4 flex items-start gap-4">
+          <span class="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style="background:var(--sfoi-s)">S</span>
+          <div>
+            <p class="font-semibold text-slate-900 text-sm mb-1">Structurer</p>
+            <p class="text-slate-600 text-sm leading-relaxed">Organiser la pensée avant d'agir. Zéro perte d'information.</p>
+          </div>
+        </div>
+        <div class="rounded-xl border border-slate-200 p-4 flex items-start gap-4">
+          <span class="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style="background:var(--sfoi-f)">F</span>
+          <div>
+            <p class="font-semibold text-slate-900 text-sm mb-1">Fiabiliser</p>
+            <p class="text-slate-600 text-sm leading-relaxed">Rendre chaque affirmation vérifiable. Sortir de la confiance aveugle.</p>
+          </div>
+        </div>
+        <div class="rounded-xl border border-slate-200 p-4 flex items-start gap-4">
+          <span class="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style="background:var(--sfoi-o)">O</span>
+          <div>
+            <p class="font-semibold text-slate-900 text-sm mb-1">Optimiser</p>
+            <p class="text-slate-600 text-sm leading-relaxed">Transformer les sorties en outils directement exploitables.</p>
+          </div>
+        </div>
+        <div class="rounded-xl border border-slate-200 p-4 flex items-start gap-4">
+          <span class="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style="background:var(--sfoi-i)">I</span>
+          <div>
+            <p class="font-semibold text-slate-900 text-sm mb-1">Industrialiser</p>
+            <p class="text-slate-600 text-sm leading-relaxed">Intégrer l'IA dans un système traçable et auditable.</p>
+          </div>
+        </div>
+      </div>
+      <div class="space-y-4 text-slate-700 text-base leading-relaxed">
+        <p>
+          Fiabiliser interrompt la boucle amplificatrice. Structurer et Optimiser réduisent la dette de pratique. Industrialiser rend la qualité fantôme impossible.
+        </p>
+        <p>
+          <strong>Règle de distinction.</strong> S.F.O.I. décrit comment on travaille. L'IMIA mesure l'écart entre l'intention et les pratiques. Ce sont deux objets de nature différente. Les confondre revient à confondre une méthode de travail et un instrument de mesure.
+        </p>
+      </div>
+    </section>
+
+    <!-- VII. Le retrait -->
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 mb-6">VII. Le retrait</h2>
+      <div class="space-y-4 text-slate-700 text-base leading-relaxed mb-8">
+        <p>Un accompagnement qui ne se termine pas est une dépendance.</p>
+        <p>
+          À chaque étape, quelque chose reste et s'accumule dans l'organisation : une norme posée, un savoir capitalisé, un référent formé, une pratique qui tient sans surveillance.
+        </p>
+      </div>
+      <div class="border-l-4 pl-6" style="border-color:var(--accent-500)">
+        <p class="text-slate-900 font-semibold text-base"><strong>The B Context se retire. Le rôle reste.</strong></p>
+      </div>
+      <div class="mt-6 space-y-4 text-slate-700 text-base leading-relaxed">
+        <p>Ce n'est pas une promesse commerciale. C'est le critère de réussite. Une mission dont le client ne peut pas sortir n'a rien installé.</p>
+      </div>
+    </section>
+
+    <!-- VIII. Lexique -->
+    <section>
+      <h2 class="text-2xl font-bold text-slate-900 mb-6">VIII. Lexique</h2>
+      <p class="text-slate-700 text-base leading-relaxed mb-8">
+        Les termes suivants sont introduits, définis et employés dans leur acception propre par The B Context. Leur première formulation publique documentée est datée d'avril 2026 et confirmée par le présent texte.
+      </p>
+      <dl class="space-y-4">
+        <div class="rounded-xl bg-slate-50 border border-slate-200 p-5">
+          <dt class="font-semibold text-slate-900 text-sm mb-1">AI Practice Steward (APS)</dt>
+          <dd class="text-slate-600 text-sm leading-relaxed">Le rôle qui relie l'intention stratégique de la direction à l'exécution des pratiques IA.</dd>
+        </div>
+        <div class="rounded-xl bg-slate-50 border border-slate-200 p-5">
+          <dt class="font-semibold text-slate-900 text-sm mb-1">IMIA (Indice de Maturité IA)</dt>
+          <dd class="text-slate-600 text-sm leading-relaxed">Instrument de mesure de l'écart entre l'intention stratégique et les pratiques réelles.</dd>
+        </div>
+        <div class="rounded-xl bg-slate-50 border border-slate-200 p-5">
+          <dt class="font-semibold text-slate-900 text-sm mb-1">S.F.O.I. (Structurer, Fiabiliser, Optimiser, Industrialiser)</dt>
+          <dd class="text-slate-600 text-sm leading-relaxed">Méthode de chaînage des pratiques IA dans le travail.</dd>
+        </div>
+        <div class="rounded-xl bg-slate-50 border border-slate-200 p-5">
+          <dt class="font-semibold text-slate-900 text-sm mb-1">Boucle amplificatrice</dt>
+          <dd class="text-slate-600 text-sm leading-relaxed">La spirale usage, confiance, baisse de vigilance, usage accru.</dd>
+        </div>
+        <div class="rounded-xl bg-slate-50 border border-slate-200 p-5">
+          <dt class="font-semibold text-slate-900 text-sm mb-1">Reddition cognitive</dt>
+          <dd class="text-slate-600 text-sm leading-relaxed">L'atrophie progressive du jugement par délégation.</dd>
+        </div>
+        <div class="rounded-xl bg-slate-50 border border-slate-200 p-5">
+          <dt class="font-semibold text-slate-900 text-sm mb-1">Dette de pratique</dt>
+          <dd class="text-slate-600 text-sm leading-relaxed">L'accumulation silencieuse de vérifications non faites et de normes non posées.</dd>
+        </div>
+        <div class="rounded-xl bg-slate-50 border border-slate-200 p-5">
+          <dt class="font-semibold text-slate-900 text-sm mb-1">Qualité fantôme</dt>
+          <dd class="text-slate-600 text-sm leading-relaxed">L'apparence du travail fini sans la traçabilité qui la fonde.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- Bloc signature -->
+    <section class="border-t border-slate-200 pt-10">
+      <p class="text-slate-700 font-semibold text-base">Fayaz Goulam</p>
+      <p class="text-slate-500 text-sm mt-1">The B Context · 10 juillet 2026</p>
+      <p class="text-slate-500 text-sm mt-1">The B Context est la marque portée par FGIT Conseil, société de conseil indépendante active depuis 2009.</p>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-slate-50 rounded-2xl p-8 text-center">
+      <p class="text-slate-700 font-medium text-lg mb-6">Vous reconnaissez cet écart dans votre organisation ?</p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href={`${base}contact/`} class="btn-primary">Discuter de votre situation →</a>
+        <a href={`${base}framework/ai-practice-steward/`} class="btn-secondary">Découvrir le rôle d'AI Practice Steward →</a>
+      </div>
+    </section>
+
+  </div>
+
+</Layout>
