@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 const base = import.meta.env.BASE_URL;
 ---
-<Layout title="IMIA — Indice de Maturité IA Organisationnelle" description="Un score sur 100 qui mesure l'écart entre l'intention stratégique de la direction et les pratiques IA réelles. Cinq dimensions, mesurées à T0, T+90 jours puis chaque trimestre.">
+<Layout title="IMIA — Indice de Maturité IA" description="Un score sur 100 qui mesure l'écart entre l'intention stratégique de la direction et les pratiques IA réelles. Cinq dimensions, mesurées à T0, T+90 jours puis chaque trimestre.">
 
   <!-- Hero -->
   <section class="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-20">
@@ -13,7 +13,7 @@ const base = import.meta.env.BASE_URL;
       <p class="text-sm font-bold tracking-widest uppercase text-blue-400 mb-4">L'instrument de mesure</p>
       <h1 class="text-4xl md:text-5xl font-bold mb-4">L'IMIA</h1>
       <p class="text-slate-300 text-lg leading-relaxed max-w-2xl">
-        Indice de Maturité IA Organisationnelle. Un score sur 100 qui mesure l'écart entre votre intention stratégique et vos pratiques IA réelles, dans le temps.
+        Indice de Maturité IA. Un score sur 100 qui mesure l'écart entre votre intention stratégique et vos pratiques IA réelles, dans le temps.
       </p>
     </div>
   </section>
@@ -195,7 +195,7 @@ const base = import.meta.env.BASE_URL;
     <section class="rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 text-white p-8 text-center">
       <p class="text-slate-300 text-base leading-relaxed mb-6">Vous voulez mesurer l'écart entre votre intention stratégique et vos pratiques IA ?</p>
       <div class="flex flex-wrap gap-4 justify-center">
-        <a href="https://calendly.com/conversation-reflexe-ia/30min" class="btn-primary">Discuter d'un Diagnostic IMIA →</a>
+        <a href={`${base}contact/`} class="btn-primary">Discuter d'un Diagnostic IMIA →</a>
         <a href={`${base}interventions/`}
           style="color:white;border:2px solid rgba(255,255,255,0.3);padding:0.5rem 1.25rem;border-radius:0.5rem;font-weight:600;font-size:0.8rem;text-decoration:none"
         >Voir les interventions</a>
