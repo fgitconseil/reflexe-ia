@@ -1,0 +1,192 @@
+---
+import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
+---
+<Layout
+  title="Questions fréquentes"
+  description="Diagnostic IMIA, rôle d'AI Practice Steward, méthode S.F.O.I. : les réponses aux questions les plus fréquentes des dirigeants de PME et ETI."
+>
+
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline>
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Le Diagnostic IMIA est-il un audit ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non. Un audit produit une feuille de route de projets. Le Diagnostic IMIA produit une mesure : un score d'écart entre votre intention stratégique et vos pratiques IA réelles, une cartographie des boucles actives, et une recommandation d'intervention. Pas de POC, pas de portefeuille de projets. Le score est re-mesuré à 90 jours : l'engagement porte sur l'écart comblé."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "En quoi l'AI Practice Steward diffère-t-il d'un formateur IA ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La formation agit sur l'individu. L'AI Practice Steward agit sur l'équipe et l'organisation. Ce sont deux métiers distincts, pas un continuum. Un formateur transfère des compétences, son critère de succès est le test de fin de formation. Un AI Practice Steward installe des pratiques collectives, son critère de succès est la progression mesurée à 90 jours et au-delà."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Faut-il déjà être mature sur l'IA pour travailler avec vous ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non. Le point de départ n'est pas votre maturité IA, c'est l'intention de votre direction : la vision, la cible à trois ou cinq ans. L'IMIA mesure l'écart entre cette intention et vos pratiques, quel que soit votre niveau de départ. Deux organisations au même niveau d'usage peuvent avoir des scores opposés, parce que leurs intentions diffèrent."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Combien de temps avant de mesurer un effet ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La première mesure est faite au démarrage (T0), la deuxième à 90 jours, puis chaque trimestre. Le Diagnostic IMIA lui-même tient en une semaine environ. Les interventions vont de 2 jours (formation équipe) à 4-8 semaines (Mission Équipe) et 2-4 mois (Mission Organisation)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Installez-vous une gouvernance IA ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non. Nous ne vendons pas de gouvernance. L'IMIA nourrit votre gouvernance en place : il lui apporte une mesure, des signaux et des priorités. Si vous avez déjà des instances, elles gagnent un instrument. Si vous n'en avez pas, l'intervention installe le cadre minimal proportionné à votre taille, sans comité ni framework de 200 pages."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Que reste-t-il après votre départ ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "C'est le critère de réussite de chaque mission : The B Context se retire, le rôle reste. Un référent interne est formé à tenir le cadre, les savoir-faire critiques sont capitalisés dans des actifs qui appartiennent à l'organisation, et les pratiques tiennent sans surveillance extérieure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "À qui s'adressent les interventions ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Aux PME et ETI françaises, de 50 à 800 collaborateurs, qui ont déployé l'IA générative et veulent que cet usage serve leur stratégie. La formation en ligne, elle, est gratuite et ouverte à tous, sans inscription pour la consulter."
+          }
+        }
+      ]
+    }
+    </script>
+  </Fragment>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-16">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="mb-4">
+        <a href={base} class="text-slate-400 text-sm hover:text-slate-200 no-underline">← Accueil</a>
+      </div>
+      <p class="text-sm font-bold tracking-widest uppercase text-blue-400 mb-3">Questions fréquentes</p>
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">Questions fréquentes</h1>
+      <p class="text-slate-300 text-base leading-relaxed max-w-2xl">
+        Les réponses aux questions des dirigeants de PME et ETI sur le Diagnostic IMIA, l'AI Practice Steward et la méthode S.F.O.I.
+      </p>
+    </div>
+  </section>
+
+  <div class="max-w-3xl mx-auto px-6 py-16">
+    <div class="space-y-3">
+
+      <details class="faq-item">
+        <summary class="faq-q">Le Diagnostic IMIA est-il un audit ?</summary>
+        <div class="faq-a">
+          <p>Non. Un audit produit une feuille de route de projets. Le Diagnostic IMIA produit une mesure : un score d'écart entre votre intention stratégique et vos pratiques IA réelles, une cartographie des boucles actives, et une recommandation d'intervention. Pas de POC, pas de portefeuille de projets. Le score est re-mesuré à 90 jours : l'engagement porte sur l'écart comblé.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">En quoi l'AI Practice Steward diffère-t-il d'un formateur IA ?</summary>
+        <div class="faq-a">
+          <p>La formation agit sur l'individu. L'AI Practice Steward agit sur l'équipe et l'organisation. Ce sont deux métiers distincts, pas un continuum. Un formateur transfère des compétences, son critère de succès est le test de fin de formation. Un AI Practice Steward installe des pratiques collectives, son critère de succès est la progression mesurée à 90 jours et au-delà.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Faut-il déjà être mature sur l'IA pour travailler avec vous ?</summary>
+        <div class="faq-a">
+          <p>Non. Le point de départ n'est pas votre maturité IA, c'est l'intention de votre direction : la vision, la cible à trois ou cinq ans. L'IMIA mesure l'écart entre cette intention et vos pratiques, quel que soit votre niveau de départ. Deux organisations au même niveau d'usage peuvent avoir des scores opposés, parce que leurs intentions diffèrent.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Combien de temps avant de mesurer un effet ?</summary>
+        <div class="faq-a">
+          <p>La première mesure est faite au démarrage (T0), la deuxième à 90 jours, puis chaque trimestre. Le Diagnostic IMIA lui-même tient en une semaine environ. Les interventions vont de 2 jours (formation équipe) à 4-8 semaines (Mission Équipe) et 2-4 mois (Mission Organisation).</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Installez-vous une gouvernance IA ?</summary>
+        <div class="faq-a">
+          <p>Non. Nous ne vendons pas de gouvernance. L'IMIA nourrit votre gouvernance en place : il lui apporte une mesure, des signaux et des priorités. Si vous avez déjà des instances, elles gagnent un instrument. Si vous n'en avez pas, l'intervention installe le cadre minimal proportionné à votre taille, sans comité ni framework de 200 pages.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Que reste-t-il après votre départ ?</summary>
+        <div class="faq-a">
+          <p>C'est le critère de réussite de chaque mission : The B Context se retire, le rôle reste. Un référent interne est formé à tenir le cadre, les savoir-faire critiques sont capitalisés dans des actifs qui appartiennent à l'organisation, et les pratiques tiennent sans surveillance extérieure.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">À qui s'adressent les interventions ?</summary>
+        <div class="faq-a">
+          <p>Aux PME et ETI françaises, de 50 à 800 collaborateurs, qui ont déployé l'IA générative et veulent que cet usage serve leur stratégie. La formation en ligne, elle, est gratuite et ouverte à tous, sans inscription pour la consulter.</p>
+        </div>
+      </details>
+
+    </div>
+
+    <div class="mt-12 text-center">
+      <a href={`${base}contact/`} class="btn-primary">Une autre question ? Discutons →</a>
+    </div>
+  </div>
+
+</Layout>
+
+<style>
+  .faq-item {
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: white;
+  }
+  .faq-q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: #0f172a;
+    list-style: none;
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: background 0.15s;
+  }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-q:hover { background: #f8fafc; }
+  .faq-q::after {
+    content: '+';
+    font-size: 1.25rem;
+    color: #8b5cf6;
+    flex-shrink: 0;
+    margin-left: 1rem;
+    line-height: 1;
+  }
+  details[open] > .faq-q { background: #fafafa; }
+  details[open] > .faq-q::after { content: '\2212'; }
+  .faq-a {
+    padding: 1rem 1.5rem 1.25rem;
+    color: #475569;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    border-top: 1px solid #f1f5f9;
+  }
+  .faq-a p { margin: 0; }
+</style>

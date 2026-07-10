@@ -52,7 +52,7 @@ const base = import.meta.env.BASE_URL;
           <li>Date de dernière connexion</li>
         </ul>
         <h3 class="text-base font-semibold text-slate-800 mt-5 mb-2">2.3 Données de navigation</h3>
-        <p>Le Site n'utilise aucun outil de mesure d'audience, aucun traceur publicitaire et aucun cookie tiers. Seuls des cookies techniques de session, strictement nécessaires au fonctionnement de l'authentification, sont déposés lors de la connexion au compte.</p>
+        <p>Seuls des cookies techniques de session, strictement nécessaires au fonctionnement de l'authentification, sont déposés lors de la connexion au compte. Un cookie analytique Google Analytics 4 peut être déposé sous réserve de votre consentement préalable (voir section 9). Aucun traceur publicitaire n'est déposé.</p>
       </section>
 
       <section>
@@ -156,12 +156,46 @@ const base = import.meta.env.BASE_URL;
 
       <section>
         <h2 class="text-xl font-bold text-slate-900 mb-4">8. Cookies</h2>
-        <p>Le Site utilise uniquement des cookies techniques strictement nécessaires au fonctionnement de l'authentification utilisateur. Ces cookies sont dispensés de consentement en application de l'article 82 de la loi Informatique et Libertés.</p>
-        <p class="mt-3">Aucun cookie de mesure d'audience, de profilage ou de publicité n'est déposé.</p>
+        <p>Le Site utilise des cookies techniques strictement nécessaires au fonctionnement de l'authentification utilisateur. Ces cookies sont dispensés de consentement en application de l'article 82 de la loi Informatique et Libertés.</p>
+        <p class="mt-3">Un cookie analytique Google Analytics 4 peut être déposé sous réserve de votre consentement préalable (voir section 9). Aucun cookie publicitaire ou de profilage n'est déposé.</p>
       </section>
 
       <section>
-        <h2 class="text-xl font-bold text-slate-900 mb-4">9. Évolution de la présente politique</h2>
+        <h2 class="text-xl font-bold text-slate-900 mb-4">9. Mesure d'audience (Google Analytics 4)</h2>
+        <div class="space-y-4 text-slate-700">
+          <p>Le Site utilise Google Analytics 4 (Google LLC) pour mesurer son audience.</p>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border-collapse">
+              <thead>
+                <tr class="bg-slate-100">
+                  <th class="text-left px-4 py-2.5 font-semibold text-slate-700 border border-slate-200">Caractéristique</th>
+                  <th class="text-left px-4 py-2.5 font-semibold text-slate-700 border border-slate-200">Détail</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="px-4 py-2.5 border border-slate-200">Finalité</td><td class="px-4 py-2.5 border border-slate-200">Statistiques de fréquentation (pages vues, sources de trafic, durée de session)</td></tr>
+                <tr class="bg-slate-50"><td class="px-4 py-2.5 border border-slate-200">Base légale</td><td class="px-4 py-2.5 border border-slate-200">Consentement préalable (art. 82 loi Informatique et Libertés)</td></tr>
+                <tr><td class="px-4 py-2.5 border border-slate-200">Adresse IP</td><td class="px-4 py-2.5 border border-slate-200">Anonymisée avant transmission à Google</td></tr>
+                <tr class="bg-slate-50"><td class="px-4 py-2.5 border border-slate-200">Conservation des données</td><td class="px-4 py-2.5 border border-slate-200">14 mois (paramètre configuré dans Google Analytics)</td></tr>
+                <tr><td class="px-4 py-2.5 border border-slate-200">Destinataire</td><td class="px-4 py-2.5 border border-slate-200">Google LLC (transfert vers les États-Unis couvert par les Clauses Contractuelles Types)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Le dépôt de ce cookie est soumis à votre consentement préalable, recueilli via le bandeau affiché à votre première visite. Vous pouvez retirer ce consentement à tout moment en cliquant ci-dessous : le bandeau de consentement réapparaîtra à la prochaine visite.</p>
+          <div>
+            <button
+              onclick="localStorage.removeItem('tbc-analytics-consent'); window.location.reload();"
+              class="btn-secondary text-sm"
+              style="cursor:pointer"
+            >
+              Gérer mon consentement
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 mb-4">10. Évolution de la présente politique</h2>
         <p>La présente politique de confidentialité peut être mise à jour pour refléter les évolutions du Site, de la réglementation ou des pratiques de l'Éditeur. La date de dernière mise à jour figure en tête du document. Les utilisateurs inscrits sont informés de toute modification substantielle via les canaux de contact qu'ils ont renseignés.</p>
       </section>
 

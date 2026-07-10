@@ -1,4 +1,5 @@
 ---
+import '@fontsource-variable/inter';
 import '../styles/global.css';
 
 interface Props {
@@ -61,10 +62,6 @@ const titleFull  = `${title} · The B Context`;
     <!-- Slot pour les JSON-LD spécifiques aux pages -->
     <slot name="head" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
     <style is:global>
       /* ── Design tokens ── */
       :root {
@@ -83,7 +80,7 @@ const titleFull  = `${title} · The B Context`;
         --sfoi-i: #a855f7;
       }
 
-      body { font-family: 'Inter', sans-serif; }
+      body { font-family: 'Inter Variable', sans-serif; }
 
       .gradient-text {
         background: linear-gradient(135deg, var(--primary-600), var(--accent-500));
@@ -473,6 +470,73 @@ const titleFull  = `${title} · The B Context`;
       .animate-fade-up-2 { animation-delay: 0.2s; }
       .animate-fade-up-3 { animation-delay: 0.3s; }
       .animate-fade-up-4 { animation-delay: 0.4s; }
+
+      /* ── Cookie banner (CNIL) ── */
+      .cookie-banner {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 500;
+        background: white;
+        border-top: 1px solid #e2e8f0;
+        box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
+        padding: 1rem 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+      .cookie-banner p {
+        color: #475569;
+        font-size: 0.85rem;
+        margin: 0;
+        flex: 1;
+        min-width: 200px;
+        line-height: 1.5;
+      }
+      .cookie-banner p a {
+        color: var(--primary-600);
+        text-decoration: underline;
+      }
+      .cookie-actions {
+        display: flex;
+        gap: 0.5rem;
+        flex-shrink: 0;
+      }
+      .cookie-btn {
+        padding: 0.45rem 1.1rem;
+        border-radius: 0.5rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-family: inherit;
+        border: 2px solid var(--primary-600);
+        white-space: nowrap;
+      }
+      .cookie-btn:not(.cookie-btn-primary) {
+        background: transparent;
+        color: var(--primary-600);
+      }
+      .cookie-btn:not(.cookie-btn-primary):hover {
+        background: var(--primary-600);
+        color: white;
+      }
+      .cookie-btn-primary {
+        background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+        color: white;
+        border-color: transparent;
+      }
+      .cookie-btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(37,99,235,0.3);
+      }
+      @media (max-width: 600px) {
+        .cookie-banner { flex-direction: column; align-items: stretch; }
+        .cookie-actions { width: 100%; }
+        .cookie-btn { flex: 1; text-align: center; }
+      }
     </style>
   </head>
 
@@ -534,6 +598,7 @@ const titleFull  = `${title} · The B Context`;
         <a href={`${base}framework/ai-practice-steward/`}>AI Practice Steward</a>
       </div>
       <a href={`${base}a-propos/`} class="mobile-nav-link">À propos</a>
+      <a href={`${base}faq/`} class="mobile-nav-link">FAQ</a>
       <!-- Auth slot mobile — populated by client JS -->
       <div id="auth-mobile-slot"></div>
     </div>
@@ -568,6 +633,7 @@ const titleFull  = `${title} · The B Context`;
               <li><a href={`${base}interventions/`}>Interventions</a></li>
               <li><a href={`${base}framework/`}>Framework</a></li>
               <li><a href={`${base}a-propos/`}>À propos</a></li>
+              <li><a href={`${base}faq/`}>FAQ</a></li>
             </ul>
           </div>
 
@@ -598,6 +664,43 @@ const titleFull  = `${title} · The B Context`;
         </div>
       </div>
     </footer>
+
+    <!-- Cookie consent (CNIL) -->
+    <div id="cookie-banner" style="display:none" class="cookie-banner">
+      <p>Ce site utilise Google Analytics pour mesurer son audience.
+        <a href={`${base}politique-confidentialite/`}>En savoir plus</a></p>
+      <div class="cookie-actions">
+        <button id="cookie-refuse" class="cookie-btn">Refuser</button>
+        <button id="cookie-accept" class="cookie-btn cookie-btn-primary">Accepter</button>
+      </div>
+    </div>
+    <script is:inline>
+      const KEY = 'tbc-analytics-consent';
+      const banner = document.getElementById('cookie-banner');
+      function loadGA() {
+        const s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-G92PLFQ6HY';
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-G92PLFQ6HY', { anonymize_ip: true });
+      }
+      const choice = localStorage.getItem(KEY);
+      if (choice === 'granted') loadGA();
+      else if (choice === null) banner.style.display = 'flex';
+      document.getElementById('cookie-accept').addEventListener('click', () => {
+        localStorage.setItem(KEY, 'granted');
+        banner.style.display = 'none';
+        loadGA();
+      });
+      document.getElementById('cookie-refuse').addEventListener('click', () => {
+        localStorage.setItem(KEY, 'denied');
+        banner.style.display = 'none';
+      });
+    </script>
 
   </body>
 </html>
