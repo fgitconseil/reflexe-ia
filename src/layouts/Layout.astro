@@ -41,6 +41,26 @@ const titleFull  = `${title} · The B Context`;
     <meta property="og:image"       content={new URL(`${base}og-default.png`, Astro.site).href} />
     <meta name="twitter:card"       content="summary_large_image" />
 
+    <!-- JSON-LD — Organisation globale -->
+    <script type="application/ld+json" is:inline>
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "The B Context",
+      "url": "https://the-b-context.com",
+      "logo": "https://the-b-context.com/og-default.png",
+      "foundingDate": "2009",
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "FGIT Conseil"
+      },
+      "sameAs": ["https://www.linkedin.com/company/the-b-context"]
+    }
+    </script>
+
+    <!-- Slot pour les JSON-LD spécifiques aux pages -->
+    <slot name="head" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
