@@ -15,6 +15,19 @@ dist/
 # Claude Code local settings
 .claude/
 
+# Pages retirées du site
+src/_retired/
+
+# Archives d'assets — conservées en local, hors du repo
+public/assets/_archive/
+public/assets/takeaways/old/
+public/assets/visuels/old/
+src/content/formation/_archive/
+
+# Sources binaires de production des supports (PPTX, PDF export)
+*.pptx
+src/content/formation/reflexe-pptx/*.pdf
+
 # OS
 .DS_Store
 Thumbs.db
