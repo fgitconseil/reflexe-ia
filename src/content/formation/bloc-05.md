@@ -2,7 +2,7 @@
 bloc: 5
 titre: "Quand l'usage devient collectif"
 duree_estimee: "~11 min"
-accroche: "De la méthode personnelle à la maturité organisationnelle. Les deux boucles, l'IMIA, et le rôle d'AI Practice Steward."
+accroche: "De la méthode personnelle à la maturité organisationnelle. Les deux boucles, le rôle d'AI Practice Steward, et IMIA, l'instrument qui mesure l'écart entre l'intention stratégique de la direction et les pratiques IA réelles."
 categorie: "Ouverture"
 takeaway: "/assets/takeaways/bloc-05.png"
 slides:
@@ -27,7 +27,7 @@ slides:
       - { fichier: "Diapositive41.png", t_start: 55, marqueurs: ["boucle-amplificatrice", "ampli-etape-1", "ampli-etape-2", "ampli-etape-3", "ampli-etape-4", "ampli-choc"] }
       - { fichier: "Diapositive42.png", t_start: 78, marqueurs: ["reddition-cognitive", "reddition-jalon-1", "reddition-jalon-2", "reddition-jalon-3", "reddition-question"] }
   - index: 3
-    titre: "De la méthode à la maturité · l'IMIA"
+    titre: "De la méthode à l'écart mesuré · l'IMIA"
     audio: "/assets/audio/blocs/5.4.mp3"
     duration: 180.355
     visuels:
@@ -220,7 +220,7 @@ Ces deux boucles ne sont pas hypothétiques. Elles se construisent dès aujourd'
 
 Mais les voir, et les interrompre, c'est un travail d'organisation. Pas un travail individuel.
 
-## De la méthode à la maturité · l'IMIA
+## De la méthode à l'écart mesuré · l'IMIA
 
 Au bloc 4, vous avez vu la méthode S.F.O.I., Structurer, Fiabiliser, Optimiser, Industrialiser. C'est ce que vous, ou votre équipe, faites au quotidien avec un assistant.
 
@@ -228,7 +228,7 @@ S.F.O.I. répond à la question : **comment je travaille, moi, avec un assistant
 
 L'IMIA répond à une autre question, à une autre échelle : **où en est mon organisation, collectivement ?**
 
-IMIA, c'est l'**Indice de Maturité IA Organisationnelle**. Un score sur 100, construit pour être observable, auditable, mesurable dans le temps. Pas un palmarès. Une carte.
+IMIA, c'est un score sur 100, construit pour être observable, auditable, mesurable dans le temps. Pas un palmarès. Une carte.
 
 L'IMIA mesure ce que votre organisation **sait faire**, pas ce qu'elle fait. C'est la différence entre compter des actions, combien d'utilisateurs, combien de prompts, combien de licences déployées, et mesurer une **capacité installée**.
 

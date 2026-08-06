@@ -23,6 +23,8 @@ public/assets/_archive/
 public/assets/takeaways/old/
 public/assets/visuels/old/
 src/content/formation/_archive/
+src/content/formation/visuels/
+src/content/formation/audios/
 
 # Sources binaires de production des supports (PPTX, PDF export)
 *.pptx

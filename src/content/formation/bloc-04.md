@@ -288,7 +288,7 @@ Mais regardons maintenant ces quatre actes à une autre échelle. Pas ce que vou
 - Les sorties sont-elles capitalisées comme des outils réutilisables, ou produites une fois et perdues ?
 - Les usages industrialisés sont-ils gouvernés, rôles, traçabilité, mécanismes d'arrêt, ou simplement automatisés et laissés à eux-mêmes ?
 
-Cette grille devient une **carte de maturité organisationnelle**. On l'appelle l'**IMIA** : Indice de Maturité IA Organisationnelle.
+Cette grille devient une **carte de maturité organisationnelle**. On l'appelle **IMIA**, l'instrument qui mesure l'écart entre l'intention stratégique de la direction et les pratiques IA réelles.
 
 L'IMIA mesure ce que votre organisation sait faire, pas ce qu'elle fait. Cinq dimensions, un score sur 100.
 

@@ -168,6 +168,7 @@ Source autoritaire du positionnement : `07-go-to-market/01-ICP-mission-equipe.md
 - **Jamais "Coach IA"** — toujours "AI Practice Steward" (et uniquement en backstage)
 - **IMIA ne se développe jamais en externe.** Glose canonique obligatoire à la première occurrence de chaque page publique : « IMIA, l'instrument qui mesure l'écart entre l'intention stratégique de la direction et les pratiques IA réelles ». Référence : ADR-013.
 - **Un délai ne se présente jamais comme subi du fait du dispositif.** Il s'attribue à l'agenda du client ou au périmètre. Référence : ADR-015.
+- **FGIT Conseil** est nommé comme entité juridique dans les mentions légales, les CGU, la politique de confidentialité, la page À propos, et dans le bloc d'attribution de marque (« The B Context est la marque de conseil de FGIT Conseil »). Cette attribution est un signal de crédibilité, elle est admise en frontstage. FGIT Conseil n'est en revanche jamais l'émetteur d'un contenu éditorial ou d'une offre.
 - **Source formation** : `Formation_prompting/audios_et_illustrations/` (pas `content/`)
 - Pages courtes, texte dense, pas de remplissage marketing
 - Le site existant Formation_prompting est la base technique — le réutiliser
