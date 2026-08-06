@@ -1,0 +1,17 @@
+{
+  "name": "reflexe-pptx",
+  "version": "1.0.0",
+  "description": "Reflexe IA — formation PPT v4",
+  "scripts": {
+    "build": "node parcours-v4.js && node takeaways-v4.js",
+    "parcours": "node parcours-v4.js",
+    "takeaways": "node takeaways-v4.js"
+  },
+  "dependencies": {
+    "pptxgenjs": "^3.12.0"
+  },
+  "main": "_helpers.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
