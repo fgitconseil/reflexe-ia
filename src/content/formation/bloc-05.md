@@ -65,7 +65,7 @@ quiz_inline:
       - "Le retour sur investissement des outils IA déployés"
       - "La conformité réglementaire des usages IA"
     answer: 1
-    explanation: "L'IMIA mesure une capacité installée, pas un volume d'usage. Un score IMIA élevé ne dit pas « vous utilisez beaucoup l'IA », il dit « vous savez gouverner vos usages dans la durée ». Le poids le plus lourd est la gouvernance (30 points) ; le poids le plus faible, l'infrastructure et les outils (10 points). Cette pondération inversée est volontaire."
+    explanation: "L'IMIA mesure une capacité installée, pas un volume d'usage. Un score IMIA élevé ne dit pas « vous utilisez beaucoup l'IA », il dit « vous savez tenir vos usages dans la durée ». Le poids le plus lourd est la dimension Gouvernance et cadre (30 points) ; le poids le plus faible, l'infrastructure et les outils (10 points). Cette pondération inversée est volontaire."
   - after_slide: 4
     question: "Cette formation vous a donné une méthode individuelle solide. Qu'est-ce qu'elle ne peut pas résoudre à votre place ?"
     options:
@@ -115,7 +115,7 @@ quiz_final:
       - "La gouvernance et le cadre, 30 points, parce que sans cadre, les pratiques ne se diffusent pas et ne se stabilisent pas"
       - "La pratique de la méthode S.F.O.I., parce que c'est ce qui se voit dans les livrables"
     answer: 2
-    explanation: "La gouvernance et le cadre pèsent 30 points sur 100, c'est le pilier le plus lourd. Une équipe peut être brillante individuellement et l'organisation rester immature : sans rôle d'AI Practice Steward, sans règles de sécurité claires, sans conformité, les pratiques ne tiennent pas dans la durée. À l'inverse, l'infrastructure et les outils ne pèsent que 10 points, parce qu'un outil sans méthode est un risque, pas une preuve de maturité."
+    explanation: "La dimension Gouvernance et cadre pèse 30 points sur 100, c'est le pilier le plus lourd. Une équipe peut être brillante individuellement et l'organisation rester immature : sans rôle d'AI Practice Steward, sans règles de sécurité claires, sans conformité, les pratiques ne tiennent pas dans la durée. À l'inverse, l'infrastructure et les outils ne pèsent que 10 points, parce qu'un outil sans méthode est un risque, pas une preuve de maturité."
   - question: "Qu'est-ce qui distingue structurellement un AI Practice Steward d'un consultant IA ?"
     options:
       - "Le steward facture moins cher que le consultant"
@@ -228,7 +228,7 @@ S.F.O.I. répond à la question : **comment je travaille, moi, avec un assistant
 
 L'IMIA répond à une autre question, à une autre échelle : **où en est mon organisation, collectivement ?**
 
-IMIA, c'est un score sur 100, construit pour être observable, auditable, mesurable dans le temps. Pas un palmarès. Une carte.
+IMIA, l'instrument qui mesure l'écart entre l'intention stratégique de la direction et les pratiques IA réelles. Un score sur 100, construit pour être observable, auditable, mesurable dans le temps. Pas un palmarès. Une carte.
 
 L'IMIA mesure ce que votre organisation **sait faire**, pas ce qu'elle fait. C'est la différence entre compter des actions, combien d'utilisateurs, combien de prompts, combien de licences déployées, et mesurer une **capacité installée**.
 
@@ -246,7 +246,7 @@ Cinq dimensions composent l'IMIA.
 
 Vous remarquerez ce que l'IMIA pondère.
 
-Le poids le plus lourd va à la gouvernance, 30 points. Pas à la pratique, pas aux compétences. Parce qu'une équipe peut être brillante individuellement et l'organisation rester immature : sans cadre, les pratiques ne se diffusent pas et ne se stabilisent pas.
+Le poids le plus lourd va au cadre, 30 points. Pas à la pratique, pas aux compétences. Parce qu'une équipe peut être brillante individuellement et l'organisation rester immature : sans cadre, les pratiques ne se diffusent pas et ne se stabilisent pas.
 
 Le poids le plus faible va aux outils, 10 points. Parce que c'est le piège classique : confondre déploiement et maîtrise.
 
@@ -295,7 +295,7 @@ Concrètement, ce qu'il livre :
 - Un diagnostic IMIA, au début de mission, et une mesure de progression à 90 jours.
 - Des normes d'équipe co-construites, qui vérifie quoi, comment, contre quelle référence.
 - Des **skills**, des actifs permanents qui capturent un savoir tacite critique, restent dans l'organisation, et survivent au départ de l'expert qui le portait.
-- Un transfert de posture vers un ou deux AI Practice Stewards internes au client, pour que la gouvernance tienne sans présence externe permanente.
+- Un transfert de posture vers un ou deux AI Practice Stewards internes au client, pour que le cadre de pratique tienne sans présence externe permanente.
 
 Ce qu'il ne fait pas : prendre la place de l'organisation. Centraliser. Devenir indispensable.
 

@@ -405,7 +405,7 @@ module.exports = function(pres, H) {
     s.addText([
       { text: "Cette grille devient une carte de maturité organisationnelle. On l'appelle l'", options: { color: C.slate900, fontSize: 14 } },
       { text: "IMIA", options: { bold: true, color: C.primary_dark, fontSize: 16 } },
-      { text: " — Indice de Maturité IA Organisationnelle.", options: { color: C.slate900, fontSize: 14 } },
+      { text: ".", options: { color: C.slate900, fontSize: 14 } },
     ], { x: 0.85, y: 5.85, w: 11.6, h: 0.5, fontFace: FONT, valign: "middle" });
     s.addText("S.F.O.I. est la méthode personnelle. L'IMIA est la lecture collective. Sujet du bloc suivant.", {
       x: 0.85, y: 6.4, w: 11.6, h: 0.5, fontSize: 13, fontFace: FONT, italic: true,

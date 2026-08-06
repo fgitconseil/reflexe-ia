@@ -210,7 +210,7 @@ module.exports = function(pres, H) {
     const s = pres.addSlide();
     s.background = { color: BG };
     addHeader(s, pres, "BLOC 5 · IMIA",
-      "Indice de Maturité IA Organisationnelle — la carte, pas la photo.", BLOC);
+      "IMIA — la carte, pas la photo.", BLOC);
     drawIMIARadar(s, pres, 1.0, 1.95, 6.5, 4.7);
     s.addShape(pres.shapes.ROUNDED_RECTANGLE, {
       x: 8.0, y: 1.95, w: 4.7, h: 4.7,
