@@ -12,18 +12,18 @@ const cartes = [
   },
   {
     situation: "Des dérives s'installent",
-    reponse:   "Diagnostic IMIA → Mission Équipe + Agent",
+    reponse:   "Diagnostic IMIA → Mission Équipe",
     niveau:    "Collectif",
-    actives:   new Set(["S", "F", "O"]),
-    imia:      "IMIA · évolution",
+    actives:   new Set(["S", "F", "O", "I"]),
+    imia:      "IMIA · cycle (T0, T+90)",
     lien:      `${base}interventions/#cas-2`,
   },
   {
     situation: "Un savoir critique en risque",
-    reponse:   "Mission Équipe · capitalisation skill",
+    reponse:   "Mission Savoir Critique",
     niveau:    "Collectif",
-    actives:   new Set(["S", "F", "O", "I"]),
-    imia:      "IMIA · évolution",
+    actives:   new Set(["S", "F", "O"]),
+    imia:      "IMIA · repère",
     lien:      `${base}interventions/#cas-3`,
   },
   {
@@ -119,7 +119,7 @@ const sfoi = [
     <!-- Légende — rend le schéma auto-porteur, ne dépend pas de la seule couleur -->
     <div class="mt-5 space-y-1 text-center text-xs text-slate-400">
       <p>S Structurer · F Fiabiliser · O Optimiser · I Industrialiser — lettres colorées = profondeur de la méthode atteinte</p>
-      <p>IMIA : l'écart entre l'intention stratégique et les pratiques réelles, mesuré sur 100 à T0, T+90 jours puis chaque trimestre</p>
+      <p>IMIA : score sur 100, mesuré à T0, T+90 jours puis chaque trimestre</p>
     </div>
 
   </div>

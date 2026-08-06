@@ -154,7 +154,7 @@ Le site fonctionne sur deux niveaux :
 - **Backstage** (crédibilité / communauté) : Framework · Mainteneurs
 
 Règles :
-- Le rôle AI Practice Steward n'apparaît pas en frontstage (home hero, interventions)
+- Le rôle AI Practice Steward n'apparaît ni dans le hero, ni dans les titres de situation, ni dans aucune accroche : le visiteur doit reconnaître son problème avant d'avoir à décoder un nom propriétaire. Le rôle est admis dans la description de ce qui reste après une mission (page Interventions, carte "ce qui reste"), où il est le livrable tangible qui distingue la Mission Équipe. Référence : ADR-016.
 - Les offres se présentent par **cas client** (4 cas), pas par palier produit
 - La formation distancielle gratuite est la porte d'entrée universelle
 - Le CTA commercial est **"Discuter"** (vers `/contact/`), pas "Acheter"
@@ -166,6 +166,8 @@ Source autoritaire du positionnement : `07-go-to-market/01-ICP-mission-equipe.md
 ## Conventions
 
 - **Jamais "Coach IA"** — toujours "AI Practice Steward" (et uniquement en backstage)
+- **IMIA ne se développe jamais en externe.** Glose canonique obligatoire à la première occurrence de chaque page publique : « IMIA, l'instrument qui mesure l'écart entre l'intention stratégique de la direction et les pratiques IA réelles ». Référence : ADR-013.
+- **Un délai ne se présente jamais comme subi du fait du dispositif.** Il s'attribue à l'agenda du client ou au périmètre. Référence : ADR-015.
 - **Source formation** : `Formation_prompting/audios_et_illustrations/` (pas `content/`)
 - Pages courtes, texte dense, pas de remplissage marketing
 - Le site existant Formation_prompting est la base technique — le réutiliser

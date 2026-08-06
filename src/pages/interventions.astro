@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import ArbreDecisionDownload from '../components/ArbreDecisionDownload.astro';
 const base = import.meta.env.BASE_URL;
 ---
-<Layout title="Interventions" description="Appel de cadrage gratuit, Diagnostic IMIA en une semaine, puis l'intervention adaptée : quatre situations, quatre offres, durées transparentes.">
+<Layout title="Interventions" description="Appel de cadrage gratuit, Diagnostic IMIA en une semaine, puis l'intervention adaptée : quatre situations, une réponse par situation, durées transparentes.">
 
   <!-- Hero -->
   <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20">
@@ -28,7 +28,7 @@ const base = import.meta.env.BASE_URL;
   <section class="max-w-3xl mx-auto px-6 py-14 border-b border-slate-100">
     <h2 class="text-lg font-bold text-slate-900 mb-3">Par où commencer</h2>
     <p class="text-slate-600 text-base leading-relaxed mb-4">
-      Tout démarre par un appel de cadrage gratuit de 30 minutes, puis un Diagnostic IMIA d'environ une semaine qui mesure l'écart entre votre intention stratégique et vos pratiques IA réelles. L'intervention qui suit dépend de votre situation, pas d'un catalogue.
+      Tout démarre par un appel de cadrage gratuit de 30 minutes, puis un Diagnostic IMIA d'environ une semaine. IMIA, l'instrument qui mesure l'écart entre l'intention stratégique de la direction et les pratiques IA réelles. L'intervention qui suit dépend de votre situation, pas d'un catalogue.
     </p>
     <p class="text-slate-600 text-base leading-relaxed mb-6">
       En parallèle, la formation distancielle gratuite reste ouverte à vos équipes : cinq blocs de 20 minutes, à leur rythme, pour comprendre la méthode S.F.O.I. et créer un langage commun avant toute intervention.
@@ -91,7 +91,7 @@ const base = import.meta.env.BASE_URL;
         </div>
         <div>
           <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Livrables Mission Équipe (4 à 8 semaines)</p>
-          <p class="text-slate-600 text-sm leading-relaxed">Normes co-construites avec l'équipe, premier Agent IA déployé sur un cas métier prioritaire, référent interne formé à tenir le cadre.</p>
+          <p class="text-slate-600 text-sm leading-relaxed">Un AI Practice Steward interne formé et en fonction, plusieurs savoirs critiques capitalisés et en service, un cadre de pratique tenu par l'équipe, un cycle de mesure IMIA à T0 puis à 90 jours.</p>
         </div>
       </div>
     </section>
@@ -112,12 +112,71 @@ const base = import.meta.env.BASE_URL;
       <div class="bg-white border border-slate-200 rounded-xl p-6 space-y-4">
         <div>
           <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Offre</p>
-          <p class="text-slate-900 font-semibold">Mission Équipe ciblée, capitalisation d'un skill</p>
+          <p class="text-slate-900 font-semibold">Mission Savoir Critique</p>
         </div>
         <div>
-          <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Livrables (4 à 8 semaines)</p>
-          <p class="text-slate-600 text-sm leading-relaxed">Entretiens d'élicitation structurés, structuration selon une méthode éprouvée d'ingénierie des connaissances, fichier skill déployable, rapport d'évaluation avec taux de réussite mesuré, transfert à un référent interne.</p>
+          <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Pour qui</p>
+          <p class="text-slate-600 text-sm leading-relaxed">Une équipe dont un savoir critique repose sur une ou deux personnes, avec un départ annoncé ou un processus clé non documenté.</p>
         </div>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Ce que nous faisons</p>
+          <p class="text-slate-600 text-sm leading-relaxed">Nous extrayons le savoir tacite de l'expert par entretiens guidés, nous le formalisons dans un document pivot validé par l'équipe, puis nous mettons en service un agent qui n'exécute rien d'autre que ce qui a été formalisé.</p>
+        </div>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Ce que vous engagez</p>
+          <p class="text-slate-600 text-sm leading-relaxed">Deux ateliers d'une heure trente avec l'expert et son équipe, une relecture du livrable, un référent pour le transfert.</p>
+        </div>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Ce qui reste</p>
+          <p class="text-slate-600 text-sm leading-relaxed">Le document pivot, relisable et transmissible, indépendant du modèle utilisé. Sa mise à jour est la seule maintenance.</p>
+        </div>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-1">Durée</p>
+          <p class="text-slate-700 font-semibold">3 à 4 semaines</p>
+          <p class="text-slate-600 text-sm leading-relaxed mt-1">Le seul délai que vous subissez est celui de vos propres créneaux.</p>
+        </div>
+      </div>
+
+      <!-- Un cas — encadré rattaché à la Mission Savoir Critique -->
+      <div class="rounded-xl p-6 border-l-4 mt-6" style="background:#f8fafc;border-color:var(--accent-500)">
+        <h3 class="text-base font-bold text-slate-900 mb-4">Un cas · capitaliser avant d'outiller</h3>
+        <div class="space-y-3 text-slate-600 text-sm leading-relaxed">
+          <p>Chez un acteur du retail, une équipe RH devait fiabiliser un traitement qui reposait entièrement sur l'expérience de ses membres. Un modèle générique aurait produit une moyenne acceptable, pas leur manière de faire.</p>
+          <p>Ni diagnostic préalable, ni feuille de route, ni PoC. Le premier livrable a été un document pivot : le raisonnement de l'équipe, extrait par entretiens guidés, écrit et validé par elle. Ce document est le contrat d'interface entre ce que l'équipe sait et ce que l'agent exécute. Il rend chaque sortie explicable et localise la correction quand elle est nécessaire.</p>
+          <p>L'agent a été mis en production deux semaines après le premier atelier. Le seul délai du projet a été celui de leur agenda. Il n'exécute rien d'autre que ce qui avait été formalisé. La première livraison a été la livraison : pas de phase pilote, pas de version d'essai.</p>
+          <p>Ce qui reste après la mission n'est pas l'agent. C'est le document pivot : relisable, transmissible, indépendant du modèle.</p>
+        </div>
+        <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white mt-5">
+          <table class="w-full text-sm">
+            <tbody class="divide-y divide-slate-100">
+              <tr>
+                <td class="px-4 py-3 text-slate-700 align-top">Engagement de l'équipe métier</td>
+                <td class="px-4 py-3 text-slate-600 align-top">2 ateliers d'1h30, plus la relecture du livrable</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-slate-700 align-top">Délai de mise en production</td>
+                <td class="px-4 py-3 text-slate-600 align-top">2 semaines, dont l'essentiel tenu par l'agenda de l'équipe</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-slate-700 align-top">Développement spécifique</td>
+                <td class="px-4 py-3 text-slate-600 align-top">Aucun</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-slate-700 align-top">Maintenance</td>
+                <td class="px-4 py-3 text-slate-600 align-top">La mise à jour du livrable, rien d'autre</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-slate-700 align-top">Adhésion observée</td>
+                <td class="px-4 py-3 text-slate-600 align-top">L'équipe a demandé à tester, corriger, retester</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-slate-700 align-top">Nature des gains</td>
+                <td class="px-4 py-3 text-slate-600 align-top">Temps rendu, homogénéisation du traitement, attention humaine recentrée sur les cas qui la méritent</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-slate-500 text-xs italic mt-3">Périmètre d'un cas d'usage unique au sein d'une Mission Savoir Critique.</p>
       </div>
     </section>
 
@@ -132,7 +191,7 @@ const base = import.meta.env.BASE_URL;
       </blockquote>
       <div class="space-y-2 mb-6 text-slate-600 text-sm leading-relaxed">
         <p>Un programme IA est en cours ou planifié. Plusieurs équipes sont concernées, avec des usages qui divergent déjà. La direction affiche une ambition IA au niveau stratégique, mais le risque de fragmentation est visible. Le ROI est difficile à mesurer. La conformité AI Act commence à entrer dans les discussions.</p>
-        <p>Ce cas nécessite un sponsor direction ferme et un cycle plus long. Il ne s'adresse pas à un projet pilote, il adresse l'organisation dans son ensemble : l'exécution IA de chaque équipe, alignée sur la même intention.</p>
+        <p>Ce cas nécessite un sponsor direction ferme. La durée tient au nombre d'équipes concernées, pas à la lourdeur du dispositif. Il ne s'adresse pas à un projet pilote, il adresse l'organisation dans son ensemble : l'exécution IA de chaque équipe, alignée sur la même intention.</p>
       </div>
       <div class="bg-white border border-slate-200 rounded-xl p-6 space-y-4">
         <div>
@@ -198,8 +257,8 @@ const base = import.meta.env.BASE_URL;
             </tr>
             <tr>
               <td class="px-4 py-3 text-slate-700">Savoir critique à capitaliser</td>
-              <td class="px-4 py-3 text-slate-600">Mission Équipe ciblée</td>
-              <td class="px-4 py-3 text-slate-500">4 à 8 semaines</td>
+              <td class="px-4 py-3 text-slate-600">Mission Savoir Critique</td>
+              <td class="px-4 py-3 text-slate-500">3 à 4 semaines</td>
             </tr>
             <tr>
               <td class="px-4 py-3 text-slate-700">Exécution à aligner à l'échelle</td>
